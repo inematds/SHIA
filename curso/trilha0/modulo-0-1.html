@@ -42,9 +42,8 @@
     html:not(.dark) .text-neutral-300 { color: #475569 !important; }
     html:not(.dark) .text-neutral-400 { color: #64748b !important; }
 
-    /* Topic accordion */
-    .topic-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-    .topic-content.active { max-height: 5000px; }
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
   </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
@@ -219,18 +218,12 @@
       <div class="space-y-3">
 
         <!-- Tópico 1 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">1</span>
-              <span class="font-semibold">O que é Inteligência Aumentada e por que ela é a verdadeira revolução?</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">O que é Inteligência Aumentada e por que ela é a verdadeira revolução?</span>
+          </div>
+          <div class="p-5">
               <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
                 <p class="text-neutral-300 mb-3">
                   A <strong class="text-yellow-400">Inteligência Aumentada (IAu)</strong> representa uma mudança de paradigma: da automação para a <strong>colaboração</strong>. Ela visa criar uma parceria sinérgica onde as fortalezas complementares de humanos e máquinas são combinadas para alcançar resultados que nenhum dos dois conseguiria isoladamente.
@@ -252,24 +245,16 @@
                 <p class="text-neutral-300 text-sm">
                   IAu = Colaboração, não substituição. O humano permanece no centro do processo decisório.
                 </p>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Tópico 2 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-sm mr-4">2</span>
-              <span class="font-semibold">A História da IA e o Surgimento da Inteligência Aumentada</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">A História da IA e o Surgimento da Inteligência Aumentada</span>
+          </div>
+          <div class="p-5">
               <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
                 <p class="text-neutral-300 mb-3">
                   A jornada da IA é marcada por "verões" de grande otimismo e "invernos" de desilusão. Desde Alan Turing (1950) e a conferência de Dartmouth (1956), o sonho era criar máquinas pensantes.
@@ -294,18 +279,12 @@
         </div>
 
         <!-- Tópico 3 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-sm mr-4">3</span>
-              <span class="font-semibold">A Diferença Fundamental: IA Pura vs. Inteligência Aumentada</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">A Diferença Fundamental: IA Pura vs. Inteligência Aumentada</span>
+          </div>
+          <div class="p-5">
               <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
                 <p class="text-neutral-300">
                   A <strong>IA Pura</strong> busca replicar a inteligência humana para executar tarefas de forma independente (ex: carros autônomos). A <strong>IAu</strong> foca na combinação: velocidade da máquina + intuição humana = decisões superiores.
@@ -315,24 +294,16 @@
                 <p class="text-neutral-300 text-sm">
                   <strong>Analogia:</strong> IA Pura é um robô que cozinha para você. IAu é uma cozinha inteligente que sugere receitas e guia você para se tornar um chef melhor.
                 </p>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Tópico 4 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-sm mr-4">4</span>
-              <span class="font-semibold">Como a IAu Potencializa a Criatividade Humana</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">Como a IAu Potencializa a Criatividade Humana</span>
+          </div>
+          <div class="p-5">
               <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
                 <p class="text-neutral-300 mb-3">
                   A criatividade é uma das áreas mais beneficiadas pela IAu. Ela atua como um <strong>catalisador criativo</strong>:
@@ -348,24 +319,16 @@
                 <p class="text-neutral-300 text-sm">
                   Um músico pode usar IAu para gerar progressões de acordes barrocas com batida de hip-hop. Um artista pode treinar um modelo com suas próprias obras para gerar novas peças com sua assinatura estilística.
                 </p>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Tópico 5 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-sm mr-4">5</span>
-              <span class="font-semibold">Aplicações Práticas no Dia a Dia e nos Negócios</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">Aplicações Práticas no Dia a Dia e nos Negócios</span>
+          </div>
+          <div class="p-5">
               <div class="grid md:grid-cols-2 gap-4 mb-4">
                 <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
                   <h5 class="font-bold text-blue-400 mb-2">🏥 Medicina</h5>
@@ -383,24 +346,16 @@
                   <h5 class="font-bold text-yellow-400 mb-2">✍️ Escrita</h5>
                   <p class="text-neutral-300 text-sm">Grammarly e sugestões do Gmail ajudam a escrever melhor e mais rápido</p>
                 </div>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Tópico 6 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-sm mr-4">6</span>
-              <span class="font-semibold">O Papel do Prompt: A Arte de Conversar com a IA</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">O Papel do Prompt: A Arte de Conversar com a IA</span>
+          </div>
+          <div class="p-5">
               <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
                 <p class="text-neutral-300 mb-3">
                   Se a IAu é o co-piloto, o <strong class="text-yellow-400">prompt é o volante e os pedais</strong>. A engenharia de prompt é a nova competência fundamental.
@@ -418,24 +373,16 @@
                   <li>• <strong>Formato:</strong> "Em três parágrafos, com analogia moderna"</li>
                   <li>• <strong>Restrições:</strong> "Evite jargões acadêmicos"</li>
                 </ul>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Tópico 7 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-sm mr-4">7</span>
-              <span class="font-semibold">Ferramentas Essenciais de IAu que Você Pode Usar Hoje</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">Ferramentas Essenciais de IAu que Você Pode Usar Hoje</span>
+          </div>
+          <div class="p-5">
               <div class="overflow-x-auto">
                 <table class="w-full text-sm">
                   <thead>
@@ -463,24 +410,16 @@
                     </tr>
                   </tbody>
                 </table>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Tópico 8 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-sm mr-4">8</span>
-              <span class="font-semibold">Ética e Responsabilidade na Era da IAu</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">Ética e Responsabilidade na Era da IAu</span>
+          </div>
+          <div class="p-5">
               <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30 mb-4">
                 <h5 class="font-bold text-red-400 mb-2">⚠️ Principais Riscos</h5>
                 <ul class="text-neutral-300 text-sm space-y-2">
@@ -494,24 +433,16 @@
                 <p class="text-neutral-300 text-sm">
                   Sempre verifique informações, cite fontes e use a tecnologia para promover a verdade. Audite e corrija resultados que possam conter viés.
                 </p>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Tópico 9 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-sm mr-4">9</span>
-              <span class="font-semibold">O Futuro do Trabalho e as Habilidades do Profissional Aumentado</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">O Futuro do Trabalho e as Habilidades do Profissional Aumentado</span>
+          </div>
+          <div class="p-5">
               <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
                 <p class="text-neutral-300 mb-3">
                   A narrativa de que "a IA vai roubar empregos" é simplista. A tecnologia não elimina empregos em massa, mas os <strong>transforma</strong>. O futuro pertence ao <strong class="text-yellow-400">"Profissional Aumentado"</strong>.
@@ -525,24 +456,16 @@
                   <li>• <strong>Inteligência Emocional:</strong> Colaborar em equipes híbridas</li>
                   <li>• <strong>Learnability:</strong> Capacidade de aprender a aprender</li>
                 </ul>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Tópico 10 -->
-        <div class="topic-item bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
-          <button class="topic-toggle w-full text-left p-5 flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-            <div class="flex items-center">
-              <span class="w-8 h-8 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-sm mr-4">10</span>
-              <span class="font-semibold">Construindo seu Próprio Co-piloto: Primeiros Passos</span>
-            </div>
-            <svg class="w-5 h-5 text-neutral-400 transform transition-transform topic-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="topic-content">
-            <div class="p-5 pt-0 border-t border-dark-700">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">Construindo seu Próprio Co-piloto: Primeiros Passos</span>
+          </div>
+          <div class="p-5">
               <div class="bg-gradient-to-br from-yellow-900/20 to-dark-700/50 p-4 rounded-lg border border-yellow-500/30 mb-4">
                 <h5 class="font-bold text-yellow-400 mb-3">🚀 Sua Jornada Começa Aqui</h5>
                 <ol class="text-neutral-300 space-y-3">
@@ -568,7 +491,6 @@
                   </li>
                 </ol>
               </div>
-            </div>
           </div>
         </div>
 
@@ -669,31 +591,6 @@
       }
     });
 
-    // Topic Accordion
-    document.querySelectorAll('.topic-toggle').forEach(button => {
-      button.addEventListener('click', function() {
-        const item = this.closest('.topic-item');
-        const content = item.querySelector('.topic-content');
-        const arrow = item.querySelector('.topic-arrow');
-
-        // Toggle current
-        content.classList.toggle('active');
-        arrow.classList.toggle('rotate-180');
-
-        // Update number badge color
-        const badge = item.querySelector('.w-8.h-8');
-        if (content.classList.contains('active')) {
-          badge.classList.remove('bg-dark-700', 'text-neutral-400');
-          badge.classList.add('bg-yellow-500', 'text-dark-900');
-        } else {
-          badge.classList.add('bg-dark-700', 'text-neutral-400');
-          badge.classList.remove('bg-yellow-500', 'text-dark-900');
-        }
-      });
-    });
-
-    // Open first topic by default
-    document.querySelector('.topic-toggle').click();
   </script>
 
 </body>
