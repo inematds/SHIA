@@ -42,8 +42,67 @@
     html:not(.dark) .text-neutral-300 { color: #475569 !important; }
     html:not(.dark) .text-neutral-400 { color: #64748b !important; }
 
-    .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3); }
+    /* Topic Accordion */
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+    }
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background-color: #1f2937;
+      margin: auto;
+      padding: 0;
+      width: 95%;
+      max-width: 1000px;
+      max-height: 90vh;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+    html:not(.dark) .modal-content {
+      background-color: #ffffff;
+    }
+    .modal-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #374151;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    html:not(.dark) .modal-header {
+      border-bottom-color: #e2e8f0;
+    }
+    .modal-body {
+      padding: 2rem;
+      overflow-y: auto;
+      max-height: calc(90vh - 80px);
+    }
+    .close-modal {
+      color: #9ca3af;
+      font-size: 2rem;
+      font-weight: 700;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .close-modal:hover {
+      color: #ef4444;
+    }
   </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
@@ -94,18 +153,18 @@
   </nav>
 
   <!-- Header -->
-  <section class="bg-gradient-to-br from-yellow-900/30 to-dark-900 py-16">
+  <section class="bg-gradient-to-br from-yellow-900/30 to-dark-900 py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <span class="inline-block px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold mb-4">
         TRILHA 0 - OBRIGATÓRIA
       </span>
       <h1 class="text-4xl sm:text-5xl font-bold mb-4">🚀 Introdução</h1>
-      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto mb-6">
         Fundamentos de IA e Engenharia de Prompts. A base essencial para dominar todas as outras trilhas.
       </p>
 
       <!-- Stats -->
-      <div class="grid grid-cols-3 gap-4 max-w-md mx-auto mt-8">
+      <div class="grid grid-cols-3 gap-4 max-w-md mx-auto">
         <div class="bg-dark-800/50 rounded-xl p-4 border border-dark-600">
           <div class="text-2xl font-bold text-yellow-400">10</div>
           <div class="text-xs text-neutral-400">Módulos</div>
@@ -123,209 +182,424 @@
   </section>
 
   <!-- Módulos -->
-  <section class="py-12">
+  <section class="py-8">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- Lista de Módulos -->
-      <div class="space-y-4">
-
-        <!-- Módulo 1 -->
-        <a href="modulo-1.html" class="block bg-gradient-to-r from-yellow-900/20 to-dark-800 rounded-xl p-6 border border-yellow-500/30 hover:border-yellow-400 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-lg mr-4">
-              1
+      <!-- MÓDULO 1 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <!-- Header do Módulo -->
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.1</span>
+              <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded">Disponível</span>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold text-yellow-400">Bem-vindo à Revolução da IA</h3>
-              <p class="text-sm text-neutral-400">O que é Inteligência Aumentada e por que ela é a verdadeira revolução</p>
-            </div>
-            <div class="text-yellow-400">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
+            <h2 class="text-xl font-bold mb-1">Bem-vindo à Revolução da IA</h2>
+            <p class="text-neutral-400 text-sm">O que é Inteligência Aumentada e por que ela é a verdadeira revolução • ~2h</p>
           </div>
-        </a>
+        </div>
 
-        <!-- Módulo 2 -->
-        <a href="modulo-2.html" class="block bg-dark-800 rounded-xl p-6 border border-dark-600 hover:border-yellow-500/50 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-lg mr-4">
-              2
+        <!-- Lista de Tópicos -->
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">📖 O que é Inteligência Aumentada?</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">A Inteligência Aumentada (IAu) é uma mudança de paradigma: da automação para a colaboração. Ela cria ferramentas que amplificam e capacitam a inteligência humana.</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">A IAu nos torna melhores, mais rápidos e mais inteligentes. É a habilidade essencial para o profissional do futuro.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">Colaboração humano-máquina, Co-piloto inteligente, Democratização de habilidades.</span></p>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold">A Essência da Engenharia de Prompts</h3>
-              <p class="text-sm text-neutral-400">A arte de conversar com a IA</p>
-            </div>
-            <div class="text-neutral-500">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+          </li>
 
-        <!-- Módulo 3 -->
-        <a href="modulo-3.html" class="block bg-dark-800 rounded-xl p-6 border border-dark-600 hover:border-yellow-500/50 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-lg mr-4">
-              3
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">📜 A História da IA e o Surgimento da IAu</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">A jornada da IA desde Alan Turing (1950) até os modelos de linguagem modernos, passando por verões de otimismo e invernos de desilusão.</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">Entender a história ajuda a compreender por que a IAu surgiu como resposta pragmática aos desafios da IA.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">Teste de Turing, Conferência de Dartmouth (1956), Deep Learning, Era da IAu.</span></p>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold">Principais Ferramentas e Modelos de IA</h3>
-              <p class="text-sm text-neutral-400">GPT-4, Claude, Gemini, Midjourney e mais</p>
-            </div>
-            <div class="text-neutral-500">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+          </li>
 
-        <!-- Módulo 4 -->
-        <a href="modulo-4.html" class="block bg-dark-800 rounded-xl p-6 border border-dark-600 hover:border-yellow-500/50 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-lg mr-4">
-              4
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">⚖️ IA Pura vs. Inteligência Aumentada</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">IA Pura busca automação total e substituição. IAu busca colaboração e amplificação das capacidades humanas.</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">Entender essa diferença define como você usará a tecnologia: como substituta ou como amplificadora.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">Automação vs Colaboração, Piloto automático vs Co-piloto, Decisão humana informada.</span></p>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold">A Anatomia de um Prompt Perfeito</h3>
-              <p class="text-sm text-neutral-400">Estrutura, elementos-chave e Chain-of-Thought</p>
-            </div>
-            <div class="text-neutral-500">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+          </li>
 
-        <!-- Módulo 5 -->
-        <a href="modulo-5.html" class="block bg-dark-800 rounded-xl p-6 border border-dark-600 hover:border-yellow-500/50 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-lg mr-4">
-              5
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">🎨 Como a IAu Potencializa a Criatividade</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">A IAu atua como catalisador criativo: supera bloqueios, acelera prototipagem e oferece perspectivas inesperadas.</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">Artistas, designers e criadores já usam IAu diariamente para multiplicar sua produtividade criativa.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">Brainstorming assistido, Variações rápidas, Exploração de estilos, Assinatura estilística.</span></p>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold">Zero-Shot e Few-Shot Prompting</h3>
-              <p class="text-sm text-neutral-400">Aprendendo com poucos exemplos</p>
-            </div>
-            <div class="text-neutral-500">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+          </li>
 
-        <!-- Módulo 6 -->
-        <a href="modulo-6.html" class="block bg-dark-800 rounded-xl p-6 border border-dark-600 hover:border-yellow-500/50 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-lg mr-4">
-              6
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">💼 Aplicações Práticas no Dia a Dia</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">Medicina (diagnósticos), Direito (pesquisa jurídica), Código (GitHub Copilot), Escrita (Grammarly) - a IAu já está em toda parte.</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">Conhecer as aplicações permite identificar oportunidades de uso na sua própria área profissional.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">Diagnóstico assistido, Análise de documentos, Autocompletar código, Escrita aprimorada.</span></p>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold">O Mindset da Experimentação</h3>
-              <p class="text-sm text-neutral-400">Como iterar e refinar seus prompts</p>
-            </div>
-            <div class="text-neutral-500">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+          </li>
 
-        <!-- Módulo 7 -->
-        <a href="modulo-7.html" class="block bg-dark-800 rounded-xl p-6 border border-dark-600 hover:border-yellow-500/50 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-lg mr-4">
-              7
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">🎯 O Papel do Prompt: Volante e Pedais</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">O prompt é como você controla a IA. Um bom prompt é claro, conciso e rico em contexto.</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">Engenharia de prompt é a nova competência fundamental na era da IAu.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">Persona, Contexto, Tarefa, Formato, Restrições.</span></p>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold">Além do Texto: Imagens, Áudio e Código</h3>
-              <p class="text-sm text-neutral-400">Multimodalidade na prática</p>
-            </div>
-            <div class="text-neutral-500">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+          </li>
 
-        <!-- Módulo 8 -->
-        <a href="modulo-8.html" class="block bg-dark-800 rounded-xl p-6 border border-dark-600 hover:border-yellow-500/50 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-lg mr-4">
-              8
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">🛠️ Ferramentas Essenciais de IAu</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">Ecossistema de ferramentas: ChatGPT, Claude, Gemini (texto), Midjourney, DALL-E (imagem), GitHub Copilot (código).</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">Conhecer as ferramentas permite escolher a melhor para cada tarefa e combiná-las estrategicamente.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">LLMs, Geradores de imagem, Assistentes de código, Ferramentas de pesquisa.</span></p>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold">Ética e Responsabilidade</h3>
-              <p class="text-sm text-neutral-400">Uso responsável da IA</p>
-            </div>
-            <div class="text-neutral-500">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+          </li>
 
-        <!-- Módulo 9 -->
-        <a href="modulo-9.html" class="block bg-dark-800 rounded-xl p-6 border border-dark-600 hover:border-yellow-500/50 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-lg mr-4">
-              9
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">⚠️ Ética e Responsabilidade</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">Riscos éticos: viés algorítmico, propriedade intelectual, deepfakes e desinformação.</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">Com grande poder vem grande responsabilidade. Uso ético é essencial para sustentabilidade da tecnologia.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">Viés (bias), Copyright, Verificação de fontes, Transparência.</span></p>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold">Como Aprender a Aprender na Era da IA</h3>
-              <p class="text-sm text-neutral-400">Habilidades do futuro</p>
-            </div>
-            <div class="text-neutral-500">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+          </li>
 
-        <!-- Módulo 10 -->
-        <a href="modulo-10.html" class="block bg-dark-800 rounded-xl p-6 border border-dark-600 hover:border-yellow-500/50 transition-all card-hover">
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-neutral-400 font-bold text-lg mr-4">
-              10
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">🚀 O Futuro do Profissional Aumentado</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">A IA não rouba empregos, ela os transforma. O futuro pertence ao "Profissional Aumentado".</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">Preparar-se para o futuro do trabalho significa dominar as habilidades certas agora.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">Pensamento crítico, Criatividade, Inteligência emocional, Learnability.</span></p>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold">Projeto Final Integrado</h3>
-              <p class="text-sm text-neutral-400">Aplicação prática de tudo que você aprendeu</p>
-            </div>
-            <div class="text-neutral-500">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+          </li>
 
+          <li class="topic-item">
+            <button class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors flex items-center">
+              <span class="topic-arrow text-yellow-400 mr-2">▸</span>
+              <span class="text-sm font-medium">🎓 Construindo seu Co-piloto: Primeiros Passos</span>
+            </button>
+            <div class="topic-explanation ml-6 mt-2 p-4 bg-yellow-900/10 rounded-lg border-l-4 border-yellow-500">
+              <p class="text-sm mb-2"><strong class="text-yellow-400">O que é:</strong> <span class="text-neutral-300">Guia prático: escolha uma ferramenta, defina um problema, escreva seu primeiro prompt, itere e documente.</span></p>
+              <p class="text-sm mb-2"><strong class="text-yellow-400">Por que aprender:</strong> <span class="text-neutral-300">A prática é o melhor professor. Começar agora é mais importante que começar perfeito.</span></p>
+              <p class="text-sm"><strong class="text-yellow-400">Conceitos-chave:</strong> <span class="text-neutral-300">Experimentação, Iteração, Documentação de prompts, Biblioteca pessoal.</span></p>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Botões de Ação -->
+        <div class="flex gap-3">
+          <button onclick="openModal('modal-0-1')" class="flex-1 px-4 py-3 bg-yellow-500/20 text-yellow-400 rounded-lg font-semibold hover:bg-yellow-500/30 transition-colors flex items-center justify-center gap-2">
+            <span>📖</span> Ver em Modal
+          </button>
+          <a href="modulo-0-1.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors flex items-center justify-center gap-2">
+            <span>→</span> Ver Completo
+          </a>
+        </div>
       </div>
 
-      <!-- CTA -->
-      <div class="mt-12 text-center">
-        <a href="modulo-1.html" class="inline-flex items-center space-x-2 px-8 py-4 bg-yellow-500 text-dark-900 rounded-xl font-bold text-lg hover:bg-yellow-400 transition-colors">
-          <span>Começar Módulo 1</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
+      <!-- MÓDULO 2 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.2</span>
+              <span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 text-xs font-semibold rounded">Em breve</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">A Essência da Engenharia de Prompts</h2>
+            <p class="text-neutral-400 text-sm">A arte de conversar com a IA • ~2h</p>
+          </div>
+        </div>
+        <div class="text-center py-8 text-neutral-500">
+          <p>Conteúdo em desenvolvimento...</p>
+        </div>
+      </div>
+
+      <!-- MÓDULO 3 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.3</span>
+              <span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 text-xs font-semibold rounded">Em breve</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Principais Ferramentas e Modelos de IA</h2>
+            <p class="text-neutral-400 text-sm">GPT-4, Claude, Gemini, Midjourney e mais • ~2h</p>
+          </div>
+        </div>
+        <div class="text-center py-8 text-neutral-500">
+          <p>Conteúdo em desenvolvimento...</p>
+        </div>
+      </div>
+
+      <!-- MÓDULO 4 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.4</span>
+              <span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 text-xs font-semibold rounded">Em breve</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">A Anatomia de um Prompt Perfeito</h2>
+            <p class="text-neutral-400 text-sm">Estrutura, elementos-chave e Chain-of-Thought • ~2h</p>
+          </div>
+        </div>
+        <div class="text-center py-8 text-neutral-500">
+          <p>Conteúdo em desenvolvimento...</p>
+        </div>
+      </div>
+
+      <!-- MÓDULO 5 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.5</span>
+              <span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 text-xs font-semibold rounded">Em breve</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Zero-Shot e Few-Shot Prompting</h2>
+            <p class="text-neutral-400 text-sm">Aprendendo com poucos exemplos • ~2h</p>
+          </div>
+        </div>
+        <div class="text-center py-8 text-neutral-500">
+          <p>Conteúdo em desenvolvimento...</p>
+        </div>
+      </div>
+
+      <!-- MÓDULO 6 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.6</span>
+              <span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 text-xs font-semibold rounded">Em breve</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">O Mindset da Experimentação</h2>
+            <p class="text-neutral-400 text-sm">Como iterar e refinar seus prompts • ~2h</p>
+          </div>
+        </div>
+        <div class="text-center py-8 text-neutral-500">
+          <p>Conteúdo em desenvolvimento...</p>
+        </div>
+      </div>
+
+      <!-- MÓDULO 7 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.7</span>
+              <span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 text-xs font-semibold rounded">Em breve</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Além do Texto: Imagens, Áudio e Código</h2>
+            <p class="text-neutral-400 text-sm">Multimodalidade na prática • ~3h</p>
+          </div>
+        </div>
+        <div class="text-center py-8 text-neutral-500">
+          <p>Conteúdo em desenvolvimento...</p>
+        </div>
+      </div>
+
+      <!-- MÓDULO 8 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.8</span>
+              <span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 text-xs font-semibold rounded">Em breve</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Ética e Responsabilidade</h2>
+            <p class="text-neutral-400 text-sm">Uso responsável da IA • ~2h</p>
+          </div>
+        </div>
+        <div class="text-center py-8 text-neutral-500">
+          <p>Conteúdo em desenvolvimento...</p>
+        </div>
+      </div>
+
+      <!-- MÓDULO 9 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.9</span>
+              <span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 text-xs font-semibold rounded">Em breve</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Como Aprender a Aprender na Era da IA</h2>
+            <p class="text-neutral-400 text-sm">Habilidades do futuro • ~2h</p>
+          </div>
+        </div>
+        <div class="text-center py-8 text-neutral-500">
+          <p>Conteúdo em desenvolvimento...</p>
+        </div>
+      </div>
+
+      <!-- MÓDULO 10 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.10</span>
+              <span class="px-2 py-1 bg-neutral-500/20 text-neutral-400 text-xs font-semibold rounded">Em breve</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Projeto Final Integrado</h2>
+            <p class="text-neutral-400 text-sm">Aplicação prática de tudo que você aprendeu • ~4h</p>
+          </div>
+        </div>
+        <div class="text-center py-8 text-neutral-500">
+          <p>Conteúdo em desenvolvimento...</p>
+        </div>
       </div>
 
     </div>
   </section>
 
+  <!-- MODAL 0.1 -->
+  <div id="modal-0-1" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="text-xl font-bold text-yellow-400">🚀 Módulo 0.1 - Bem-vindo à Revolução da IA</h2>
+        <button class="close-modal" onclick="closeModal('modal-0-1')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Intro -->
+        <div class="mb-6">
+          <p class="text-lg text-neutral-200 mb-3 font-semibold">
+            Descubra o que é Inteligência Aumentada e por que ela representa a verdadeira revolução na forma como trabalhamos e criamos.
+          </p>
+          <div class="flex gap-3 flex-wrap">
+            <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold">~2 horas</span>
+            <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold">10 tópicos</span>
+            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold">Iniciante</span>
+          </div>
+        </div>
+
+        <!-- Conceito Central -->
+        <div class="bg-gradient-to-br from-yellow-900/30 to-dark-700 rounded-lg p-6 mb-6 border border-yellow-500/30">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-3">💡</span>
+            <h3 class="text-xl font-bold text-yellow-400">Conceito Central</h3>
+          </div>
+          <blockquote class="text-lg text-neutral-200 italic border-l-4 border-yellow-500 pl-4 mb-4">
+            "A Inteligência Artificial não substitui o talento humano, ela o <strong class="text-yellow-400">AMPLIFICA</strong>."
+          </blockquote>
+          <p class="text-neutral-300 text-sm">
+            A IAu representa uma mudança de paradigma: da automação para a colaboração. Enquanto a IA tradicional é o piloto automático, a Inteligência Aumentada é o co-piloto inteligente.
+          </p>
+        </div>
+
+        <!-- O que você vai aprender -->
+        <div class="bg-dark-700/50 rounded-lg p-6 mb-6">
+          <h3 class="text-lg font-bold mb-4">📚 O que você vai aprender</h3>
+          <div class="grid md:grid-cols-2 gap-3">
+            <div class="flex items-start">
+              <span class="text-emerald-400 mr-2">✓</span>
+              <span class="text-neutral-300 text-sm">O que é Inteligência Aumentada</span>
+            </div>
+            <div class="flex items-start">
+              <span class="text-emerald-400 mr-2">✓</span>
+              <span class="text-neutral-300 text-sm">História da IA até os dias atuais</span>
+            </div>
+            <div class="flex items-start">
+              <span class="text-emerald-400 mr-2">✓</span>
+              <span class="text-neutral-300 text-sm">Diferença entre IA e IAu</span>
+            </div>
+            <div class="flex items-start">
+              <span class="text-emerald-400 mr-2">✓</span>
+              <span class="text-neutral-300 text-sm">Como IAu potencializa criatividade</span>
+            </div>
+            <div class="flex items-start">
+              <span class="text-emerald-400 mr-2">✓</span>
+              <span class="text-neutral-300 text-sm">Aplicações práticas no dia a dia</span>
+            </div>
+            <div class="flex items-start">
+              <span class="text-emerald-400 mr-2">✓</span>
+              <span class="text-neutral-300 text-sm">O papel fundamental do prompt</span>
+            </div>
+            <div class="flex items-start">
+              <span class="text-emerald-400 mr-2">✓</span>
+              <span class="text-neutral-300 text-sm">Principais ferramentas de IAu</span>
+            </div>
+            <div class="flex items-start">
+              <span class="text-emerald-400 mr-2">✓</span>
+              <span class="text-neutral-300 text-sm">Ética e responsabilidade</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparação -->
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+            <h4 class="font-bold text-red-400 mb-3">🤖 IA Tradicional</h4>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Foco em automação total</li>
+              <li>• Substitui tarefas humanas</li>
+              <li>• Decisões autônomas</li>
+              <li>• Humano fora do processo</li>
+            </ul>
+          </div>
+          <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+            <h4 class="font-bold text-emerald-400 mb-3">🧠 Inteligência Aumentada</h4>
+            <ul class="space-y-2 text-sm text-neutral-300">
+              <li>• Foco em colaboração</li>
+              <li>• Amplifica capacidades humanas</li>
+              <li>• Decisões informadas</li>
+              <li>• Humano no centro</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-br from-yellow-600 to-yellow-700 text-white rounded-lg p-6 text-center">
+          <h3 class="text-xl font-bold mb-3">🚀 Pronto para começar?</h3>
+          <p class="mb-4 text-sm text-yellow-100">
+            Acesse o conteúdo completo com exemplos práticos, prompts prontos para usar e exercícios.
+          </p>
+          <a href="modulo-0-1.html" class="inline-block bg-white text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-50 transition-colors">
+            Ver Conteúdo Completo →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
-  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-8">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <p class="text-neutral-500 text-sm">
         SHIA - Super Humanos Inteligência Aumentada | Trilha 0: Introdução
@@ -333,8 +607,9 @@
     </div>
   </footer>
 
-  <!-- Theme Toggle Script -->
+  <!-- Scripts -->
   <script>
+    // Theme Toggle
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -358,6 +633,61 @@
       } else {
         document.documentElement.classList.add('dark');
         localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+    // Topic Accordion
+    document.querySelectorAll('.topic-button').forEach(button => {
+      button.addEventListener('click', function() {
+        const item = this.closest('.topic-item');
+        const explanation = item.querySelector('.topic-explanation');
+        const arrow = item.querySelector('.topic-arrow');
+
+        // Close other open topics in same module
+        const moduleCard = item.closest('.module-card');
+        moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+          if (exp !== explanation) {
+            exp.classList.remove('active');
+            exp.closest('.topic-item').querySelector('.topic-arrow').textContent = '▸';
+          }
+        });
+
+        // Toggle current
+        explanation.classList.toggle('active');
+        arrow.textContent = explanation.classList.contains('active') ? '▾' : '▸';
+      });
+    });
+
+    // Modal Functions
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal on outside click
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+
+    // Close modal on ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(modal => {
+          modal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        });
       }
     });
   </script>
