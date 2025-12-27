@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHIA - Super Humanos Inteligência Aumentada</title>
+  <meta name="description" content="Curso completo de Inteligência Aumentada. Talento Humano + IA = Escala, Autonomia e Resultado.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#EAB308',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-200 { color: #334155 !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.8s ease-out; }
+
+    /* Hover Cards */
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+        </a>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="trilha3/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-yellow-900/30 via-dark-900 to-purple-900/20 py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
+      <!-- Badge -->
+      <span class="inline-block px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold mb-6">
+        🚀 CURSO COMPLETO DE INTELIGÊNCIA AUMENTADA
+      </span>
+
+      <!-- Logo -->
+      <div class="text-8xl mb-6">🧠</div>
+
+      <!-- Título -->
+      <h1 class="text-4xl sm:text-6xl font-bold mb-4">
+        <span class="text-yellow-400">SHIA</span>
+      </h1>
+      <h2 class="text-2xl sm:text-3xl font-bold text-neutral-200 mb-6">
+        Super Humanos Inteligência Aumentada
+      </h2>
+
+      <!-- Tagline -->
+      <p class="text-xl sm:text-2xl text-neutral-400 mb-8 max-w-2xl mx-auto">
+        <strong class="text-neutral-200">Talento Humano + IA</strong> = Escala, Autonomia e Resultado
+      </p>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-10">
+        <div class="bg-dark-800/50 rounded-xl p-4 border border-dark-600">
+          <div class="text-3xl font-bold text-yellow-400">4</div>
+          <div class="text-sm text-neutral-400">Trilhas</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-xl p-4 border border-dark-600">
+          <div class="text-3xl font-bold text-emerald-400">40</div>
+          <div class="text-sm text-neutral-400">Módulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-xl p-4 border border-dark-600">
+          <div class="text-3xl font-bold text-blue-400">400</div>
+          <div class="text-sm text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-xl p-4 border border-dark-600">
+          <div class="text-3xl font-bold text-purple-400">100h+</div>
+          <div class="text-sm text-neutral-400">Conteúdo</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a href="trilha0/" class="inline-flex items-center space-x-2 px-8 py-4 bg-yellow-500 text-dark-900 rounded-xl font-bold text-lg hover:bg-yellow-400 transition-colors">
+        <span>Começar Agora</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Proposta de Valor -->
+  <section class="py-16 bg-dark-800/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">💡 A Filosofia do SHIA</h2>
+        <p class="text-xl text-neutral-400 max-w-3xl mx-auto">
+          "A Inteligência Artificial <strong class="text-neutral-200">não substitui</strong> o talento humano, ela o <strong class="text-yellow-400">AMPLIFICA</strong>."
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-dark-800 rounded-2xl p-6 border border-dark-600 card-hover">
+          <div class="text-4xl mb-4">🎯</div>
+          <h3 class="text-xl font-bold mb-2">Humano no Centro</h3>
+          <p class="text-neutral-400">
+            Você decide, a IA executa. O processo criativo e decisório permanece com você.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-dark-800 rounded-2xl p-6 border border-dark-600 card-hover">
+          <div class="text-4xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold mb-2">Elimina Barreiras</h3>
+          <p class="text-neutral-400">
+            Sem necessidade de equipes grandes, estruturas caras ou conhecimento técnico avançado.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-dark-800 rounded-2xl p-6 border border-dark-600 card-hover">
+          <div class="text-4xl mb-4">🚀</div>
+          <h3 class="text-xl font-bold mb-2">Escala Individual</h3>
+          <p class="text-neutral-400">
+            Uma pessoa com IA pode entregar o que antes exigia times inteiros.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trilhas -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">🗺️ Escolha Sua Trilha</h2>
+        <p class="text-neutral-400">
+          Comece pela Trilha 0 (obrigatória) e depois escolha sua especialização
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Trilha 0 -->
+        <a href="trilha0/" class="bg-gradient-to-br from-yellow-900/30 to-dark-800 rounded-2xl p-6 border-2 border-yellow-500/30 hover:border-yellow-400 transition-all card-hover block">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-4xl">🟡</span>
+            <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-semibold rounded-full">OBRIGATÓRIA</span>
+          </div>
+          <h3 class="text-xl font-bold text-yellow-400 mb-2">Trilha 0</h3>
+          <h4 class="text-lg font-semibold mb-3">Introdução</h4>
+          <p class="text-neutral-400 text-sm mb-4">
+            Fundamentos de IA e Engenharia de Prompts. Base essencial para todas as outras trilhas.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-neutral-500">10 módulos</span>
+            <span class="text-yellow-400 font-semibold">Começar →</span>
+          </div>
+        </a>
+
+        <!-- Trilha 1 -->
+        <a href="trilha1/" class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-2xl p-6 border-2 border-emerald-500/30 hover:border-emerald-400 transition-all card-hover block">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-4xl">🟢</span>
+            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full">CRIATIVO</span>
+          </div>
+          <h3 class="text-xl font-bold text-emerald-400 mb-2">Trilha 1</h3>
+          <h4 class="text-lg font-semibold mb-3">Arte</h4>
+          <p class="text-neutral-400 text-sm mb-4">
+            Expressão criativa e produção multimídia. Para artistas, designers e criadores.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-neutral-500">10 módulos</span>
+            <span class="text-emerald-400 font-semibold">Explorar →</span>
+          </div>
+        </a>
+
+        <!-- Trilha 2 -->
+        <a href="trilha2/" class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-2xl p-6 border-2 border-blue-500/30 hover:border-blue-400 transition-all card-hover block">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-4xl">🔵</span>
+            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full">TÉCNICO</span>
+          </div>
+          <h3 class="text-xl font-bold text-blue-400 mb-2">Trilha 2</h3>
+          <h4 class="text-lg font-semibold mb-3">Engenharia</h4>
+          <p class="text-neutral-400 text-sm mb-4">
+            Lógica, automação e soluções técnicas. Para desenvolvedores e analistas.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-neutral-500">10 módulos</span>
+            <span class="text-blue-400 font-semibold">Explorar →</span>
+          </div>
+        </a>
+
+        <!-- Trilha 3 -->
+        <a href="trilha3/" class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-6 border-2 border-purple-500/30 hover:border-purple-400 transition-all card-hover block">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-4xl">🟣</span>
+            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full">ESTRATÉGICO</span>
+          </div>
+          <h3 class="text-xl font-bold text-purple-400 mb-2">Trilha 3</h3>
+          <h4 class="text-lg font-semibold mb-3">Consultoria</h4>
+          <p class="text-neutral-400 text-sm mb-4">
+            Diagnóstico, estratégia e escala. Para consultores e empreendedores.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-neutral-500">10 módulos</span>
+            <span class="text-purple-400 font-semibold">Explorar →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- O que você vai aprender -->
+  <section class="py-16 bg-dark-800/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">✨ O Que Você Vai Desenvolver</h2>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-4">
+        <div class="bg-dark-800 rounded-xl p-5 border border-dark-600 text-center">
+          <div class="text-3xl mb-3">🎯</div>
+          <h4 class="font-bold mb-1">Autonomia</h4>
+          <p class="text-sm text-neutral-400">Usar IA de forma independente</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl p-5 border border-dark-600 text-center">
+          <div class="text-3xl mb-3">💡</div>
+          <h4 class="font-bold mb-1">Clareza</h4>
+          <p class="text-sm text-neutral-400">Traduzir ideias em prompts</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl p-5 border border-dark-600 text-center">
+          <div class="text-3xl mb-3">⚡</div>
+          <h4 class="font-bold mb-1">Velocidade</h4>
+          <p class="text-sm text-neutral-400">Executar projetos rapidamente</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl p-5 border border-dark-600 text-center">
+          <div class="text-3xl mb-3">📈</div>
+          <h4 class="font-bold mb-1">Escala</h4>
+          <p class="text-sm text-neutral-400">Multiplicar impacto</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl p-5 border border-dark-600 text-center">
+          <div class="text-3xl mb-3">🔥</div>
+          <h4 class="font-bold mb-1">Confiança</h4>
+          <p class="text-sm text-neutral-400">Aplicar IA em qualquer contexto</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ferramentas -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">🛠️ Ferramentas que Você Vai Dominar</h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-4">
+        <!-- LLMs -->
+        <div class="bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-bold text-yellow-400 mb-3">💬 LLMs</h4>
+          <ul class="space-y-2 text-sm text-neutral-300">
+            <li>• GPT-4 (OpenAI)</li>
+            <li>• Claude (Anthropic)</li>
+            <li>• Gemini (Google)</li>
+            <li>• Llama (Meta)</li>
+          </ul>
+        </div>
+
+        <!-- Imagem -->
+        <div class="bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-bold text-emerald-400 mb-3">🎨 Imagem</h4>
+          <ul class="space-y-2 text-sm text-neutral-300">
+            <li>• Midjourney</li>
+            <li>• DALL-E 3</li>
+            <li>• Stable Diffusion</li>
+            <li>• Leonardo.ai</li>
+          </ul>
+        </div>
+
+        <!-- Áudio/Vídeo -->
+        <div class="bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-bold text-blue-400 mb-3">🎬 Áudio/Vídeo</h4>
+          <ul class="space-y-2 text-sm text-neutral-300">
+            <li>• ElevenLabs</li>
+            <li>• Suno</li>
+            <li>• Runway</li>
+            <li>• Pika Labs</li>
+          </ul>
+        </div>
+
+        <!-- Automação -->
+        <div class="bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-bold text-purple-400 mb-3">⚙️ Automação</h4>
+          <ul class="space-y-2 text-sm text-neutral-300">
+            <li>• Zapier / Make</li>
+            <li>• LangChain</li>
+            <li>• GitHub Copilot</li>
+            <li>• Cursor</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-20 bg-gradient-to-br from-yellow-900/30 via-dark-900 to-purple-900/20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="text-6xl mb-6">🚀</div>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Pronto para <span class="text-yellow-400">Amplificar</span> seu Talento?
+      </h2>
+      <p class="text-xl text-neutral-400 mb-8">
+        Comece agora pela Trilha 0 e descubra o poder da Inteligência Aumentada
+      </p>
+      <a href="trilha0/" class="inline-flex items-center space-x-2 px-8 py-4 bg-yellow-500 text-dark-900 rounded-xl font-bold text-lg hover:bg-yellow-400 transition-colors">
+        <span>Iniciar Trilha 0</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </a>
+
+      <p class="mt-8 text-neutral-500 text-sm">
+        "IA não pensa por você. IA <strong class="text-yellow-400">AMPLIFICA</strong> quem você é."
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center space-x-2 mb-4">
+        <span class="text-2xl">🧠</span>
+        <span class="font-bold text-lg text-yellow-400">SHIA</span>
+      </div>
+      <p class="text-neutral-500 text-sm mb-2">
+        Super Humanos Inteligência Aumentada
+      </p>
+      <p class="text-neutral-600 text-xs">
+        © 2025 SHIA. Feito com 🧠 e ❤️
+      </p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    // Check for saved theme or system preference
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>
