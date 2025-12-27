@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 0 - Parte 2 | SHIA</title>
+  <meta name="description" content="Fundamentos de IA e Engenharia de Prompts - Módulos 0.6 a 0.10">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#EAB308',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .topic-content { display: none; }
+    .topic-item.active .topic-content { display: block; }
+    .topic-item.active .topic-arrow { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            0.1
+          </a>
+          <a href="trilha02.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+            0.2
+          </a>
+          <span class="text-neutral-600 mx-1">|</span>
+          <a href="../trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            T1
+          </a>
+          <a href="../trilha2/trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            T2
+          </a>
+          <a href="../trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            T3
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="bg-gradient-to-br from-yellow-900/30 to-dark-900 py-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold mb-4">
+        TRILHA 0 - PARTE 2
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-3">🚀 Introdução à IA</h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-4">
+        Módulos 0.6 a 0.10 • Multimodalidade, Ética e Projeto Final
+      </p>
+      <div class="flex justify-center gap-2">
+        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">5 Módulos</span>
+        <span class="px-3 py-1 bg-dark-700 text-neutral-300 rounded-full text-sm">50 Tópicos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Módulos -->
+  <section class="py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- MÓDULO 0.6 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.6</span>
+              <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded">Disponível</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">O Mindset da Experimentação</h2>
+            <p class="text-neutral-400 text-sm">Como iterar e refinar seus prompts</p>
+          </div>
+        </div>
+
+        <div class="space-y-2 mb-4">
+          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
+              <div class="flex items-center">
+                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
+                <span class="text-sm text-neutral-200">O Ciclo de Experimentação: Escrever, Testar, Refinar</span>
+              </div>
+              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="topic-content px-4 pb-4">
+              <div class="ml-9 space-y-3 text-sm">
+                <div class="bg-dark-800 rounded-lg p-3">
+                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
+                  <p class="text-neutral-300">O ciclo fundamental de trabalho com IA: criar prompt, observar resultado, analisar o que funcionou/falhou, ajustar e repetir até alcançar o objetivo.</p>
+                </div>
+                <div class="bg-dark-800 rounded-lg p-3">
+                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
+                  <p class="text-neutral-300">A maestria em IA vem da prática iterativa. Cada "falha" é feedback valioso para refinar sua abordagem.</p>
+                </div>
+                <div class="bg-dark-800 rounded-lg p-3">
+                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
+                  <p class="text-neutral-300">Ciclo iterativo, feedback loop, refinamento contínuo, análise de resultados.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
+              <div class="flex items-center">
+                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
+                <span class="text-sm text-neutral-200">Mentalidade de Crescimento: Abraçando o Erro</span>
+              </div>
+              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="topic-content px-4 pb-4">
+              <div class="ml-9 space-y-3 text-sm">
+                <div class="bg-dark-800 rounded-lg p-3">
+                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
+                  <p class="text-neutral-300">Adotar a perspectiva de que erros são oportunidades de aprendizado, não fracassos. Curiosidade supera frustração.</p>
+                </div>
+                <div class="bg-dark-800 rounded-lg p-3">
+                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
+                  <p class="text-neutral-300">A IA é um campo em constante evolução. Quem abraça a experimentação aprende mais rápido e se adapta melhor.</p>
+                </div>
+                <div class="bg-dark-800 rounded-lg p-3">
+                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
+                  <p class="text-neutral-300">Growth mindset, aprendizado contínuo, resiliência, curiosidade.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
+              <div class="flex items-center">
+                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
+                <span class="text-sm text-neutral-200">Analisando Respostas: O que Funcionou e o que Não Funcionou</span>
+              </div>
+              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="topic-content px-4 pb-4">
+              <div class="ml-9 space-y-3 text-sm">
+                <div class="bg-dark-800 rounded-lg p-3">
+                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
+                  <p class="text-neutral-300">Desenvolver o olhar crítico para avaliar respostas: identificar acertos, falhas, omissões e oportunidades de melhoria.</p>
+                </div>
+                <div class="bg-dark-800 rounded-lg p-3">
+                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
+                  <p class="text-neutral-300">A análise sistemática acelera o aprendizado e ajuda a construir intuição sobre o que funciona.</p>
+                </div>
+                <div class="bg-dark-800 rounded-lg p-3">
+                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
+                  <p class="text-neutral-300">Análise crítica, padrões de sucesso, diagnóstico de falhas, documentação.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
+            Técnicas de Refinamento Incremental
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
+            Testando Variações de Prompts
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
+            O Poder das Perguntas de Follow-up
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
+            Documentando seus Experimentos
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
+            Velocidade vs Qualidade: Encontrando o Equilíbrio
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
+            Quando Parar de Iterar
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
+            Criando um Sistema Pessoal de Experimentação
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button onclick="openModal('modal-0-6')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
+            Ver em Modal
+          </button>
+          <a href="modulo-0-6.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
+            Ver Completo →
+          </a>
+        </div>
+      </div>
+
+      <!-- MÓDULO 0.7 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.7</span>
+              <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded">Disponível</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Além do Texto: Imagens, Áudio e Código</h2>
+            <p class="text-neutral-400 text-sm">Multimodalidade na prática</p>
+          </div>
+        </div>
+
+        <div class="space-y-2 mb-4">
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
+            O que é Multimodalidade e por que Importa
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
+            Geração de Imagens: Fundamentos do Prompt Visual
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
+            Anatomia de um Prompt de Imagem Efetivo
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
+            Estilos, Iluminação e Composição em Prompts de Imagem
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
+            IA para Áudio: Vozes, Música e Efeitos Sonoros
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
+            IA para Vídeo: Conceitos e Ferramentas Emergentes
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
+            Geração de Código: Prompts para Programação
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
+            Debugging e Refatoração com IA
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
+            Combinando Modalidades: Fluxos de Trabalho Criativos
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
+            Projeto Prático: Criando uma Apresentação Multimodal
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button onclick="openModal('modal-0-7')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
+            Ver em Modal
+          </button>
+          <a href="modulo-0-7.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
+            Ver Completo →
+          </a>
+        </div>
+      </div>
+
+      <!-- MÓDULO 0.8 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.8</span>
+              <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded">Disponível</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Ética e Responsabilidade</h2>
+            <p class="text-neutral-400 text-sm">Uso responsável da IA</p>
+          </div>
+        </div>
+
+        <div class="space-y-2 mb-4">
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
+            A Responsabilidade do Usuário de IA
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
+            Viés Algorítmico: Entendendo e Mitigando
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
+            Alucinações da IA: Por que a IA "Inventa" Informações
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
+            Verificação de Fatos: Sempre Confira as Fontes
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
+            Propriedade Intelectual e Direitos Autorais
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
+            Deepfakes e Desinformação: Os Riscos do Mau Uso
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
+            Privacidade e Proteção de Dados
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
+            Transparência: Quando Revelar o Uso de IA
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
+            Impacto Ambiental: O Custo Energético da IA
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
+            Construindo um Código de Ética Pessoal
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button onclick="openModal('modal-0-8')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
+            Ver em Modal
+          </button>
+          <a href="modulo-0-8.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
+            Ver Completo →
+          </a>
+        </div>
+      </div>
+
+      <!-- MÓDULO 0.9 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.9</span>
+              <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded">Disponível</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Como Aprender a Aprender na Era da IA</h2>
+            <p class="text-neutral-400 text-sm">Habilidades do futuro</p>
+          </div>
+        </div>
+
+        <div class="space-y-2 mb-4">
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
+            Learnability: A Habilidade Mais Valiosa do Século XXI
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
+            Usando IA como Tutor Personalizado
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
+            Técnica Feynman com IA: Explicando para Aprender
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
+            Aprendizado Ativo: Fazendo Perguntas à IA
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
+            Curadoria de Conhecimento: Organizando o que Você Aprende
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
+            Pensamento Crítico: Questionando a IA
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
+            Adaptabilidade: Abraçando a Mudança Constante
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
+            Construindo uma Rotina de Aprendizado com IA
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
+            Comunidades e Redes de Aprendizado
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
+            O Profissional Aumentado: Seu Plano de Desenvolvimento
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button onclick="openModal('modal-0-9')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
+            Ver em Modal
+          </button>
+          <a href="modulo-0-9.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
+            Ver Completo →
+          </a>
+        </div>
+      </div>
+
+      <!-- MÓDULO 0.10 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 mb-6 border border-dark-600">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl font-bold text-yellow-400">0.10</span>
+              <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded">Disponível</span>
+            </div>
+            <h2 class="text-xl font-bold mb-1">Projeto Final Integrado</h2>
+            <p class="text-neutral-400 text-sm">Aplicação prática de tudo que você aprendeu</p>
+          </div>
+        </div>
+
+        <div class="space-y-2 mb-4">
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
+            Definindo seu Projeto: Escolhendo um Problema Real
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
+            Planejamento: Dividindo o Projeto em Etapas
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
+            Seleção de Ferramentas: Montando seu Stack de IA
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
+            Criação de Prompts Especializados para o Projeto
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
+            Execução: Implementando com IA
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
+            Iteração e Refinamento: Melhorando os Resultados
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
+            Documentação: Criando seu Portfólio de Prompts
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
+            Apresentação: Comunicando seus Resultados
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
+            Reflexão: Lições Aprendidas
+          </div>
+          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
+            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
+            Próximos Passos: Escolhendo sua Trilha de Especialização
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button onclick="openModal('modal-0-10')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
+            Ver em Modal
+          </button>
+          <a href="modulo-0-10.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
+            Ver Completo →
+          </a>
+        </div>
+      </div>
+
+      <!-- Navegação -->
+      <div class="flex justify-between items-center mt-8 pt-6 border-t border-dark-700">
+        <a href="trilha01.html" class="flex items-center gap-2 px-6 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors border border-dark-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Parte 1 (0.1 - 0.5)
+        </a>
+        <a href="../trilha1/trilha11.html" class="flex items-center gap-2 px-6 py-3 bg-emerald-500 text-dark-900 rounded-lg font-semibold hover:bg-emerald-400 transition-colors">
+          Trilha 1: Arte
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-6 mt-8">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 0: Introdução - Parte 2
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      topicItem.classList.toggle('active');
+    }
+
+    function openModal(modalId) {
+      alert('Modal em desenvolvimento. Use o botão "Ver Completo" para acessar o conteúdo detalhado.');
+    }
+  </script>
+
+</body>
+</html>
