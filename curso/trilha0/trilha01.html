@@ -34,8 +34,6 @@
     body { font-family: 'Inter', sans-serif; }
     .topic-content { display: none; }
     .topic-item.active .topic-content { display: block; }
-    .topic-item.active .topic-arrow { transform: rotate(180deg); }
-    .modal-backdrop { backdrop-filter: blur(8px); }
   </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
@@ -111,21 +109,16 @@
           </div>
         </div>
 
-        <!-- Tópicos Expandíveis -->
+        <!-- Tópicos -->
         <div class="space-y-2 mb-4">
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
-                <span class="text-sm text-neutral-200">O que é Inteligência Aumentada e por que ela é a verdadeira revolução?</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🧠</span>
+              <span class="text-sm text-neutral-200">1. O que é Inteligência Aumentada e por que ela é a verdadeira revolução?</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">A Inteligência Aumentada (IAu) representa uma mudança de paradigma: da automação para a colaboração. Em vez de sistemas que operam de forma autônoma para substituir tarefas humanas, a IAu cria ferramentas que amplificam e capacitam a inteligência humana.</p>
@@ -143,17 +136,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
-                <span class="text-sm text-neutral-200">A História da IA e o Surgimento da Inteligência Aumentada</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">📜</span>
+              <span class="text-sm text-neutral-200">2. A História da IA e o Surgimento da Inteligência Aumentada</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">A jornada da IA é marcada por "verões" de otimismo e "invernos" de desilusão. Desde Turing e Dartmouth (1956) até o deep learning nos anos 2010, o sonho era criar máquinas que pensassem como humanos.</p>
@@ -171,17 +159,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
-                <span class="text-sm text-neutral-200">A Diferença Fundamental: IA Pura vs. Inteligência Aumentada</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">⚡</span>
+              <span class="text-sm text-neutral-200">3. A Diferença Fundamental: IA Pura vs. Inteligência Aumentada</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">A IA Pura (Autônoma) replica a inteligência humana para executar tarefas independentemente. A IAu foca na colaboração, combinando velocidade da máquina com intuição humana.</p>
@@ -199,17 +182,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
-                <span class="text-sm text-neutral-200">Como a Inteligência Aumentada Potencializa a Criatividade Humana</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🎨</span>
+              <span class="text-sm text-neutral-200">4. Como a Inteligência Aumentada Potencializa a Criatividade Humana</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">A IAu atua como catalisador criativo: supera o bloqueio da página em branco, acelera prototipagem e oferece perspectivas inesperadas combinando estilos e informações.</p>
@@ -227,17 +205,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
-                <span class="text-sm text-neutral-200">Aplicações Práticas no Dia a Dia e nos Negócios</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">💼</span>
+              <span class="text-sm text-neutral-200">5. Aplicações Práticas no Dia a Dia e nos Negócios</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">A IAu já está presente: Grammarly ajuda a escrever melhor, Canva sugere layouts, médicos usam IA para diagnósticos, advogados pesquisam jurisprudência em segundos.</p>
@@ -255,17 +228,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
-                <span class="text-sm text-neutral-200">O Papel do Prompt: A Arte e a Ciência de Conversar com a IA</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">💬</span>
+              <span class="text-sm text-neutral-200">6. O Papel do Prompt: A Arte e a Ciência de Conversar com a IA</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">O prompt é o volante e os pedais da IAu. Engenharia de prompt é a competência fundamental para extrair o máximo da IA - envolve contexto, persona, formato e objetivo.</p>
@@ -283,17 +251,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
-                <span class="text-sm text-neutral-200">Ferramentas Essenciais de Inteligência Aumentada</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🛠️</span>
+              <span class="text-sm text-neutral-200">7. Ferramentas Essenciais de Inteligência Aumentada</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">ChatGPT, Claude, Gemini para texto. Midjourney, DALL-E para imagens. GitHub Copilot para código. Perplexity AI para pesquisa. Notion AI para produtividade.</p>
@@ -311,17 +274,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
-                <span class="text-sm text-neutral-200">Ética e Responsabilidade na Era da Inteligência Aumentada</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">⚖️</span>
+              <span class="text-sm text-neutral-200">8. Ética e Responsabilidade na Era da Inteligência Aumentada</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">Questões de viés algorítmico, propriedade intelectual e desinformação. Os modelos aprendem e amplificam vieses dos dados de treinamento.</p>
@@ -339,17 +297,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
-                <span class="text-sm text-neutral-200">O Futuro do Trabalho e as Habilidades do Profissional Aumentado</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🚀</span>
+              <span class="text-sm text-neutral-200">9. O Futuro do Trabalho e as Habilidades do Profissional Aumentado</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">A IA não elimina empregos em massa, mas os transforma. O futuro pertence ao "Profissional Aumentado" - quem domina seu campo e usa IAu como alavanca.</p>
@@ -367,17 +320,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
-                <span class="text-sm text-neutral-200">Construindo seu Próprio Co-piloto: Primeiros Passos na IAu</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🤖</span>
+              <span class="text-sm text-neutral-200">10. Construindo seu Próprio Co-piloto: Primeiros Passos na IAu</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">Adotar IAu começa com curiosidade. Experimente ferramentas, construa seu stack pessoal (2-3 ferramentas principais) e crie seus prompts personalizados.</p>
@@ -396,13 +344,13 @@
 
         </div>
 
-        <!-- Botões de Ação -->
-        <div class="flex gap-3">
-          <button onclick="openModal('modal-0-1')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
-            Ver em Modal
+        <!-- Botões discretos -->
+        <div class="flex gap-2 text-sm">
+          <button onclick="openModal('modal-0-1')" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📖 Ver em Modal
           </button>
-          <a href="modulo-0-1.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
-            Ver Completo →
+          <a href="modulo-0-1.html" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📄 Ver Completo
           </a>
         </div>
       </div>
@@ -421,19 +369,13 @@
         </div>
 
         <div class="space-y-2 mb-4">
-
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
-                <span class="text-sm text-neutral-200">A Importância da Clareza e do Contexto</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🎯</span>
+              <span class="text-sm text-neutral-200">1. A Importância da Clareza e do Contexto</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">A base de um prompt eficaz é a clareza. A IA não lê pensamentos. Instruções explícitas e contexto rico são cruciais para resultados precisos.</p>
@@ -451,17 +393,12 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
-                <span class="text-sm text-neutral-200">Engenharia de Prompts: A Arte e a Ciência</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🔬</span>
+              <span class="text-sm text-neutral-200">2. Engenharia de Prompts: A Arte e a Ciência</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">A disciplina de projetar e refinar entradas para obter os melhores resultados. Mistura experimentação (arte) com princípios estruturados (ciência).</p>
@@ -479,24 +416,19 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
-                <span class="text-sm text-neutral-200">Persona e Tom de Voz: Dando Personalidade à IA</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🎭</span>
+              <span class="text-sm text-neutral-200">3. Persona e Tom de Voz: Dando Personalidade à IA</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Instruir a IA a adotar uma persona específica influencia o tom, estilo e vocabulário da resposta. Pode ser um especialista, comediante, poeta ou qualquer papel.</p>
+                  <p class="text-neutral-300">Instruir a IA a adotar uma persona específica influencia o tom, estilo e vocabulário da resposta.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Vital para criar conteúdo alinhado com marca, público ou propósito específico. Transforma radicalmente a qualidade da resposta.</p>
+                  <p class="text-neutral-300">Vital para criar conteúdo alinhado com marca, público ou propósito específico.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
@@ -507,24 +439,19 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
-                <span class="text-sm text-neutral-200">O Poder dos Exemplos: Few-Shot Prompting</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">📝</span>
+              <span class="text-sm text-neutral-200">4. O Poder dos Exemplos: Few-Shot Prompting</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Fornecer exemplos (shots) dentro do prompt para guiar a IA. Few-Shot dá ao modelo exemplos de entrada e saída desejada antes da pergunta final.</p>
+                  <p class="text-neutral-300">Fornecer exemplos dentro do prompt para guiar a IA. Few-Shot dá ao modelo exemplos de entrada e saída desejada.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Ajuda o modelo a entender o padrão e formato esperados. Técnica poderosa para tarefas de classificação e formatação.</p>
+                  <p class="text-neutral-300">Ajuda o modelo a entender o padrão e formato esperados. Técnica poderosa para classificação e formatação.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
@@ -535,20 +462,15 @@
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
-                <span class="text-sm text-neutral-200">Instruções, Restrições e Formato de Saída</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">📋</span>
+              <span class="text-sm text-neutral-200">5. Instruções, Restrições e Formato de Saída</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Além de dizer O QUE fazer, é importante dizer COMO e O QUE NÃO fazer. Instruções sobre formato (JSON, Markdown, lista), restrições de palavras e exclusões.</p>
+                  <p class="text-neutral-300">Além de dizer O QUE fazer, é importante dizer COMO e O QUE NÃO fazer. Instruções sobre formato (JSON, Markdown, lista).</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
@@ -556,160 +478,134 @@
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Formato de saída, JSON, Markdown, restrições, exclusões, contagem de palavras.</p>
+                  <p class="text-neutral-300">Formato de saída, JSON, Markdown, restrições, exclusões.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
-                <span class="text-sm text-neutral-200">Chain-of-Thought: Guiando o Raciocínio da IA</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🔗</span>
+              <span class="text-sm text-neutral-200">6. Chain-of-Thought: Guiando o Raciocínio da IA</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">Técnica que incentiva o modelo a "pensar em voz alta", detalhando os passos lógicos para chegar à resposta final.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Especialmente útil para problemas de matemática, lógica ou raciocínio complexo. Melhora precisão e permite verificação do processo.</p>
+                  <p class="text-neutral-300">Especialmente útil para problemas de matemática, lógica ou raciocínio complexo.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Cadeia de pensamento, raciocínio passo a passo, verificabilidade, transparência do processo.</p>
+                  <p class="text-neutral-300">Cadeia de pensamento, raciocínio passo a passo, verificabilidade.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
-                <span class="text-sm text-neutral-200">Prompts para Geração de Código</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">💻</span>
+              <span class="text-sm text-neutral-200">7. Prompts para Geração de Código</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Especificar linguagem de programação, bibliotecas, funcionalidade exata e, se possível, exemplo de uso. Incluir docstrings e tratamento de erros.</p>
+                  <p class="text-neutral-300">Especificar linguagem de programação, bibliotecas, funcionalidade exata e, se possível, exemplo de uso.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Modelos de linguagem são ferramentas poderosas para desenvolvedores. Prompts específicos geram código mais útil e menos propenso a erros.</p>
+                  <p class="text-neutral-300">Modelos de linguagem são ferramentas poderosas para desenvolvedores.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Linguagem de programação, bibliotecas, funcionalidade, docstrings, tratamento de erros, exemplos de uso.</p>
+                  <p class="text-neutral-300">Linguagem de programação, bibliotecas, docstrings, tratamento de erros.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
-                <span class="text-sm text-neutral-200">Prompts para Criatividade e Brainstorming</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">💡</span>
+              <span class="text-sm text-neutral-200">8. Prompts para Criatividade e Brainstorming</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Para tarefas criativas, prompts podem ser mais abertos. Técnicas como "e se..." ou combinação de conceitos improváveis levam a resultados surpreendentes.</p>
+                  <p class="text-neutral-300">Para tarefas criativas, prompts podem ser mais abertos. Técnicas como "e se..." levam a resultados surpreendentes.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">A IA como parceira de brainstorming pode desbloquear novas ideias. Ainda se beneficiam de estrutura mínima.</p>
+                  <p class="text-neutral-300">A IA como parceira de brainstorming pode desbloquear novas ideias.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Brainstorming, ideação, combinação criativa, exploração de possibilidades, "e se...".</p>
+                  <p class="text-neutral-300">Brainstorming, ideação, combinação criativa, exploração.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
-                <span class="text-sm text-neutral-200">Iteração e Refinamento de Prompts</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🔄</span>
+              <span class="text-sm text-neutral-200">9. Iteração e Refinamento de Prompts</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Raramente o primeiro prompt é o melhor. A chave é iteração: analisar resposta, identificar falhas, refinar. Adicione contexto, ajuste persona, melhore instruções.</p>
+                  <p class="text-neutral-300">Raramente o primeiro prompt é o melhor. A chave é iteração: analisar resposta, identificar falhas, refinar.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Ciclo contínuo de melhoria. Versões V1, V2, V3 progressivamente melhores até alcançar resultado desejado.</p>
+                  <p class="text-neutral-300">Ciclo contínuo de melhoria. Versões V1, V2, V3 progressivamente melhores.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Iteração, refinamento, versionamento, análise de resultados, melhoria contínua.</p>
+                  <p class="text-neutral-300">Iteração, refinamento, versionamento, melhoria contínua.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
-                <span class="text-sm text-neutral-200">Aplicações Práticas e Estudos de Caso</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">📊</span>
+              <span class="text-sm text-neutral-200">10. Aplicações Práticas e Estudos de Caso</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
                   <p class="text-neutral-300">Casos reais de engenharia de prompts em marketing, educação, desenvolvimento de software e outros setores.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Analisar estudos de caso ajuda a entender o impacto e a versatilidade de prompts bem elaborados em cenários do mundo real.</p>
+                  <p class="text-neutral-300">Analisar estudos de caso ajuda a entender o impacto e a versatilidade de prompts bem elaborados.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Estudos de caso, aplicações setoriais, marketing, educação, desenvolvimento, análise de impacto.</p>
+                  <p class="text-neutral-300">Estudos de caso, aplicações setoriais, marketing, educação, desenvolvimento.</p>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
 
-        <div class="flex gap-3">
-          <button onclick="openModal('modal-0-2')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
-            Ver em Modal
+        <div class="flex gap-2 text-sm">
+          <button onclick="openModal('modal-0-2')" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📖 Ver em Modal
           </button>
-          <a href="modulo-0-2.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
-            Ver Completo →
+          <a href="modulo-0-2.html" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📄 Ver Completo
           </a>
         </div>
       </div>
@@ -729,24 +625,19 @@
 
         <div class="space-y-2 mb-4">
           <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
-                <span class="text-sm text-neutral-200">O Ecossistema de Modelos de Linguagem (LLMs)</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
+            <button onclick="toggleTopic(this)" class="w-full flex items-center px-4 py-3 text-left hover:bg-dark-700 transition-colors">
+              <span class="text-lg mr-3">🌐</span>
+              <span class="text-sm text-neutral-200">1. O Ecossistema de Modelos de Linguagem (LLMs)</span>
             </button>
             <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
+              <div class="ml-7 space-y-3 text-sm">
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">LLMs são modelos de IA treinados em enormes quantidades de texto para entender e gerar linguagem natural. O ecossistema inclui modelos proprietários e open source.</p>
+                  <p class="text-neutral-300">LLMs são modelos de IA treinados em enormes quantidades de texto para entender e gerar linguagem natural.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Entender o ecossistema ajuda a escolher a ferramenta certa para cada tarefa e aproveitar o melhor de cada modelo.</p>
+                  <p class="text-neutral-300">Entender o ecossistema ajuda a escolher a ferramenta certa para cada tarefa.</p>
                 </div>
                 <div class="bg-dark-800 rounded-lg p-3">
                   <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
@@ -756,265 +647,50 @@
             </div>
           </div>
 
-          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
-                <span class="text-sm text-neutral-200">GPT-4 e ChatGPT: O Gigante da OpenAI</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">GPT-4 é o modelo multimodal da OpenAI, capaz de processar texto e imagens. ChatGPT é a interface conversacional que democratizou o acesso à IA.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">É o modelo mais versátil e amplamente usado, com forte capacidade de raciocínio, criatividade e seguir instruções complexas.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Multimodalidade, plugins, GPTs customizados, Code Interpreter, DALL-E integrado.</p>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors" onclick="toggleTopic(this.parentElement)">
+            <span class="text-lg mr-3">🟢</span>
+            <span class="text-sm text-neutral-200">2. GPT-4 e ChatGPT: O Gigante da OpenAI</span>
           </div>
-
-          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
-                <span class="text-sm text-neutral-200">Claude: Contexto Longo e Segurança da Anthropic</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Claude é o modelo da Anthropic, focado em segurança e janela de contexto extremamente longa (até 200K tokens). Excelente para análise de documentos.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Ideal para tarefas que exigem analisar grandes volumes de texto de uma vez, como livros, contratos ou bases de código.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Constitutional AI, contexto longo, harmlessness, análise de documentos, Artifacts.</p>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🟣</span>
+            <span class="text-sm text-neutral-200">3. Claude: Contexto Longo e Segurança da Anthropic</span>
           </div>
-
-          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
-                <span class="text-sm text-neutral-200">Gemini: A Aposta Multimodal do Google</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Gemini é a família de modelos do Google, nativo multimodal desde o treinamento. Integrado ao ecossistema Google (Search, Workspace, Android).</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Forte integração com produtos Google e acesso a informações em tempo real. Versão gratuita generosa.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Multimodalidade nativa, integração Google, Gemini Pro, Gemini Ultra, acesso à web.</p>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🔵</span>
+            <span class="text-sm text-neutral-200">4. Gemini: A Aposta Multimodal do Google</span>
           </div>
-
-          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
-                <span class="text-sm text-neutral-200">Llama e Modelos Open Source: Democratização da IA</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Llama (Meta) e outros modelos open source permitem rodar IA localmente, personalizar e fine-tunar sem depender de APIs pagas.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Privacidade total, custos reduzidos, possibilidade de customização profunda. Comunidade ativa desenvolvendo variantes especializadas.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Open source, Llama, Mistral, fine-tuning, execução local, Ollama, privacidade.</p>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🦙</span>
+            <span class="text-sm text-neutral-200">5. Llama e Modelos Open Source: Democratização da IA</span>
           </div>
-
-          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
-                <span class="text-sm text-neutral-200">Midjourney, DALL-E e Stable Diffusion: Geradores de Imagem</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Ferramentas que transformam texto em imagem. Midjourney: artístico. DALL-E: integrado ao ChatGPT. Stable Diffusion: open source e customizável.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Revolucionam design, marketing e criação de conteúdo. Cada ferramenta tem pontos fortes específicos para diferentes casos de uso.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Text-to-image, difusão, prompts visuais, aspect ratio, estilos, upscaling.</p>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🖼️</span>
+            <span class="text-sm text-neutral-200">6. Midjourney, DALL-E e Stable Diffusion: Geradores de Imagem</span>
           </div>
-
-          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
-                <span class="text-sm text-neutral-200">ElevenLabs e Suno: IA para Áudio e Música</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">ElevenLabs gera vozes realistas para narração e dublagem. Suno cria músicas completas com letra e vocais a partir de prompts.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Transformam produção de conteúdo em áudio. Podcasts, audiobooks, trilhas sonoras e jingles em minutos.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Text-to-speech, voice cloning, geração de música, estilos musicais, produção de áudio.</p>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🎵</span>
+            <span class="text-sm text-neutral-200">7. ElevenLabs e Suno: IA para Áudio e Música</span>
           </div>
-
-          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
-                <span class="text-sm text-neutral-200">GitHub Copilot e Cursor: Assistentes de Código</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">GitHub Copilot é o co-piloto de código integrado a editores. Cursor é um editor completo com IA nativa para desenvolvimento.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Aumentam drasticamente a produtividade de desenvolvedores. Autocompletar, gerar funções, explicar código, refatorar.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Code completion, pair programming com IA, refatoração, debugging assistido, geração de testes.</p>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">👨‍💻</span>
+            <span class="text-sm text-neutral-200">8. GitHub Copilot e Cursor: Assistentes de Código</span>
           </div>
-
-          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
-                <span class="text-sm text-neutral-200">Perplexity AI e NotebookLM: Ferramentas de Pesquisa</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Perplexity é um motor de busca com IA que cita fontes. NotebookLM do Google permite fazer perguntas sobre seus próprios documentos.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Revolucionam a pesquisa. Respostas com fontes verificáveis e a capacidade de "conversar" com seus materiais de estudo.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Search + AI, citação de fontes, RAG pessoal, análise de documentos, verificação de informações.</p>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🔍</span>
+            <span class="text-sm text-neutral-200">9. Perplexity AI e NotebookLM: Ferramentas de Pesquisa</span>
           </div>
-
-          <div class="topic-item bg-dark-700/50 rounded-lg overflow-hidden">
-            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-between px-4 py-3 text-left">
-              <div class="flex items-center">
-                <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
-                <span class="text-sm text-neutral-200">Como Escolher a Ferramenta Certa para Cada Tarefa</span>
-              </div>
-              <svg class="topic-arrow w-5 h-5 text-neutral-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="topic-content px-4 pb-4">
-              <div class="ml-9 space-y-3 text-sm">
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-yellow-400 font-semibold mb-1">O que é</h4>
-                  <p class="text-neutral-300">Framework para selecionar a melhor ferramenta: considere a tarefa (texto, imagem, código, áudio), custo, privacidade e integração necessária.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-emerald-400 font-semibold mb-1">Por que aprender</h4>
-                  <p class="text-neutral-300">Não existe "melhor IA" universal. O profissional aumentado sabe quando usar cada ferramenta para maximizar resultados.</p>
-                </div>
-                <div class="bg-dark-800 rounded-lg p-3">
-                  <h4 class="text-blue-400 font-semibold mb-1">Conceitos-chave</h4>
-                  <p class="text-neutral-300">Stack pessoal, trade-offs, casos de uso, custo-benefício, workflow integrado.</p>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🎯</span>
+            <span class="text-sm text-neutral-200">10. Como Escolher a Ferramenta Certa para Cada Tarefa</span>
           </div>
         </div>
 
-        <div class="flex gap-3">
-          <button onclick="openModal('modal-0-3')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
-            Ver em Modal
+        <div class="flex gap-2 text-sm">
+          <button onclick="openModal('modal-0-3')" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📖 Ver em Modal
           </button>
-          <a href="modulo-0-3.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
-            Ver Completo →
+          <a href="modulo-0-3.html" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📄 Ver Completo
           </a>
         </div>
       </div>
@@ -1033,54 +709,54 @@
         </div>
 
         <div class="space-y-2 mb-4">
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
-            Os 5 Componentes de um Prompt Perfeito
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🏗️</span>
+            <span class="text-sm text-neutral-200">1. Os 5 Componentes de um Prompt Perfeito</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
-            Persona: Definindo o Papel da IA
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🎭</span>
+            <span class="text-sm text-neutral-200">2. Persona: Definindo o Papel da IA</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
-            Contexto: O Background que Transforma Respostas
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">📚</span>
+            <span class="text-sm text-neutral-200">3. Contexto: O Background que Transforma Respostas</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
-            Tarefa: Definindo Claramente o que Você Quer
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">✅</span>
+            <span class="text-sm text-neutral-200">4. Tarefa: Definindo Claramente o que Você Quer</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
-            Formato: Estruturando a Saída Desejada
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">📐</span>
+            <span class="text-sm text-neutral-200">5. Formato: Estruturando a Saída Desejada</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
-            Restrições: O Poder de Dizer "Não Faça Isso"
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🚫</span>
+            <span class="text-sm text-neutral-200">6. Restrições: O Poder de Dizer "Não Faça Isso"</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
-            Chain-of-Thought: Fazendo a IA Pensar Passo a Passo
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🔗</span>
+            <span class="text-sm text-neutral-200">7. Chain-of-Thought: Fazendo a IA Pensar Passo a Passo</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
-            Delimitadores e Marcadores: Organizando Informações
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🏷️</span>
+            <span class="text-sm text-neutral-200">8. Delimitadores e Marcadores: Organizando Informações</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
-            Templates de Prompts Reutilizáveis
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">📑</span>
+            <span class="text-sm text-neutral-200">9. Templates de Prompts Reutilizáveis</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
-            Exercício Prático: Construindo seu Prompt Perfeito
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🎯</span>
+            <span class="text-sm text-neutral-200">10. Exercício Prático: Construindo seu Prompt Perfeito</span>
           </div>
         </div>
 
-        <div class="flex gap-3">
-          <button onclick="openModal('modal-0-4')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
-            Ver em Modal
+        <div class="flex gap-2 text-sm">
+          <button onclick="openModal('modal-0-4')" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📖 Ver em Modal
           </button>
-          <a href="modulo-0-4.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
-            Ver Completo →
+          <a href="modulo-0-4.html" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📄 Ver Completo
           </a>
         </div>
       </div>
@@ -1099,54 +775,54 @@
         </div>
 
         <div class="space-y-2 mb-4">
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">1</span>
-            O que é Zero-Shot Prompting e Quando Usar
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">0️⃣</span>
+            <span class="text-sm text-neutral-200">1. O que é Zero-Shot Prompting e Quando Usar</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">2</span>
-            Vantagens e Limitações do Zero-Shot
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">⚡</span>
+            <span class="text-sm text-neutral-200">2. Vantagens e Limitações do Zero-Shot</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">3</span>
-            O Poder do Few-Shot: Ensinando pelo Exemplo
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">📝</span>
+            <span class="text-sm text-neutral-200">3. O Poder do Few-Shot: Ensinando pelo Exemplo</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">4</span>
-            One-Shot: Quando Um Exemplo é Suficiente
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">1️⃣</span>
+            <span class="text-sm text-neutral-200">4. One-Shot: Quando Um Exemplo é Suficiente</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">5</span>
-            Quantos Exemplos São Ideais? A Regra de 3 a 5
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🔢</span>
+            <span class="text-sm text-neutral-200">5. Quantos Exemplos São Ideais? A Regra de 3 a 5</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">6</span>
-            Estruturando Exemplos Efetivos
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🏗️</span>
+            <span class="text-sm text-neutral-200">6. Estruturando Exemplos Efetivos</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">7</span>
-            Evitando Viés nos Exemplos
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">⚖️</span>
+            <span class="text-sm text-neutral-200">7. Evitando Viés nos Exemplos</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">8</span>
-            Few-Shot para Classificação e Análise
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">🏷️</span>
+            <span class="text-sm text-neutral-200">8. Few-Shot para Classificação e Análise</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">9</span>
-            Few-Shot para Geração de Conteúdo
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">✍️</span>
+            <span class="text-sm text-neutral-200">9. Few-Shot para Geração de Conteúdo</span>
           </div>
-          <div class="flex items-center text-sm text-neutral-300 bg-dark-700/50 px-4 py-2 rounded-lg">
-            <span class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs mr-3">10</span>
-            Comparativo: Zero-Shot vs Few-Shot na Prática
+          <div class="flex items-center px-4 py-3 text-left bg-dark-700/50 rounded-lg cursor-pointer hover:bg-dark-700 transition-colors">
+            <span class="text-lg mr-3">📊</span>
+            <span class="text-sm text-neutral-200">10. Comparativo: Zero-Shot vs Few-Shot na Prática</span>
           </div>
         </div>
 
-        <div class="flex gap-3">
-          <button onclick="openModal('modal-0-5')" class="flex-1 px-4 py-3 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center border border-dark-600">
-            Ver em Modal
+        <div class="flex gap-2 text-sm">
+          <button onclick="openModal('modal-0-5')" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📖 Ver em Modal
           </button>
-          <a href="modulo-0-5.html" class="flex-1 px-4 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center">
-            Ver Completo →
+          <a href="modulo-0-5.html" class="px-3 py-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+            📄 Ver Completo
           </a>
         </div>
       </div>
@@ -1155,10 +831,7 @@
       <div class="flex justify-between items-center mt-8 pt-6 border-t border-dark-700">
         <div></div>
         <a href="trilha02.html" class="flex items-center gap-2 px-6 py-3 bg-yellow-500 text-dark-900 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">
-          Parte 2 (0.6 - 0.10)
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
+          Parte 2 (0.6 - 0.10) →
         </a>
       </div>
 
@@ -1169,7 +842,7 @@
   <footer class="bg-dark-900 border-t border-dark-700 py-6 mt-8">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <p class="text-neutral-500 text-sm">
-        SHIA - Super Humanos Inteligência Aumentada | Trilha 0: Introdução - Parte 1
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 0 - Parte 1
       </p>
     </div>
   </footer>
@@ -1178,11 +851,13 @@
   <script>
     function toggleTopic(button) {
       const topicItem = button.closest('.topic-item');
-      topicItem.classList.toggle('active');
+      if (topicItem) {
+        topicItem.classList.toggle('active');
+      }
     }
 
     function openModal(modalId) {
-      alert('Modal em desenvolvimento. Use o botão "Ver Completo" para acessar o conteúdo detalhado.');
+      alert('Modal em desenvolvimento. Use "Ver Completo" para acessar o conteúdo detalhado.');
     }
   </script>
 
