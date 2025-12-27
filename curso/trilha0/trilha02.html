@@ -830,8 +830,86 @@
     </div>
   </footer>
 
+  <!-- Modal -->
+  <div id="module-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+      <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+      <div class="relative bg-dark-800 rounded-2xl border border-dark-600 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all">
+        <div class="sticky top-0 bg-dark-800 border-b border-dark-600 px-6 py-4 flex justify-between items-center z-10">
+          <h2 id="modal-title" class="text-xl font-bold text-yellow-400"></h2>
+          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
+            <svg class="w-6 h-6 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="p-6"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script>
+    // Modal Data
+    const moduleData = {
+      6: {
+        title: "Módulo 0.6: Mindset de Experimentação",
+        topics: document.querySelector('.module-card:nth-child(1) .topics-list')
+      },
+      7: {
+        title: "Módulo 0.7: IA Multimodal",
+        topics: document.querySelector('.module-card:nth-child(2) .topics-list')
+      },
+      8: {
+        title: "Módulo 0.8: Ética e Responsabilidade",
+        topics: document.querySelector('.module-card:nth-child(3) .topics-list')
+      },
+      9: {
+        title: "Módulo 0.9: Aprender a Aprender com IA",
+        topics: document.querySelector('.module-card:nth-child(4) .topics-list')
+      },
+      10: {
+        title: "Módulo 0.10: Projeto Final",
+        topics: document.querySelector('.module-card:nth-child(5) .topics-list')
+      }
+    };
+
+    // Open Modal
+    function openModal(moduleNum) {
+      const modal = document.getElementById('module-modal');
+      const title = document.getElementById('modal-title');
+      const content = document.getElementById('modal-content');
+
+      const data = moduleData[moduleNum];
+      if (data) {
+        title.textContent = data.title;
+        const topicsClone = data.topics.cloneNode(true);
+        topicsClone.querySelectorAll('.topic-explanation').forEach(el => {
+          el.classList.remove('hidden');
+        });
+        topicsClone.querySelectorAll('.topic-button span:first-child').forEach(el => {
+          el.textContent = '▾';
+        });
+        content.innerHTML = '';
+        content.appendChild(topicsClone);
+      }
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close Modal
+    function closeModal() {
+      const modal = document.getElementById('module-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
     // Toggle Topic
     function toggleTopic(button) {
       const explanation = button.nextElementSibling;
