@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 0: Resumo Rápido | SHIA</title>
+  <meta name="description" content="Domine IA em minutos. O essencial para gestores e profissionais ocupados.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .border-dark-700 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-200 { color: #334155 !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <span class="inline-block px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold mb-4">
+        RESUMO RÁPIDO
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-3">
+        IA para Gestores
+      </h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">
+        10 conceitos essenciais em ~20 minutos. Sem enrolação.
+      </p>
+      <div class="flex justify-center gap-4 mt-4 text-sm text-neutral-500">
+        <span>⏱️ ~2 min por card</span>
+        <span>📱 Leia no celular</span>
+        <span>🎯 Direto ao ponto</span>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="space-y-6">
+
+      <!-- Card 1 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">1</span>
+              <h2 class="font-bold text-lg">O que é IA (de verdade)</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">IA não pensa. Ela prevê a próxima palavra com base em padrões. É como um estagiário brilhante que leu tudo, mas precisa de direção clara. Você manda, ela executa.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ NA PRÁTICA</h3>
+            <ul class="text-neutral-300 space-y-1 text-sm">
+              <li>• Redigir emails em segundos</li>
+              <li>• Resumir documentos longos</li>
+              <li>• Criar apresentações a partir de anotações</li>
+            </ul>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FAÇA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Abra o ChatGPT e peça: <code class="bg-dark-900 px-2 py-1 rounded text-yellow-400">"Resuma meu dia de trabalho típico em 3 bullets"</code></p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">IA amplifica quem você já é. Se você dá instruções vagas, recebe resultados vagos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">2</span>
+              <h2 class="font-bold text-lg">Prompt: seu novo idioma</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Prompt é a instrução que você dá à IA. Quanto mais contexto e clareza, melhor o resultado. Pense como se estivesse delegando para alguém novo na empresa.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ NA PRÁTICA</h3>
+            <div class="grid gap-2 text-sm">
+              <div class="bg-red-900/20 p-3 rounded border border-red-500/30">
+                <span class="text-red-400">❌ Ruim:</span> <span class="text-neutral-300">"Escreva um email"</span>
+              </div>
+              <div class="bg-emerald-900/20 p-3 rounded border border-emerald-500/30">
+                <span class="text-emerald-400">✅ Bom:</span> <span class="text-neutral-300">"Escreva um email formal para cliente pedindo feedback do projeto, tom cordial, máximo 5 linhas"</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FAÇA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Reescreva um pedido vago que você já fez. Adicione: contexto, tom desejado e formato de saída.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Sempre diga QUEM você quer que a IA seja: "Você é um consultor de RH sênior..."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">3</span>
+              <h2 class="font-bold text-lg">As ferramentas certas</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">ChatGPT, Claude, Gemini - todos fazem coisas parecidas. Escolha um e domine. Não precisa de 10 ferramentas, precisa de profundidade em uma.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ NA PRÁTICA</h3>
+            <div class="grid sm:grid-cols-3 gap-3 text-sm">
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">💬</div>
+                <div class="font-semibold text-neutral-200">ChatGPT</div>
+                <div class="text-neutral-500 text-xs">Mais popular</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🧠</div>
+                <div class="font-semibold text-neutral-200">Claude</div>
+                <div class="text-neutral-500 text-xs">Textos longos</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🔮</div>
+                <div class="font-semibold text-neutral-200">Gemini</div>
+                <div class="text-neutral-500 text-xs">Integra Google</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FAÇA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Escolha UMA ferramenta e use por 1 semana antes de experimentar outras.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Versão gratuita já resolve 80% dos casos de uso no trabalho.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">4</span>
+              <h2 class="font-bold text-lg">Estrutura que funciona</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Todo bom prompt tem: Contexto (quem você é) + Tarefa (o que quer) + Formato (como quer receber). Simples assim.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ NA PRÁTICA</h3>
+            <div class="bg-dark-700 p-4 rounded-lg text-sm font-mono">
+              <p class="text-purple-400 mb-1">[CONTEXTO]</p>
+              <p class="text-neutral-300 mb-2">Você é um gerente de projetos experiente.</p>
+              <p class="text-blue-400 mb-1">[TAREFA]</p>
+              <p class="text-neutral-300 mb-2">Crie uma pauta de reunião de alinhamento semanal.</p>
+              <p class="text-emerald-400 mb-1">[FORMATO]</p>
+              <p class="text-neutral-300">Bullets curtos, máximo 5 itens, tempo estimado por item.</p>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FAÇA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Pegue sua última solicitação à IA e reescreva usando Contexto + Tarefa + Formato.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Salve seus melhores prompts em um documento. Você vai reusar muito.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">5</span>
+              <h2 class="font-bold text-lg">Dê exemplos</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Quando você mostra um exemplo do que quer, a IA entende 10x melhor. É como treinar um funcionário novo mostrando como você faz.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ NA PRÁTICA</h3>
+            <div class="bg-dark-700 p-4 rounded-lg text-sm">
+              <p class="text-neutral-400 mb-2">"Escreva títulos de email no estilo:"</p>
+              <p class="text-neutral-300 mb-1">• "Proposta: Parceria Q1 2025"</p>
+              <p class="text-neutral-300 mb-1">• "Ação necessária: Aprovação orçamento"</p>
+              <p class="text-neutral-400 mt-2">Agora crie 5 títulos para convite de evento.</p>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FAÇA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Mostre à IA 2 exemplos de algo que você escreve sempre (emails, relatórios) e peça mais no mesmo estilo.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Quanto mais específico o exemplo, mais preciso o resultado. 2-3 exemplos é o ideal.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">6</span>
+              <h2 class="font-bold text-lg">Itere e refine</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">A primeira resposta nunca é perfeita. Refine pedindo ajustes: "mais curto", "tom mais formal", "adicione dados". É uma conversa, não uma busca no Google.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ NA PRÁTICA</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center gap-2">
+                <span class="text-yellow-400">1.</span>
+                <span class="text-neutral-300">"Escreva sobre produtividade"</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-yellow-400">2.</span>
+                <span class="text-neutral-300">"Mais curto, foque em gestores"</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-yellow-400">3.</span>
+                <span class="text-neutral-300">"Adicione 1 exemplo real"</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-yellow-400">4.</span>
+                <span class="text-neutral-300">"Perfeito, agora em bullets"</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FAÇA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Pegue uma resposta da IA e peça 3 ajustes diferentes. Veja como melhora.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Dizer "isso está bom, mas..." é mais eficiente que começar do zero.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">7</span>
+              <h2 class="font-bold text-lg">Além do texto</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">IA moderna trabalha com imagens, áudio e vídeo. Você pode enviar fotos, gerar imagens, transcrever reuniões. Não é só chat.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ NA PRÁTICA</h3>
+            <div class="grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">📸</span>
+                <p class="text-neutral-300 mt-1">Envie foto de gráfico e peça análise</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">🎨</span>
+                <p class="text-neutral-300 mt-1">Gere imagens para apresentações</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">🎙️</span>
+                <p class="text-neutral-300 mt-1">Transcreva reuniões automaticamente</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">📄</span>
+                <p class="text-neutral-300 mt-1">Envie PDFs e peça resumos</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FAÇA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Tire foto de um documento físico e peça à IA para extrair as informações principais.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">GPT-4 e Claude podem "ver" imagens. Use isso para analisar relatórios visuais.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">8</span>
+              <h2 class="font-bold text-lg">Limites e cuidados</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">IA erra. Inventa dados ("alucina"). Sempre confira informações críticas. Não compartilhe dados sensíveis da empresa sem autorização.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ NA PRÁTICA</h3>
+            <div class="space-y-2">
+              <div class="flex items-start gap-2 text-sm">
+                <span class="text-red-400">⚠️</span>
+                <span class="text-neutral-300">Não cole contratos confidenciais</span>
+              </div>
+              <div class="flex items-start gap-2 text-sm">
+                <span class="text-red-400">⚠️</span>
+                <span class="text-neutral-300">Verifique números e estatísticas citados</span>
+              </div>
+              <div class="flex items-start gap-2 text-sm">
+                <span class="text-red-400">⚠️</span>
+                <span class="text-neutral-300">Não confie em "fatos" sem checar a fonte</span>
+              </div>
+              <div class="flex items-start gap-2 text-sm">
+                <span class="text-emerald-400">✅</span>
+                <span class="text-neutral-300">Use para estruturar ideias, não como verdade final</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FAÇA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Pergunte à IA um fato específico (ex: receita de uma empresa). Depois, verifique se está certo.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Trate a IA como um assistente júnior brilhante: confie, mas verifique.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">9</span>
+              <h2 class="font-bold text-lg">Use para aprender</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">IA é o melhor tutor que existe: disponível 24h, infinitamente paciente, adapta ao seu nível. Use para entender conceitos novos rapidamente.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ NA PRÁTICA</h3>
+            <div class="space-y-2 text-sm">
+              <div class="bg-dark-700 p-3 rounded">
+                <p class="text-neutral-300">"Explique ESG como se eu tivesse 10 anos"</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <p class="text-neutral-300">"Quais são os 3 pontos mais importantes de OKRs?"</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <p class="text-neutral-300">"Me faça 5 perguntas para testar se entendi LGPD"</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FAÇA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Escolha um tema que você precisa aprender e peça uma explicação em 3 níveis: básico, intermediário, avançado.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Peça: "Me ensine X fazendo perguntas, não me dê a resposta direta"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-yellow-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">10</span>
+              <h2 class="font-bold text-lg">Seu plano de ação</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Não tente aprender tudo. Escolha 1 tarefa do seu dia-a-dia e automatize com IA. Depois, expanda gradualmente.</p>
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">⚡ PRÓXIMOS PASSOS</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">1</span>
+                <span class="text-neutral-300">Escolha UMA tarefa repetitiva (emails, relatórios, atas)</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">2</span>
+                <span class="text-neutral-300">Crie um prompt usando Contexto + Tarefa + Formato</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">3</span>
+                <span class="text-neutral-300">Use por 1 semana e refine até ficar perfeito</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">4</span>
+                <span class="text-neutral-300">Salve o prompt e escolha a próxima tarefa</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-r from-yellow-500/20 to-emerald-500/20 rounded-lg p-4 border border-yellow-500/30">
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">🏆 RESULTADO ESPERADO</h3>
+            <p class="text-neutral-300 text-sm">Em 30 dias, você terá 3-5 prompts que economizam horas por semana. É assim que gestores usam IA na prática.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Consistência vence intensidade. 10 minutos por dia > 2 horas uma vez por mês.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="mt-12 flex flex-col sm:flex-row justify-between items-center gap-4 p-6 bg-dark-800 rounded-2xl border border-dark-600">
+      <div class="text-center sm:text-left">
+        <p class="text-neutral-400 text-sm">Quer se aprofundar?</p>
+        <p class="text-neutral-300 font-semibold">Veja o conteúdo completo da Trilha 0</p>
+      </div>
+      <div class="flex gap-3">
+        <a href="trilha01.html" class="px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-lg text-sm font-semibold hover:bg-yellow-500/30 transition-colors">
+          Parte 1 (1-5)
+        </a>
+        <a href="trilha02.html" class="px-4 py-2 bg-yellow-500/10 text-yellow-400 rounded-lg text-sm font-semibold hover:bg-yellow-500/20 transition-colors">
+          Parte 2 (6-10)
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center space-x-2 mb-4">
+        <span class="text-2xl">🧠</span>
+        <span class="font-bold text-lg text-yellow-400">SHIA</span>
+      </div>
+      <p class="text-neutral-500 text-sm">
+        Super Humanos Inteligência Aumentada
+      </p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>
