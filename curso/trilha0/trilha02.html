@@ -850,52 +850,54 @@
 
   <!-- Scripts -->
   <script>
-    // Modal Data
-    const moduleData = {
-      6: {
-        title: "Módulo 0.6: Mindset de Experimentação",
-        topics: document.querySelector('.module-card:nth-child(1) .topics-list')
-      },
-      7: {
-        title: "Módulo 0.7: IA Multimodal",
-        topics: document.querySelector('.module-card:nth-child(2) .topics-list')
-      },
-      8: {
-        title: "Módulo 0.8: Ética e Responsabilidade",
-        topics: document.querySelector('.module-card:nth-child(3) .topics-list')
-      },
-      9: {
-        title: "Módulo 0.9: Aprender a Aprender com IA",
-        topics: document.querySelector('.module-card:nth-child(4) .topics-list')
-      },
-      10: {
-        title: "Módulo 0.10: Projeto Final",
-        topics: document.querySelector('.module-card:nth-child(5) .topics-list')
-      }
+    // Module URLs - carrega conteúdo completo das páginas dos módulos
+    const moduleUrls = {
+      6: 'modulo-0-6.html',
+      7: 'modulo-0-7.html',
+      8: 'modulo-0-8.html',
+      9: 'modulo-0-9.html',
+      10: 'modulo-0-10.html'
     };
 
-    // Open Modal
-    function openModal(moduleNum) {
+    // Open Modal - carrega conteúdo da página do módulo
+    async function openModal(moduleNum) {
       const modal = document.getElementById('module-modal');
       const title = document.getElementById('modal-title');
       const content = document.getElementById('modal-content');
 
-      const data = moduleData[moduleNum];
-      if (data) {
-        title.textContent = data.title;
-        const topicsClone = data.topics.cloneNode(true);
-        topicsClone.querySelectorAll('.topic-explanation').forEach(el => {
-          el.classList.remove('hidden');
-        });
-        topicsClone.querySelectorAll('.topic-button span:first-child').forEach(el => {
-          el.textContent = '▾';
-        });
-        content.innerHTML = '';
-        content.appendChild(topicsClone);
-      }
-
+      // Mostra loading
+      title.textContent = 'Carregando...';
+      content.innerHTML = '<div class="text-center py-8"><div class="animate-spin w-8 h-8 border-2 border-yellow-400 border-t-transparent rounded-full mx-auto"></div></div>';
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+
+      try {
+        const response = await fetch(moduleUrls[moduleNum]);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Pega o título do módulo
+        const moduleTitle = doc.querySelector('h1');
+        title.textContent = moduleTitle ? moduleTitle.textContent : `Módulo 0.${moduleNum}`;
+
+        // Pega o conteúdo principal (seção de tópicos)
+        const mainContent = doc.querySelector('main');
+        if (mainContent) {
+          // Remove navegação e elementos desnecessários
+          const clone = mainContent.cloneNode(true);
+          clone.querySelectorAll('nav, .navigation-buttons, footer').forEach(el => el.remove());
+
+          // Remove o header duplicado (já temos no modal)
+          const header = clone.querySelector('.text-center.mb-8, .text-center.mb-12');
+          if (header) header.remove();
+
+          content.innerHTML = '';
+          content.appendChild(clone);
+        }
+      } catch (error) {
+        content.innerHTML = '<p class="text-red-400 text-center py-8">Erro ao carregar conteúdo. <a href="' + moduleUrls[moduleNum] + '" class="underline">Clique aqui para abrir a página completa.</a></p>';
+      }
     }
 
     // Close Modal

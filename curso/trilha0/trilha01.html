@@ -850,53 +850,54 @@
 
   <!-- Scripts -->
   <script>
-    // Modal Data
-    const moduleData = {
-      1: {
-        title: "Módulo 0.1: Bem-vindo à Revolução da IA",
-        topics: document.querySelector('.module-card:nth-child(1) .topics-list')
-      },
-      2: {
-        title: "Módulo 0.2: A Essência da Engenharia de Prompts",
-        topics: document.querySelector('.module-card:nth-child(2) .topics-list')
-      },
-      3: {
-        title: "Módulo 0.3: Principais Ferramentas e Modelos de IA",
-        topics: document.querySelector('.module-card:nth-child(3) .topics-list')
-      },
-      4: {
-        title: "Módulo 0.4: A Anatomia de um Prompt Perfeito",
-        topics: document.querySelector('.module-card:nth-child(4) .topics-list')
-      },
-      5: {
-        title: "Módulo 0.5: Zero-Shot e Few-Shot Prompting",
-        topics: document.querySelector('.module-card:nth-child(5) .topics-list')
-      }
+    // Module URLs - carrega conteúdo completo das páginas dos módulos
+    const moduleUrls = {
+      1: 'modulo-0-1.html',
+      2: 'modulo-0-2.html',
+      3: 'modulo-0-3.html',
+      4: 'modulo-0-4.html',
+      5: 'modulo-0-5.html'
     };
 
-    // Open Modal
-    function openModal(moduleNum) {
+    // Open Modal - carrega conteúdo da página do módulo
+    async function openModal(moduleNum) {
       const modal = document.getElementById('module-modal');
       const title = document.getElementById('modal-title');
       const content = document.getElementById('modal-content');
 
-      const data = moduleData[moduleNum];
-      if (data) {
-        title.textContent = data.title;
-        // Clone topics and show all explanations
-        const topicsClone = data.topics.cloneNode(true);
-        topicsClone.querySelectorAll('.topic-explanation').forEach(el => {
-          el.classList.remove('hidden');
-        });
-        topicsClone.querySelectorAll('.topic-button span:first-child').forEach(el => {
-          el.textContent = '▾';
-        });
-        content.innerHTML = '';
-        content.appendChild(topicsClone);
-      }
-
+      // Mostra loading
+      title.textContent = 'Carregando...';
+      content.innerHTML = '<div class="text-center py-8"><div class="animate-spin w-8 h-8 border-2 border-yellow-400 border-t-transparent rounded-full mx-auto"></div></div>';
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+
+      try {
+        const response = await fetch(moduleUrls[moduleNum]);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Pega o título do módulo
+        const moduleTitle = doc.querySelector('h1');
+        title.textContent = moduleTitle ? moduleTitle.textContent : `Módulo 0.${moduleNum}`;
+
+        // Pega o conteúdo principal (seção de tópicos)
+        const mainContent = doc.querySelector('main');
+        if (mainContent) {
+          // Remove navegação e elementos desnecessários
+          const clone = mainContent.cloneNode(true);
+          clone.querySelectorAll('nav, .navigation-buttons, footer').forEach(el => el.remove());
+
+          // Remove o header duplicado (já temos no modal)
+          const header = clone.querySelector('.text-center.mb-8, .text-center.mb-12');
+          if (header) header.remove();
+
+          content.innerHTML = '';
+          content.appendChild(clone);
+        }
+      } catch (error) {
+        content.innerHTML = '<p class="text-red-400 text-center py-8">Erro ao carregar conteúdo. <a href="' + moduleUrls[moduleNum] + '" class="underline">Clique aqui para abrir a página completa.</a></p>';
+      }
     }
 
     // Close Modal
