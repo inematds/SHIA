@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 1: Resumo Rápido | SHIA</title>
+  <meta name="description" content="Arte com IA em minutos. O essencial para criativos e artistas ocupados.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .border-dark-700 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-200 { color: #334155 !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <span class="inline-block px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold mb-4">
+        RESUMO RAPIDO
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-3">
+        Arte com IA
+      </h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">
+        10 conceitos essenciais em ~20 minutos. Do talento a expressao total.
+      </p>
+      <div class="flex justify-center gap-4 mt-4 text-sm text-neutral-500">
+        <span>⏱️ ~2 min por card</span>
+        <span>📱 Leia no celular</span>
+        <span>🎯 Direto ao ponto</span>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="space-y-6">
+
+      <!-- Card 1 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">1</span>
+              <h2 class="font-bold text-lg">O Novo Artista</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Na era da IA, o artista e curador de ideias. A execucao tecnica e delegada a maquina. Seu papel e ter visao, imaginar e guiar - nao dominar ferramentas manuais.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <ul class="text-neutral-300 space-y-1 text-sm">
+              <li>• Gere 100 variacoes em minutos, nao dias</li>
+              <li>• Explore estilos que levaria anos para dominar</li>
+              <li>• Foque na mensagem, nao na tecnica</li>
+            </ul>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Abra o Midjourney ou DALL-E e descreva uma imagem que voce sempre quis criar mas nunca teve habilidade tecnica.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Artista e quem imagina e comunica, nao quem domina pincel ou software.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">2</span>
+              <h2 class="font-bold text-lg">Prompt e Pincelada</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Prompts sao sua nova ferramenta criativa. Sujeito + estilo + iluminacao + atmosfera = resultado. Quanto mais detalhado, mais controle voce tem.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="grid gap-2 text-sm">
+              <div class="bg-red-900/20 p-3 rounded border border-red-500/30">
+                <span class="text-red-400">❌ Vago:</span> <span class="text-neutral-300">"um gato"</span>
+              </div>
+              <div class="bg-emerald-900/20 p-3 rounded border border-emerald-500/30">
+                <span class="text-emerald-400">✅ Rico:</span> <span class="text-neutral-300">"gato persa branco em almofada de veludo vermelho, luz dourada de janela, estilo pintura renascentista, oleo sobre tela"</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Pegue uma ideia simples e adicione: estilo artistico, iluminacao e atmosfera.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Construa um vocabulario visual: art nouveau, cinematico, golden hour, moody...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">3</span>
+              <h2 class="font-bold text-lg">Multimidia Sem Barreiras</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">IA nao e so imagem. Musica com Suno, video com Runway, voz com ElevenLabs. Producao multimidia completa sem conhecimento tecnico anterior.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🎵</div>
+                <div class="font-semibold text-neutral-200">Suno/Udio</div>
+                <div class="text-neutral-500 text-xs">Musica do zero</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🎬</div>
+                <div class="font-semibold text-neutral-200">Runway/Pika</div>
+                <div class="text-neutral-500 text-xs">Video e animacao</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🎤</div>
+                <div class="font-semibold text-neutral-200">ElevenLabs</div>
+                <div class="text-neutral-500 text-xs">Voz e narracao</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🖼️</div>
+                <div class="font-semibold text-neutral-200">Midjourney</div>
+                <div class="text-neutral-500 text-xs">Imagem e design</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Escolha uma ferramenta nova que nunca usou e crie algo em 5 minutos.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Combine ferramentas: imagem + musica + voz = producao profissional.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">4</span>
+              <h2 class="font-bold text-lg">Seu Estilo Unico</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Consistencia e o que separa amadores de profissionais. Paleta de cores, texturas, temas recorrentes - sua assinatura visual que a IA reproduz fielmente.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">🎨</span>
+                <span class="text-neutral-300">Defina 3-5 cores que sao "sua cara"</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✏️</span>
+                <span class="text-neutral-300">Escolha texturas caracteristicas (grain, brush, clean)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">🎭</span>
+                <span class="text-neutral-300">Identifique temas que voce sempre aborda</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Crie um "style guide" com 5 caracteristicas visuais que definem seu trabalho.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Use image-to-image com suas obras como referencia para manter consistencia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">5</span>
+              <h2 class="font-bold text-lg">Conte Historias</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Imagens isoladas sao legais. Series com narrativa sao poderosas. Storyboards, personagens consistentes, worldbuilding - IA permite criar universos inteiros.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="bg-dark-700 p-4 rounded-lg text-sm">
+              <p class="text-neutral-400 mb-2">Fluxo de narrativa visual:</p>
+              <p class="text-neutral-300 mb-1">1. Defina personagem principal</p>
+              <p class="text-neutral-300 mb-1">2. Crie 3-5 cenas-chave</p>
+              <p class="text-neutral-300 mb-1">3. Mantenha estilo consistente</p>
+              <p class="text-neutral-300">4. Conecte com arco narrativo</p>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Crie 3 imagens que contam uma mini-historia: inicio, meio e fim.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Personagens consistentes vendem. Use seeds fixas ou LoRAs customizadas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">6</span>
+              <h2 class="font-bold text-lg">Tecnicas Avancadas</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">ControlNet para poses precisas, inpainting para correcoes cirurgicas, LoRAs para estilos customizados. Ferramentas pro que fazem diferenca real.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="space-y-2 text-sm">
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-emerald-400 font-semibold">ControlNet:</span>
+                <span class="text-neutral-300"> Use foto de pose como referencia</span>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-emerald-400 font-semibold">Inpainting:</span>
+                <span class="text-neutral-300"> Corrija maos, rostos, detalhes</span>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-emerald-400 font-semibold">LoRAs:</span>
+                <span class="text-neutral-300"> Treine estilos e personagens proprios</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Experimente inpainting: gere uma imagem e corrija um detalhe especifico.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">ComfyUI oferece controle total com workflows visuais - vale aprender.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">7</span>
+              <h2 class="font-bold text-lg">Pos-Producao</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Geracao e so o comeco. Upscaling, color grading, correcao de artefatos, preparacao para impressao - pos-producao separa amador de profissional.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">🔍</span>
+                <p class="text-neutral-300 mt-1">Upscaling 4x com Real-ESRGAN</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">🎨</span>
+                <p class="text-neutral-300 mt-1">Color grading para mood</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">✨</span>
+                <p class="text-neutral-300 mt-1">Correcao de artefatos</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">🖨️</span>
+                <p class="text-neutral-300 mt-1">Export para impressao (CMYK)</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Pegue uma geracao e faca upscaling + ajuste de cores antes de publicar.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Sempre corrija maos e olhos antes de entregar trabalho comercial.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">8</span>
+              <h2 class="font-bold text-lg">Arte com Proposito</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Arte comercial paga as contas: branding, publicidade, games, moda, arquitetura. IA acelera producao e permite atender mais clientes com qualidade.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-emerald-400">💼</span>
+                <span class="text-neutral-300">Identidade visual para marcas</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-emerald-400">📢</span>
+                <span class="text-neutral-300">Assets para campanhas de publicidade</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-emerald-400">🎮</span>
+                <span class="text-neutral-300">Concept art e assets para games</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-emerald-400">🏠</span>
+                <span class="text-neutral-300">Visualizacao arquitetonica</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Identifique 3 nichos comerciais onde sua arte poderia ser aplicada.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Especialize-se em um nicho primeiro. Generalistas ganham menos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">9</span>
+              <h2 class="font-bold text-lg">Monetizacao</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Freelancing, print-on-demand, cursos, NFTs, licenciamento. Multiplas fontes de renda com a mesma arte. Portfolio forte + redes sociais = clientes.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="grid sm:grid-cols-3 gap-3 text-sm">
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">💰</div>
+                <div class="font-semibold text-neutral-200">Freelance</div>
+                <div class="text-neutral-500 text-xs">Fiverr, Upwork</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🛍️</div>
+                <div class="font-semibold text-neutral-200">POD</div>
+                <div class="text-neutral-500 text-xs">Camisetas, prints</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🎓</div>
+                <div class="font-semibold text-neutral-200">Cursos</div>
+                <div class="text-neutral-500 text-xs">Ensine suas tecnicas</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Monte um portfolio com 10 obras e crie um perfil no Behance ou Instagram.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Renda passiva (prints, cursos) escala infinitamente. Comece agora.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-emerald-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">10</span>
+              <h2 class="font-bold text-lg">Etica e Futuro</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Transparencia sobre uso de IA, respeito a direitos autorais, consciencia sobre vieses. Pratica etica constroi reputacao duradoura.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ PROXIMOS PASSOS</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">1</span>
+                <span class="text-neutral-300">Domine UMA ferramenta profundamente</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">2</span>
+                <span class="text-neutral-300">Desenvolva seu estilo visual unico</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">3</span>
+                <span class="text-neutral-300">Construa portfolio e presenca online</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">4</span>
+                <span class="text-neutral-300">Monetize e escale seu trabalho</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-r from-emerald-500/20 to-yellow-500/20 rounded-lg p-4 border border-emerald-500/30">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🏆 RESULTADO ESPERADO</h3>
+            <p class="text-neutral-300 text-sm">Em 30 dias, voce tera um portfolio consistente e as primeiras vendas/clientes. A IA e sua nova ferramenta de expressao.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Sempre declare que usou IA. Honestidade constroi confianca.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="mt-12 flex flex-col sm:flex-row justify-between items-center gap-4 p-6 bg-dark-800 rounded-2xl border border-dark-600">
+      <div class="text-center sm:text-left">
+        <p class="text-neutral-400 text-sm">Quer se aprofundar?</p>
+        <p class="text-neutral-300 font-semibold">Veja o conteudo completo da Trilha 1</p>
+      </div>
+      <div class="flex gap-3">
+        <a href="trilha11.html" class="px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-lg text-sm font-semibold hover:bg-emerald-500/30 transition-colors">
+          Parte 1 (1-5)
+        </a>
+        <a href="trilha12.html" class="px-4 py-2 bg-emerald-500/10 text-emerald-400 rounded-lg text-sm font-semibold hover:bg-emerald-500/20 transition-colors">
+          Parte 2 (6-10)
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center space-x-2 mb-4">
+        <span class="text-2xl">🧠</span>
+        <span class="font-bold text-lg text-emerald-400">SHIA</span>
+      </div>
+      <p class="text-neutral-500 text-sm">
+        Super Humanos Inteligencia Aumentada
+      </p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

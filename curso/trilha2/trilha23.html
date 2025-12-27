@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 2: Resumo Rapido | SHIA</title>
+  <meta name="description" content="Engenharia de IA em minutos. O essencial para desenvolvedores e tecnicos ocupados.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .border-dark-700 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-200 { color: #334155 !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <span class="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mb-4">
+        RESUMO RAPIDO
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-3">
+        Engenharia de IA
+      </h1>
+      <p class="text-lg text-neutral-400 max-w-2xl mx-auto">
+        10 conceitos essenciais em ~20 minutos. Do codigo a producao.
+      </p>
+      <div class="flex justify-center gap-4 mt-4 text-sm text-neutral-500">
+        <span>⏱️ ~2 min por card</span>
+        <span>📱 Leia no celular</span>
+        <span>🎯 Direto ao ponto</span>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="space-y-6">
+
+      <!-- Card 1 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">1</span>
+              <h2 class="font-bold text-lg">LLMs: Os Fundamentos</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">LLMs preveem a proxima palavra usando bilhoes de parametros. Temperatura controla aleatoriedade, context window limita memoria. Sao estatisticos, nao inteligentes.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <ul class="text-neutral-300 space-y-1 text-sm">
+              <li>• GPT-4, Claude, Gemini - cada um com tradeoffs</li>
+              <li>• Tokens = unidades de texto (1 token ~4 caracteres)</li>
+              <li>• Temperature 0 = deterministico, 1 = criativo</li>
+            </ul>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Compare a mesma pergunta no ChatGPT e Claude. Note as diferencas de estilo e conteudo.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">LLMs nao sabem o que nao sabem. Sempre valide outputs criticos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">2</span>
+              <h2 class="font-bold text-lg">APIs e Integracao</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">APIs sao a ponte entre seu codigo e LLMs. REST endpoints, autenticacao via API keys, gerenciamento de rate limits. SDK vs chamadas HTTP diretas.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="bg-dark-700 p-4 rounded-lg text-sm font-mono">
+              <p class="text-purple-400"># Python com OpenAI</p>
+              <p class="text-neutral-300">from openai import OpenAI</p>
+              <p class="text-neutral-300">client = OpenAI()</p>
+              <p class="text-neutral-300">response = client.chat.completions.create(</p>
+              <p class="text-neutral-300 pl-4">model="gpt-4",</p>
+              <p class="text-neutral-300 pl-4">messages=[{"role": "user", "content": "Ola!"}]</p>
+              <p class="text-neutral-300">)</p>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Crie uma API key e faca sua primeira chamada via Python ou curl.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Nunca comite API keys no git. Use .env e secrets management.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">3</span>
+              <h2 class="font-bold text-lg">RAG: Conhecimento Proprio</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">RAG (Retrieval Augmented Generation) conecta LLMs aos seus dados. Embeddings + vector database + semantic search = respostas baseadas em documentos internos.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">📚</div>
+                <div class="font-semibold text-neutral-200">Indexacao</div>
+                <div class="text-neutral-500 text-xs">Docs -> Chunks -> Embeddings</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🔍</div>
+                <div class="font-semibold text-neutral-200">Busca</div>
+                <div class="text-neutral-500 text-xs">Query -> Similar chunks</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🧠</div>
+                <div class="font-semibold text-neutral-200">Geracao</div>
+                <div class="text-neutral-500 text-xs">Context + LLM = Resposta</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">📊</div>
+                <div class="font-semibold text-neutral-200">Vector DB</div>
+                <div class="text-neutral-500 text-xs">Pinecone, Weaviate, Chroma</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Suba 3 PDFs no ChatGPT e faca perguntas sobre eles. E RAG simplificado.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Chunk size e overlap sao criticos. Teste diferentes valores.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">4</span>
+              <h2 class="font-bold text-lg">Automacao com IA</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">n8n, Make, Zapier - plataformas no-code que integram LLMs com qualquer servico. Email, Slack, planilhas, CRMs. Automacoes que antes exigiam codigo.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center gap-2">
+                <span class="text-blue-400">📧</span>
+                <span class="text-neutral-300">Email chega -> IA classifica -> Responde automaticamente</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-blue-400">📊</span>
+                <span class="text-neutral-300">Planilha atualiza -> IA analisa -> Envia resumo</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-blue-400">💬</span>
+                <span class="text-neutral-300">Mensagem no Slack -> IA processa -> Cria ticket</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Crie um workflow no n8n que resume emails automaticamente.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">n8n e self-hosted e gratis. Perfeito para experimentos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">5</span>
+              <h2 class="font-bold text-lg">Frameworks de IA</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">LangChain, LlamaIndex, Haystack - frameworks que simplificam construcao de aplicacoes com LLMs. Chains, pipelines, tool use, memory - abstratos e reutilizaveis.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="grid sm:grid-cols-3 gap-3 text-sm">
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🔗</div>
+                <div class="font-semibold text-neutral-200">LangChain</div>
+                <div class="text-neutral-500 text-xs">Mais popular</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🦙</div>
+                <div class="font-semibold text-neutral-200">LlamaIndex</div>
+                <div class="text-neutral-500 text-xs">Melhor para RAG</div>
+              </div>
+              <div class="bg-dark-700 p-3 rounded text-center">
+                <div class="text-2xl mb-1">🔍</div>
+                <div class="font-semibold text-neutral-200">Haystack</div>
+                <div class="text-neutral-500 text-xs">Pipelines robustos</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Siga o quickstart do LangChain e crie um chatbot em 15 minutos.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Frameworks evoluem rapido. Foque em conceitos, nao em APIs especificas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">6</span>
+              <h2 class="font-bold text-lg">Agentes de IA</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Agentes percebem, decidem e agem autonomamente. Usam ferramentas, planejam tarefas, mantêm memoria. O proximo nivel apos chatbots simples.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="space-y-2 text-sm">
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-blue-400 font-semibold">ReAct:</span>
+                <span class="text-neutral-300"> Reason + Act em loop</span>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-blue-400 font-semibold">Tool Use:</span>
+                <span class="text-neutral-300"> APIs, calculadoras, buscas</span>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-blue-400 font-semibold">Multi-Agent:</span>
+                <span class="text-neutral-300"> Especializacao e colaboracao</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Crie um agente LangChain que busca na web e responde perguntas.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Agentes precisam de guardrails. Limite escopo para evitar problemas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">7</span>
+              <h2 class="font-bold text-lg">Prompt Engineering Pro</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Chain-of-Thought, Tree-of-Thoughts, Few-Shot, Self-Consistency. Tecnicas avancadas que extraem o maximo dos LLMs para raciocinio complexo.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="grid gap-2 text-sm">
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-blue-400">CoT:</span> <span class="text-neutral-300">"Pense passo a passo antes de responder"</span>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-blue-400">Few-Shot:</span> <span class="text-neutral-300">Forneca 2-3 exemplos do formato desejado</span>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-blue-400">Self-Check:</span> <span class="text-neutral-300">"Verifique sua resposta antes de enviar"</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Adicione "Let's think step by step" a um problema complexo e compare.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Structured output (JSON) + schema = parsing confiavel.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">8</span>
+              <h2 class="font-bold text-lg">Metricas e Avaliacao</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Nao da para melhorar o que nao se mede. KPIs de negocio + metricas tecnicas + A/B testing = melhoria continua baseada em dados.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-blue-400">📊</span>
+                <span class="text-neutral-300">Latencia: tempo ate primeira resposta</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-blue-400">✅</span>
+                <span class="text-neutral-300">Accuracy: % de respostas corretas</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-blue-400">💰</span>
+                <span class="text-neutral-300">Custo por query: tokens consumidos</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-blue-400">😊</span>
+                <span class="text-neutral-300">Satisfacao: feedback do usuario</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Defina 3 KPIs para medir sucesso da sua proxima aplicacao IA.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">LLM-as-judge: use IA para avaliar outputs de IA em escala.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">9</span>
+              <h2 class="font-bold text-lg">Deploy em Producao</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Docker, Kubernetes, serverless. Seguranca, compliance, CI/CD. Producao exige confiabilidade que POCs nao precisam.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ NA PRATICA</h3>
+            <div class="grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">🐳</span>
+                <p class="text-neutral-300 mt-1">Docker para empacotamento</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">☸️</span>
+                <p class="text-neutral-300 mt-1">K8s para orquestracao</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">⚡</span>
+                <p class="text-neutral-300 mt-1">Lambda/Cloud Functions</p>
+              </div>
+              <div class="bg-dark-700 p-3 rounded">
+                <span class="text-2xl">🔐</span>
+                <p class="text-neutral-300 mt-1">Secrets + rate limiting</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <h3 class="text-emerald-400 font-semibold text-sm mb-2">🎯 FACA AGORA</h3>
+            <p class="text-neutral-300 text-sm">Dockerize uma aplicacao LangChain simples e rode localmente.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Canary deployments: libere para 5% dos usuarios antes de 100%.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
+        <div class="bg-blue-500/10 px-6 py-4 border-b border-dark-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm">10</span>
+              <h2 class="font-bold text-lg">Gestao de Projetos IA</h2>
+            </div>
+            <span class="text-xs text-neutral-500">2 min</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <div>
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">📌 O ESSENCIAL</h3>
+            <p class="text-neutral-300">Agile adaptado para IA: sprints experimentais, pivots rapidos, gestao de incerteza. De POC a producao sem morrer no meio do caminho.</p>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-semibold text-sm mb-2">⚡ PROXIMOS PASSOS</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">1</span>
+                <span class="text-neutral-300">Domine APIs de LLMs (OpenAI/Anthropic)</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">2</span>
+                <span class="text-neutral-300">Construa um RAG com seus proprios dados</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">3</span>
+                <span class="text-neutral-300">Crie um agente que usa ferramentas</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-xs flex-shrink-0">4</span>
+                <span class="text-neutral-300">Faca deploy em producao com metricas</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-r from-blue-500/20 to-emerald-500/20 rounded-lg p-4 border border-blue-500/30">
+            <h3 class="text-blue-400 font-semibold text-sm mb-2">🏆 RESULTADO ESPERADO</h3>
+            <p class="text-neutral-300 text-sm">Em 30 dias, voce tera uma aplicacao IA em producao, com metricas, pronta para escalar.</p>
+          </div>
+          <div class="border-t border-dark-600 pt-4">
+            <h3 class="text-purple-400 font-semibold text-sm mb-1">💡 DICA DE OURO</h3>
+            <p class="text-neutral-400 text-sm italic">Ship fast, iterate faster. Perfeicao e inimiga do bom.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="mt-12 flex flex-col sm:flex-row justify-between items-center gap-4 p-6 bg-dark-800 rounded-2xl border border-dark-600">
+      <div class="text-center sm:text-left">
+        <p class="text-neutral-400 text-sm">Quer se aprofundar?</p>
+        <p class="text-neutral-300 font-semibold">Veja o conteudo completo da Trilha 2</p>
+      </div>
+      <div class="flex gap-3">
+        <a href="trilha21.html" class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg text-sm font-semibold hover:bg-blue-500/30 transition-colors">
+          Parte 1 (1-5)
+        </a>
+        <a href="trilha22.html" class="px-4 py-2 bg-blue-500/10 text-blue-400 rounded-lg text-sm font-semibold hover:bg-blue-500/20 transition-colors">
+          Parte 2 (6-10)
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center space-x-2 mb-4">
+        <span class="text-2xl">🧠</span>
+        <span class="font-bold text-lg text-blue-400">SHIA</span>
+      </div>
+      <p class="text-neutral-500 text-sm">
+        Super Humanos Inteligencia Aumentada
+      </p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>
