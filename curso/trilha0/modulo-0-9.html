@@ -1,148 +1,173 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 9: Aprender a Aprender com IA | SHIA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: { 50: '#f9fafb', 100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db', 400: '#9ca3af', 500: '#6b7280', 600: '#4b5563', 700: '#374151', 800: '#1f2937', 900: '#111827', 950: '#030712' }
-                    },
-                    fontFamily: { 'inter': ['Inter', 'sans-serif'] }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 0.9: Aprender a Aprender com IA | SHIA</title>
+  <meta name="description" content="Estratégias de estudo e desenvolvimento contínuo usando IA como tutor pessoal 24/7.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#EAB308',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
         }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .topic-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .topic-content.open { max-height: 2000px; transition: max-height 0.5s ease-in; }
-    </style>
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+  </style>
 </head>
-<body class="bg-dark-950 text-neutral-200 min-h-screen">
-    <!-- Header -->
-    <header class="bg-dark-900/80 backdrop-blur-md border-b border-dark-700 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../../index.html" class="text-2xl font-bold text-yellow-400">SHIA</a>
-                <nav class="flex items-center gap-6">
-                    <a href="trilha02.html" class="text-neutral-400 hover:text-yellow-400 transition-colors">Trilha 0</a>
-                    <button id="darkModeToggle" class="p-2 rounded-lg bg-dark-800 hover:bg-dark-700 transition-colors">
-                        <span class="text-xl">🌙</span>
-                    </button>
-                </nav>
-            </div>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">INEMA.CLUB</a>
         </div>
-    </header>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"><span class="hidden sm:inline">Trilha </span>0</a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="hidden sm:inline">Trilha </span>1</a>
+          <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="hidden sm:inline">Trilha </span>2</a>
+          <a href="../trilha3/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="hidden sm:inline">Trilha </span>3</a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-6 py-12">
-        <!-- Module Header -->
-        <div class="mb-12">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium">Trilha 0 • Módulo 9</span>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold mb-4">MÓDULO 0.9 - TRILHA 0</span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">📚 Aprender a Aprender com IA</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">Estratégias de Estudo e Desenvolvimento Contínuo</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-yellow-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-yellow-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-yellow-400">Inter.</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-yellow-900/30 to-dark-800 rounded-2xl p-8 border border-yellow-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-yellow-400">Conceito Central</h2>
+            <p class="text-neutral-400">A IA como seu tutor pessoal 24/7</p>
+          </div>
+        </div>
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-yellow-500 pl-6 mb-6">
+          "A IA é a melhor ferramenta de aprendizado já criada - um tutor 24/7, paciente, que se adapta ao seu <strong class="text-yellow-400">nível</strong>."
+        </blockquote>
+        <p class="text-neutral-300 mb-4">Imagine ter um professor sempre disponível, infinitamente paciente, que adapta explicações ao seu nível e responde qualquer pergunta sem julgamento.</p>
+        <p class="text-neutral-300">Este módulo ensina como usar IA para acelerar seu aprendizado em qualquer área - de idiomas a programação, de conceitos teóricos a habilidades práticas.</p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">IA como Tutor Pessoal</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">A IA pode ser o professor mais paciente e adaptativo que você já teve.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Vantagens</h5>
+              <ul class="text-neutral-300 space-y-1">
+                <li>• Disponível 24 horas, 7 dias por semana</li>
+                <li>• Paciência infinita para repetir explicações</li>
+                <li>• Adapta-se ao seu ritmo e estilo de aprendizado</li>
+                <li>• Sem julgamento por perguntas "básicas"</li>
+                <li>• Múltiplas abordagens de explicação</li>
+              </ul>
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">📚 Aprender a Aprender com IA</h1>
-            <p class="text-xl text-neutral-400">Estratégias de Estudo e Desenvolvimento Contínuo</p>
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">Como Usar</h5>
+              <p class="text-neutral-300 text-sm">"Explique [conceito] como se eu tivesse 10 anos" | "Dê 3 exemplos práticos de [tema]" | "O que eu deveria saber antes de aprender [assunto]?"</p>
+            </div>
+          </div>
         </div>
 
-        <!-- Introduction -->
-        <section class="mb-12 p-6 bg-dark-800/50 rounded-2xl border border-dark-700">
-            <h2 class="text-2xl font-bold text-yellow-400 mb-4">Visão Geral</h2>
-            <p class="text-neutral-300 leading-relaxed">
-                A IA é a melhor ferramenta de aprendizado já criada. Imagine ter um tutor pessoal disponível 24/7, 
-                infinitamente paciente, que adapta explicações ao seu nível e responde qualquer pergunta. 
-                Este módulo ensina como usar IA para acelerar seu aprendizado em qualquer área.
-            </p>
-        </section>
-
-        <!-- Topics -->
-        <section class="space-y-4">
-            <h2 class="text-2xl font-bold text-white mb-6">📚 Tópicos do Módulo</h2>
-
-            <!-- Topic 1 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">1</span>
-                        <span class="font-semibold text-white">IA como Tutor Pessoal</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">A IA pode ser o professor mais paciente e adaptativo que você já teve.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Vantagens</h4>
-                                <ul class="text-neutral-400 space-y-1 text-sm">
-                                    <li>• Disponível 24 horas, 7 dias</li>
-                                    <li>• Paciência infinita para repetir</li>
-                                    <li>• Adapta ao seu ritmo e estilo</li>
-                                    <li>• Sem julgamento por perguntas "básicas"</li>
-                                    <li>• Múltiplas abordagens de explicação</li>
-                                </ul>
-                            </div>
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Como Usar</h4>
-                                <p class="text-neutral-400 text-sm">"Explique [conceito] como se eu tivesse 10 anos", "Dê 3 exemplos práticos de [tema]", "O que eu deveria saber antes de aprender [assunto]?"</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Topic 2 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">2</span>
-                        <span class="font-semibold text-white">Técnica Socrática com IA</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">Use a IA para fazer perguntas que aprofundam seu entendimento.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Prompt Socrático</h4>
-                                <p class="text-neutral-400 text-sm font-mono whitespace-pre-line">
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">Técnica Socrática com IA</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">Use a IA para fazer perguntas que aprofundam seu entendimento.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Prompt Socrático</h5>
+              <div class="bg-dark-900/50 p-3 rounded text-neutral-300 text-sm font-mono">
 "Não me dê a resposta direta. Em vez disso, faça perguntas que me guiem a descobrir a resposta por conta própria sobre [tema].
 
-Comece do básico e aumente a complexidade conforme eu respondo corretamente."</p>
-                            </div>
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Benefícios</h4>
-                                <p class="text-neutral-400 text-sm">Aprendizado mais profundo, melhor retenção, desenvolvimento de pensamento crítico.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+Comece do básico e aumente a complexidade conforme eu respondo corretamente."
+              </div>
             </div>
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+              <h5 class="font-bold text-blue-400 mb-2">Benefícios</h5>
+              <p class="text-neutral-300 text-sm">Aprendizado mais profundo, melhor retenção, desenvolvimento de pensamento crítico.</p>
+            </div>
+          </div>
+        </div>
 
-            <!-- Topic 3 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">3</span>
-                        <span class="font-semibold text-white">Criando Planos de Estudo</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">Peça à IA para criar roteiros de aprendizado personalizados.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo de Prompt</h4>
-                                <p class="text-neutral-400 text-sm font-mono whitespace-pre-line">
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">Criando Planos de Estudo</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">Peça à IA para criar roteiros de aprendizado personalizados.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Exemplo de Prompt</h5>
+              <div class="bg-dark-900/50 p-3 rounded text-neutral-300 text-sm font-mono">
 "Crie um plano de estudos para aprender [habilidade] do zero ao intermediário.
 
 Meu contexto:
@@ -150,274 +175,247 @@ Meu contexto:
 - Nível atual: iniciante
 - Objetivo: [seu objetivo específico]
 
-Inclua: tópicos em ordem, recursos recomendados, exercícios práticos, marcos de progresso."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+Inclua: tópicos em ordem, recursos recomendados, exercícios práticos, marcos de progresso."
+              </div>
             </div>
-
-            <!-- Topic 4 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">4</span>
-                        <span class="font-semibold text-white">Explicações em Múltiplos Níveis</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">Peça a mesma explicação em diferentes níveis de complexidade.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Níveis de Explicação</h4>
-                                <ul class="text-neutral-400 space-y-1 text-sm">
-                                    <li>• "Explique como se eu tivesse 5 anos"</li>
-                                    <li>• "Explique para um estudante do ensino médio"</li>
-                                    <li>• "Explique para um universitário da área"</li>
-                                    <li>• "Explique com rigor técnico completo"</li>
-                                </ul>
-                            </div>
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Por que funciona</h4>
-                                <p class="text-neutral-400 text-sm">Ver o mesmo conceito de múltiplas perspectivas solidifica o entendimento e revela conexões.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Topic 5 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">5</span>
-                        <span class="font-semibold text-white">Prática com Exercícios Gerados</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">A IA pode criar exercícios ilimitados para você praticar.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Tipos de Exercícios</h4>
-                                <ul class="text-neutral-400 space-y-1 text-sm">
-                                    <li>• Quizzes e perguntas de múltipla escolha</li>
-                                    <li>• Problemas práticos para resolver</li>
-                                    <li>• Estudos de caso</li>
-                                    <li>• Flashcards automatizados</li>
-                                    <li>• Desafios progressivos</li>
-                                </ul>
-                            </div>
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Prompt Exemplo</h4>
-                                <p class="text-neutral-400 text-sm">"Crie 5 exercícios práticos sobre [tema] com dificuldade crescente. Após eu responder, corrija e explique os erros."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Topic 6 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">6</span>
-                        <span class="font-semibold text-white">Resumos e Sínteses</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">Use IA para consolidar e revisar o que aprendeu.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Técnicas</h4>
-                                <ul class="text-neutral-400 space-y-1 text-sm">
-                                    <li>• Resumir artigos e capítulos longos</li>
-                                    <li>• Criar mapas mentais de tópicos</li>
-                                    <li>• Extrair os pontos principais</li>
-                                    <li>• Conectar conceitos relacionados</li>
-                                </ul>
-                            </div>
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Prompt de Síntese</h4>
-                                <p class="text-neutral-400 text-sm">"Resuma este texto em 5 pontos principais e explique como eles se conectam: [texto]"</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Topic 7 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">7</span>
-                        <span class="font-semibold text-white">Aprendendo Idiomas</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">IA é excepcionalmente útil para aprender novos idiomas.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Aplicações</h4>
-                                <ul class="text-neutral-400 space-y-1 text-sm">
-                                    <li>• Conversação simulada em qualquer idioma</li>
-                                    <li>• Correção de textos com explicações</li>
-                                    <li>• Vocabulário contextualizado</li>
-                                    <li>• Explicação de gramática</li>
-                                    <li>• Tradução com nuances culturais</li>
-                                </ul>
-                            </div>
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Prompt para Prática</h4>
-                                <p class="text-neutral-400 text-sm">"Vamos ter uma conversa em [idioma] sobre [tema]. Corrija meus erros gentilmente e sugira formas mais naturais de expressar minhas ideias."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Topic 8 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">8</span>
-                        <span class="font-semibold text-white">Desenvolvimento de Habilidades Técnicas</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">Aprenda programação, design, análise de dados e mais com ajuda da IA.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Programação com IA</h4>
-                                <ul class="text-neutral-400 space-y-1 text-sm">
-                                    <li>• Explicação linha por linha de código</li>
-                                    <li>• Debug com explicações detalhadas</li>
-                                    <li>• Projetos práticos guiados</li>
-                                    <li>• Refatoração com explicação do porquê</li>
-                                </ul>
-                            </div>
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Dica Chave</h4>
-                                <p class="text-neutral-400 text-sm">Sempre peça para a IA explicar o "porquê", não só o "como". Entenda os princípios, não só copie código.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Topic 9 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">9</span>
-                        <span class="font-semibold text-white">Evitando Armadilhas do Aprendizado</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">Cuidados para que a IA ajude, não atrapalhe, seu aprendizado.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Armadilhas Comuns</h4>
-                                <ul class="text-neutral-400 space-y-1 text-sm">
-                                    <li>• Dependência excessiva (não pensar por conta)</li>
-                                    <li>• Aceitar respostas sem questionar</li>
-                                    <li>• Pular etapas fundamentais</li>
-                                    <li>• Não praticar ativamente</li>
-                                    <li>• Ilusão de competência</li>
-                                </ul>
-                            </div>
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Como Evitar</h4>
-                                <p class="text-neutral-400 text-sm">Tente resolver primeiro sozinho. Use IA para verificar e aprofundar, não para substituir seu esforço mental.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Topic 10 -->
-            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
-                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">10</span>
-                        <span class="font-semibold text-white">Exercício: Sessão de Aprendizado</span>
-                    </div>
-                    <span class="transform transition-transform duration-200">▼</span>
-                </button>
-                <div class="topic-content">
-                    <div class="p-5 pt-0 border-t border-dark-700">
-                        <p class="text-neutral-300 mb-4">Aplique as técnicas aprendidas em uma sessão prática.</p>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Desafio</h4>
-                                <ol class="text-neutral-400 space-y-2 text-sm list-decimal list-inside">
-                                    <li>Escolha algo que você quer aprender</li>
-                                    <li>Peça um plano de estudos de 1 semana</li>
-                                    <li>Solicite explicação do primeiro conceito</li>
-                                    <li>Faça 3 exercícios práticos</li>
-                                    <li>Peça um resumo do que aprendeu</li>
-                                    <li>Identifique próximos passos</li>
-                                </ol>
-                            </div>
-                            <div class="p-4 bg-dark-900/50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-400 mb-2">Meta</h4>
-                                <p class="text-neutral-400 text-sm">Ao final, você terá experimentado um ciclo completo de aprendizado assistido por IA. Use esse modelo para qualquer área!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- Navigation -->
-        <nav class="mt-12 flex justify-between items-center pt-8 border-t border-dark-700">
-            <a href="modulo-0-8.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
-                <span>←</span>
-                <span>Módulo Anterior</span>
-            </a>
-            <a href="trilha02.html" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 rounded-lg transition-colors text-neutral-300">
-                Ver Trilha
-            </a>
-            <a href="modulo-0-10.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
-                <span>Próximo Módulo</span>
-                <span>→</span>
-            </a>
-        </nav>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-dark-900 border-t border-dark-800 mt-20">
-        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-neutral-500">
-            <p>SHIA - Sistema Humano de Inteligência Aumentada</p>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        // Dark mode toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">Explicações em Múltiplos Níveis</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">Peça a mesma explicação em diferentes níveis de complexidade.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Níveis de Explicação</h5>
+              <ul class="text-neutral-300 space-y-1">
+                <li>• "Explique como se eu tivesse 5 anos"</li>
+                <li>• "Explique para um estudante do ensino médio"</li>
+                <li>• "Explique para um universitário da área"</li>
+                <li>• "Explique com rigor técnico completo"</li>
+              </ul>
+            </div>
+            <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+              <h5 class="font-bold text-purple-400 mb-2">Por que funciona</h5>
+              <p class="text-neutral-300 text-sm">Ver o mesmo conceito de múltiplas perspectivas solidifica o entendimento e revela conexões.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">Prática com Exercícios Gerados</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">A IA pode criar exercícios ilimitados para você praticar.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Tipos de Exercícios</h5>
+              <ul class="text-neutral-300 space-y-1">
+                <li>• Quizzes e perguntas de múltipla escolha</li>
+                <li>• Problemas práticos para resolver</li>
+                <li>• Estudos de caso</li>
+                <li>• Flashcards automatizados</li>
+                <li>• Desafios progressivos</li>
+              </ul>
+            </div>
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">Prompt Exemplo</h5>
+              <p class="text-neutral-300 text-sm">"Crie 5 exercícios práticos sobre [tema] com dificuldade crescente. Após eu responder, corrija e explique os erros."</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">Resumos e Sínteses</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">Use IA para consolidar e revisar o que aprendeu.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Técnicas</h5>
+              <ul class="text-neutral-300 space-y-1">
+                <li>• Resumir artigos e capítulos longos</li>
+                <li>• Criar mapas mentais de tópicos</li>
+                <li>• Extrair os pontos principais</li>
+                <li>• Conectar conceitos relacionados</li>
+              </ul>
+            </div>
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+              <h5 class="font-bold text-blue-400 mb-2">Prompt de Síntese</h5>
+              <p class="text-neutral-300 text-sm">"Resuma este texto em 5 pontos principais e explique como eles se conectam: [texto]"</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">Aprendendo Idiomas</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">IA é excepcionalmente útil para aprender novos idiomas.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Aplicações</h5>
+              <ul class="text-neutral-300 space-y-1">
+                <li>• Conversação simulada em qualquer idioma</li>
+                <li>• Correção de textos com explicações</li>
+                <li>• Vocabulário contextualizado</li>
+                <li>• Explicação de gramática</li>
+                <li>• Tradução com nuances culturais</li>
+              </ul>
+            </div>
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">Prompt para Prática</h5>
+              <p class="text-neutral-300 text-sm">"Vamos ter uma conversa em [idioma] sobre [tema]. Corrija meus erros gentilmente e sugira formas mais naturais de expressar minhas ideias."</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">Desenvolvimento de Habilidades Técnicas</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">Aprenda programação, design, análise de dados e mais com ajuda da IA.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Programação com IA</h5>
+              <ul class="text-neutral-300 space-y-1">
+                <li>• Explicação linha por linha de código</li>
+                <li>• Debug com explicações detalhadas</li>
+                <li>• Projetos práticos guiados</li>
+                <li>• Refatoração com explicação do porquê</li>
+              </ul>
+            </div>
+            <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+              <h5 class="font-bold text-red-400 mb-2">Dica Chave</h5>
+              <p class="text-neutral-300 text-sm">Sempre peça para a IA explicar o "porquê", não só o "como". Entenda os princípios, não só copie código.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">Evitando Armadilhas do Aprendizado</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">Cuidados para que a IA ajude, não atrapalhe, seu aprendizado.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Armadilhas Comuns</h5>
+              <ul class="text-neutral-300 space-y-1">
+                <li>• Dependência excessiva (não pensar por conta própria)</li>
+                <li>• Aceitar respostas sem questionar</li>
+                <li>• Pular etapas fundamentais</li>
+                <li>• Não praticar ativamente</li>
+                <li>• Ilusão de competência</li>
+              </ul>
+            </div>
+            <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+              <h5 class="font-bold text-yellow-400 mb-2">Como Evitar</h5>
+              <p class="text-neutral-300 text-sm">Tente resolver primeiro sozinho. Use IA para verificar e aprofundar, não para substituir seu esforço mental.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">Exercício: Sessão de Aprendizado</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">Aplique as técnicas aprendidas em uma sessão prática.</p>
+              <h5 class="font-bold text-yellow-400 mb-2">Desafio</h5>
+              <ol class="text-neutral-300 space-y-2 list-decimal list-inside">
+                <li>Escolha algo que você quer aprender</li>
+                <li>Peça um plano de estudos de 1 semana</li>
+                <li>Solicite explicação do primeiro conceito</li>
+                <li>Faça 3 exercícios práticos</li>
+                <li>Peça um resumo do que aprendeu</li>
+                <li>Identifique próximos passos</li>
+              </ol>
+            </div>
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">Meta</h5>
+              <p class="text-neutral-300 text-sm">Ao final, você terá experimentado um ciclo completo de aprendizado assistido por IA. Use esse modelo para qualquer área!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">IA como tutor disponível 24/7</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Método socrático para aprendizado profundo</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Planos de estudo personalizados</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Explicações em múltiplos níveis</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Exercícios ilimitados e feedback</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Use com responsabilidade, não dependência</span></div>
+        </div>
+        <div class="text-center">
+          <a href="trilha01.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-dark-900 rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 0</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="flex justify-between items-center">
+      <a href="modulo-0-8.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        <span>Módulo 0.8</span>
+      </a>
+      <a href="modulo-0-10.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-yellow-500 text-dark-900 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+        <span>Próximo: Módulo 0.10</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </main>
+
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">SHIA - Super Humanos Inteligência Aumentada | Trilha 0 - Módulo 0.9</p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
         document.documentElement.classList.add('dark');
-        
-        // Topic toggles
-        document.querySelectorAll('.topic-toggle').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const arrow = button.querySelector('span:last-child');
-                content.classList.toggle('open');
-                arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : '';
-            });
-        });
-    </script>
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
 </body>
 </html>
