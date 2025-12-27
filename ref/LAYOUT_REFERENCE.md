@@ -104,33 +104,48 @@ Documentação do sistema de layout e design utilizado nas páginas de conteúdo
 
 ### 3.1 Navigation Global (Sticky Top)
 
-O menu global aparece em **todas as páginas** com logo, link INEMA.CLUB, links para trilhas e toggle de tema:
+> ⚠️ **OBRIGATÓRIO**: O menu global DEVE aparecer em **TODAS as páginas** do curso, sem exceção.
+
+#### Elementos Obrigatórios do Menu:
+
+1. **Logo SHIA** (🧠) - Link para index.html
+2. **INEMA.CLUB** - Link externo OBRIGATÓRIO em sky-400, abre em nova aba
+3. **Links para TODAS as 4 Trilhas** (0, 1, 2, 3) - Sempre visíveis
+4. **Theme Toggle** - Botão para alternar dark/light mode
 
 ```html
-<!-- Navigation Global -->
+<!-- Navigation Global - OBRIGATÓRIO EM TODAS AS PÁGINAS -->
 <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-14">
-      <!-- Logo + INEMA.CLUB -->
-      <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
-        <span class="text-2xl">🍌</span>
-        <span class="font-bold text-lg hidden sm:inline">Nano Banana</span>
-      </a>
-      <span class="text-neutral-500 hidden sm:inline mx-2">|</span>
-      <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
-        INEMA.CLUB
-      </a>
+      <!-- Logo + INEMA.CLUB (OBRIGATÓRIO) -->
+      <div class="flex items-center space-x-3">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+          <span class="text-2xl">🧠</span>
+          <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+        </a>
+        <span class="text-neutral-500 hidden sm:inline">|</span>
+        <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+          INEMA.CLUB
+        </a>
+      </div>
 
-      <!-- Trilhas + Theme Toggle -->
+      <!-- TODAS as 4 Trilhas + Theme Toggle (OBRIGATÓRIO) -->
       <div class="flex items-center space-x-1 sm:space-x-2">
-        <!-- Trilha ativa: adicionar bg-[COR]-500/20 border border-[COR]-500/30 -->
-        <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+        <!-- Trilha 0 - Amarelo -->
+        <a href="curso/trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+          <span class="hidden sm:inline">Trilha </span>0
+        </a>
+        <!-- Trilha 1 - Verde -->
+        <a href="curso/trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
           <span class="hidden sm:inline">Trilha </span>1
         </a>
-        <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+        <!-- Trilha 2 - Azul -->
+        <a href="curso/trilha2/trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
           <span class="hidden sm:inline">Trilha </span>2
         </a>
-        <a href="../trilha3/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+        <!-- Trilha 3 - Roxo -->
+        <a href="curso/trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
           <span class="hidden sm:inline">Trilha </span>3
         </a>
 
@@ -144,15 +159,25 @@ O menu global aparece em **todas as páginas** com logo, link INEMA.CLUB, links 
 </nav>
 ```
 
+#### Cores das Trilhas (OBRIGATÓRIO)
+
+| Trilha | Cor | Classes Ativa | Classes Inativa |
+|--------|-----|---------------|-----------------|
+| **Trilha 0** | Amarelo | `bg-yellow-500/20 text-yellow-400 border border-yellow-500/30` | `text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10` |
+| **Trilha 1** | Verde | `bg-emerald-500/20 text-emerald-400 border border-emerald-500/30` | `text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10` |
+| **Trilha 2** | Azul | `bg-blue-500/20 text-blue-400 border border-blue-500/30` | `text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10` |
+| **Trilha 3** | Roxo | `bg-purple-500/20 text-purple-400 border border-purple-500/30` | `text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10` |
+
 **Propriedades:**
 - Posição: `sticky top-0`
 - Z-index: `50`
 - Altura: `h-14` (56px)
 - Background: `bg-dark-900/95 backdrop-blur-sm`
-- Logo: 🍌 Nano Banana (yellow-400)
-- **INEMA.CLUB**: Link externo em sky-400 (azul claro), separado por `|`, abre em nova aba
+- Logo: 🧠 SHIA (yellow-400)
+- **INEMA.CLUB**: OBRIGATÓRIO - Link externo em sky-400 (azul claro), separado por `|`, abre em nova aba
+- **4 Trilhas**: OBRIGATÓRIO - Todas sempre visíveis no menu
 - Trilha ativa: fundo e borda coloridos
-- Responsivo: texto compacto em mobile (INEMA.CLUB e separador ocultos)
+- Responsivo: texto compacto em mobile
 
 ### 3.2 Header do Módulo
 ```html
@@ -421,10 +446,75 @@ Todas as páginas usam `max-w-4xl` para largura máxima do conteúdo:
 
 ---
 
-## 10. Checklist de Criação de Página
+## 10. Especificações de Imagens
+
+> ⚠️ **OBRIGATÓRIO**: Todas as imagens do projeto devem seguir estas especificações para garantir performance.
+
+### Formato e Otimização
+
+| Propriedade | Valor | Descrição |
+|-------------|-------|-----------|
+| **Formato** | WebP | Obrigatório - melhor compressão |
+| **Largura máxima** | 1200px | Redimensionar imagens maiores |
+| **Qualidade** | 80 | Balanço entre qualidade e tamanho |
+| **Otimização** | optimize=True | Usar compressão otimizada |
+
+### Script de Otimização (Python/Pillow)
+
+```python
+from PIL import Image
+import os
+
+def optimize_image(filepath, max_width=1200, quality=80):
+    img = Image.open(filepath)
+
+    # Redimensiona se maior que max_width
+    if img.size[0] > max_width:
+        ratio = max_width / img.size[0]
+        new_height = int(img.size[1] * ratio)
+        img = img.resize((max_width, new_height), Image.LANCZOS)
+
+    # Salva como WebP otimizado
+    output_path = filepath.rsplit('.', 1)[0] + '.webp'
+    img.save(output_path, 'WEBP', quality=quality, optimize=True)
+    return output_path
+```
+
+### Estrutura de Pastas de Imagens
+
+```
+doc/imagens/
+├── geral/           # Imagens da página principal
+├── introducao/      # Trilha 0
+├── arte/            # Trilha 1
+├── engenharia/      # Trilha 2
+└── educadores/      # Trilha 3
+```
+
+### Uso em HTML
+
+```html
+<img
+  src="doc/imagens/geral/nome_imagem.webp"
+  alt="Descrição acessível da imagem"
+  class="w-full max-w-4xl mx-auto rounded-2xl shadow-xl border border-dark-600/50"
+/>
+```
+
+### Checklist de Imagens
+
+- [ ] Formato WebP (não PNG/JPG)
+- [ ] Largura máxima 1200px
+- [ ] Qualidade 80
+- [ ] Alt text descritivo
+- [ ] Classes de estilo consistentes
+
+---
+
+## 11. Checklist de Criação de Página
 
 - [ ] Estrutura HTML base com Tailwind config
-- [ ] Navigation sticky com link de volta
+- [ ] Navigation sticky com INEMA.CLUB e 4 trilhas (OBRIGATÓRIO)
 - [ ] Header com badge, título e descrição
 - [ ] Stats banner (se aplicável)
 - [ ] Seções com gradiente para conceitos principais
@@ -435,3 +525,4 @@ Todas as páginas usam `max-w-4xl` para largura máxima do conteúdo:
 - [ ] Script de inicialização do tema
 - [ ] Verificar responsividade
 - [ ] Verificar dark/light mode
+- [ ] Imagens otimizadas (WebP, 1200px, quality 80)
