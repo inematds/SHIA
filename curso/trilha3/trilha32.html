@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 3: Consultoria - Parte 2 | SHIA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .border-dark-700 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-200 { color: #334155 !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">
+        TRILHA 3 - PARTE 2: CONSULTORIA
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+        🎯 Escala, ROI e Liderança
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto">
+        Estruture entregas, escale serviços, meça ROI e lidere com responsabilidade na era da IA.
+      </p>
+    </div>
+
+    <!-- Imagem de Capa -->
+    <div class="mb-12">
+      <img
+        src="../../doc/imagens/educadores/capa_trilha_educadores.webp"
+        alt="Trilha Consultoria: Escala e Liderança"
+        class="w-full max-w-4xl mx-auto rounded-2xl shadow-xl border border-dark-600/50"
+      />
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">5</div>
+        <div class="text-xs text-neutral-400">Módulos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">50</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">Parte 2</div>
+        <div class="text-xs text-neutral-400">de 2</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">~5h</div>
+        <div class="text-xs text-neutral-400">Conteúdo</div>
+      </div>
+    </div>
+
+    <!-- Navigation Parts -->
+    <div class="flex justify-center gap-4 mb-12">
+      <a href="trilha31.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-xl font-bold hover:bg-dark-600 transition-colors border border-dark-600">
+        Parte 1 (1-5)
+      </a>
+      <a href="trilha32.html" class="px-6 py-3 bg-purple-500 text-dark-900 rounded-xl font-bold hover:bg-purple-400 transition-colors">
+        Parte 2 (6-10)
+      </a>
+    </div>
+
+    <!-- Modules -->
+    <div class="space-y-6">
+
+      <!-- Módulo 3.6 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 font-bold text-lg mr-4">
+              3.6
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Formatos de Entrega de Consultoria Aumentada</h2>
+              <p class="text-sm text-neutral-400">Diversificar formatos de serviço e maximizar impacto</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📋 Tipos de Entrega: Mentoria, Imersão, Workshop
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Diferentes formatos de consultoria: mentorias individuais, imersões intensivas e workshops em grupo.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Diversificar formatos permite atingir diferentes segmentos e necessidades de clientes.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Formatos de serviço, precificação diferenciada, modelos de entrega, segmentação.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🎓 Desenhando Workshops com IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Como estruturar workshops interativos e envolventes usando IA para gerar conteúdo e exercícios.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Workshops são altamente lucrativos e escaláveis com preparação adequada.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Design instrucional, engajamento, exercícios práticos, dinâmicas de grupo.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🏊 Imersões Intensivas de Transformação
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Programas intensivos de 2-5 dias para transformação acelerada de empresas ou equipes.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Imersões geram resultados rápidos e são percebidas como alto valor pelos clientes.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Sprint de transformação, facilitação intensiva, resultados rápidos, momentum.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              👤 Mentorias 1:1 Potencializadas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Usar IA para preparar, personalizar e acompanhar mentorias individuais de alto impacto.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Mentorias premium são o formato de maior ticket e maior satisfação do cliente.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Personalização, preparação com IA, follow-up automatizado, accountability.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📹 Conteúdo Assíncrono com IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Criar vídeos, cursos online, documentos e materiais de apoio usando IA para escalar conhecimento.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Conteúdo assíncrono permite escalar sem limite de participantes.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Escalabilidade, renda passiva, produção de conteúdo, plataformas LMS.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🔄 Programas Híbridos
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Combinar formatos síncronos e assíncronos para máxima efetividade e conveniência.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Híbridos oferecem melhor custo-benefício tanto para consultor quanto para cliente.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Blended learning, flipped classroom, otimização de tempo, flexibilidade.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📊 Materiais e Templates Automatizados
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Criar biblioteca de templates, frameworks e materiais reutilizáveis gerados com IA.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Automatização de materiais aumenta drasticamente eficiência operacional.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Templates reutilizáveis, personalização em escala, biblioteca de assets.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🎯 Personalizando Formatos por Cliente
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Adaptar formato de entrega baseado em perfil, maturidade, orçamento e objetivos do cliente.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Personalização aumenta taxa de conversão e satisfação do cliente.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Diagnóstico de necessidades, proposta customizada, fit cliente-formato.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              💰 Precificação de Cada Formato
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Estratégias de pricing específicas para workshops, mentorias, imersões e conteúdo digital.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Pricing correto maximiza receita sem deixar dinheiro na mesa.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Value-based pricing, tiering, upselling, downselling, pacotes.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📈 Medindo Efetividade das Entregas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Definir KPIs e métodos para avaliar sucesso de cada formato de entrega.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Medição permite melhoria contínua e comprovação de valor para clientes.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> KPIs de entrega, feedback, NPS, resultados mensuráveis, melhoria contínua.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(6)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-3-6.html" class="flex-1 px-4 py-2 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg text-sm font-medium text-purple-400 transition-colors flex items-center justify-center border border-purple-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 3.7 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 font-bold text-lg mr-4">
+              3.7
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Biblioteca de Prompts para Consultoria</h2>
+              <p class="text-sm text-neutral-400">Construir arsenal de prompts reutilizáveis e valiosos</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📚 O Valor de uma Biblioteca de Prompts
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Uma biblioteca organizada de prompts testados e validados é um ativo valioso de negócio.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Reduz tempo de preparação, garante qualidade e pode ser monetizada.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Knowledge base, intellectual property, reutilização, sistematização.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🏗️ Estruturando sua Biblioteca
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Como organizar prompts por categoria, caso de uso, indústria e nível de complexidade.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Organização eficiente facilita acesso rápido e descoberta de prompts certos.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Taxonomia, categorização, tags, search, metadata.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📝 Prompts para Diagnóstico
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Prompts especializados em análise de problemas, identificação de gaps, assessment de maturidade.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Diagnóstico é a base de qualquer projeto de consultoria bem-sucedido.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Problem discovery, gap analysis, maturity assessment, diagnostic frameworks.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              💡 Prompts para Geração de Ideias
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Prompts que facilitam brainstorming, inovação, ideação e soluções criativas.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Clientes valorizam consultores que trazem ideias frescas e inovadoras.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Brainstorming, creative thinking, ideation, innovation frameworks.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📊 Prompts para Análise de Dados
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Prompts para interpretar dados, identificar padrões, gerar insights e recomendações.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Transformar dados em insights acionáveis é competência essencial do consultor.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Data interpretation, pattern recognition, insights, recommendations.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              ✍️ Prompts para Criação de Conteúdo
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Prompts para criar slides, documentos, artigos, posts e materiais de marketing.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Consultores passam muito tempo criando conteúdo - acelerar isso libera tempo para estratégia.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Content generation, copywriting, documentation, marketing materials.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📋 Prompts para Relatórios e Apresentações
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Prompts especializados em estruturar e escrever relatórios executivos e apresentações impactantes.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Comunicação de resultados é tão importante quanto os resultados em si.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Executive summaries, storytelling, visual communication, impact.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🔄 Versionamento e Melhoria Contínua
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Sistema para versionar prompts, testar variações, medir performance e iterar.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Prompts evoluem - ter sistema de melhoria contínua aumenta qualidade ao longo do tempo.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Version control, A/B testing, performance metrics, iteration.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              👥 Compartilhando com a Equipe
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Como democratizar acesso à biblioteca dentro da equipe mantendo controle e governança.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Equipe usando mesma biblioteca garante consistência e qualidade em escala.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Knowledge sharing, team collaboration, access control, training.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              💼 Prompts como Ativo de Negócio
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Biblioteca de prompts pode ser vendida, licenciada ou usada como diferencial competitivo.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Prompts de qualidade são propriedade intelectual valiosa que pode gerar receita adicional.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> IP monetization, licensing, competitive advantage, productization.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(7)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-3-7.html" class="flex-1 px-4 py-2 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg text-sm font-medium text-purple-400 transition-colors flex items-center justify-center border border-purple-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 3.8 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 font-bold text-lg mr-4">
+              3.8
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Escala de Serviços com Automação e IA</h2>
+              <p class="text-sm text-neutral-400">Crescer sem perder qualidade ou aumentar custos proporcionalmente</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🚀 O Desafio de Escalar Consultoria
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Consultoria tradicional é limitada por tempo - IA permite quebrar esse limite.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Escalar é essencial para crescimento sustentável e impacto massivo.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Time constraints, leverage, scalability, automation, growth.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🔄 Identificando Processos Automatizáveis
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Mapeamento de processos repetitivos que podem ser automatizados com IA.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Identificar oportunidades de automação é primeiro passo para escalar.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Process mapping, automation opportunities, ROI analysis, prioritization.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🤖 Chatbots e Assistentes para Clientes
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Assistentes virtuais que respondem dúvidas, fornecem recursos e suportam clientes 24/7.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Chatbots escalam suporte sem aumentar equipe.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Conversational AI, knowledge bases, customer support automation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📊 Dashboards Automatizados
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Painéis que atualizam automaticamente com KPIs, progresso e insights para clientes.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Dashboards reduzem drasticamente tempo gasto em relatórios manuais.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Real-time reporting, data visualization, automated insights, self-service.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              ✍️ Geração de Relatórios em Escala
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Usar IA para gerar relatórios personalizados automaticamente baseados em templates e dados.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Automatizar relatórios libera tempo para análise estratégica.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Template-based generation, data integration, personalization at scale.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📧 Comunicação Automatizada
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> E-mails, updates, lembretes e follow-ups personalizados enviados automaticamente.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Comunicação consistente mantém clientes engajados sem esforço manual.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Marketing automation, CRM integration, drip campaigns, triggers.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              👥 Mantendo o Toque Humano
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Equilibrar automação com interações humanas genuínas nos momentos que importam.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Clientes valorizam eficiência mas ainda querem conexão humana em pontos críticos.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Human-AI balance, high-touch moments, relationship building, empathy.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              💰 Modelos de Negócio Escaláveis
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Subscription, self-service, freemium, tiered - modelos que escalam receita sem escalar custos.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Modelo de negócio certo é fundamental para crescimento sustentável.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Business models, pricing tiers, recurring revenue, unit economics.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🏗️ Infraestrutura para Escala
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Ferramentas, plataformas, sistemas e processos necessários para operar em escala.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Infraestrutura adequada previne gargalos conforme você cresce.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Tech stack, integrations, scalability, reliability, security.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📈 Métricas de Crescimento Sustentável
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> KPIs para monitorar saúde do crescimento: CAC, LTV, churn, NPS, margem.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Crescimento sem métricas pode levar a problemas de sustentabilidade.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Growth metrics, unit economics, sustainable growth, profitability.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(8)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-3-8.html" class="flex-1 px-4 py-2 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg text-sm font-medium text-purple-400 transition-colors flex items-center justify-center border border-purple-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 3.9 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 font-bold text-lg mr-4">
+              3.9
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Medindo ROI e Comunicando Valor</h2>
+              <p class="text-sm text-neutral-400">Provar impacto tangível e justificar investimento em IA</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              💰 Por que ROI é Crítico em Projetos de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Executivos precisam justificar investimentos - demonstrar ROI é essencial para renovações e referências.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Consultores que provam valor ganham mais projetos e cobram mais.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Business case, value demonstration, stakeholder management, renewals.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📊 Definindo Métricas de Sucesso
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Estabelecer KPIs claros e mensuráveis desde o início do projeto.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Sem métricas claras, impossível provar sucesso objetivamente.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> KPI definition, baseline measurement, targets, alignment.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🧮 Calculando ROI: Fórmulas e Métodos
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Métodos práticos para calcular retorno sobre investimento de iniciativas de IA.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> ROI bem calculado é argumento irrefutável para stakeholders financeiros.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> ROI formula, cost-benefit analysis, payback period, NPV.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📈 Quantificando Benefícios Intangíveis
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Como medir benefícios difíceis de quantificar: moral, satisfação, reputação, inovação.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Muitos benefícios de IA são intangíveis - saber quantificá-los aumenta valor percebido.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Intangible benefits, proxy metrics, qualitative to quantitative.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📋 Criando Dashboards de Valor
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Painéis visuais que mostram impacto em tempo real para stakeholders.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Dashboards tornam valor visível e tangível continuamente.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Value visualization, real-time tracking, stakeholder communication.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🗣️ Storytelling com Dados
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Transformar números em narrativas compelling que engajam emocionalmente.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Dados sem contexto narrativo não inspiram ação.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Data storytelling, emotional connection, narrative arc, impact stories.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📑 Relatórios Executivos
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Estruturar relatórios concisos e impactantes para C-level focados em resultados de negócio.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Executivos têm pouco tempo - comunicação eficiente é essencial.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Executive summary, business language, conciseness, actionability.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🎯 Comunicando para Diferentes Stakeholders
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Adaptar mensagem e métricas para CFO, CTO, CEO, usuários finais - cada um valoriza coisas diferentes.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Comunicação eficaz com todos stakeholders garante suporte contínuo.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Stakeholder mapping, tailored communication, WIIFM (What's In It For Me).</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🔄 Acompanhamento Pós-Projeto
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Monitorar resultados após implementação para demonstrar valor de longo prazo.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Valor real de IA se materializa ao longo do tempo - acompanhamento prova isso.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Long-term tracking, sustained value, optimization, maintenance.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🏆 Case Studies de Sucesso
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Documentar e compartilhar histórias de sucesso para marketing e vendas futuras.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Case studies são ferramenta de vendas mais poderosa para consultores.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Case study structure, social proof, results documentation, permission.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(9)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-3-9.html" class="flex-1 px-4 py-2 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg text-sm font-medium text-purple-400 transition-colors flex items-center justify-center border border-purple-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 3.10 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 font-bold text-lg mr-4">
+              3.10
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Ética, Governança e Futuro da Consultoria</h2>
+              <p class="text-sm text-neutral-400">Liderar com responsabilidade e preparar-se para o futuro</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              ⚖️ Princípios Éticos na Consultoria com IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Framework ético para consultoria em IA: transparência, responsabilidade, fairness, beneficência.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Ética não é opcional - é fundação de prática sustentável e respeitada.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Ethical principles, responsible AI, transparency, accountability.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🔒 Privacidade e Proteção de Dados
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Como garantir privacidade e segurança de dados sensíveis de clientes em projetos de IA.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Violações de privacidade podem destruir reputação e gerar processos.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> GDPR, LGPD, data protection, encryption, anonymization.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🎭 Transparência com Clientes
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Ser honesto sobre capacidades, limitações e riscos de IA - não vender milagres.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Transparência constrói confiança e previne expectativas irrealistas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Honest communication, managing expectations, limitations, risks.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📋 Frameworks de Governança de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Implementar estruturas de governança para uso responsável de IA nas organizações.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Governança previne problemas e demonstra maturidade organizacional.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> AI governance, policies, committees, oversight, accountability.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              ⚠️ Gestão de Riscos Éticos
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Identificar, avaliar e mitigar riscos éticos em projetos de IA.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Gestão proativa de riscos previne crises e danos à reputação.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Risk assessment, mitigation strategies, ethics review, red flags.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🌍 Impacto Social e Ambiental
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Considerar impacto social e ambiental de projetos de IA - desemprego, sustentabilidade, desigualdade.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> IA tem poder de transformar sociedade - consultores têm responsabilidade de direcionar positivamente.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Social impact, environmental sustainability, job displacement, inequality.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              📜 Regulamentação e Compliance
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Navegar cenário regulatório emergente de IA (EU AI Act, legislações nacionais).</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Compliance é obrigatório e tende a ficar mais rigoroso - antecipar protege clientes.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> AI regulation, compliance, legal requirements, policy landscape.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🔮 Tendências Futuras da Consultoria
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> AGI, agentes autônomos, metaverso, IA multimodal - como consultoria evoluirá.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Antecipar futuro permite posicionamento estratégico e relevância contínua.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Future trends, AGI, autonomous agents, emerging technologies.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🎯 Posicionamento Estratégico
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Como se posicionar como autoridade e referência em consultoria com IA no mercado.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Posicionamento forte atrai clientes ideais e permite pricing premium.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Personal branding, thought leadership, authority building, differentiation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-purple-400 mr-2">▸</span>
+              🚀 Liderando a Transformação com Responsabilidade
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-purple-900/20 rounded-lg border-l-4 border-purple-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">O que é:</strong> Consultores de IA são líderes de mudança - como exercer essa liderança com sabedoria e responsabilidade.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-purple-400">Por que aprender:</strong> Com grande poder vem grande responsabilidade - liderar transformação exige consciência e ética.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-purple-400">Conceitos-chave:</strong> Change leadership, responsibility, legacy, impact, purpose-driven consulting.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(10)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-3-10.html" class="flex-1 px-4 py-2 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg text-sm font-medium text-purple-400 transition-colors flex items-center justify-center border border-purple-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Bottom -->
+    <div class="flex justify-center gap-4 mt-12">
+      <a href="trilha31.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-xl font-bold hover:bg-dark-600 transition-colors border border-dark-600">
+        ← Parte 1 (1-5)
+      </a>
+      <a href="trilha32.html" class="px-6 py-3 bg-purple-500 text-dark-900 rounded-xl font-bold hover:bg-purple-400 transition-colors">
+        Parte 2 (6-10)
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Modal -->
+  <div id="module-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+      <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+      <div class="relative bg-dark-800 rounded-2xl border border-dark-600 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div class="sticky top-0 bg-dark-800 border-b border-dark-600 px-6 py-4 flex justify-between items-center z-10">
+          <h2 id="modal-title" class="text-xl font-bold text-purple-400"></h2>
+          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
+            <svg class="w-6 h-6 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="p-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Module URLs - carrega conteúdo completo das páginas dos módulos
+    const moduleUrls = {
+      6: 'modulo-3-6.html',
+      7: 'modulo-3-7.html',
+      8: 'modulo-3-8.html',
+      9: 'modulo-3-9.html',
+      10: 'modulo-3-10.html'
+    };
+
+    // Open Modal - carrega conteúdo da página do módulo
+    async function openModal(moduleNum) {
+      const modal = document.getElementById('module-modal');
+      const title = document.getElementById('modal-title');
+      const content = document.getElementById('modal-content');
+
+      // Mostra loading
+      title.textContent = 'Carregando...';
+      content.innerHTML = '<div class="text-center py-8"><div class="animate-spin w-8 h-8 border-2 border-purple-400 border-t-transparent rounded-full mx-auto"></div></div>';
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      try {
+        const response = await fetch(moduleUrls[moduleNum]);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Pega o título do módulo
+        const moduleTitle = doc.querySelector('h1');
+        title.textContent = moduleTitle ? moduleTitle.textContent : `Módulo 3.${moduleNum}`;
+
+        // Pega o conteúdo principal (seção de tópicos)
+        const mainContent = doc.querySelector('main');
+        if (mainContent) {
+          // Remove navegação e elementos desnecessários
+          const clone = mainContent.cloneNode(true);
+          clone.querySelectorAll('nav, .navigation-buttons, footer').forEach(el => el.remove());
+
+          // Remove o header duplicado (já temos no modal)
+          const header = clone.querySelector('.text-center.mb-8, .text-center.mb-12');
+          if (header) header.remove();
+
+          content.innerHTML = '';
+          content.appendChild(clone);
+        }
+      } catch (error) {
+        content.innerHTML = '<p class="text-red-400 text-center py-8">Erro ao carregar conteúdo. <a href="' + moduleUrls[moduleNum] + '" class="underline">Clique aqui para abrir a página completa.</a></p>';
+      }
+    }
+
+    // Close Modal
+    function closeModal() {
+      const modal = document.getElementById('module-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Toggle Topic
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const arrow = button.querySelector('span:first-child');
+
+      if (explanation.classList.contains('hidden')) {
+        explanation.classList.remove('hidden');
+        arrow.textContent = '▾';
+      } else {
+        explanation.classList.add('hidden');
+        arrow.textContent = '▸';
+      }
+    }
+
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

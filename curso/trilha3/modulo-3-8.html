@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3.8: Escala de Serviços com IA | SHIA</title>
+  <meta name="description" content="Escale seu atendimento sem perder o toque humano que faz a diferença.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A855F7',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="./" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 3.8 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">🚀 Escala de Serviços de Consultoria com Automação e IA</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Escale seu atendimento sem perder o toque humano que faz a diferença.
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-8 border border-purple-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-purple-400">Conceito Central</h2>
+            <p class="text-neutral-400">A fórmula para crescer mantendo a excelência</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-purple-500 pl-6 mb-6">
+          "Escalar consultoria = Automatizar o <strong class="text-purple-400">repetitivo</strong>, humanizar o <strong class="text-purple-400">estratégico</strong>."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          O grande desafio da consultoria sempre foi conciliar crescimento com qualidade. Como atender mais clientes sem diluir o valor que você entrega? A resposta está em <strong>identificar o que pode ser automatizado</strong> e <strong>reservar seu talento para o que realmente importa</strong>.
+        </p>
+
+        <p class="text-neutral-300">
+          A IA permite que você crie <strong>sistemas escaláveis</strong> que lidam com tarefas operacionais, comunicação padrão e análises de dados, enquanto você foca no pensamento estratégico, relacionamento com clientes e insights de alto valor que nenhuma máquina pode replicar.
+        </p>
+      </div>
+    </section>
+
+    <!-- Imagem do Conceito -->
+    <section class="mb-12">
+      <img src="../../doc/imagens/educadores/escala_sem_perder_humano.webp"
+           alt="Escala de serviços mantendo o toque humano"
+           class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+      <p class="text-center text-neutral-500 text-sm">Crescimento inteligente: automação + humanização</p>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">🚀 O Desafio de Escalar Consultoria</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Consultoria é um negócio baseado em <strong class="text-purple-400">tempo e expertise</strong>. O modelo tradicional é limitado: mais clientes = mais horas trabalhadas = menos tempo para cada um. Esse é o <strong>"teto de vidro"</strong> da consultoria.
+                </p>
+                <p class="text-neutral-300">
+                  O segredo para romper esse teto é <strong>desacoplar valor de tempo</strong>. Você precisa criar sistemas que entreguem resultados consistentes sem exigir sua presença constante em cada etapa do processo.
+                </p>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30 mb-4">
+                <h5 class="font-bold text-red-400 mb-2">⚠️ Armadilhas Comuns</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Você é o gargalo:</strong> Todo cliente precisa falar com você</li>
+                  <li>• <strong>Retrabalho constante:</strong> Mesmas perguntas, mesmas análises</li>
+                  <li>• <strong>Onboarding manual:</strong> Horas explicando os mesmos conceitos</li>
+                  <li>• <strong>Reporting artesanal:</strong> Relatórios criados do zero toda vez</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  Escala não significa menos qualidade. Significa <strong>distribuir sua expertise de forma mais inteligente</strong> através de sistemas automatizados.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">🔄 Processos Automatizáveis</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Nem tudo pode (ou deve) ser automatizado. O primeiro passo é <strong>mapear seus processos</strong> e identificar o que é repetitivo vs. estratégico.
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                  <h5 class="font-bold text-emerald-400 mb-2">✓ Automatizar</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• Coleta de dados iniciais</li>
+                    <li>• Análises padrão</li>
+                    <li>• Relatórios de progresso</li>
+                    <li>• FAQs e dúvidas comuns</li>
+                    <li>• Agendamentos</li>
+                    <li>• Follow-ups automáticos</li>
+                  </ul>
+                </div>
+
+                <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                  <h5 class="font-bold text-yellow-400 mb-2">👤 Manter Humano</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• Diagnóstico estratégico</li>
+                    <li>• Recomendações customizadas</li>
+                    <li>• Negociações</li>
+                    <li>• Gestão de crises</li>
+                    <li>• Mentoria e coaching</li>
+                    <li>• Revisões estratégicas</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Analise meu processo de consultoria e identifique: 1) Tarefas que se repetem em todo projeto, 2) Pontos onde clientes fazem as mesmas perguntas, 3) Análises que seguem templates. Liste oportunidades de automação."
+                </code>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">🤖 Chatbots para Clientes</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Um chatbot bem implementado pode responder 80% das dúvidas de clientes, qualificar leads, agendar reuniões e até coletar informações preliminares para diagnósticos.
+                </p>
+                <p class="text-neutral-300">
+                  A chave é <strong>treinar o bot com sua voz</strong> e seus conhecimentos, tornando-o uma extensão autêntica do seu serviço.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-2">🛠️ Ferramentas Recomendadas</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Manychat / MobileMonkey:</strong> WhatsApp e Instagram</li>
+                  <li>• <strong>Drift / Intercom:</strong> Chat no site com IA</li>
+                  <li>• <strong>Voiceflow:</strong> Criar assistentes conversacionais</li>
+                  <li>• <strong>CustomGPTs (OpenAI):</strong> Bot personalizado com sua base</li>
+                </ul>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Use Cases</h5>
+                <p class="text-neutral-300 text-sm mb-2"><strong>Onboarding automatizado:</strong> "Olá! Vou coletar algumas informações para nosso primeiro encontro ser mais produtivo..."</p>
+                <p class="text-neutral-300 text-sm"><strong>FAQ inteligente:</strong> "Com base no seu plano, essa funcionalidade está disponível em..."</p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">📊 Dashboards Automatizados</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Clientes querem <strong>visibilidade em tempo real</strong>. Dashboards automatizados eliminam a necessidade de reuniões de status e emails de atualização.
+                </p>
+                <p class="text-neutral-300">
+                  Ferramentas como <strong>Looker Studio (Google)</strong>, <strong>Power BI</strong> ou <strong>Tableau</strong> permitem criar painéis que se atualizam automaticamente com dados de CRMs, planilhas e APIs.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">📈 Métricas Essenciais</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Progresso do projeto (% concluído)</li>
+                  <li>• KPIs acordados (vendas, tráfego, conversão)</li>
+                  <li>• Tarefas pendentes e próximos passos</li>
+                  <li>• ROI calculado automaticamente</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Benefício</h5>
+                <p class="text-neutral-300 text-sm">
+                  Cliente acessa o dashboard a qualquer momento, vê resultados, e você economiza 3-5 horas semanais em reuniões de status.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">✍️ Relatórios em Escala</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Relatórios são essenciais, mas consomem tempo. A solução: <strong>templates + IA generativa</strong>.
+                </p>
+                <p class="text-neutral-300">
+                  Crie um template com sua estrutura padrão. Use IA para preencher seções com dados do cliente, gerar insights e formatar resultados. Você revisa e adiciona o toque final estratégico.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30 mb-4">
+                <h5 class="font-bold text-yellow-400 mb-2">📝 Estrutura de Template</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>1. <strong>Executive Summary:</strong> IA resume principais pontos</li>
+                  <li>2. <strong>Dados e Análises:</strong> Gráficos automáticos</li>
+                  <li>3. <strong>Insights:</strong> IA identifica padrões</li>
+                  <li>4. <strong>Recomendações:</strong> Você personaliza estratégias</li>
+                  <li>5. <strong>Próximos Passos:</strong> Action items claros</li>
+                </ul>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Com base nestes dados [colar planilha], crie um executive summary destacando: 1) principais conquistas do mês, 2) áreas de atenção, 3) comparação com meta. Tom profissional mas acessível."
+                </code>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">📧 Comunicação Automatizada</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Sequências de email automatizadas garantem que nenhum cliente seja esquecido e que todos recebam comunicação consistente.
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                  <h5 class="font-bold text-purple-400 mb-2">📬 Onboarding</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>Dia 0: Boas-vindas + próximos passos</li>
+                    <li>Dia 2: Como funciona o processo</li>
+                    <li>Dia 7: Check-in inicial</li>
+                  </ul>
+                </div>
+
+                <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                  <h5 class="font-bold text-blue-400 mb-2">🔄 Follow-ups</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>Lembretes de tarefas pendentes</li>
+                    <li>Solicitação de feedback</li>
+                    <li>Oportunidades de upsell</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🛠️ Ferramentas</h5>
+                <p class="text-neutral-300 text-sm">
+                  <strong>ActiveCampaign, ConvertKit, HubSpot, Mailchimp</strong> - Automações condicionais baseadas em comportamento.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">👥 Mantendo o Toque Humano</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Automação sem humanização vira <strong>frieza</strong>. O segredo é usar a automação para <strong>criar mais espaço para conexões genuínas</strong>.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30 mb-4">
+                <h5 class="font-bold text-yellow-400 mb-2">⚖️ O Equilíbrio</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Automatize:</strong> Coleta de dados, análises padrão, FAQs</li>
+                  <li>• <strong>Humanize:</strong> Check-ins pessoais, revisões estratégicas, celebrações</li>
+                  <li>• <strong>Personalize automações:</strong> Use nome, histórico, preferências</li>
+                  <li>• <strong>Surpreenda:</strong> Vídeos personalizados, notas manuscritas (digitalizadas)</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">💎 Golden Rule</h5>
+                <p class="text-neutral-300 text-sm">
+                  "Automatize tarefas, não relacionamentos. Use a eficiência conquistada para estar <strong>mais presente</strong> nos momentos que importam."
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">💰 Modelos de Negócio Escaláveis</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Escalar consultoria exige repensar o modelo de negócio. <strong>Hora faturável</strong> não escala. <strong>Valor entregue</strong> escala.
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                  <h5 class="font-bold text-red-400 mb-2">❌ Não Escala</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• Hora faturável</li>
+                    <li>• Projetos 100% customizados</li>
+                    <li>• Você faz tudo sozinho</li>
+                  </ul>
+                </div>
+
+                <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                  <h5 class="font-bold text-emerald-400 mb-2">✓ Escala</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• Pacotes de valor fixo</li>
+                    <li>• Retainers mensais</li>
+                    <li>• Produtos digitais complementares</li>
+                    <li>• Modelo híbrido (self-service + consultoria)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🎯 Estratégia Ladder</h5>
+                <p class="text-neutral-300 text-sm mb-2">Ofereça múltiplos níveis de entrada:</p>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>1. <strong>DIY:</strong> Curso online ($197)</li>
+                  <li>2. <strong>Grupo:</strong> Mentoria coletiva ($497/mês)</li>
+                  <li>3. <strong>1:1:</strong> Consultoria personalizada ($5k+)</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">🏗️ Infraestrutura para Escala</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Escalar exige <strong>sistemas robustos</strong>. Você precisa de um stack tecnológico que suporte crescimento sem aumentar complexidade.
+                </p>
+              </div>
+
+              <div class="overflow-x-auto mb-4">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="border-b border-dark-600">
+                      <th class="text-left py-3 px-4 text-purple-400">Função</th>
+                      <th class="text-left py-3 px-4 text-neutral-400">Ferramentas</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-neutral-300">
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">🗂️ CRM</td>
+                      <td class="py-3 px-4">HubSpot, Pipedrive, Notion</td>
+                    </tr>
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">📅 Agendamento</td>
+                      <td class="py-3 px-4">Calendly, Acuity</td>
+                    </tr>
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">💳 Pagamentos</td>
+                      <td class="py-3 px-4">Stripe, Hotmart, Eduzz</td>
+                    </tr>
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">📊 Analytics</td>
+                      <td class="py-3 px-4">Google Analytics, Mixpanel</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-semibold">🔗 Automação</td>
+                      <td class="py-3 px-4">Zapier, Make, n8n</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Dica</h5>
+                <p class="text-neutral-300 text-sm">
+                  Comece simples. Adicione ferramentas conforme cresce. <strong>Evite over-engineering</strong> no início.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">📈 Métricas de Crescimento</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Escalar sem medir é voar às cegas. Você precisa acompanhar KPIs que revelam se está crescendo de forma saudável ou insustentável.
+                </p>
+              </div>
+
+              <div class="bg-gradient-to-br from-purple-900/20 to-dark-700/50 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-3">📊 KPIs Essenciais</h5>
+                <ul class="text-neutral-300 space-y-2">
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">•</span>
+                    <span><strong>CAC (Custo de Aquisição de Cliente):</strong> Quanto você gasta para fechar 1 cliente</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">•</span>
+                    <span><strong>LTV (Lifetime Value):</strong> Quanto 1 cliente gera ao longo do relacionamento</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">•</span>
+                    <span><strong>Taxa de Churn:</strong> % de clientes que cancelam mensalmente</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">•</span>
+                    <span><strong>NPS (Net Promoter Score):</strong> Clientes recomendariam você?</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">•</span>
+                    <span><strong>Tempo médio de entrega:</strong> Eficiência operacional</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Meta de Escala Saudável</h5>
+                <p class="text-neutral-300 text-sm">
+                  <strong>LTV ≥ 3x CAC</strong> | <strong>Churn &lt; 5%</strong> | <strong>NPS &gt; 50</strong> | <strong>Margem operacional &gt; 40%</strong>
+                </p>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Identifique processos automatizáveis vs. estratégicos</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Chatbots respondem 80% das dúvidas</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Dashboards eliminam reuniões de status</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Relatórios gerados por IA + revisão humana</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Mantenha o toque humano nos momentos-chave</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Modelos de negócio baseados em valor, não horas</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="./" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 3</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-3-7.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-purple-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 3.7</span>
+      </a>
+      <a href="trilha32.html" class="text-neutral-400 hover:text-purple-400 transition-colors font-semibold">
+        Voltar para Trilha 3
+      </a>
+      <a href="modulo-3-9.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-400 transition-colors">
+        <span>Próximo: Módulo 3.9</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 3 - Módulo 3.8
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

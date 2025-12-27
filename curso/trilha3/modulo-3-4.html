@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3.4: Estratégias de IA Personalizadas | SHIA</title>
+  <meta name="description" content="Crie soluções sob medida para cada cliente, considerando contexto, maturidade e objetivos únicos.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A855F7',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 3.4 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">🎯 Desenvolvendo Estratégias de IA Personalizadas</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Crie soluções sob medida para cada cliente, considerando contexto, maturidade e objetivos únicos
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">~3h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-8 border border-purple-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-purple-400">Conceito Central</h2>
+            <p class="text-neutral-400">A fórmula para estratégias de IA eficazes</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-purple-500 pl-6 mb-6">
+          "Estratégia de IA = Contexto único do cliente + Tecnologia certa + Pessoas preparadas."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          Não existe estratégia de IA "tamanho único". Cada organização possui um <strong>contexto único</strong>: cultura, maturidade digital, recursos disponíveis e objetivos estratégicos. Uma estratégia de IA personalizada considera todos esses fatores para criar um roadmap realista e eficaz.
+        </p>
+
+        <p class="text-neutral-300">
+          O consultor de IA deve ser como um <strong>arquiteto</strong>: entende o terreno (contexto), conhece os materiais disponíveis (tecnologia) e trabalha com os construtores (pessoas) para criar uma solução sob medida que se sustente no longo prazo.
+        </p>
+      </div>
+    </section>
+
+    <!-- Imagem do Conceito -->
+    <section class="mb-12">
+      <img src="../../doc/imagens/educadores/educacao_personalizada_ia.webp"
+           alt="Desenvolvendo Estratégias de IA Personalizadas"
+           class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+      <p class="text-center text-neutral-500 text-sm">Criando soluções de IA sob medida para cada cliente</p>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">🎯 Entendendo o Contexto Único</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Antes de propor qualquer solução tecnológica, é fundamental <strong class="text-purple-400">mergulhar no contexto do cliente</strong>. Cada organização possui sua própria cultura, processos, desafios e oportunidades. O que funciona para uma empresa de varejo pode ser desastroso para uma instituição financeira.
+                </p>
+                <p class="text-neutral-300">
+                  Faça perguntas profundas: Qual é a visão estratégica? Quais são os principais desafios? Quais processos críticos precisam de melhoria? Como a organização lida com mudanças? Qual é o nível de literacia digital da equipe?
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Framework de Descoberta</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Negócio:</strong> Modelo de negócio, mercado, competidores, diferenciais</li>
+                  <li>• <strong>Processos:</strong> Fluxos críticos, pontos de dor, gargalos operacionais</li>
+                  <li>• <strong>Pessoas:</strong> Cultura organizacional, habilidades técnicas, resistências</li>
+                  <li>• <strong>Tecnologia:</strong> Infraestrutura atual, sistemas legados, dados disponíveis</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  Contexto é rei. Sem entendê-lo profundamente, qualquer estratégia de IA será genérica e ineficaz.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">📊 Assessment de Maturidade Digital</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Antes de definir a estratégia, é essencial avaliar o <strong>nível de maturidade digital</strong> do cliente. Uma empresa que ainda usa planilhas Excel para tudo tem necessidades muito diferentes de uma que já possui data lakes e APIs robustas.
+                </p>
+                <p class="text-neutral-300">
+                  Use frameworks como o <strong>Digital Maturity Model</strong> para classificar a organização em níveis (Iniciante, Emergente, Conectado, Multi-momento, Otimizado). Isso guiará a velocidade e complexidade da transformação.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">📋 Dimensões de Avaliação</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Dados:</strong> Qualidade, acessibilidade, governança</li>
+                  <li>• <strong>Tecnologia:</strong> Infraestrutura, sistemas, ferramentas</li>
+                  <li>• <strong>Habilidades:</strong> Competências da equipe em dados e IA</li>
+                  <li>• <strong>Cultura:</strong> Abertura à inovação, mindset data-driven</li>
+                  <li>• <strong>Processos:</strong> Automação, integração, eficiência</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">🗺️ Desenhando a Jornada de Transformação</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Com o contexto e maturidade mapeados, é hora de desenhar a <strong class="text-purple-400">jornada de transformação</strong>. Ela deve ser dividida em fases claras, com objetivos específicos e mensuráveis para cada etapa.
+                </p>
+                <p class="text-neutral-300">
+                  Comece com <strong>quick wins</strong> (projetos piloto de alto impacto e baixa complexidade) para gerar momentum e confiança. Depois, avance para iniciativas mais complexas e estruturantes.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🚀 Fases da Jornada</h5>
+                <ol class="text-neutral-300 text-sm space-y-2">
+                  <li><strong>1. Fundação (0-3 meses):</strong> Assessment, capacitação básica, quick wins</li>
+                  <li><strong>2. Experimentação (3-9 meses):</strong> Pilotos, provas de conceito, refinamento</li>
+                  <li><strong>3. Escala (9-18 meses):</strong> Implementação ampla, integração de sistemas</li>
+                  <li><strong>4. Otimização (18+ meses):</strong> Melhoria contínua, automação avançada</li>
+                </ol>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">🛠️ Selecionando Ferramentas</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A escolha de ferramentas deve ser guiada pelos <strong>casos de uso prioritários</strong>, não pelo hype do mercado. Evite a tentação de adotar a "ferramenta mais moderna" se ela não resolve os problemas reais do cliente.
+                </p>
+                <p class="text-neutral-300">
+                  Considere fatores como: facilidade de integração com sistemas existentes, curva de aprendizado, custo total de propriedade (TCO), suporte e comunidade, conformidade regulatória e capacidade de escala.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🎯 Critérios de Seleção</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Alinhamento:</strong> Resolve os casos de uso prioritários?</li>
+                  <li>• <strong>Integração:</strong> Conecta-se aos sistemas existentes?</li>
+                  <li>• <strong>Usabilidade:</strong> A equipe conseguirá usar sem fricção?</li>
+                  <li>• <strong>Escalabilidade:</strong> Suporta crescimento futuro?</li>
+                  <li>• <strong>Custo-Benefício:</strong> ROI é claro e mensurável?</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">👥 Gestão de Mudanças</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A <strong class="text-purple-400">gestão de mudanças</strong> é muitas vezes o fator crítico entre o sucesso e o fracasso de uma estratégia de IA. A resistência humana à mudança pode inviabilizar até a tecnologia mais sofisticada.
+                </p>
+                <p class="text-neutral-300">
+                  Envolva stakeholders desde o início, comunique benefícios de forma clara, ofereça treinamento adequado e celebre pequenas vitórias. Identifique "champions" internos que podem evangelizar a mudança.
+                </p>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30 mb-4">
+                <h5 class="font-bold text-red-400 mb-2">⚠️ Principais Desafios</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Medo de substituição por IA</li>
+                  <li>• Falta de confiança na tecnologia</li>
+                  <li>• Sobrecarga com "mais uma ferramenta"</li>
+                  <li>• Resistência cultural à inovação</li>
+                </ul>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Estratégias de Adoção</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Comunicação transparente e contínua</li>
+                  <li>• Treinamento hands-on e acessível</li>
+                  <li>• Identificação de champions internos</li>
+                  <li>• Celebração de vitórias rápidas (quick wins)</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">💰 Orçamento e Recursos</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Uma estratégia de IA sem orçamento claro é apenas wishful thinking. Mapeie todos os custos: <strong>licenças de software, infraestrutura (cloud/on-premise), treinamento, consultoria, desenvolvimento customizado</strong> e custos de manutenção contínua.
+                </p>
+                <p class="text-neutral-300">
+                  Separe investimentos em CAPEX (infraestrutura inicial) e OPEX (custos recorrentes). Muitas soluções cloud transformam CAPEX em OPEX, o que pode ser vantajoso para fluxo de caixa.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">💵 Componentes de Custo</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Software:</strong> Licenças de ferramentas de IA (ChatGPT Enterprise, etc.)</li>
+                  <li>• <strong>Infraestrutura:</strong> Servidores cloud (AWS, Azure, GCP), armazenamento</li>
+                  <li>• <strong>Pessoas:</strong> Contratações, treinamento, consultoria externa</li>
+                  <li>• <strong>Desenvolvimento:</strong> Customizações, integrações, POCs</li>
+                  <li>• <strong>Manutenção:</strong> Suporte técnico, atualizações, monitoramento</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">📅 Cronograma e Milestones</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Defina <strong class="text-purple-400">milestones claros e mensuráveis</strong> para cada fase da jornada. Evite cronogramas excessivamente otimistas – transformações de IA levam tempo e inevitavelmente encontram obstáculos.
+                </p>
+                <p class="text-neutral-300">
+                  Use metodologias ágeis para manter flexibilidade. Entregue valor incremental a cada sprint. Revise e ajuste o cronograma conforme aprende com os pilotos e experimentos.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">📍 Exemplo de Milestones</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Mês 1:</strong> Assessment completo e apresentação de roadmap</li>
+                  <li>• <strong>Mês 2:</strong> Capacitação inicial de 100 colaboradores</li>
+                  <li>• <strong>Mês 3:</strong> Primeiro piloto de IA implantado (ex: chatbot de RH)</li>
+                  <li>• <strong>Mês 6:</strong> 3 casos de uso em produção com ROI mensurável</li>
+                  <li>• <strong>Mês 12:</strong> Plataforma de IA institucional operacional</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">⚠️ Gestão de Riscos</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Toda estratégia de IA possui <strong>riscos</strong> que precisam ser mapeados e mitigados. Riscos tecnológicos (falhas, vieses), organizacionais (resistência, falta de habilidades), regulatórios (conformidade com LGPD, GDPR) e financeiros (estouro de orçamento).
+                </p>
+                <p class="text-neutral-300">
+                  Crie um <strong>risk register</strong> detalhando cada risco, sua probabilidade, impacto e plano de mitigação. Revisite esse registro periodicamente ao longo da implementação.
+                </p>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-red-400 mb-2">🚨 Riscos Comuns</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Técnicos:</strong> Dados de baixa qualidade, integração complexa</li>
+                  <li>• <strong>Organizacionais:</strong> Resistência cultural, falta de sponsors</li>
+                  <li>• <strong>Regulatórios:</strong> Não conformidade com LGPD/GDPR</li>
+                  <li>• <strong>Financeiros:</strong> ROI não atingido, custos ocultos</li>
+                  <li>• <strong>Éticos:</strong> Vieses algorítmicos, falta de transparência</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">📋 Documentação da Estratégia</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Uma estratégia bem documentada é essencial para alinhamento organizacional e execução consistente. O documento de estratégia deve incluir: <strong>visão e objetivos, assessment de maturidade, roadmap por fases, casos de uso priorizados, arquitetura tecnológica, orçamento, cronograma e KPIs</strong>.
+                </p>
+                <p class="text-neutral-300">
+                  Use linguagem clara e visual rica (diagramas, roadmaps visuais, dashboards). A estratégia deve ser acessível tanto para C-level quanto para equipes técnicas.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">📄 Estrutura do Documento</h5>
+                <ol class="text-neutral-300 text-sm space-y-1">
+                  <li>1. Executive Summary (1-2 páginas)</li>
+                  <li>2. Visão Estratégica e Objetivos</li>
+                  <li>3. Assessment de Maturidade</li>
+                  <li>4. Casos de Uso Priorizados</li>
+                  <li>5. Roadmap por Fases</li>
+                  <li>6. Arquitetura Tecnológica</li>
+                  <li>7. Orçamento e ROI</li>
+                  <li>8. Gestão de Mudanças</li>
+                  <li>9. Gestão de Riscos</li>
+                  <li>10. Governança e KPIs</li>
+                </ol>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">🤝 Vendendo a Estratégia</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-purple-900/20 to-dark-700/50 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-3">🎯 A Arte da Persuasão</h5>
+                <p class="text-neutral-300 mb-3">
+                  A melhor estratégia do mundo falha se você não conseguir <strong>engajar stakeholders e obter buy-in</strong>. A "venda" da estratégia é tão importante quanto sua concepção técnica.
+                </p>
+                <p class="text-neutral-300">
+                  Adapte a mensagem para cada audiência: C-level quer saber de ROI e vantagem competitiva. TI quer saber de arquitetura e escalabilidade. Usuários finais querem saber como sua vida ficará mais fácil.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Técnicas de Persuasão</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Storytelling:</strong> Use narrativas e casos de sucesso concretos</li>
+                  <li>• <strong>Demonstrações ao Vivo:</strong> Mostre a IA em ação, não apenas slides</li>
+                  <li>• <strong>ROI Claro:</strong> Quantifique benefícios financeiros sempre que possível</li>
+                  <li>• <strong>Roadmap Visual:</strong> Use timelines e marcos visuais para gerar confiança</li>
+                  <li>• <strong>Quick Wins:</strong> Destaque resultados rápidos para criar momentum</li>
+                </ul>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Contexto é o ponto de partida essencial</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Assessment de maturidade guia o ritmo</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Jornada em fases com quick wins</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Escolha ferramentas pelos casos de uso</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Gestão de mudanças é crítica</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Documente e venda a estratégia</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha31.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-dark-900 rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 3</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-3-3.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-purple-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 3.3</span>
+      </a>
+      <a href="modulo-3-5.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-purple-500 text-dark-900 rounded-lg font-bold hover:bg-purple-400 transition-colors">
+        <span>Próximo: Módulo 3.5</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 3 - Módulo 3.4
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

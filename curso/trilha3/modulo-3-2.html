@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3.2: Diagnóstico Inteligente de Negócios | SHIA</title>
+  <meta name="description" content="Mapeie problemas e oportunidades com precisão usando IA como parceira de análise.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A855F7',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="./" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 3.2 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">🔍 Diagnóstico Inteligente de Negócios com IA</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Mapeie problemas e oportunidades com precisão usando IA como parceira de análise
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-8 border border-purple-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-purple-400">Conceito Central</h2>
+            <p class="text-neutral-400">A essência do diagnóstico inteligente</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-purple-500 pl-6 mb-6">
+          "Diagnóstico com IA = Ver o que ninguém vê, em <strong class="text-purple-400">minutos em vez de semanas</strong>."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          O diagnóstico inteligente transforma a forma como identificamos problemas e oportunidades nos negócios. Com IA, você não apenas analisa dados mais rápido — você descobre <strong>padrões ocultos, correlações invisíveis e insights que tradicionalmente levariam semanas ou meses</strong> para emergir.
+        </p>
+
+        <p class="text-neutral-300">
+          A IA atua como uma <strong>lente de alta resolução</strong> sobre seu negócio, revelando detalhes microscópicos e panoramas estratégicos simultaneamente. É a diferença entre usar uma lupa e um microscópio eletrônico na análise organizacional.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">🔍 Fundamentos do Diagnóstico com IA</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O diagnóstico empresarial tradicional consome tempo e recursos imensos. Com IA, transformamos esse processo: <strong class="text-purple-400">análise de múltiplas fontes de dados simultaneamente, identificação de padrões complexos e geração de hipóteses em tempo real</strong>.
+                </p>
+                <p class="text-neutral-300">
+                  A IA não apenas acelera — ela melhora a qualidade do diagnóstico ao eliminar vieses cognitivos, considerar mais variáveis e identificar correlações contraintuitivas que o olho humano perderia.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Atue como consultor de negócios especializado em diagnóstico organizacional. Analise os seguintes dados: [vendas últimos 12 meses], [turnover por departamento], [NPS trimestral]. Identifique padrões, correlações e potenciais problemas raiz que podem estar passando despercebidos."
+                </code>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  A IA vê padrões que humanos não veem porque processa volumes massivos de dados sem fadiga e sem vieses emocionais.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">📊 Análise de Dados para Insights</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Transforme planilhas, dashboards e relatórios em <strong class="text-purple-400">narrativas inteligentes</strong>. A IA pode analisar dados financeiros, operacionais e de mercado, identificando não apenas o "o quê", mas o <strong>"por quê"</strong> e o <strong>"e agora?"</strong>.
+                </p>
+                <p class="text-neutral-300">
+                  Use IA para: detectar anomalias em séries temporais, segmentar clientes por padrões comportamentais ocultos, prever tendências e simular cenários "what-if" em segundos.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">📈 Técnicas</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Análise de Séries Temporais:</strong> Identifique sazonalidades e tendências</li>
+                  <li>• <strong>Análise de Correlação:</strong> Descubra variáveis interdependentes</li>
+                  <li>• <strong>Clustering:</strong> Agrupe dados por similaridade natural</li>
+                  <li>• <strong>Detecção de Anomalias:</strong> Sinalize outliers e comportamentos atípicos</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">🎯 Identificando Dores e Oportunidades</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Todo negócio tem <strong>dores ocultas</strong> e <strong>oportunidades invisíveis</strong>. A IA ajuda a mapear ambos através de análise de feedback de clientes, dados operacionais e benchmarking competitivo.
+                </p>
+                <p class="text-neutral-300">
+                  Use técnicas de análise de sentimento em avaliações, tickets de suporte e redes sociais. Cruze com dados de vendas e operações para identificar onde as dores geram impacto financeiro mensurável.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">🔍 Framework de Identificação</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>1. <strong>Coleta:</strong> Reúna feedbacks, reclamações e dados operacionais</li>
+                  <li>2. <strong>Análise:</strong> Use IA para categorizar e quantificar padrões</li>
+                  <li>3. <strong>Priorização:</strong> Ranqueie por frequência × impacto</li>
+                  <li>4. <strong>Causa Raiz:</strong> Peça à IA para aplicar análise de 5 porquês</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">🗣️ Entrevistas Aumentadas por IA</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Entrevistar stakeholders é crucial no diagnóstico. A IA pode: <strong>preparar roteiros personalizados, transcrever e analisar entrevistas em tempo real, identificar contradições entre discursos</strong> e extrair insights qualitativos profundos.
+                </p>
+                <p class="text-neutral-300">
+                  Grave entrevistas (com permissão), transcreva com ferramentas de IA e peça análise de temas recorrentes, emoções subjacentes e gaps entre diferentes níveis hierárquicos.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Prompt para Roteiro</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Crie um roteiro de entrevista para diagnosticar problemas de comunicação interna em uma empresa de TI com 50 colaboradores. Inclua perguntas abertas que revelem cultura, fluxos de informação e pontos de atrito."
+                </code>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">📈 Benchmarking Inteligente</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Compare seu desempenho com <strong>competidores, melhores práticas de mercado e benchmarks setoriais</strong> usando IA para coletar, normalizar e analisar dados públicos e de pesquisas.
+                </p>
+                <p class="text-neutral-300">
+                  A IA pode buscar informações em relatórios anuais, estudos de caso, artigos especializados e bases de dados públicas, consolidando tudo em análises comparativas acionáveis.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">📊 Métricas Críticas</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Eficiência Operacional:</strong> Custo por unidade, tempo de ciclo</li>
+                  <li>• <strong>Satisfação:</strong> NPS, CSAT, churn rate</li>
+                  <li>• <strong>Crescimento:</strong> CAC, LTV, taxa de conversão</li>
+                  <li>• <strong>Inovação:</strong> % receita de novos produtos, time-to-market</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">🧩 Mapeamento de Processos</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Entenda o <strong>fluxo real</strong> de trabalho versus o fluxo desenhado. A IA pode analisar descrições de processos, identificar gargalos, redundâncias e etapas sem valor agregado.
+                </p>
+                <p class="text-neutral-300">
+                  Forneça documentações de processos, SOPs e descrições de stakeholders. Peça à IA para criar diagramas BPMN, identificar pontos de fricção e sugerir otimizações baseadas em melhores práticas.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🎯 Análise de Valor</h5>
+                <p class="text-neutral-300 text-sm">
+                  Use a matriz: <strong>Valor Agregado vs. Tempo Consumido</strong>. Elimine ou automatize tudo que consome tempo mas agrega pouco valor.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">💰 Diagnóstico Financeiro</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Analise <strong>DREs, fluxo de caixa, balanços e indicadores financeiros</strong> com IA para identificar: vazamentos de recursos, oportunidades de redução de custos, tendências preocupantes e potenciais de otimização.
+                </p>
+                <p class="text-neutral-300">
+                  A IA pode comparar seus números com médias setoriais, detectar anomalias e simular impactos de diferentes cenários de decisão financeira.
+                </p>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-red-400 mb-2">⚠️ Red Flags Financeiros</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Margem operacional decrescente consistentemente</li>
+                  <li>• Dias de recebimento crescendo acima do mercado</li>
+                  <li>• Custos fixos crescendo mais rápido que receita</li>
+                  <li>• Endividamento líquido / EBITDA acima de benchmarks</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">👥 Análise de Cultura Organizacional</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Cultura é intangível, mas mensurável. Use IA para analisar: <strong>pesquisas de clima, comunicações internas, padrões de colaboração e turnover</strong>. Identifique desalinhamentos entre valores declarados e comportamentos observados.
+                </p>
+                <p class="text-neutral-300">
+                  Analise e-mails internos (anonimizados), mensagens do Slack, avaliações no Glassdoor e exit interviews para mapear a cultura real versus a cultura aspiracional.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">🔍 Indicadores Culturais</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Psicológica:</strong> Segurança psicológica (pessoas falam abertamente?)</li>
+                  <li>• <strong>Colaboração:</strong> Silos departamentais vs. cross-functional</li>
+                  <li>• <strong>Inovação:</strong> Tolerância a falhas, experimentação encorajada</li>
+                  <li>• <strong>Transparência:</strong> Acesso à informação e decisões explicadas</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">📋 Relatórios Gerados por IA</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Transforme dados brutos em <strong>relatórios executivos, apresentações visuais e planos de ação</strong> em minutos. A IA pode estruturar achados, priorizar recomendações e adaptar linguagem para diferentes audiências.
+                </p>
+                <p class="text-neutral-300">
+                  Use templates de relatório e peça à IA para preencher com insights específicos do seu diagnóstico. Gere versões para C-level, gerência e equipes operacionais automaticamente.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Estrutura de Relatório</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>1. <strong>Executive Summary:</strong> 3-5 achados principais</li>
+                  <li>2. <strong>Diagnóstico Detalhado:</strong> Por área/processo</li>
+                  <li>3. <strong>Análise de Causa Raiz:</strong> 5 Whys, Ishikawa</li>
+                  <li>4. <strong>Matriz de Impacto:</strong> Urgência × Importância</li>
+                  <li>5. <strong>Recomendações:</strong> Quick wins + projetos estruturantes</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">🎯 Matriz de Impacto para Priorização</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-purple-900/20 to-dark-700/50 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-3">🎯 Framework de Priorização</h5>
+                <p class="text-neutral-300 mb-3">
+                  Nem todos os problemas devem ser atacados simultaneamente. Use IA para criar uma <strong>Matriz de Impacto vs. Esforço</strong> e priorizar ações.
+                </p>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                  <div class="bg-emerald-900/30 p-3 rounded border border-emerald-500/30">
+                    <strong class="text-emerald-400">Quick Wins</strong><br>
+                    <span class="text-neutral-300">Alto impacto, baixo esforço</span>
+                  </div>
+                  <div class="bg-blue-900/30 p-3 rounded border border-blue-500/30">
+                    <strong class="text-blue-400">Projetos Estratégicos</strong><br>
+                    <span class="text-neutral-300">Alto impacto, alto esforço</span>
+                  </div>
+                  <div class="bg-yellow-900/30 p-3 rounded border border-yellow-500/30">
+                    <strong class="text-yellow-400">Fill-ins</strong><br>
+                    <span class="text-neutral-300">Baixo impacto, baixo esforço</span>
+                  </div>
+                  <div class="bg-red-900/30 p-3 rounded border border-red-500/30">
+                    <strong class="text-red-400">Evitar</strong><br>
+                    <span class="text-neutral-300">Baixo impacto, alto esforço</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Prompt para Priorização</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Analise os seguintes problemas identificados: [lista]. Crie uma matriz 2x2 de Impacto vs. Esforço. Considere: impacto financeiro, número de pessoas afetadas, urgência e complexidade de implementação. Forneça justificativa para cada posicionamento."
+                </code>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">IA acelera diagnóstico de semanas para minutos</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Análise de dados revela padrões ocultos</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Entrevistas aumentadas capturam insights profundos</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Benchmarking inteligente posiciona competitivamente</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Mapeamento de processos identifica gargalos</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Matriz de impacto prioriza ações estrategicamente</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha31.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-dark-900 rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 3</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-3-1.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-purple-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 3.1</span>
+      </a>
+      <a href="modulo-3-3.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-purple-500 text-dark-900 rounded-lg font-bold hover:bg-purple-400 transition-colors">
+        <span>Próximo: Módulo 3.3</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 3 - Módulo 3.2
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

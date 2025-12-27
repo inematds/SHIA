@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3.7: Biblioteca de Prompts | SHIA</title>
+  <meta name="description" content="Crie ativos reutilizáveis que aceleram seu trabalho e geram valor consistente. Aprenda a construir e gerenciar uma biblioteca de prompts estratégica.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A855F7',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="./" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 3.7 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">📚 Construindo sua Biblioteca de Prompts para Consultoria</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Crie ativos reutilizáveis que aceleram seu trabalho e geram valor consistente
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-8 border border-purple-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-purple-400">Conceito Central</h2>
+            <p class="text-neutral-400">A base para construir ativos estratégicos de IA</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-purple-500 pl-6 mb-6">
+          "Uma biblioteca de prompts bem construída é um <strong class="text-purple-400">ATIVO de negócio</strong> que valoriza com o tempo."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          Assim como um desenvolvedor mantém uma biblioteca de código reutilizável, um consultor estratégico deve construir uma <strong>biblioteca de prompts</strong> que captura conhecimento, metodologias e melhores práticas. Esses ativos não apenas aceleram o trabalho, mas também garantem <strong>consistência</strong> e <strong>qualidade</strong> nas entregas.
+        </p>
+
+        <p class="text-neutral-300">
+          Uma biblioteca bem estruturada transforma prompts de <strong>ferramentas descartáveis</strong> em <strong>ativos estratégicos</strong> que podem ser refinados, compartilhados e escalados dentro da organização.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">📚 O Valor de uma Biblioteca</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Uma biblioteca de prompts não é apenas uma coleção de textos - é um <strong class="text-purple-400">repositório de conhecimento estruturado</strong> que captura suas melhores práticas, metodologias testadas e insights de mercado.
+                </p>
+                <p class="text-neutral-300 mb-3">
+                  <strong>Benefícios estratégicos:</strong>
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>✓ <strong>Redução de tempo:</strong> De horas para minutos em tarefas recorrentes</li>
+                  <li>✓ <strong>Consistência:</strong> Mesma qualidade em todos os projetos</li>
+                  <li>✓ <strong>Escalabilidade:</strong> Multiplique sua capacidade de entrega</li>
+                  <li>✓ <strong>Transferência de conhecimento:</strong> Onboarding acelerado de novos membros</li>
+                  <li>✓ <strong>Melhoria contínua:</strong> Cada uso refina o ativo</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">💼 ROI de uma Biblioteca</h5>
+                <p class="text-neutral-300 text-sm">
+                  Um consultor que gasta 30 minutos criando um prompt reutilizável que economiza 2 horas por projeto, recupera o investimento no primeiro uso e gera retorno exponencial a cada aplicação subsequente.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">🏗️ Estruturando sua Biblioteca</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Uma biblioteca eficaz precisa de <strong>estrutura e taxonomia clara</strong>. Organize seus prompts por:
+                </p>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div class="bg-dark-900/50 p-3 rounded">
+                    <h5 class="font-bold text-purple-400 mb-2">📁 Por Fase do Projeto</h5>
+                    <ul class="text-sm text-neutral-300 space-y-1">
+                      <li>• Diagnóstico / Discovery</li>
+                      <li>• Análise / Research</li>
+                      <li>• Estratégia / Planning</li>
+                      <li>• Execução / Implementation</li>
+                      <li>• Relatório / Delivery</li>
+                    </ul>
+                  </div>
+                  <div class="bg-dark-900/50 p-3 rounded">
+                    <h5 class="font-bold text-purple-400 mb-2">🎯 Por Tipo de Saída</h5>
+                    <ul class="text-sm text-neutral-300 space-y-1">
+                      <li>• Análises e insights</li>
+                      <li>• Frameworks e modelos</li>
+                      <li>• Conteúdo e copywriting</li>
+                      <li>• Apresentações e relatórios</li>
+                      <li>• Scripts e automações</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">📋 Template de Catalogação</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded whitespace-pre-line">
+[CATEGORIA] / [SUBCATEGORIA]
+Título: Nome descritivo do prompt
+Tags: #diagnóstico #swot #competitivo
+Contexto: Quando usar este prompt
+Variáveis: {EMPRESA}, {SETOR}, {OBJETIVO}
+Versão: 2.3 | Última atualização: 2025-01-15
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">📝 Prompts para Diagnóstico</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Prompts de diagnóstico aceleram a <strong>fase de discovery</strong>, ajudando a mapear rapidamente o estado atual do cliente:
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-2">💡 Exemplo: Diagnóstico de Maturidade Digital</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded whitespace-pre-line">
+Você é um consultor especializado em transformação digital.
+
+Analise o seguinte contexto sobre {EMPRESA} no setor de {SETOR}:
+[CONTEXTO DO CLIENTE]
+
+Conduza um diagnóstico estruturado de maturidade digital usando o framework DMTF (Digital Maturity Transformation Framework):
+
+1. **Estratégia Digital**: Avalie visão, liderança e roadmap
+2. **Capacidades Tecnológicas**: Infraestrutura, dados, sistemas
+3. **Cultura e Pessoas**: Skills, mindset, processos
+4. **Experiência do Cliente**: Canais, jornada, personalização
+5. **Modelo de Negócio**: Inovação, receitas digitais, ecossistema
+
+Para cada dimensão:
+- Classifique o nível de maturidade (Inicial / Emergente / Definido / Gerenciado / Otimizado)
+- Identifique 3 evidências que justificam a classificação
+- Liste 2 gaps críticos
+- Sugira quick wins (máximo 90 dias)
+
+Apresente como:
+• Scorecard visual com notas 1-5
+• Radar chart (texto descritivo)
+• Top 3 prioridades estratégicas
+• Roadmap de 12 meses
+                </code>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">🎯 Outros Prompts de Diagnóstico</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Análise SWOT aprofundada com matriz de priorização</li>
+                  <li>• Mapeamento de stakeholders e poder/interesse</li>
+                  <li>• Diagnóstico de cultura organizacional (Competing Values Framework)</li>
+                  <li>• Avaliação de processos (AS-IS mapping)</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">💡 Prompts para Ideação</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Prompts de ideação ajudam a <strong>gerar soluções criativas</strong> e explorar múltiplas possibilidades estratégicas:
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30 mb-4">
+                <h5 class="font-bold text-emerald-400 mb-2">💡 Exemplo: Geração de Estratégias de Crescimento</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded whitespace-pre-line">
+Atue como um estrategista de crescimento com expertise em {SETOR}.
+
+Contexto:
+- Empresa: {EMPRESA}
+- Receita atual: {RECEITA}
+- Meta: {META_CRESCIMENTO}% nos próximos {PRAZO} meses
+- Principais restrições: {RESTRIÇÕES}
+
+Use o framework Ansoff Matrix + Blue Ocean Strategy para gerar 10 estratégias de crescimento inovadoras:
+
+Para cada estratégia:
+1. **Nome + Conceito** (1 frase impactante)
+2. **Quadrante Ansoff**: Penetração / Desenvolvimento de Produto / Desenvolvimento de Mercado / Diversificação
+3. **Potencial de Receita**: Estimativa realista
+4. **Investimento Necessário**: LOW / MEDIUM / HIGH
+5. **Tempo para Resultado**: Curto / Médio / Longo prazo
+6. **Risco**: 1-5 (com justificativa)
+7. **Diferenciais Únicos**: O que torna esta estratégia não-óbvia
+
+Priorize estratégias que:
+- Explorem oceanos azuis (espaços não contestados)
+- Alavanquem ativos existentes de forma criativa
+- Tenham pelo menos uma "unfair advantage"
+
+Apresente como roadmap visual com timeline.
+                </code>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎨 Técnicas de Ideação para Prompts</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• SCAMPER (Substitute, Combine, Adapt, Modify, Put to other uses, Eliminate, Reverse)</li>
+                  <li>• First Principles Thinking (desconstruir e reconstruir)</li>
+                  <li>• Analogias entre setores (como Netflix resolveria este problema?)</li>
+                  <li>• Provocações estratégicas (e se tivéssemos que 10x o resultado com 1/10 do orçamento?)</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">📊 Prompts para Análise</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Prompts analíticos transformam dados brutos em <strong>insights acionáveis</strong>:
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo: Análise Competitiva Profunda</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded whitespace-pre-line">
+Você é um analista de inteligência competitiva sênior.
+
+Analise os seguintes competidores de {EMPRESA}:
+{LISTA_COMPETIDORES}
+
+Para cada competidor, conduza análise estruturada:
+
+**1. POSICIONAMENTO**
+- Proposta de valor única
+- Segmentos-alvo
+- Diferenciação percebida
+
+**2. CAPACIDADES ESTRATÉGICAS**
+- Core competencies
+- Vantagens competitivas sustentáveis
+- Recursos únicos (VRIN framework)
+
+**3. PERFORMANCE**
+- Market share estimado
+- Crescimento YoY
+- Satisfação de clientes (se disponível)
+
+**4. ESTRATÉGIA INFERIDA**
+- Movimentos recentes (aquisições, parcerias, produtos)
+- Direção estratégica provável
+- Investimentos em inovação
+
+**5. VULNERABILIDADES**
+- Pontos cegos
+- Inércia organizacional
+- Áreas não atendidas
+
+**SÍNTESE ESTRATÉGICA:**
+- Mapa de posicionamento competitivo (2 eixos principais)
+- Espaços brancos (oportunidades não exploradas)
+- Ameaças emergentes
+- Recomendação: 3 movimentos estratégicos para {EMPRESA} explorar gaps competitivos
+                </code>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">📈 Frameworks Analíticos para Biblioteca</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Porter's Five Forces (análise de atratividade setorial)</li>
+                  <li>• Value Chain Analysis (onde capturar valor)</li>
+                  <li>• Trend Analysis com PESTEL (macro tendências)</li>
+                  <li>• Customer Journey Mapping (pain points e oportunidades)</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">✍️ Prompts para Conteúdo</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Prompts de conteúdo aceleram a criação de <strong>materiais de comunicação estratégica</strong>:
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-2">💡 Exemplo: Executive Summary de Projeto</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded whitespace-pre-line">
+Você é um consultor estratégico sênior especializado em comunicação C-level.
+
+Crie um Executive Summary de 1 página para o seguinte projeto:
+
+**CONTEXTO:**
+- Cliente: {EMPRESA}
+- Projeto: {NOME_PROJETO}
+- Duração: {DURAÇÃO}
+- Investimento: {VALOR}
+
+**INPUTS:**
+{DADOS_PROJETO}
+
+**ESTRUTURA OBRIGATÓRIA:**
+
+**Situação (1 parágrafo)**
+Desafio de negócio em linguagem executiva. Quantifique o problema.
+
+**Solução Proposta (3 bullets)**
+Abordagem única e diferenciada. Evite jargões genéricos.
+
+**Impacto Esperado (números concretos)**
+- Objetivo 1: Métrica + Meta + Prazo
+- Objetivo 2: Métrica + Meta + Prazo
+- Objetivo 3: Métrica + Meta + Prazo
+
+**Investimento e ROI**
+Breakdown de custos + retorno esperado (payback period)
+
+**Timeline e Próximos Passos**
+Milestones críticos com datas
+
+**TOM:**
+- Assertivo e orientado a resultados
+- Focado em impacto de negócio, não em atividades
+- Números antes de adjetivos
+- Sem hyperbole ou promessas vazias
+
+**MÁXIMO:** 300 palavras
+                </code>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✍️ Tipos de Conteúdo para Biblioteca</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Case studies de sucesso (storytelling estruturado)</li>
+                  <li>• Propostas comerciais (pitch decks e RFPs)</li>
+                  <li>• Whitepapers e thought leadership</li>
+                  <li>• Email templates para diferentes stakeholders</li>
+                  <li>• LinkedIn posts para visibilidade de marca pessoal</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">📋 Prompts para Relatórios</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Prompts de relatórios estruturam <strong>documentação profissional</strong> e facilitam a apresentação de resultados:
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo: Relatório de Fechamento de Projeto</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded whitespace-pre-line">
+Você é um Project Manager sênior criando um relatório de encerramento.
+
+**DADOS DO PROJETO:**
+{DADOS_COMPLETOS}
+
+Crie um relatório estruturado seguindo as melhores práticas PMI:
+
+**1. EXECUTIVE SUMMARY**
+- Status final: Sucesso / Sucesso com ressalvas / Desafios
+- Principais entregas vs planejado
+- ROI realizado
+
+**2. OBJETIVOS vs RESULTADOS**
+Tabela comparativa:
+| Objetivo | Meta | Resultado | Variação | Status |
+
+**3. CRONOGRAMA**
+- Prazo planejado vs realizado
+- Principais marcos e cumprimento
+- Desvios e justificativas
+
+**4. ORÇAMENTO**
+- Budget vs Actual
+- Breakdown por categoria
+- Variações e explicações
+
+**5. PRINCIPAIS ENTREGAS**
+Lista com evidências de qualidade/aprovação
+
+**6. LIÇÕES APRENDIDAS**
+- O que funcionou bem (replicar)
+- O que pode melhorar (evitar)
+- Melhores práticas identificadas
+
+**7. PRÓXIMOS PASSOS / HANDOVER**
+- Atividades de transição
+- Responsáveis
+- Sustentabilidade das soluções
+
+**8. AGRADECIMENTOS**
+Reconhecimento de stakeholders-chave
+
+Apresente de forma visual quando possível (indicadores, gráficos em texto).
+                </code>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">📊 Templates de Relatórios Essenciais</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Status reports mensais/semanais</li>
+                  <li>• Dashboards executivos (KPIs narrativos)</li>
+                  <li>• Post-mortem de projetos (blameless retrospectives)</li>
+                  <li>• Relatórios de impacto (before/after com métricas)</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">🔄 Versionamento e Melhoria</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Prompts são <strong>ativos vivos</strong> que devem evoluir. Implemente um processo de melhoria contínua:
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30 mb-4">
+                <h5 class="font-bold text-yellow-400 mb-2">🔄 Sistema de Versionamento</h5>
+                <div class="text-neutral-300 text-sm space-y-3">
+                  <div class="bg-dark-900/50 p-3 rounded">
+                    <strong class="text-yellow-400">Versionamento Semântico (SemVer):</strong>
+                    <ul class="mt-2 space-y-1">
+                      <li>• <strong>MAJOR</strong> (1.x.x): Mudança estrutural no prompt</li>
+                      <li>• <strong>MINOR</strong> (x.1.x): Nova seção ou melhoria significativa</li>
+                      <li>• <strong>PATCH</strong> (x.x.1): Ajustes de clareza ou correções</li>
+                    </ul>
+                  </div>
+                  <div class="bg-dark-900/50 p-3 rounded">
+                    <strong class="text-yellow-400">Changelog:</strong>
+                    <code class="block mt-2 text-xs whitespace-pre-line">
+v2.1.0 - 2025-01-15
++ Adicionada seção de análise de ROI
+* Melhorado framework de priorização
+- Removida redundância na seção de contexto
+
+v2.0.0 - 2025-01-01
+! Reestruturação completa usando MECE framework
+                    </code>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">📈 Processo de Melhoria Contínua</h5>
+                <ol class="text-neutral-300 text-sm space-y-2">
+                  <li><strong>1. Coleta de Feedback:</strong> Após cada uso, documente o que funcionou e o que não funcionou</li>
+                  <li><strong>2. Análise de Padrões:</strong> Revise mensalmente prompts mais/menos usados</li>
+                  <li><strong>3. A/B Testing:</strong> Mantenha variações e compare resultados</li>
+                  <li><strong>4. Benchmark:</strong> Compare outputs com resultados desejados</li>
+                  <li><strong>5. Refinamento:</strong> Incorpore aprendizados na próxima versão</li>
+                </ol>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">👥 Compartilhando com Equipe</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Uma biblioteca só gera valor máximo quando é <strong>compartilhada e adotada</strong> pela equipe:
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-2">🏢 Estratégias de Socialização</h5>
+                <div class="grid md:grid-cols-2 gap-3 text-sm">
+                  <div class="bg-dark-900/50 p-3 rounded">
+                    <strong class="text-purple-400">Plataforma Centralizada</strong>
+                    <ul class="text-neutral-300 mt-2 space-y-1">
+                      <li>• Notion Database com tags e busca</li>
+                      <li>• Confluence com hierarquia</li>
+                      <li>• GitHub repo com markdown</li>
+                      <li>• Google Drive estruturado</li>
+                    </ul>
+                  </div>
+                  <div class="bg-dark-900/50 p-3 rounded">
+                    <strong class="text-purple-400">Governança</strong>
+                    <ul class="text-neutral-300 mt-2 space-y-1">
+                      <li>• Curador responsável (librarian)</li>
+                      <li>• Processo de submissão</li>
+                      <li>• Review e aprovação</li>
+                      <li>• Critérios de qualidade</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">📚 Template de Documentação Compartilhada</h5>
+                <code class="text-xs text-neutral-300 block bg-dark-900/50 p-3 rounded whitespace-pre-line">
+# [Nome do Prompt]
+
+**Categoria:** Diagnóstico / Ideação / Análise / Conteúdo / Relatório
+**Tags:** #swot #competitivo #estratégia
+**Autor:** João Silva
+**Versão:** 2.1.0
+**Última atualização:** 2025-01-15
+
+## Quando Usar
+Descreva o contexto ideal para usar este prompt
+
+## Inputs Necessários
+- Variável 1: Descrição
+- Variável 2: Descrição
+
+## Prompt
+```
+[Texto completo do prompt]
+```
+
+## Exemplo de Uso
+Input real + Output obtido
+
+## Dicas de Otimização
+- Dica 1
+- Dica 2
+
+## Histórico de Versões
+v2.1.0: Melhorias X, Y, Z
+v2.0.0: Reestruturação completa
+                </code>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">🎓 Onboarding e Treinamento</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Crie um "Starter Kit" com os 10 prompts essenciais</li>
+                  <li>• Realize workshops mensais de "Prompt Show & Tell"</li>
+                  <li>• Estabeleça um canal de dúvidas e discussão</li>
+                  <li>• Celebre casos de sucesso (incentiva adoção)</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">💼 Prompts como Ativo de Negócio</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-purple-900/20 to-dark-700/50 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-3">💎 Transformando Prompts em IP Estratégico</h5>
+                <p class="text-neutral-300 mb-3">
+                  Sua biblioteca de prompts pode se tornar um <strong>ativo de propriedade intelectual</strong> que diferencia sua consultoria no mercado:
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                  <h5 class="font-bold text-emerald-400 mb-2">🚀 Monetização Direta</h5>
+                  <ul class="text-neutral-300 text-sm space-y-2">
+                    <li>• <strong>Metodologia proprietária:</strong> "Framework XPTO powered by AI"</li>
+                    <li>• <strong>Produtos digitais:</strong> Venda de prompt packs especializados</li>
+                    <li>• <strong>Licenciamento:</strong> Parceiros pagam para usar seus prompts</li>
+                    <li>• <strong>Cursos e certificações:</strong> Ensine sua abordagem</li>
+                  </ul>
+                </div>
+                <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                  <h5 class="font-bold text-blue-400 mb-2">💼 Monetização Indireta</h5>
+                  <ul class="text-neutral-300 text-sm space-y-2">
+                    <li>• <strong>Vantagem competitiva:</strong> Entregas mais rápidas = mais projetos</li>
+                    <li>• <strong>Premium pricing:</strong> Cobre pela metodologia, não pelo tempo</li>
+                    <li>• <strong>Marca pessoal:</strong> Autoridade = atração de clientes</li>
+                    <li>• <strong>Escalabilidade:</strong> Atenda mais clientes com mesma equipe</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-2">⚖️ Proteção de IP</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Documentação:</strong> Registre data de criação e evolução</li>
+                  <li>• <strong>Contratos:</strong> NDAs e cláusulas de propriedade em contratos de trabalho</li>
+                  <li>• <strong>Acesso controlado:</strong> Não compartilhe publicamente seus melhores prompts</li>
+                  <li>• <strong>Marca registrada:</strong> Nome da metodologia (ex: "Strategic AI Canvas™")</li>
+                </ul>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">📈 Valuation de uma Biblioteca</h5>
+                <p class="text-neutral-300 text-sm mb-2">
+                  <strong>Exemplo de cálculo de valor:</strong>
+                </p>
+                <div class="bg-dark-900/50 p-3 rounded text-xs text-neutral-300">
+                  <p>• 50 prompts de alta qualidade</p>
+                  <p>• Cada prompt economiza 2h por uso</p>
+                  <p>• Uso médio: 5x por mês cada prompt</p>
+                  <p>• Total: 500 horas economizadas/mês</p>
+                  <p>• Taxa horária: $150/h</p>
+                  <p>• <strong class="text-yellow-400">Valor gerado: $75.000/mês = $900.000/ano</strong></p>
+                </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Biblioteca de prompts é ativo estratégico</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Estruture por fase e tipo de saída</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">5 categorias: diagnóstico, ideação, análise, conteúdo, relatórios</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Versionamento e melhoria contínua</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Compartilhamento e governança em equipe</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Prompts podem ser monetizados direta e indiretamente</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha32.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 3</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-3-6.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-purple-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 3.6</span>
+      </a>
+      <a href="modulo-3-8.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-400 transition-colors">
+        <span>Próximo: Módulo 3.8</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 3 - Módulo 3.7
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3.5: Potencializando Equipes com IA | SHIA</title>
+  <meta name="description" content="Empodere pessoas com trilhas personalizadas. Treinamento genérico não funciona.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A855F7',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="./" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 3.5 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">🎓 Educação Focada no Talento: Potencializando Equipes</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Empodere pessoas com trilhas personalizadas. Treinamento genérico não funciona.
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-8 border border-purple-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-purple-400">Conceito Central</h2>
+            <p class="text-neutral-400">A revolução na educação corporativa</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-purple-500 pl-6 mb-6">
+          "Educação com IA = Trilha única para cada talento, não treinamento genérico para todos."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          O modelo tradicional de treinamento corporativo está obsoleto. Reunir 50 pessoas em uma sala e apresentar o mesmo conteúdo para todos é ineficiente, desmotivador e desperdiça o potencial individual. A <strong>Educação com IA</strong> revoluciona este paradigma ao criar <strong>trilhas de aprendizado personalizadas</strong> que se adaptam ao nível, ritmo e objetivos de cada colaborador.
+        </p>
+
+        <p class="text-neutral-300">
+          Com tutores de IA individuais, cada pessoa recebe exatamente o conteúdo que precisa, no momento certo, no formato ideal. O resultado: equipes mais engajadas, desenvolvimento mais rápido e retenção de conhecimento exponencialmente maior.
+        </p>
+      </div>
+    </section>
+
+    <!-- Imagem do Conceito -->
+    <section class="mb-12">
+      <img src="../../doc/imagens/educadores/potencializando_talentos.webp"
+           alt="Educação personalizada com IA potencializando talentos individuais"
+           class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+      <p class="text-center text-neutral-500 text-sm">Educação com IA: trilhas personalizadas para cada talento</p>
+    </section>
+
+    <!-- Comparação Treinamento Tradicional vs IA -->
+    <section class="mb-12">
+      <div class="bg-dark-800 rounded-2xl p-8 border border-dark-600">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">⚖️</span>
+          <div>
+            <h2 class="text-2xl font-bold">Treinamento Tradicional vs Educação com IA</h2>
+            <p class="text-neutral-400">A transformação do desenvolvimento de pessoas</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Tradicional -->
+          <div class="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
+            <h4 class="font-bold text-red-400 mb-4">❌ Treinamento Tradicional</h4>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Conteúdo único</strong> para todos</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Ritmo fixo</strong> e inflexível</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Avaliação genérica</strong> no final</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Baixo engajamento</strong> e retenção</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Com IA -->
+          <div class="bg-emerald-900/20 p-6 rounded-xl border border-emerald-500/30">
+            <h4 class="font-bold text-emerald-400 mb-4">✓ Educação com IA</h4>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Trilha personalizada</strong> para cada pessoa</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Ritmo adaptativo</strong> ao aluno</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Feedback contínuo</strong> e ajustes em tempo real</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Alto engajamento</strong> e retenção</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">🎯 O Problema dos Treinamentos Genéricos</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Treinamentos corporativos tradicionais seguem o modelo "tamanho único" (one-size-fits-all), ignorando completamente as diferenças individuais de conhecimento prévio, estilo de aprendizagem, objetivos de carreira e ritmo de absorção. O resultado é previsível: <strong class="text-purple-400">iniciantes se sentem sobrecarregados, especialistas se entediam</strong>, e a retenção média raramente ultrapassa 20%.
+                </p>
+                <p class="text-neutral-300">
+                  Além disso, treinamentos genéricos são caros, inflexíveis e têm baixo ROI. Empresas gastam bilhões anualmente em programas que não geram impacto real no desempenho das equipes.
+                </p>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-red-400 mb-2">⚠️ Dados Alarmantes</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>70%</strong> dos colaboradores consideram treinamentos corporativos irrelevantes</li>
+                  <li>• <strong>80%</strong> do conteúdo é esquecido em 30 dias</li>
+                  <li>• <strong>$359 bilhões</strong> gastos anualmente em treinamento corporativo nos EUA (muitos sem retorno)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">🔍 Mapeando Talentos Individuais</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Antes de criar trilhas personalizadas, é essencial <strong>mapear o perfil de cada colaborador</strong>. A IA pode analisar múltiplas dimensões: conhecimentos técnicos atuais, habilidades comportamentais, objetivos de carreira, preferências de aprendizado (visual, auditivo, hands-on), gaps de competência e potencial de crescimento.
+                </p>
+                <p class="text-neutral-300">
+                  Ferramentas de assessment adaptativo com IA podem realizar este mapeamento em minutos, identificando não apenas o que a pessoa sabe, mas <strong>como ela aprende melhor</strong>.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Crie um questionário adaptativo para mapear o perfil de aprendizado de um analista de dados júnior. Inclua perguntas sobre: conhecimento técnico atual (Python, SQL, BI), estilo de aprendizagem preferido, objetivos de carreira, disponibilidade de tempo e desafios atuais no trabalho."
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">📚 Trilhas Personalizadas</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Com o perfil mapeado, a IA desenha <strong>trilhas de aprendizado personalizadas</strong> que consideram o ponto de partida, o objetivo final e as preferências individuais. Cada trilha é uma jornada única, com módulos, exercícios, recursos e avaliações customizados.
+                </p>
+                <p class="text-neutral-300">
+                  A trilha não é estática: ela se <strong>adapta continuamente</strong> com base no desempenho, no feedback e na evolução do colaborador. Se alguém domina um tópico rapidamente, avança. Se encontra dificuldades, recebe reforço e abordagens alternativas.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Componentes de uma Trilha</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Módulos Core:</strong> Conteúdo essencial adaptado ao nível</li>
+                  <li>• <strong>Módulos Opcionais:</strong> Aprofundamentos baseados em interesse</li>
+                  <li>• <strong>Projetos Práticos:</strong> Aplicação real do conhecimento</li>
+                  <li>• <strong>Checkpoints:</strong> Avaliações formativas ao longo do caminho</li>
+                  <li>• <strong>Recursos Extras:</strong> Artigos, vídeos, podcasts personalizados</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">🤖 Tutores de IA Individuais</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Imagine cada colaborador tendo um <strong>tutor pessoal disponível 24/7</strong>, paciente, que nunca julga, e capaz de explicar conceitos de infinitas formas diferentes até que o aluno entenda. Isso é possível com tutores de IA baseados em LLMs como GPT-4 ou Claude.
+                </p>
+                <p class="text-neutral-300">
+                  Esses tutores não apenas respondem perguntas, mas fazem perguntas socráticas, propõem exercícios práticos, oferecem analogias personalizadas e ajustam a explicação ao contexto e histórico do aluno.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🎓 Casos de Uso</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>✓ Tirar dúvidas instantâneas durante o estudo</li>
+                  <li>✓ Praticar conversação em idiomas (role-play)</li>
+                  <li>✓ Revisar código e sugerir melhorias</li>
+                  <li>✓ Simular entrevistas de emprego ou apresentações</li>
+                  <li>✓ Explicar conceitos complexos com analogias personalizadas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">📊 Gamificação e Engajamento</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A IA pode criar <strong>experiências de aprendizado gamificadas</strong> que mantêm os colaboradores engajados e motivados. Pontos, badges, níveis, desafios, leaderboards e recompensas transformam o aprendizado em uma jornada épica, não uma obrigação chata.
+                </p>
+                <p class="text-neutral-300">
+                  O segredo está na <strong>personalização</strong>: a gamificação é ajustada ao perfil motivacional de cada pessoa. Alguns são competitivos e adoram leaderboards; outros preferem desafios colaborativos ou metas pessoais de superação.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">🏆 Elementos de Gamificação</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>XP (Experience Points):</strong> Por completar módulos e exercícios</li>
+                  <li>• <strong>Badges:</strong> Conquistas especiais (ex: "Python Master", "SQL Ninja")</li>
+                  <li>• <strong>Streaks:</strong> Dias consecutivos estudando</li>
+                  <li>• <strong>Desafios Semanais:</strong> Missões especiais com recompensas</li>
+                  <li>• <strong>Leaderboards:</strong> Rankings por equipe, departamento ou empresa</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">💡 Aprendizado Just-in-Time</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Em vez de treinamentos longos e distantes da aplicação prática, a <strong>educação just-in-time</strong> fornece micro-aprendizados contextuais exatamente quando o colaborador precisa. Está para resolver um problema de SQL? A IA oferece um tutorial rápido de 5 minutos sobre JOINs complexos.
+                </p>
+                <p class="text-neutral-300">
+                  Esse modelo aumenta drasticamente a <strong>taxa de aplicação</strong> do conhecimento, pois o aprendizado ocorre no contexto real de trabalho, não em uma sala de treinamento abstrata.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🎯 Exemplo Prático</h5>
+                <p class="text-neutral-300 text-sm">
+                  Um desenvolvedor abre o IDE e começa a trabalhar em uma nova feature que requer Promises em JavaScript. O tutor de IA detecta o contexto e oferece proativamente: "Vejo que você está trabalhando com async/await. Quer uma revisão rápida de 3 minutos sobre Promises?"
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">👥 Mentoria Aumentada</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A IA não substitui mentores humanos, mas os <strong>potencializa</strong>. Mentores podem acompanhar dezenas de mentorados simultaneamente com o suporte de dashboards de IA que destacam quem precisa de atenção, quais são os bloqueios principais e quais intervenções têm maior impacto.
+                </p>
+                <p class="text-neutral-300">
+                  A IA também pode fazer a <strong>curadoria de recursos</strong> para os mentores, sugerir abordagens pedagógicas baseadas no perfil do mentorado e até simular conversas de mentoria para treinar o próprio mentor.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🔗 IA + Humano</h5>
+                <p class="text-neutral-300 text-sm">
+                  <strong>IA:</strong> Conteúdo técnico, prática repetitiva, feedback instantâneo<br>
+                  <strong>Humano:</strong> Empatia, experiência de vida, direcionamento de carreira, networking
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">📈 Medindo Desenvolvimento</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A IA transforma a avaliação de desenvolvimento de uma <strong>caixa preta</strong> em um <strong>processo transparente e contínuo</strong>. Em vez de um teste final genérico, a IA monitora centenas de micro-indicadores: taxa de acertos, tempo de resposta, padrões de erro, persistência, aplicação prática, colaboração e muito mais.
+                </p>
+                <p class="text-neutral-300">
+                  Gestores e RH têm acesso a dashboards que mostram não apenas "quem completou o treinamento", mas <strong>quem realmente dominou as competências</strong> e está pronto para aplicá-las.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">📊 Métricas-Chave</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Proficiência Real:</strong> Não apenas conclusão, mas domínio</li>
+                  <li>• <strong>Velocidade de Aprendizado:</strong> Curva de evolução individual</li>
+                  <li>• <strong>Retenção de Longo Prazo:</strong> Testes espaçados ao longo do tempo</li>
+                  <li>• <strong>Aplicação Prática:</strong> Uso do conhecimento em projetos reais</li>
+                  <li>• <strong>Gaps Remanescentes:</strong> O que ainda precisa ser trabalhado</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">🔄 Feedback Contínuo</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Feedback eficaz é <strong>imediato, específico e acionável</strong>. Tutores de IA fornecem isso em escala: cada exercício, cada resposta, cada tentativa recebe feedback detalhado que não apenas aponta o erro, mas explica o porquê e sugere caminhos de correção.
+                </p>
+                <p class="text-neutral-300">
+                  Além disso, o feedback é <strong>positivo e motivador</strong>. A IA reconhece progressos, celebra pequenas vitórias e reformula erros como oportunidades de aprendizado, criando um ambiente psicologicamente seguro para experimentação.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">🎯 Exemplo de Feedback</h5>
+                <p class="text-neutral-300 text-sm">
+                  ❌ <strong>Ruim:</strong> "Resposta incorreta."<br>
+                  ✅ <strong>Bom:</strong> "Ótima tentativa! Você identificou corretamente os dois primeiros passos. O erro está na ordem das operações no passo 3. Lembre-se: em SQL, WHERE vem antes de GROUP BY. Tente novamente!"
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">🏆 Reconhecimento de Conquistas</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-purple-900/20 to-dark-700/50 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-3">🎉 Celebrando o Crescimento</h5>
+                <p class="text-neutral-300 mb-3">
+                  O reconhecimento público de conquistas é um <strong>poderoso motivador</strong>. Certificações, badges visíveis em perfis internos, menções em newsletters, apresentações de projetos e até recompensas tangíveis (bônus, promoções, dias de folga) criam uma cultura onde o desenvolvimento contínuo é valorizado.
+                </p>
+                <p class="text-neutral-300">
+                  A IA pode automatizar o reconhecimento, identificando marcos importantes (ex: "Completou 30 dias de estudo consecutivo!", "Dominou 5 novas habilidades este trimestre!") e sugerindo formas personalizadas de celebração.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🌟 Tipos de Reconhecimento</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>✓ <strong>Certificações Digitais:</strong> Verificáveis via blockchain</li>
+                  <li>✓ <strong>Badges em Perfis:</strong> LinkedIn, sistemas internos</li>
+                  <li>✓ <strong>Showcase de Projetos:</strong> Galeria interna de trabalhos</li>
+                  <li>✓ <strong>Evolução de Carreira:</strong> Competências como critério para promoções</li>
+                  <li>✓ <strong>Recompensas Tangíveis:</strong> Bônus, viagens, equipamentos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Treinamentos genéricos são ineficientes</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Mapeamento de talentos individuais</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Trilhas personalizadas adaptativas</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Tutores de IA disponíveis 24/7</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Gamificação personalizada</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Aprendizado just-in-time contextual</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Mentoria aumentada por IA</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Métricas transparentes de desenvolvimento</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Feedback contínuo e acionável</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Reconhecimento sistemático de conquistas</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha31.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 3</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-3-4.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-purple-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 3.4</span>
+      </a>
+      <a href="modulo-3-6.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-400 transition-colors">
+        <span>Próximo: Módulo 3.6</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 3 - Módulo 3.5
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

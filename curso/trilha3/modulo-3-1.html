@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3.1: O Novo Papel do Consultor na Era da IA | SHIA</title>
+  <meta name="description" content="Redefina seu papel como consultor: de executor para orquestrador de capacidades humanas e tecnológicas.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A855F7',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 3.1 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">🎯 O Novo Papel do Consultor na Era da IA</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Redefina seu papel como consultor: de executor para orquestrador de capacidades humanas e tecnológicas.
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-8 border border-purple-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-purple-400">Conceito Central</h2>
+            <p class="text-neutral-400">A transformação do papel do consultor na era da IA</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-purple-500 pl-6 mb-6">
+          "Consultor 4.0 = <strong class="text-purple-400">Centauro</strong>: metade humano (empatia, estratégia), metade IA (análise, escala)."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          O consultor moderno não é mais apenas um executor de tarefas analíticas ou estratégicas. Ele se torna um <strong>orquestrador de capacidades</strong> – alguém que combina o melhor da inteligência humana (empatia, pensamento estratégico, construção de relacionamentos) com o melhor da IA (análise de dados em escala, velocidade, personalização).
+        </p>
+
+        <p class="text-neutral-300">
+          Como os <strong>centauros da mitologia grega</strong> – criaturas híbridas que combinavam força humana e animal – o Consultor 4.0 opera na interseção entre humanidade e tecnologia, criando valor que nenhum dos dois poderia gerar isoladamente.
+        </p>
+      </div>
+    </section>
+
+    <!-- Imagem do Conceito -->
+    <section class="mb-12">
+      <img src="../../doc/imagens/educadores/potencializando_talentos.webp"
+           alt="Consultor orquestrando capacidades humanas e tecnológicas"
+           class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+      <p class="text-center text-neutral-500 text-sm">O Consultor 4.0: Orquestrador de talentos humanos e capacidades tecnológicas</p>
+    </section>
+
+    <!-- Comparação Consultor Tradicional vs Consultor 4.0 -->
+    <section class="mb-12">
+      <div class="bg-dark-800 rounded-2xl p-8 border border-dark-600">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">⚖️</span>
+          <div>
+            <h2 class="text-2xl font-bold">Consultor Tradicional vs Consultor 4.0</h2>
+            <p class="text-neutral-400">A evolução do papel do consultor</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Consultor Tradicional -->
+          <div class="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
+            <h4 class="font-bold text-red-400 mb-4">📊 Consultor Tradicional</h4>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Foco:</strong> Análise manual e relatórios</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Escala:</strong> Limitada pelo tempo disponível</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Papel:</strong> Executor de tarefas</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Valor:</strong> Horas trabalhadas</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Consultor 4.0 -->
+          <div class="bg-purple-900/20 p-6 rounded-xl border border-purple-500/30">
+            <h4 class="font-bold text-purple-400 mb-4">🎯 Consultor 4.0 (Centauro)</h4>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start">
+                <span class="text-purple-400 mr-2">✓</span>
+                <span><strong>Foco:</strong> Estratégia e orquestração</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-purple-400 mr-2">✓</span>
+                <span><strong>Escala:</strong> Amplificada pela IA</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-purple-400 mr-2">✓</span>
+                <span><strong>Papel:</strong> Orquestrador de capacidades</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-purple-400 mr-2">✓</span>
+                <span><strong>Valor:</strong> Impacto e transformação</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">🚀 A Revolução da IA na Consultoria</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A IA está transformando radicalmente o setor de consultoria. Tarefas que antes levavam semanas – análise de mercado, benchmarking competitivo, modelagem financeira – agora podem ser realizadas em horas ou minutos. Mas isso não diminui o papel do consultor. Pelo contrário: <strong class="text-purple-400">libera o consultor para focar no que realmente importa</strong>.
+                </p>
+                <p class="text-neutral-300">
+                  O consultor deixa de ser um "analista de planilhas" para se tornar um <strong>arquiteto de soluções</strong>, um <strong>facilitador de transformação</strong> e um <strong>conselheiro estratégico</strong> que usa a IA como ferramenta de amplificação.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo Prático</h5>
+                <p class="text-sm text-neutral-300">
+                  Um consultor de estratégia pode usar IA generativa para analisar milhares de relatórios anuais de concorrentes em minutos, identificando tendências e gaps de mercado. Isso permite dedicar mais tempo a conversas estratégicas com C-levels e à criação de planos de ação personalizados.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  A IA não substitui o consultor – ela elimina o trabalho repetitivo e permite que o profissional se concentre em relacionamento, estratégia e impacto.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">🐴 O Consultor como "Centauro"</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O termo <strong class="text-purple-400">"Centauro"</strong> vem do xadrez avançado, onde equipes de humanos + computadores superam tanto grandes mestres quanto supercomputadores jogando sozinhos. No contexto da consultoria, o Consultor Centauro combina:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>✓ <strong>Capacidades Humanas:</strong> Empatia, contexto cultural, pensamento lateral, construção de confiança</li>
+                  <li>✓ <strong>Capacidades da IA:</strong> Análise de milhões de dados, padrões invisíveis ao olho humano, velocidade, personalização em escala</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 A Metade Humana</h5>
+                <p class="text-neutral-300 text-sm mb-2">
+                  • <strong>Empatia:</strong> Entender as emoções e motivações não explícitas do cliente<br>
+                  • <strong>Estratégia:</strong> Desenhar o futuro desejado e o caminho para chegar lá<br>
+                  • <strong>Influência:</strong> Convencer stakeholders e mobilizar para a mudança
+                </p>
+                <h5 class="font-bold text-purple-400 mb-2 mt-4">🤖 A Metade IA</h5>
+                <p class="text-neutral-300 text-sm">
+                  • <strong>Análise:</strong> Processar grandes volumes de dados em tempo real<br>
+                  • <strong>Escala:</strong> Replicar insights para múltiplos clientes/contextos<br>
+                  • <strong>Precisão:</strong> Modelagem preditiva e simulação de cenários
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">🎯 Novas Competências do Consultor 4.0</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O Consultor 4.0 precisa desenvolver um conjunto de <strong>competências híbridas</strong>:
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                  <h5 class="font-bold text-blue-400 mb-2">🧠 Competências Técnicas</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• <strong>Prompt Engineering:</strong> Extrair o máximo da IA</li>
+                    <li>• <strong>Data Literacy:</strong> Interpretar e questionar dados</li>
+                    <li>• <strong>Curadoria de IA:</strong> Selecionar as ferramentas certas</li>
+                  </ul>
+                </div>
+                <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                  <h5 class="font-bold text-purple-400 mb-2">💼 Competências Humanas</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• <strong>Pensamento Crítico:</strong> Validar outputs da IA</li>
+                    <li>• <strong>Storytelling:</strong> Traduzir dados em narrativas</li>
+                    <li>• <strong>Change Management:</strong> Liderar transformação</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 A Competência-Chave: Orquestração</h5>
+                <p class="text-neutral-300 text-sm">
+                  Mais do que usar ferramentas de IA, o Consultor 4.0 precisa saber <strong>orquestrar</strong> múltiplas capacidades (humanas e tecnológicas) para criar soluções que nenhuma ferramenta isolada poderia gerar.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">🛠️ Ferramentas de IA para Diagnóstico</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A fase de <strong>diagnóstico</strong> é onde o consultor identifica problemas, oportunidades e lacunas. A IA pode acelerar drasticamente essa fase:
+                </p>
+              </div>
+
+              <div class="overflow-x-auto mb-4">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="border-b border-dark-600">
+                      <th class="text-left py-3 px-4 text-purple-400">Ferramenta</th>
+                      <th class="text-left py-3 px-4 text-neutral-400">Uso no Diagnóstico</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-neutral-300">
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">ChatGPT/Claude</td>
+                      <td class="py-3 px-4">Análise de documentos, identificação de gaps, síntese de informações</td>
+                    </tr>
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">Perplexity AI</td>
+                      <td class="py-3 px-4">Pesquisa de mercado, benchmarking competitivo com fontes</td>
+                    </tr>
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">NotebookLM</td>
+                      <td class="py-3 px-4">Análise profunda de múltiplos documentos do cliente</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-semibold">Power BI + IA</td>
+                      <td class="py-3 px-4">Visualização de dados e identificação automática de insights</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt para Diagnóstico</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Atue como um consultor de negócios sênior. Analise o seguinte relatório anual e identifique: 1) Principais forças e fraquezas; 2) Tendências emergentes; 3) Riscos não explicitados. Formate em bullet points acionáveis."
+                </code>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">💡 IA na Geração de Soluções</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Após o diagnóstico, o consultor precisa <strong>gerar soluções</strong>. A IA atua como um <strong>parceiro criativo</strong> nessa fase:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>✓ <strong>Brainstorming aumentado:</strong> Gere 50 ideias em 5 minutos</li>
+                  <li>✓ <strong>Combinação de conceitos:</strong> "E se combinarmos lean manufacturing com design thinking?"</li>
+                  <li>✓ <strong>Prototipagem rápida:</strong> Crie mockups, roadmaps e frameworks visuais</li>
+                  <li>✓ <strong>Simulação de cenários:</strong> "O que acontece se implementarmos a solução A vs B?"</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Workflow de Geração de Soluções</h5>
+                <ol class="text-neutral-300 text-sm space-y-1">
+                  <li>1. <strong>Geração:</strong> Use IA para criar múltiplas alternativas</li>
+                  <li>2. <strong>Curadoria:</strong> Aplique seu julgamento profissional para selecionar as melhores</li>
+                  <li>3. <strong>Refinamento:</strong> Colabore com a IA para aprimorar as soluções escolhidas</li>
+                  <li>4. <strong>Validação:</strong> Teste com stakeholders e ajuste</li>
+                </ol>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">👥 Personalização em Escala</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Um dos maiores desafios da consultoria sempre foi o <strong>trade-off entre personalização e escala</strong>. A IA resolve esse dilema:
+                </p>
+                <p class="text-neutral-300">
+                  Agora é possível criar <strong>soluções profundamente personalizadas</strong> para cada cliente, sem sacrificar a capacidade de atender múltiplos clientes simultaneamente. A IA adapta frameworks genéricos ao contexto específico de cada organização.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30 mb-4">
+                <h5 class="font-bold text-emerald-400 mb-2">🎨 Exemplo: Consultoria de RH</h5>
+                <p class="text-neutral-300 text-sm">
+                  Um consultor de RH pode usar IA para analisar a cultura organizacional de 20 empresas diferentes simultaneamente (via análise de comunicações internas, políticas, feedbacks), e gerar planos de desenvolvimento cultural únicos para cada uma – algo impossível manualmente.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Como Personalizar em Escala</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Crie <strong>templates inteligentes</strong> que a IA adapta ao contexto</li>
+                  <li>• Use <strong>custom GPTs</strong> treinados com metodologias proprietárias</li>
+                  <li>• Automatize a <strong>coleta e análise de dados</strong> do cliente</li>
+                  <li>• Foque seu tempo em <strong>validação e relacionamento</strong></li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">📊 Da Análise Preditiva à Prescritiva</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A evolução da análise de dados segue três níveis:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>Descritiva:</strong> "O que aconteceu?" (tradicional)</li>
+                  <li>• <strong>Preditiva:</strong> "O que vai acontecer?" (IA clássica)</li>
+                  <li>• <strong class="text-purple-400">Prescritiva:</strong> "O que devemos fazer?" (IA moderna)</li>
+                </ul>
+                <p class="text-neutral-300 mt-3">
+                  O Consultor 4.0 usa IA para fazer <strong>análise prescritiva</strong> – não apenas prever o futuro, mas recomendar ações específicas para atingir os objetivos desejados.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo Prescritivo</h5>
+                <p class="text-neutral-300 text-sm">
+                  Em vez de apenas prever que "as vendas cairão 15% no próximo trimestre", a IA prescritiva sugere: "Reforce o time de vendas na região Sul em 20%, lance uma campanha de retenção para os 100 clientes de maior risco, e ajuste os preços em X% para Y segmentos."
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">⚖️ Ética e Governança</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30 mb-4">
+                <h5 class="font-bold text-red-400 mb-2">⚠️ Desafios Éticos na Consultoria com IA</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Transparência:</strong> O cliente sabe que você está usando IA?</li>
+                  <li>• <strong>Confidencialidade:</strong> Dados sensíveis do cliente podem vazar em modelos de IA?</li>
+                  <li>• <strong>Viés:</strong> As recomendações da IA podem ser discriminatórias?</li>
+                  <li>• <strong>Responsabilidade:</strong> Quem é responsável por erros da IA?</li>
+                </ul>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Princípios de Uso Ético</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Transparência:</strong> Informe o cliente sobre o uso de IA</li>
+                  <li>• <strong>Validação humana:</strong> Nunca entregue outputs de IA sem revisão</li>
+                  <li>• <strong>Segurança de dados:</strong> Use ferramentas com criptografia e compliance</li>
+                  <li>• <strong>Auditoria:</strong> Documente decisões e fontes</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">🔮 O Futuro do Trabalho na Consultoria</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O futuro da consultoria não é "humano vs IA", mas <strong>"humano + IA"</strong>. As empresas mais valiosas serão aquelas que dominarem essa colaboração:
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                  <h5 class="font-bold text-purple-400 mb-2">🚀 Tendências Emergentes</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• <strong>Consultoria Assíncrona:</strong> IA trabalha 24/7</li>
+                    <li>• <strong>Micro-consultorias:</strong> Um profissional atende 100 clientes</li>
+                    <li>• <strong>Consultoria Preditiva:</strong> Antecipar problemas antes que surjam</li>
+                  </ul>
+                </div>
+                <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                  <h5 class="font-bold text-blue-400 mb-2">💼 Novos Modelos de Negócio</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• <strong>Subscription:</strong> Consultoria contínua via IA</li>
+                    <li>• <strong>Outcome-based:</strong> Pagamento por resultados mensuráveis</li>
+                    <li>• <strong>Plataformas:</strong> Marketplaces de expertise + IA</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Perfil do Consultor do Futuro</h5>
+                <p class="text-neutral-300 text-sm">
+                  Menos "especialista em tudo", mais <strong>"orquestrador de especialistas (humanos e IA)"</strong>. O consultor do futuro será um maestro que rege uma orquestra de capacidades.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">💼 Construindo o Business Case</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-purple-900/20 to-dark-700/50 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-3">🚀 Como Vender IA para Seus Clientes</h5>
+                <p class="text-neutral-300 mb-3">
+                  Muitos clientes ainda têm receio da IA. Como Consultor 4.0, você precisa construir um <strong>business case convincente</strong>:
+                </p>
+                <ol class="text-neutral-300 space-y-3">
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">1.</span>
+                    <span><strong>Quantifique o ROI:</strong> "Redução de 40% no tempo de análise = economia de R$ 200k/ano"</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">2.</span>
+                    <span><strong>Mostre quick wins:</strong> Comece com projetos-piloto de baixo risco</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">3.</span>
+                    <span><strong>Use storytelling:</strong> Apresente casos de sucesso de concorrentes</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">4.</span>
+                    <span><strong>Endereçe medos:</strong> "Não vamos demitir pessoas, vamos liberá-las para tarefas mais estratégicas"</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">5.</span>
+                    <span><strong>Proponha governança:</strong> Frameworks éticos e de controle</span>
+                  </li>
+                </ol>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">💡 Template de Proposta de Valor</h5>
+                <p class="text-neutral-300 text-sm">
+                  "Nossa abordagem combina <strong>[sua expertise]</strong> com <strong>[ferramentas de IA]</strong> para entregar <strong>[resultado específico]</strong> em <strong>[prazo]</strong>, com <strong>[X% de economia/aumento]</strong>. Diferente de soluções 100% automatizadas, mantemos o <strong>toque humano</strong> nas decisões críticas."
+                </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-purple-500/10 rounded-2xl p-8 border border-purple-500/30">
+        <h2 class="text-2xl font-bold text-purple-400 mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Consultor 4.0 = Centauro (humano + IA)</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">IA libera tempo para estratégia e relacionamento</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Novas competências: orquestração e curadoria</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Ferramentas para diagnóstico e soluções</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Personalização em escala é possível</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Análise prescritiva supera preditiva</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Ética e governança são fundamentais</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Futuro: orquestrador de capacidades</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha31.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-600 transition-colors">
+            <span>Voltar para Trilha 3</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="trilha31.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-purple-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Voltar para Trilha 3</span>
+      </a>
+      <a href="modulo-3-2.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-600 transition-colors">
+        <span>Próximo: Módulo 3.2</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 3 - Módulo 3.1
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

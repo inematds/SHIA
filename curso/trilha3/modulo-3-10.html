@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3.10: Ética e Futuro da Consultoria | SHIA</title>
+  <meta name="description" content="Lidere a transformação com responsabilidade, ética e visão de futuro.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A855F7',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="./" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 3.10 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">⚖️ Ética, Governança e o Futuro da Consultoria com IA</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Lidere a transformação com responsabilidade, ética e visão de futuro
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-8 border border-purple-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-purple-400">Conceito Central</h2>
+            <p class="text-neutral-400">A responsabilidade que define o consultor do futuro</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-purple-500 pl-6 mb-6">
+          "O consultor do futuro lidera com <strong class="text-purple-400">ética</strong>. Tecnologia sem responsabilidade é risco."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          A <strong>ética em IA</strong> não é um tema complementar ou opcional — é o <strong class="text-purple-400">fundamento estratégico</strong> da consultoria moderna. Em um mundo onde algoritmos influenciam decisões que afetam vidas, empregos e sociedades inteiras, a responsabilidade do consultor transcende a eficiência técnica.
+        </p>
+
+        <p class="text-neutral-300">
+          O consultor que lidera com ética constrói <strong>confiança sustentável</strong>, mitiga riscos legais e reputacionais, e posiciona seus clientes como pioneiros responsáveis. A governança de IA não é barreira — é <strong>vantagem competitiva</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">⚖️ Princípios Éticos</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Os <strong class="text-purple-400">princípios éticos fundamentais</strong> em IA incluem: <strong>transparência</strong> (explicabilidade das decisões), <strong>justiça</strong> (ausência de viés discriminatório), <strong>responsabilidade</strong> (accountability clara) e <strong>privacidade</strong> (proteção de dados pessoais).
+                </p>
+                <p class="text-neutral-300">
+                  Como consultor, você deve traduzir esses princípios abstratos em <strong>políticas concretas</strong>, processos auditáveis e cultura organizacional que permeie todas as iniciativas de IA.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-2">💡 Exemplo de Prompt</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Atue como um especialista em ética aplicada à IA. Crie um framework de 5 princípios éticos para guiar a implementação de IA em uma instituição financeira, com exemplos práticos de aplicação em cada princípio."
+                </code>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  Ética em IA não é checklist de compliance — é cultura organizacional que previne riscos e constrói confiança de longo prazo.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">🔒 Privacidade e Proteção de Dados</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Com <strong>LGPD</strong> no Brasil, <strong>GDPR</strong> na Europa e regulações crescentes globalmente, a privacidade de dados é imperativa legal e ética. Consultores devem garantir que modelos de IA sejam treinados com dados <strong>consentidos, anonimizados e armazenados de forma segura</strong>.
+                </p>
+                <p class="text-neutral-300">
+                  Técnicas como <strong>privacy by design</strong>, <strong>differential privacy</strong> e <strong>federated learning</strong> permitem treinar modelos poderosos sem comprometer dados sensíveis.
+                </p>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-red-400 mb-2">⚠️ Riscos</h5>
+                <p class="text-neutral-300 text-sm">
+                  Vazamento de dados de treinamento, re-identificação de indivíduos anonimizados e uso de dados sem consentimento podem resultar em multas milionárias e destruição de reputação.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">🎭 Transparência com Clientes</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Clientes têm o direito de entender <strong>como a IA está sendo usada</strong> em suas operações. Isso inclui explicar quais dados são coletados, como os modelos tomam decisões e quais são as limitações e margens de erro.
+                </p>
+                <p class="text-neutral-300">
+                  A transparência constrói confiança. Use técnicas de <strong>XAI (Explainable AI)</strong> para tornar modelos complexos interpretáveis, e comunique riscos de forma clara e honesta.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Boas Práticas</h5>
+                <p class="text-neutral-300 text-sm">
+                  Crie dashboards de explicabilidade, relatórios de auditoria de modelos e documentação acessível que permita aos stakeholders compreender o funcionamento da IA.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">📋 Frameworks de Governança</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Frameworks como <strong>AI Ethics Guidelines da EU</strong>, <strong>NIST AI Risk Management Framework</strong> e <strong>ISO/IEC 42001</strong> fornecem estruturas para governança responsável de IA.
+                </p>
+                <p class="text-neutral-300">
+                  Como consultor, adapte esses frameworks ao contexto do cliente, criando comitês de ética, processos de aprovação de modelos e auditorias contínuas.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">📊 Componentes de um Framework</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Comitê de Ética de IA:</strong> Grupo multidisciplinar que avalia iniciativas</li>
+                  <li>• <strong>Políticas e Diretrizes:</strong> Documentação clara de princípios</li>
+                  <li>• <strong>Processo de Aprovação:</strong> Gates de validação antes do deploy</li>
+                  <li>• <strong>Monitoramento Contínuo:</strong> Auditoria de modelos em produção</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">⚠️ Gestão de Riscos Éticos</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Riscos éticos incluem <strong>viés algorítmico</strong> (modelos que discriminam grupos), <strong>amplificação de desigualdades</strong>, <strong>erosão de privacidade</strong> e <strong>uso dual</strong> (tecnologia criada para o bem sendo usada para o mal).
+                </p>
+                <p class="text-neutral-300">
+                  Implemente processos de <strong>AI Risk Assessment</strong>, testes de fairness e red teaming (simulação de ataques adversariais) para identificar e mitigar riscos antes do deploy.
+                </p>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-red-400 mb-2">🚨 Exemplo de Risco</h5>
+                <p class="text-neutral-300 text-sm">
+                  Um modelo de recrutamento treinado em dados históricos pode perpetuar vieses de gênero ou raça, rejeitando candidatos qualificados de grupos sub-representados.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">🌍 Impacto Social e Ambiental</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A IA tem <strong>impacto social</strong> (automação de empregos, mudança no mercado de trabalho) e <strong>impacto ambiental</strong> (treinamento de modelos grandes consome energia equivalente a voos intercontinentais).
+                </p>
+                <p class="text-neutral-300">
+                  Consultores devem ajudar clientes a avaliar esses impactos, promover <strong>IA sustentável</strong> (otimização de modelos, uso de energia renovável) e criar programas de requalificação para funcionários afetados.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🌱 IA Sustentável</h5>
+                <p class="text-neutral-300 text-sm">
+                  Use técnicas como model compression, pruning e quantization para reduzir o custo computacional e ambiental de modelos de IA.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">📜 Regulamentação e Compliance</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Regulamentações como o <strong>EU AI Act</strong> classificam sistemas de IA por risco (inaceitável, alto, limitado, mínimo) e impõem requisitos crescentes de transparência, auditoria e documentação.
+                </p>
+                <p class="text-neutral-300">
+                  Consultores devem acompanhar a evolução regulatória global, mapear requisitos aplicáveis ao cliente e garantir compliance proativo — não reativo.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">⚖️ Principais Regulamentações</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>EU AI Act:</strong> Regulamentação abrangente por nível de risco</li>
+                  <li>• <strong>LGPD (Brasil):</strong> Proteção de dados pessoais</li>
+                  <li>• <strong>GDPR (Europa):</strong> Direito à explicação de decisões automatizadas</li>
+                  <li>• <strong>Regulações setoriais:</strong> Saúde, finanças, defesa têm requisitos específicos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">🔮 Tendências Futuras</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O futuro da IA aponta para <strong>modelos multimodais</strong> (integrando texto, imagem, áudio, vídeo), <strong>IA generativa em tempo real</strong>, <strong>agentes autônomos</strong> e <strong>IA em edge devices</strong> (processamento local sem nuvem).
+                </p>
+                <p class="text-neutral-300">
+                  Consultores devem antecipar essas tendências, capacitar clientes para a próxima onda tecnológica e posicionar a organização como early adopter responsável.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🚀 Tendências 2025+</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>AGI (Artificial General Intelligence):</strong> Sistemas com capacidade humana generalizada</li>
+                  <li>• <strong>IA Quantum:</strong> Uso de computação quântica para acelerar IA</li>
+                  <li>• <strong>Brain-Computer Interfaces:</strong> Integração direta humano-máquina</li>
+                  <li>• <strong>IA Federated:</strong> Modelos treinados sem centralizar dados</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">🎯 Posicionamento Estratégico</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Como consultor, seu <strong>posicionamento estratégico</strong> deve refletir liderança ética, expertise técnica e visão de futuro. Construa reputação como <strong>"Trusted AI Advisor"</strong> — o consultor que clientes procuram para navegar dilemas complexos.
+                </p>
+                <p class="text-neutral-300">
+                  Publique estudos de caso, participe de conferências, crie thought leadership e demonstre resultados concretos de IA responsável.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">📈 Estratégias de Posicionamento</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• <strong>Thought Leadership:</strong> Artigos, webinars, palestras</li>
+                  <li>• <strong>Certificações:</strong> Credenciais reconhecidas em IA e ética</li>
+                  <li>• <strong>Casos de Sucesso:</strong> Portfolio de transformações éticas e lucrativas</li>
+                  <li>• <strong>Network:</strong> Parcerias com universidades, centros de pesquisa e órgãos reguladores</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">🚀 Liderando com Responsabilidade</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-purple-900/20 to-dark-700/50 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <h5 class="font-bold text-purple-400 mb-3">🎯 Seu Papel como Líder Ético</h5>
+                <p class="text-neutral-300 mb-4">
+                  Liderança responsável em IA significa <strong>tomar decisões difíceis</strong> — recusar projetos antiéticos mesmo quando lucrativos, educar clientes sobre riscos mesmo quando inconveniente, e defender transparência mesmo quando complexo.
+                </p>
+                <p class="text-neutral-300">
+                  O consultor do futuro não é apenas tecnicamente competente — é <strong class="text-purple-400">moralmente corajoso</strong>. Sua reputação será construída não apenas no que você entrega, mas em <strong>como</strong> você entrega e <strong>o que</strong> você se recusa a entregar.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Compromisso Ético</h5>
+                <p class="text-neutral-300 text-sm">
+                  Crie seu próprio código de ética pessoal como consultor de IA. Defina suas linhas vermelhas, princípios inegociáveis e compromisso público com IA responsável.
+                </p>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Ética é fundamento, não complemento</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Privacidade e transparência são imperativas</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Frameworks de governança mitigam riscos</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Impacto social e ambiental importam</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Compliance proativo evita crises</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Liderança ética constrói reputação duradoura</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha32.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 3</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-3-9.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-purple-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 3.9</span>
+      </a>
+      <a href="trilha32.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-400 transition-colors">
+        <span>Voltar para Trilha 3</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 3 - Módulo 3.10
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

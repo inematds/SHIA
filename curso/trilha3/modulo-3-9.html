@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3.9: ROI e Comunicação de Valor | SHIA</title>
+  <meta name="description" content="Demonstre resultados tangíveis e comunique valor para diferentes stakeholders.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A855F7',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 3.9 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">💰 Medindo o ROI e Comunicando Valor</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Demonstre resultados tangíveis e comunique valor para diferentes stakeholders
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-purple-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl p-8 border border-purple-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-purple-400">Conceito Central</h2>
+            <p class="text-neutral-400">A ideia que transforma consultoria em investimento</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-purple-500 pl-6 mb-6">
+          "O que não é medido não é valorizado. <strong class="text-purple-400">ROI transforma consultoria em investimento</strong>."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          A capacidade de <strong>medir e comunicar o Retorno sobre Investimento (ROI)</strong> é o que separa consultores caros de consultores indispensáveis. Não basta entregar valor – é preciso demonstrá-lo de forma clara, quantificável e alinhada aos objetivos estratégicos do cliente.
+        </p>
+
+        <p class="text-neutral-300">
+          Em um mundo onde decisões de investimento são cada vez mais baseadas em dados, sua capacidade de <strong>traduzir resultados em números e histórias convincentes</strong> determina não apenas a renovação de contratos, mas também sua reputação e precificação no mercado.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">💰 Por que ROI é Crítico</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Em um ambiente de negócios cada vez mais orientado por dados, <strong class="text-purple-400">stakeholders exigem justificativa clara para cada investimento</strong>. ROI não é apenas um número – é a linguagem universal que conecta sua entrega técnica aos objetivos estratégicos da organização.
+                </p>
+                <p class="text-neutral-300">
+                  Consultores que dominam a medição e comunicação de ROI conseguem: <strong>renovar contratos com mais facilidade</strong>, justificar aumentos de preço, construir reputação sólida e transformar clientes em defensores da marca.
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  ROI transforma percepção: de "custo" para "investimento estratégico". Essa mudança de mindset é fundamental para longevidade no mercado.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">📊 Definindo Métricas de Sucesso</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O primeiro passo para medir ROI é definir <strong>métricas claras, específicas e alinhadas aos objetivos do cliente</strong>. Use o framework <strong class="text-purple-400">SMART</strong>: Specific, Measurable, Achievable, Relevant, Time-bound.
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>✓ <strong>Métricas de Eficiência:</strong> Redução de tempo, automação de processos</li>
+                  <li>✓ <strong>Métricas Financeiras:</strong> Aumento de receita, redução de custos, margem</li>
+                  <li>✓ <strong>Métricas de Qualidade:</strong> Taxa de erro, satisfação do cliente (NPS)</li>
+                  <li>✓ <strong>Métricas de Adoção:</strong> Engajamento, taxa de utilização de novas ferramentas</li>
+                </ul>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo Prático</h5>
+                <p class="text-neutral-300 text-sm">
+                  <strong>Projeto:</strong> Implementação de IA para triagem de e-mails de suporte.<br>
+                  <strong>Métrica SMART:</strong> "Reduzir em 40% o tempo médio de primeira resposta (de 4h para 2h24min) em 3 meses, medido via dashboard Zendesk."
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">🧮 Calculando ROI</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A fórmula básica de ROI é simples: <strong class="text-purple-400">ROI = (Ganho - Custo) / Custo × 100</strong>. Porém, a complexidade está em definir corretamente "Ganho" e "Custo".
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>Custos:</strong> Incluem honorários, ferramentas, tempo da equipe interna, treinamento</li>
+                  <li>• <strong>Ganhos:</strong> Receita adicional, custos evitados, economia de tempo (valorada)</li>
+                  <li>• <strong>Período de Análise:</strong> Considere payback period e valor ao longo do tempo (NPV)</li>
+                </ul>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🧮 Exemplo de Cálculo</h5>
+                <p class="text-neutral-300 text-sm mb-2">
+                  <strong>Investimento:</strong> R$150k (consultoria + ferramenta)<br>
+                  <strong>Ganho Anual:</strong> R$400k (200h/mês × R$200/h economia de tempo analistas)<br>
+                  <strong>ROI:</strong> (400k - 150k) / 150k × 100 = <strong class="text-emerald-400">166%</strong><br>
+                  <strong>Payback:</strong> 4,5 meses
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">📈 Quantificando Benefícios Intangíveis</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Nem todo valor é diretamente mensurável em dinheiro. <strong>Benefícios intangíveis</strong> como moral da equipe, reputação de marca e capacidade de inovação são críticos, mas desafiadores de quantificar.
+                </p>
+                <p class="text-neutral-300">
+                  <strong class="text-purple-400">Técnicas de monetização:</strong>
+                </p>
+                <ul class="text-neutral-300 space-y-2 mt-2">
+                  <li>• <strong>Proxy Metrics:</strong> Use turnover como proxy para satisfação (custo de substituição)</li>
+                  <li>• <strong>Benchmarks de Mercado:</strong> Compare com estudos setoriais (ex: NPS vs. crescimento)</li>
+                  <li>• <strong>Análise de Cenário:</strong> Calcule custo de inação ou risco evitado</li>
+                </ul>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">💡 Exemplo</h5>
+                <p class="text-neutral-300 text-sm">
+                  <strong>Benefício Intangível:</strong> "Melhora no moral da equipe"<br>
+                  <strong>Quantificação:</strong> Redução de 15% no turnover × Custo médio de substituição (R$80k) = R$240k economizados.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">📋 Dashboards de Valor</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Um <strong>dashboard de valor</strong> é uma ferramenta visual que rastreia métricas-chave em tempo real, facilitando a comunicação contínua de progresso para stakeholders.
+                </p>
+                <p class="text-neutral-300">
+                  <strong class="text-purple-400">Componentes essenciais:</strong>
+                </p>
+                <ul class="text-neutral-300 space-y-2 mt-2">
+                  <li>✓ <strong>KPIs Principais:</strong> 3-5 métricas críticas em destaque</li>
+                  <li>✓ <strong>Tendências:</strong> Gráficos de linha mostrando evolução ao longo do tempo</li>
+                  <li>✓ <strong>Comparações:</strong> Antes vs. Depois, Baseline vs. Meta</li>
+                  <li>✓ <strong>Contexto:</strong> Anotações explicando picos/quedas</li>
+                </ul>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🛠️ Ferramentas</h5>
+                <p class="text-neutral-300 text-sm">
+                  <strong>Power BI, Tableau, Google Data Studio</strong> para dashboards interativos. <strong>Notion/Airtable</strong> para dashboards simples e colaborativos.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">🗣️ Storytelling com Dados</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Números sozinhos não convencem – <strong class="text-purple-400">dados precisam de contexto e narrativa</strong>. O storytelling transforma planilhas em histórias que inspiram ação.
+                </p>
+                <p class="text-neutral-300">
+                  <strong>Framework de Narrativa (Situação → Complicação → Resolução):</strong>
+                </p>
+                <ul class="text-neutral-300 space-y-2 mt-2">
+                  <li>1. <strong>Situação:</strong> "A equipe de suporte estava sobrecarregada (4h de SLA)"</li>
+                  <li>2. <strong>Complicação:</strong> "Isso levava a churn de 12% ao trimestre"</li>
+                  <li>3. <strong>Resolução:</strong> "Com IA, reduzimos SLA para 2h e churn para 7%"</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎯 Dica de Apresentação</h5>
+                <p class="text-neutral-300 text-sm">
+                  Use a regra <strong>"1 slide, 1 ideia"</strong>. Evite sobrecarga de dados. Destaque o número mais importante em fonte grande e contextualize com texto curto.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">📑 Relatórios Executivos</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Relatórios executivos são <strong>documentos concisos (1-2 páginas)</strong> que resumem progresso, resultados e próximos passos. Eles devem ser escaneáveis em 2 minutos.
+                </p>
+                <p class="text-neutral-300">
+                  <strong class="text-purple-400">Estrutura ideal:</strong>
+                </p>
+                <ul class="text-neutral-300 space-y-2 mt-2">
+                  <li>1. <strong>Executive Summary:</strong> 3-4 frases com os principais destaques</li>
+                  <li>2. <strong>Métricas-Chave:</strong> Tabela/dashboard com KPIs e status (verde/amarelo/vermelho)</li>
+                  <li>3. <strong>Insights:</strong> 2-3 descobertas importantes com implicações</li>
+                  <li>4. <strong>Recomendações:</strong> Próximos passos com priorização</li>
+                </ul>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✅ Template</h5>
+                <p class="text-neutral-300 text-sm">
+                  Use template de 1 página com cabeçalho (projeto/data), seção de métricas visuais (ícones/cores), insights (bullets) e call-to-action final.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">🎯 Comunicando para Stakeholders</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Diferentes stakeholders precisam de <strong>mensagens customizadas</strong>. Um CFO se importa com ROI financeiro; um CTO com arquitetura técnica; um CEO com visão estratégica.
+                </p>
+                <p class="text-neutral-300">
+                  <strong class="text-purple-400">Matriz de Stakeholders:</strong>
+                </p>
+                <ul class="text-neutral-300 space-y-2 mt-2">
+                  <li>• <strong>C-Level (CEO/CFO):</strong> ROI, alinhamento estratégico, risco</li>
+                  <li>• <strong>Diretores/VPs:</strong> Impacto operacional, eficiência de equipe</li>
+                  <li>• <strong>Gerentes de Projeto:</strong> Cronograma, dependências, bloqueios</li>
+                  <li>• <strong>Usuários Finais:</strong> Usabilidade, treinamento, suporte</li>
+                </ul>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">💡 Técnica</h5>
+                <p class="text-neutral-300 text-sm">
+                  Crie <strong>versões do mesmo relatório</strong> com ênfases diferentes. Use ferramentas como <strong>Miro/Mural</strong> para mapear stakeholders e adaptar mensagem.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">🔄 Acompanhamento Pós-Projeto</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O verdadeiro ROI muitas vezes só se materializa <strong>meses após a entrega</strong>. Acompanhamento pós-projeto demonstra comprometimento e gera insights valiosos para case studies.
+                </p>
+                <p class="text-neutral-300">
+                  <strong class="text-purple-400">Estratégias de Acompanhamento:</strong>
+                </p>
+                <ul class="text-neutral-300 space-y-2 mt-2">
+                  <li>✓ <strong>Reuniões de Check-in:</strong> Mensais nos primeiros 3 meses, depois trimestrais</li>
+                  <li>✓ <strong>Monitoramento de Métricas:</strong> Acesso contínuo a dashboards compartilhados</li>
+                  <li>✓ <strong>Pesquisas de Satisfação:</strong> NPS e feedback qualitativo</li>
+                  <li>✓ <strong>Relatórios de Impacto:</strong> Documento anual com valor acumulado</li>
+                </ul>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">📅 Timeline Sugerida</h5>
+                <p class="text-neutral-300 text-sm">
+                  <strong>Mês 1-3:</strong> Check-ins mensais<br>
+                  <strong>Mês 4-6:</strong> Relatórios bimestrais<br>
+                  <strong>Mês 7-12:</strong> Revisão trimestral + relatório anual de impacto
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">🏆 Case Studies de Sucesso</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-purple-900/20 to-dark-700/50 p-4 rounded-lg border border-purple-500/30 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  <strong>Case studies</strong> são sua moeda de marketing mais valiosa. Eles transformam projetos bem-sucedidos em <strong>ativos que vendem por você</strong>.
+                </p>
+                <p class="text-neutral-300">
+                  <strong class="text-purple-400">Estrutura de Case Study (Formato STAR):</strong>
+                </p>
+                <ol class="text-neutral-300 space-y-3 mt-3">
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">S -</span>
+                    <span><strong>Situation:</strong> Contexto do cliente (indústria, tamanho, desafio)</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">T -</span>
+                    <span><strong>Task:</strong> Objetivo específico do projeto</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">A -</span>
+                    <span><strong>Action:</strong> Abordagem e metodologia utilizadas</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-purple-400 mr-2">R -</span>
+                    <span><strong>Results:</strong> Resultados quantificados com métricas de ROI</span>
+                  </li>
+                </ol>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🎯 Dica de Ouro</h5>
+                <p class="text-neutral-300 text-sm">
+                  Sempre inclua <strong>uma citação direta do cliente</strong> e números concretos. "Cliente X aumentou receita em 34% em 6 meses" vende mais que "melhoramos performance".
+                </p>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">ROI transforma consultoria em investimento estratégico</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Métricas SMART garantem clareza e rastreabilidade</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Quantifique também benefícios intangíveis</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Dashboards facilitam comunicação contínua</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Storytelling com dados inspira ação</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Case studies são seu ativo de marketing mais valioso</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha32.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-dark-900 rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 3</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-3-8.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-purple-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 3.8</span>
+      </a>
+      <a href="modulo-3-10.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-400 transition-colors">
+        <span>Próximo: Módulo 3.10</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 3 - Módulo 3.9
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>
