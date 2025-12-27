@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.4: Desenvolvendo um Estilo Único com IA | SHIA</title>
+  <meta name="description" content="Criando e consolidando sua identidade visual e marca artística através de IA generativa.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#10B981',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="./" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="../trilha2/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 1.4 - TRILHA 1
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">🎨 Desenvolvendo um Estilo Único com IA</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Criando e consolidando sua identidade visual e marca artística
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-emerald-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-emerald-400">~3h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-emerald-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-2xl p-8 border border-emerald-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-emerald-400">Conceito Central</h2>
+            <p class="text-neutral-400">Seu estilo é sua assinatura visual no mundo da arte generativa</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-emerald-500 pl-6 mb-6">
+          "A IA não substitui sua visão artística - ela <strong class="text-emerald-400">AMPLIFICA</strong> sua voz criativa única."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          Desenvolver um estilo único com IA vai muito além de usar os mesmos prompts. É sobre <strong>construir uma linguagem visual consistente</strong> que reflita sua visão artística, seus valores e sua mensagem.
+        </p>
+
+        <p class="text-neutral-300">
+          Artistas reconhecíveis criam <strong>sistemas visuais coerentes</strong>: paletas de cores características, composições recorrentes, temas que se repetem. Com IA, você pode codificar esse DNA visual em style guides, LoRAs personalizados e fluxos de trabalho otimizados.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">🎭 Descobrindo Sua Voz Visual</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Antes de criar um estilo consistente, você precisa <strong class="text-emerald-400">descobrir sua voz visual</strong>. O que te atrai? Que emoções quer evocar?
+              </p>
+              <p class="text-neutral-300">
+                Explore diferentes estilos, crie mood boards, analise artistas que admira. Identifique padrões no que te emociona: é o contraste? As cores vibrantes? A melancolia? O surrealismo?
+              </p>
+            </div>
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">🎯 Exercício Prático</h5>
+              <p class="text-neutral-300 text-sm">
+                Gere 50 imagens completamente diferentes com IA. Escolha suas 10 favoritas. Analise: o que elas têm em comum? Essas são pistas da sua voz visual.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">🎨 Paletas de Cores Consistentes</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Cores são a <strong class="text-emerald-400">assinatura emocional</strong> do seu trabalho. Artistas reconhecíveis têm paletas características.
+              </p>
+              <ul class="text-neutral-300 space-y-2">
+                <li>✓ <strong>Defina 2-3 paletas principais:</strong> Uma para cada mood/tema</li>
+                <li>✓ <strong>Use códigos hex específicos:</strong> "#FF6B35, #004E89, #F7B32B"</li>
+                <li>✓ <strong>Inclua paletas nos prompts:</strong> "warm sunset palette with coral and gold"</li>
+                <li>✓ <strong>Crie um color grading consistente:</strong> Mesmo em estilos variados</li>
+              </ul>
+            </div>
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Dica Profissional</h5>
+              <p class="text-neutral-300 text-sm">
+                Ferramentas como Coolors.co ou Adobe Color ajudam a criar paletas harmoniosas. Extraia cores de suas imagens favoritas geradas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">✨ Texturas e Acabamentos Característicos</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Texturas criam <strong class="text-emerald-400">personalidade visual</strong>. Seu trabalho é smooth ou grunge? Digital limpo ou analógico orgânico?
+              </p>
+              <p class="text-neutral-300">
+                Exemplos: "grainy film texture", "smooth gradient", "paper texture with watercolor bleeding", "glitch aesthetic", "oil painting brushstrokes", "clean vector style".
+              </p>
+            </div>
+            <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+              <h5 class="font-bold text-purple-400 mb-2">🎨 Combinações Poderosas</h5>
+              <p class="text-neutral-300 text-sm">
+                Misture texturas intencionalmente: "digital painting with analog film grain" cria tensão visual interessante. Consistência não é uniformidade.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">📐 Composição e Enquadramento Pessoal</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Como você <strong class="text-emerald-400">organiza elementos no espaço</strong> é parte do seu estilo. Wes Anderson ama simetria. David Fincher usa terços.
+              </p>
+              <ul class="text-neutral-300 space-y-2">
+                <li>• <strong>Regra dos terços ou centralização?</strong></li>
+                <li>• <strong>Perspectivas:</strong> bird's eye, worm's eye, Dutch angle</li>
+                <li>• <strong>Profundidade de campo:</strong> shallow ou deep focus</li>
+                <li>• <strong>Aspect ratio consistente:</strong> 16:9, 4:3, square, vertical</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">📖 Temas e Narrativas Recorrentes</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Grandes artistas têm <strong class="text-emerald-400">obsessões temáticas</strong>. O que você quer explorar repetidamente?
+              </p>
+              <p class="text-neutral-300">
+                Exemplos: natureza vs. tecnologia, solidão urbana, sonhos e surrealismo, mitologia reimaginada, futuro distópico, nostalgia retrofuturista. Seus temas criam coerência narrativa.
+              </p>
+            </div>
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">💬 Narrativa Visual</h5>
+              <p class="text-neutral-300 text-sm">
+                Mesmo em peças isoladas, temas recorrentes criam uma "conversa" entre suas obras. Espectadores reconhecem sua mão autoral.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">📋 Criando Style Guides para IA</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Um <strong class="text-emerald-400">style guide</strong> é um documento que codifica seu estilo visual para uso consistente com IA.
+              </p>
+              <p class="text-neutral-300 mb-3">
+                <strong>Estrutura de um Style Guide:</strong>
+              </p>
+              <ul class="text-neutral-300 space-y-2">
+                <li>• <strong>Base prompt:</strong> "cinematic photography, moody lighting, desaturated colors with teal-orange grading"</li>
+                <li>• <strong>Paletas:</strong> Lista de combinações de cores exatas</li>
+                <li>• <strong>Texturas padrão:</strong> "subtle film grain, analog feel"</li>
+                <li>• <strong>Composição típica:</strong> "rule of thirds, shallow depth of field"</li>
+                <li>• <strong>Negative prompts:</strong> O que sempre evitar</li>
+              </ul>
+            </div>
+            <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+              <h5 class="font-bold text-yellow-400 mb-2">📝 Ferramenta Prática</h5>
+              <p class="text-neutral-300 text-sm">
+                Crie um documento "Master Prompt Template" e salve variações. Use snippets ou macros para inserir rapidamente.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">🔄 Image-to-Image para Consistência</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Use <strong class="text-emerald-400">img2img</strong> para transferir estilo entre imagens e manter coerência visual.
+              </p>
+              <ul class="text-neutral-300 space-y-2">
+                <li>✓ <strong>ControlNet:</strong> Mantenha composição, mude estilo</li>
+                <li>✓ <strong>Style transfer:</strong> Aplique o look de uma imagem em outra</li>
+                <li>✓ <strong>Outpainting consistente:</strong> Expanda mantendo atmosfera</li>
+                <li>✓ <strong>Variações:</strong> Gere múltiplas versões sem perder DNA visual</li>
+              </ul>
+            </div>
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+              <h5 class="font-bold text-blue-400 mb-2">🎯 Técnica Avançada</h5>
+              <p class="text-neutral-300 text-sm">
+                Crie uma "style reference library": 10-20 imagens que definem seu estilo. Use-as como referência em novos projetos.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">🧬 Fine-Tuning e Modelos Personalizados (LoRAs, DreamBooth)</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Para máxima consistência, <strong class="text-emerald-400">treine modelos personalizados</strong> no seu próprio estilo.
+              </p>
+              <p class="text-neutral-300 mb-3">
+                <strong>LoRA (Low-Rank Adaptation):</strong> Lightweight, rápido de treinar, fácil de compartilhar. Ideal para estilos artísticos específicos.
+              </p>
+              <p class="text-neutral-300">
+                <strong>DreamBooth:</strong> Mais robusto, treina conceitos específicos (seu personagem, seu estilo). Requer mais recursos computacionais.
+              </p>
+            </div>
+            <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+              <h5 class="font-bold text-purple-400 mb-2">⚙️ Processo de Fine-Tuning</h5>
+              <p class="text-neutral-300 text-sm">
+                1) Curate dataset (20-100 imagens de alta qualidade do seu estilo), 2) Label adequadamente, 3) Treine com hiperparâmetros certos, 4) Teste e itere.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">🌱 Evoluindo o Estilo com o Tempo</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Estilo não é estático. Grandes artistas <strong class="text-emerald-400">evoluem</strong>, mas mantêm DNA reconhecível.
+              </p>
+              <p class="text-neutral-300">
+                Permita-se experimentar dentro do seu framework. Picasso teve fases azul, rosa, cubista - mas sempre foi reconhecível. Documente sua evolução: crie "seasons" ou "eras" do seu trabalho.
+              </p>
+            </div>
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">📊 Versionamento de Estilo</h5>
+              <p class="text-neutral-300 text-sm">
+                Trate seu estilo como software: "Style v1.0", "Style v2.0". Isso permite evolução intencional sem perder coerência histórica.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">🏆 Construindo uma Marca Artística</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-gradient-to-br from-emerald-900/20 to-dark-700/50 p-4 rounded-lg border border-emerald-500/30 mb-4">
+              <h5 class="font-bold text-emerald-400 mb-3">🚀 Da Consistência à Marca</h5>
+              <p class="text-neutral-300 mb-3">
+                Quando seu estilo se torna <strong class="text-emerald-400">reconhecível instantaneamente</strong>, você tem uma marca artística.
+              </p>
+              <ul class="text-neutral-300 space-y-2">
+                <li>✓ <strong>Portfolio coeso:</strong> Cada peça dialoga com as outras</li>
+                <li>✓ <strong>Assinatura visual:</strong> Elementos que aparecem em todo trabalho</li>
+                <li>✓ <strong>História consistente:</strong> Narrativa clara do que você representa</li>
+                <li>✓ <strong>Comunidade:</strong> Pessoas que reconhecem e valorizam seu estilo</li>
+              </ul>
+            </div>
+            <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+              <h5 class="font-bold text-yellow-400 mb-2">💼 Marca = Valor</h5>
+              <p class="text-neutral-300 text-sm">
+                No mercado de arte, estilo reconhecível = valor comercial. Colecionadores pagam por autenticidade e consistência artística.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Descubra sua voz visual única</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Defina paletas de cores consistentes</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Desenvolva texturas características</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Crie composições reconhecíveis</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Explore temas recorrentes</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Construa style guides e LoRAs</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Evolua mantendo consistência</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Transforme estilo em marca artística</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="./" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-dark-900 rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 1</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-1-3.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-emerald-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Módulo 1.3</span>
+      </a>
+      <a href="modulo-1-5.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-emerald-500 text-dark-900 rounded-lg font-bold hover:bg-emerald-400 transition-colors">
+        <span>Próximo: Módulo 1.5</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 1 - Módulo 1.4
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>
