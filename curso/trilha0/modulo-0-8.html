@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 8: Ética e Responsabilidade com IA | SHIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { 50: '#f9fafb', 100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db', 400: '#9ca3af', 500: '#6b7280', 600: '#4b5563', 700: '#374151', 800: '#1f2937', 900: '#111827', 950: '#030712' }
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .topic-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .topic-content.open { max-height: 2000px; transition: max-height 0.5s ease-in; }
+    </style>
+</head>
+<body class="bg-dark-950 text-neutral-200 min-h-screen">
+    <!-- Header -->
+    <header class="bg-dark-900/80 backdrop-blur-md border-b border-dark-700 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../../index.html" class="text-2xl font-bold text-yellow-400">SHIA</a>
+                <nav class="flex items-center gap-6">
+                    <a href="trilha02.html" class="text-neutral-400 hover:text-yellow-400 transition-colors">Trilha 0</a>
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-dark-800 hover:bg-dark-700 transition-colors">
+                        <span class="text-xl">🌙</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Module Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium">Trilha 0 • Módulo 8</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">⚖️ Ética e Responsabilidade</h1>
+            <p class="text-xl text-neutral-400">Usando IA de Forma Consciente e Responsável</p>
+        </div>
+
+        <!-- Image Section -->
+        <section class="mb-12">
+            <img src="../../doc/imagens/introducao/etica_ia_pilares.png" 
+                 alt="Os Pilares da Ética em IA: Transparência, Justiça, Privacidade e Responsabilidade" 
+                 class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+            <p class="text-center text-neutral-500 text-sm">Os pilares fundamentais para uso ético de IA</p>
+        </section>
+
+        <!-- Introduction -->
+        <section class="mb-12 p-6 bg-dark-800/50 rounded-2xl border border-dark-700">
+            <h2 class="text-2xl font-bold text-yellow-400 mb-4">Visão Geral</h2>
+            <p class="text-neutral-300 leading-relaxed">
+                Com grande poder vem grande responsabilidade. A IA é uma ferramenta poderosa que pode ser usada 
+                para o bem ou para o mal. Este módulo explora as questões éticas fundamentais, as armadilhas a 
+                evitar, e como usar IA de forma que beneficie a todos, mantendo integridade profissional e pessoal.
+            </p>
+        </section>
+
+        <!-- Topics -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-bold text-white mb-6">📚 Tópicos do Módulo</h2>
+
+            <!-- Topic 1 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">1</span>
+                        <span class="font-semibold text-white">Por que Ética em IA Importa</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">A IA amplifica tanto nossas capacidades quanto nossas responsabilidades.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Impactos Potenciais</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Desinformação e fake news</li>
+                                    <li>• Viés e discriminação algorítmica</li>
+                                    <li>• Perda de empregos e desigualdade</li>
+                                    <li>• Violação de privacidade</li>
+                                    <li>• Deepfakes e manipulação</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Nossa Responsabilidade</h4>
+                                <p class="text-neutral-400 text-sm">Como usuários de IA, somos responsáveis pelo que fazemos com ela. Decisões éticas são nossas, não da máquina.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">2</span>
+                        <span class="font-semibold text-white">Viés e Preconceito em IA</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">IAs aprendem com dados humanos e podem perpetuar (ou amplificar) preconceitos existentes.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Tipos de Viés</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>Viés de dados:</strong> Dados de treino desbalanceados</li>
+                                    <li>• <strong>Viés de representação:</strong> Grupos sub-representados</li>
+                                    <li>• <strong>Viés histórico:</strong> Preconceitos do passado</li>
+                                    <li>• <strong>Viés de confirmação:</strong> Reforça crenças existentes</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Como Mitigar</h4>
+                                <p class="text-neutral-400 text-sm">Questione resultados, teste com diferentes perspectivas, não aceite outputs sem análise crítica.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">3</span>
+                        <span class="font-semibold text-white">Privacidade e Dados Pessoais</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">O que você compartilha com IAs pode não ser tão privado quanto imagina.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Riscos</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Conversas podem ser usadas para treino</li>
+                                    <li>• Dados sensíveis podem vazar</li>
+                                    <li>• Informações de terceiros sem consentimento</li>
+                                    <li>• Dados corporativos confidenciais</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Boas Práticas</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Não compartilhe dados pessoais reais</li>
+                                    <li>• Use anonimização quando necessário</li>
+                                    <li>• Leia as políticas de privacidade</li>
+                                    <li>• Prefira versões enterprise para dados sensíveis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">4</span>
+                        <span class="font-semibold text-white">Transparência e Honestidade</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Quando devemos revelar que usamos IA? A honestidade constrói confiança.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Situações que Exigem Transparência</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Trabalhos acadêmicos (plágio)</li>
+                                    <li>• Conteúdo jornalístico</li>
+                                    <li>• Comunicação profissional importante</li>
+                                    <li>• Arte e criações "autorais"</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Quando Pode Não Ser Necessário</h4>
+                                <p class="text-neutral-400 text-sm">Uso como ferramenta de apoio (revisão, brainstorm), automação de tarefas repetitivas, uso pessoal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">5</span>
+                        <span class="font-semibold text-white">Alucinações e Desinformação</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">IAs podem inventar informações falsas com total confiança. Isso é perigoso.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">O que são Alucinações</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Fatos inventados apresentados como verdade</li>
+                                    <li>• Citações que não existem</li>
+                                    <li>• Dados estatísticos falsos</li>
+                                    <li>• Eventos históricos alterados</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Sua Responsabilidade</h4>
+                                <p class="text-neutral-400 text-sm">SEMPRE verifique informações importantes. Nunca confie cegamente. Você é responsável pelo que publica, não a IA.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">6</span>
+                        <span class="font-semibold text-white">Impacto no Mercado de Trabalho</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">A IA está transformando profissões. Como navegar essa transição de forma ética?</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Considerações</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Automatização responsável (não só por custo)</li>
+                                    <li>• Requalificação e upskilling de equipes</li>
+                                    <li>• Transparência sobre mudanças</li>
+                                    <li>• Impacto em freelancers e pequenos</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Perspectiva Positiva</h4>
+                                <p class="text-neutral-400 text-sm">IA também cria novas oportunidades. Foco em habilidades humanas únicas: criatividade, empatia, julgamento ético.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">7</span>
+                        <span class="font-semibold text-white">Direitos Autorais e Propriedade</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Quem é dono do que a IA cria? Questões legais ainda em evolução.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Questões Atuais</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• IAs treinadas em obras com copyright</li>
+                                    <li>• Autoria de conteúdo gerado</li>
+                                    <li>• Uso comercial de outputs</li>
+                                    <li>• Processos contra empresas de IA</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Recomendações</h4>
+                                <p class="text-neutral-400 text-sm">Verifique termos de serviço, evite copiar estilos específicos de artistas vivos, adicione valor original ao output.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">8</span>
+                        <span class="font-semibold text-white">Uso Responsável no Dia a Dia</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Práticas simples para usar IA de forma ética todos os dias.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Checklist Ético</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>✓ Verifiquei as informações antes de usar?</li>
+                                    <li>✓ Devo revelar que usei IA?</li>
+                                    <li>✓ Estou protegendo dados sensíveis?</li>
+                                    <li>✓ O output poderia prejudicar alguém?</li>
+                                    <li>✓ Estou adicionando valor humano?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">9</span>
+                        <span class="font-semibold text-white">Regulamentação e Futuro</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Governos estão começando a regular IA. O que esperar?</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Iniciativas Globais</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>EU AI Act:</strong> Regulamentação por risco</li>
+                                    <li>• <strong>EUA:</strong> Ordem executiva de Biden</li>
+                                    <li>• <strong>Brasil:</strong> PL de regulamentação em debate</li>
+                                    <li>• <strong>UNESCO:</strong> Recomendações éticas globais</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Seu Papel</h4>
+                                <p class="text-neutral-400 text-sm">Mesmo sem leis, pratique ética. Seja parte da solução, não do problema.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">10</span>
+                        <span class="font-semibold text-white">Exercício: Dilemas Éticos</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Pratique raciocínio ético com cenários reais.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Cenários para Reflexão</h4>
+                                <ol class="text-neutral-400 space-y-2 text-sm list-decimal list-inside">
+                                    <li>Você usa IA para escrever um email importante ao chefe. Deve mencionar?</li>
+                                    <li>Um cliente pede conteúdo "100% humano". Você pode usar IA como base?</li>
+                                    <li>Você encontra um erro factual em algo que a IA gerou e já publicou. O que fazer?</li>
+                                    <li>Um colega usa IA para fazer o trabalho dele e é elogiado. É justo?</li>
+                                </ol>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Não há respostas certas</h4>
+                                <p class="text-neutral-400 text-sm">O importante é refletir, ter princípios claros e ser consistente em suas decisões.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Navigation -->
+        <nav class="mt-12 flex justify-between items-center pt-8 border-t border-dark-700">
+            <a href="modulo-0-7.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>←</span>
+                <span>Módulo Anterior</span>
+            </a>
+            <a href="trilha02.html" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 rounded-lg transition-colors text-neutral-300">
+                Ver Trilha
+            </a>
+            <a href="modulo-0-9.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>Próximo Módulo</span>
+                <span>→</span>
+            </a>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-dark-800 mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-neutral-500">
+            <p>SHIA - Sistema Humano de Inteligência Aumentada</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        document.documentElement.classList.add('dark');
+        
+        // Topic toggles
+        document.querySelectorAll('.topic-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const arrow = button.querySelector('span:last-child');
+                content.classList.toggle('open');
+                arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : '';
+            });
+        });
+    </script>
+</body>
+</html>

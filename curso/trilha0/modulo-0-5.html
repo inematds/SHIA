@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 5: Zero-Shot e Few-Shot Learning | SHIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { 50: '#f9fafb', 100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db', 400: '#9ca3af', 500: '#6b7280', 600: '#4b5563', 700: '#374151', 800: '#1f2937', 900: '#111827', 950: '#030712' }
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .topic-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .topic-content.open { max-height: 2000px; transition: max-height 0.5s ease-in; }
+    </style>
+</head>
+<body class="bg-dark-950 text-neutral-200 min-h-screen">
+    <!-- Header -->
+    <header class="bg-dark-900/80 backdrop-blur-md border-b border-dark-700 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../../index.html" class="text-2xl font-bold text-yellow-400">SHIA</a>
+                <nav class="flex items-center gap-6">
+                    <a href="trilha01.html" class="text-neutral-400 hover:text-yellow-400 transition-colors">Trilha 0</a>
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-dark-800 hover:bg-dark-700 transition-colors">
+                        <span class="text-xl">🌙</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Module Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium">Trilha 0 • Módulo 5</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">🎲 Zero-Shot e Few-Shot Learning</h1>
+            <p class="text-xl text-neutral-400">Ensinando a IA com Exemplos (ou Sem Eles)</p>
+        </div>
+
+        <!-- Image Section -->
+        <section class="mb-12">
+            <img src="../../doc/imagens/introducao/zero_shot_few_shot.png" 
+                 alt="Comparação entre Zero-Shot, One-Shot e Few-Shot Learning" 
+                 class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+            <p class="text-center text-neutral-500 text-sm">Zero-Shot vs Few-Shot: Quando usar cada abordagem</p>
+        </section>
+
+        <!-- Introduction -->
+        <section class="mb-12 p-6 bg-dark-800/50 rounded-2xl border border-dark-700">
+            <h2 class="text-2xl font-bold text-yellow-400 mb-4">Visão Geral</h2>
+            <p class="text-neutral-300 leading-relaxed">
+                Zero-shot e few-shot são técnicas fundamentais de prompting que determinam se você fornece exemplos 
+                à IA ou não. Entender quando usar cada abordagem é crucial para maximizar a qualidade das respostas 
+                enquanto economiza tokens e tempo. Este módulo explora ambas as técnicas com exemplos práticos.
+            </p>
+        </section>
+
+        <!-- Topics -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-bold text-white mb-6">📚 Tópicos do Módulo</h2>
+
+            <!-- Topic 1 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">1</span>
+                        <span class="font-semibold text-white">O que é Zero-Shot?</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Zero-shot significa pedir à IA para fazer algo sem fornecer exemplos - ela usa apenas seu conhecimento prévio.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo Zero-Shot</h4>
+                                <p class="text-neutral-400 text-sm font-mono">"Classifique o sentimento deste texto como positivo, negativo ou neutro: 'O produto chegou antes do prazo e funciona perfeitamente!'"</p>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Quando Funciona Bem</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Tarefas comuns e bem definidas</li>
+                                    <li>• Instruções claras e específicas</li>
+                                    <li>• Quando exemplos são desnecessários</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">2</span>
+                        <span class="font-semibold text-white">O que é Few-Shot?</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Few-shot envolve fornecer alguns exemplos (geralmente 2-5) do que você espera, ensinando a IA pelo exemplo.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo Few-Shot</h4>
+                                <p class="text-neutral-400 text-sm font-mono whitespace-pre-line">
+Texto: "Amei o produto!" → Positivo
+Texto: "Péssima qualidade" → Negativo
+Texto: "Chegou no prazo" → Neutro
+
+Texto: "O produto chegou antes do prazo e funciona perfeitamente!" → ?</p>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Por que Funciona</h4>
+                                <p class="text-neutral-400 text-sm">Os exemplos mostram à IA exatamente o padrão esperado, formato de resposta e critérios de classificação.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">3</span>
+                        <span class="font-semibold text-white">One-Shot: O Meio-Termo</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">One-shot usa apenas um exemplo - útil quando você precisa de consistência mas quer economizar tokens.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Quando Usar One-Shot</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• O formato desejado é simples</li>
+                                    <li>• Um exemplo é suficiente para demonstrar</li>
+                                    <li>• Você quer economizar tokens</li>
+                                    <li>• A tarefa não tem muitas variações</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo</h4>
+                                <p class="text-neutral-400 text-sm font-mono">Transforme frases em títulos chamativos:<br><br>Entrada: "Como economizar dinheiro"<br>Saída: "7 Segredos Para Encher Sua Conta Bancária Ainda Este Mês!"<br><br>Agora transforme: "Dicas de produtividade"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">4</span>
+                        <span class="font-semibold text-white">Escolhendo a Abordagem Certa</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">A escolha entre zero-shot e few-shot depende da complexidade e especificidade da tarefa.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Use Zero-Shot quando:</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• A tarefa é comum e bem entendida</li>
+                                    <li>• Você quer respostas mais criativas</li>
+                                    <li>• Precisa economizar tokens</li>
+                                    <li>• O formato padrão é aceitável</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Use Few-Shot quando:</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Precisa de formato específico</li>
+                                    <li>• A tarefa é incomum ou complexa</li>
+                                    <li>• Quer consistência entre respostas</li>
+                                    <li>• O tom/estilo é crítico</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">5</span>
+                        <span class="font-semibold text-white">Escolhendo Bons Exemplos</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">A qualidade dos exemplos em few-shot é tão importante quanto a quantidade.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Critérios para Bons Exemplos</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>Representativos:</strong> Cobrem casos variados</li>
+                                    <li>• <strong>Claros:</strong> Sem ambiguidade</li>
+                                    <li>• <strong>Consistentes:</strong> Seguem o mesmo padrão</li>
+                                    <li>• <strong>Relevantes:</strong> Próximos do caso real</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Dica</h4>
+                                <p class="text-neutral-400 text-sm">Inclua edge cases nos seus exemplos. Se a classificação pode ser ambígua, mostre como resolver essa ambiguidade.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">6</span>
+                        <span class="font-semibold text-white">Exemplos Negativos</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Mostrar o que NÃO fazer pode ser tão útil quanto mostrar o que fazer.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo com Negativo</h4>
+                                <p class="text-neutral-400 text-sm font-mono whitespace-pre-line">
+BOM: "Título curto e impactante"
+RUIM: "Este é um título muito longo que explica demais e perde a atenção do leitor"
+
+Agora crie títulos para...</p>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Quando Usar</h4>
+                                <p class="text-neutral-400 text-sm">Útil quando há erros comuns que você quer evitar, ou quando o "certo" fica mais claro em contraste com o "errado".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">7</span>
+                        <span class="font-semibold text-white">Few-Shot para Classificação</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Tarefas de classificação são onde few-shot realmente brilha.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo: Classificação de Tickets</h4>
+                                <p class="text-neutral-400 text-sm font-mono whitespace-pre-line">
+Classifique tickets de suporte:
+
+"Não consigo fazer login" → Acesso
+"Meu pedido não chegou" → Logística
+"O app está travando" → Bug
+"Quero cancelar assinatura" → Financeiro
+
+"O pagamento foi cobrado duas vezes" → ?</p>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Dica Avançada</h4>
+                                <p class="text-neutral-400 text-sm">Para classificações complexas, inclua ao menos um exemplo de cada categoria.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">8</span>
+                        <span class="font-semibold text-white">Few-Shot para Transformação</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Transformar texto de um formato para outro é outra aplicação poderosa.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo: Transformação de Estilo</h4>
+                                <p class="text-neutral-400 text-sm font-mono whitespace-pre-line">
+Converta textos formais para casual:
+
+Formal: "Prezado cliente, agradecemos seu contato"
+Casual: "Opa! Valeu por falar com a gente"
+
+Formal: "Solicitamos a gentileza de aguardar"
+Casual: "Dá um tempinho que já te atendemos"
+
+Formal: "Informamos que sua solicitação foi processada"
+Casual: ?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">9</span>
+                        <span class="font-semibold text-white">Quantos Exemplos Usar?</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Encontrar o número ideal de exemplos é um balanceamento entre qualidade e custo.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Regras Gerais</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>1-2 exemplos:</strong> Tarefas simples, formato claro</li>
+                                    <li>• <strong>3-5 exemplos:</strong> Maioria dos casos</li>
+                                    <li>• <strong>5-10 exemplos:</strong> Tarefas complexas, muitas variações</li>
+                                    <li>• <strong>10+ exemplos:</strong> Raramente necessário</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Custo-Benefício</h4>
+                                <p class="text-neutral-400 text-sm">Mais exemplos = mais tokens = mais custo. Comece com 3 e ajuste baseado nos resultados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">10</span>
+                        <span class="font-semibold text-white">Exercício Prático</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Vamos colocar em prática o que aprendemos.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Desafio</h4>
+                                <ol class="text-neutral-400 space-y-2 text-sm list-decimal list-inside">
+                                    <li>Escolha uma tarefa que você faz frequentemente</li>
+                                    <li>Primeiro, tente com zero-shot</li>
+                                    <li>Depois, adicione 3 exemplos (few-shot)</li>
+                                    <li>Compare os resultados</li>
+                                    <li>Documente qual funcionou melhor e por quê</li>
+                                </ol>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Reflexão</h4>
+                                <p class="text-neutral-400 text-sm">Com o tempo, você desenvolverá intuição sobre quando cada abordagem funciona melhor. Esse conhecimento é valioso!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Navigation -->
+        <nav class="mt-12 flex justify-between items-center pt-8 border-t border-dark-700">
+            <a href="modulo-0-4.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>←</span>
+                <span>Módulo Anterior</span>
+            </a>
+            <a href="trilha01.html" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 rounded-lg transition-colors text-neutral-300">
+                Ver Trilha
+            </a>
+            <a href="modulo-0-6.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>Próximo Módulo</span>
+                <span>→</span>
+            </a>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-dark-800 mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-neutral-500">
+            <p>SHIA - Sistema Humano de Inteligência Aumentada</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        document.documentElement.classList.add('dark');
+        
+        // Topic toggles
+        document.querySelectorAll('.topic-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const arrow = button.querySelector('span:last-child');
+                content.classList.toggle('open');
+                arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : '';
+            });
+        });
+    </script>
+</body>
+</html>

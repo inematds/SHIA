@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 4: Anatomia do Prompt Perfeito | SHIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { 50: '#f9fafb', 100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db', 400: '#9ca3af', 500: '#6b7280', 600: '#4b5563', 700: '#374151', 800: '#1f2937', 900: '#111827', 950: '#030712' }
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .topic-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .topic-content.open { max-height: 2000px; transition: max-height 0.5s ease-in; }
+    </style>
+</head>
+<body class="bg-dark-950 text-neutral-200 min-h-screen">
+    <!-- Header -->
+    <header class="bg-dark-900/80 backdrop-blur-md border-b border-dark-700 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../../index.html" class="text-2xl font-bold text-yellow-400">SHIA</a>
+                <nav class="flex items-center gap-6">
+                    <a href="trilha01.html" class="text-neutral-400 hover:text-yellow-400 transition-colors">Trilha 0</a>
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-dark-800 hover:bg-dark-700 transition-colors">
+                        <span class="text-xl">🌙</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Module Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium">Trilha 0 • Módulo 4</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">🎯 Anatomia do Prompt Perfeito</h1>
+            <p class="text-xl text-neutral-400">Estruturando Instruções que Funcionam</p>
+        </div>
+
+        <!-- Image Section -->
+        <section class="mb-12">
+            <img src="../../doc/imagens/introducao/anatomia_prompt_perfeito.png" 
+                 alt="Anatomia do Prompt Perfeito: Componentes Essenciais" 
+                 class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+            <p class="text-center text-neutral-500 text-sm">Os componentes essenciais de um prompt eficaz</p>
+        </section>
+
+        <!-- Introduction -->
+        <section class="mb-12 p-6 bg-dark-800/50 rounded-2xl border border-dark-700">
+            <h2 class="text-2xl font-bold text-yellow-400 mb-4">Visão Geral</h2>
+            <p class="text-neutral-300 leading-relaxed">
+                Um prompt bem estruturado é como uma receita: cada ingrediente tem seu papel e a ordem importa. 
+                Neste módulo, você vai aprender a anatomia completa de um prompt eficaz, desde o contexto inicial 
+                até as instruções de formato. Dominar essa estrutura é o que separa resultados medianos de 
+                respostas excepcionais.
+            </p>
+        </section>
+
+        <!-- Topics -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-bold text-white mb-6">📚 Tópicos do Módulo</h2>
+
+            <!-- Topic 1 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">1</span>
+                        <span class="font-semibold text-white">Os 5 Componentes Essenciais</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Todo prompt eficaz contém cinco componentes fundamentais que trabalham juntos.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Componentes</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>1. <strong>Contexto:</strong> Informação de fundo necessária</li>
+                                    <li>2. <strong>Papel/Persona:</strong> Quem a IA deve ser</li>
+                                    <li>3. <strong>Tarefa:</strong> O que deve ser feito</li>
+                                    <li>4. <strong>Formato:</strong> Como entregar o resultado</li>
+                                    <li>5. <strong>Restrições:</strong> O que evitar ou limitar</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Nem sempre todos são necessários</h4>
+                                <p class="text-neutral-400 text-sm">Para tarefas simples, 2-3 componentes bastam. Para tarefas complexas, use todos os 5.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">2</span>
+                        <span class="font-semibold text-white">Contexto: A Base de Tudo</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">O contexto estabelece o cenário e fornece informações que a IA precisa para responder adequadamente.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">O que incluir no contexto</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Informações sobre você ou sua empresa</li>
+                                    <li>• Público-alvo da resposta</li>
+                                    <li>• Situação ou problema específico</li>
+                                    <li>• Dados relevantes já disponíveis</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo Prático</h4>
+                                <p class="text-neutral-400 text-sm italic">"Sou gerente de uma startup de tecnologia com 15 funcionários. Estamos enfrentando alta rotatividade no time de desenvolvimento..."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">3</span>
+                        <span class="font-semibold text-white">Definindo a Persona</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Atribuir uma persona à IA influencia profundamente o tom, vocabulário e perspectiva da resposta.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Tipos de Persona</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>Profissional:</strong> "Aja como um advogado especializado..."</li>
+                                    <li>• <strong>Mentor:</strong> "Seja um professor paciente..."</li>
+                                    <li>• <strong>Crítico:</strong> "Analise como um revisor exigente..."</li>
+                                    <li>• <strong>Criativo:</strong> "Imagine que você é um roteirista..."</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Dica</h4>
+                                <p class="text-neutral-400 text-sm">Seja específico sobre a expertise. "Aja como um desenvolvedor senior" é menos eficaz que "Aja como um desenvolvedor senior especializado em React com 10 anos de experiência".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">4</span>
+                        <span class="font-semibold text-white">A Tarefa Clara e Específica</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">A tarefa é o coração do prompt. Quanto mais clara e específica, melhores os resultados.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Verbos de Ação Poderosos</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>Análise:</strong> Analise, compare, avalie, critique</li>
+                                    <li>• <strong>Criação:</strong> Escreva, crie, desenvolva, elabore</li>
+                                    <li>• <strong>Transformação:</strong> Resuma, expanda, traduza, adapte</li>
+                                    <li>• <strong>Solução:</strong> Resolva, proponha, sugira, recomende</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Ruim vs. Bom</h4>
+                                <p class="text-neutral-400 text-sm">❌ "Me ajude com marketing" → ✅ "Crie 5 ideias de posts para Instagram sobre sustentabilidade, focando em millennials que querem reduzir o consumo de plástico"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">5</span>
+                        <span class="font-semibold text-white">Formato de Saída</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Especificar o formato evita retrabalho e garante que a resposta seja imediatamente utilizável.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Formatos Comuns</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Lista com bullets ou numerada</li>
+                                    <li>• Tabela comparativa</li>
+                                    <li>• Markdown estruturado</li>
+                                    <li>• JSON ou código específico</li>
+                                    <li>• Parágrafos com subtítulos</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Especificações de Tamanho</h4>
+                                <p class="text-neutral-400 text-sm">"Responda em no máximo 200 palavras", "Crie 3 parágrafos curtos", "Limite cada item a uma frase".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">6</span>
+                        <span class="font-semibold text-white">Restrições e Limitações</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Dizer o que NÃO fazer é tão importante quanto dizer o que fazer.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Tipos de Restrições</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>Conteúdo:</strong> "Não mencione concorrentes"</li>
+                                    <li>• <strong>Tom:</strong> "Evite jargões técnicos"</li>
+                                    <li>• <strong>Escopo:</strong> "Foque apenas em X, não aborde Y"</li>
+                                    <li>• <strong>Formato:</strong> "Não use emojis"</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo</h4>
+                                <p class="text-neutral-400 text-sm">"Não inclua disclaimers genéricos", "Evite frases como 'como IA, eu...'" , "Não repita informações já fornecidas".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">7</span>
+                        <span class="font-semibold text-white">Exemplos e Templates</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Fornecer exemplos do que você quer (few-shot) é uma das técnicas mais poderosas.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Como usar exemplos</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Mostre 2-3 exemplos do formato desejado</li>
+                                    <li>• Inclua exemplos bons E ruins (se relevante)</li>
+                                    <li>• Use delimitadores claros (###, ---, etc.)</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Template de Exemplo</h4>
+                                <p class="text-neutral-400 text-sm font-mono">Entrada: [X]<br>Saída esperada: [Y]<br><br>Entrada: [A]<br>Saída esperada: [B]<br><br>Agora faça para: [Seu input]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">8</span>
+                        <span class="font-semibold text-white">Delimitadores e Estrutura</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Delimitadores ajudam a IA a entender onde começa e termina cada seção do prompt.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Delimitadores Comuns</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm font-mono">
+                                    <li>• ### Seção ###</li>
+                                    <li>• --- separador ---</li>
+                                    <li>• """ texto """</li>
+                                    <li>• [INÍCIO] ... [FIM]</li>
+                                    <li>• XML tags: &lt;contexto&gt;...&lt;/contexto&gt;</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Por que usar</h4>
+                                <p class="text-neutral-400 text-sm">Evita que a IA confunda suas instruções com o conteúdo a ser processado. Especialmente útil para análise de textos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">9</span>
+                        <span class="font-semibold text-white">Prompts Encadeados</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Para tarefas complexas, dividir em múltiplos prompts sequenciais produz melhores resultados.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Estratégia de Encadeamento</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>1. Prompt 1: Pesquisa/Análise inicial</li>
+                                    <li>2. Prompt 2: Organização dos dados</li>
+                                    <li>3. Prompt 3: Criação do conteúdo</li>
+                                    <li>4. Prompt 4: Revisão e refinamento</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Benefícios</h4>
+                                <p class="text-neutral-400 text-sm">Mais controle, resultados mais precisos, possibilidade de ajustar o rumo, menor chance de alucinações.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">10</span>
+                        <span class="font-semibold text-white">Montando Prompts Completos</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Vamos unir todos os componentes em exemplos práticos completos.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Template Completo</h4>
+                                <p class="text-neutral-400 text-sm font-mono whitespace-pre-line">
+### CONTEXTO ###
+[Informações de background]
+
+### PERSONA ###
+Aja como [especialista específico]
+
+### TAREFA ###
+[Verbo de ação] + [objeto] + [detalhes]
+
+### FORMATO ###
+Responda em: [especificação]
+
+### RESTRIÇÕES ###
+- Não faça X
+- Limite a Y
+- Evite Z</p>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exercício</h4>
+                                <p class="text-neutral-400 text-sm">Monte um prompt completo para sua próxima tarefa usando todos os 5 componentes. Observe a diferença na qualidade da resposta!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Navigation -->
+        <nav class="mt-12 flex justify-between items-center pt-8 border-t border-dark-700">
+            <a href="modulo-0-3.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>←</span>
+                <span>Módulo Anterior</span>
+            </a>
+            <a href="trilha01.html" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 rounded-lg transition-colors text-neutral-300">
+                Ver Trilha
+            </a>
+            <a href="modulo-0-5.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>Próximo Módulo</span>
+                <span>→</span>
+            </a>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-dark-800 mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-neutral-500">
+            <p>SHIA - Sistema Humano de Inteligência Aumentada</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        document.documentElement.classList.add('dark');
+        
+        // Topic toggles
+        document.querySelectorAll('.topic-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const arrow = button.querySelector('span:last-child');
+                content.classList.toggle('open');
+                arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : '';
+            });
+        });
+    </script>
+</body>
+</html>

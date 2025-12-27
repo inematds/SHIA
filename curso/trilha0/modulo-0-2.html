@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 0.2: A Essência da Engenharia de Prompts | SHIA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-4xl mx-auto px-4 h-14 flex justify-between items-center">
+      <a href="trilha01.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        <span class="font-semibold">Voltar</span>
+      </a>
+      <span class="text-sm"><span class="text-neutral-400">Módulo 0.2</span> <span class="text-yellow-400">| Trilha 0</span></span>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-semibold mb-4">MÓDULO 0.2 - TRILHA 0</span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">🎯 A Essência da Engenharia de Prompts</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">A arte e a ciência de conversar com a IA para obter resultados extraordinários</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-yellow-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-yellow-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-yellow-400">Básico</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-yellow-900/30 to-dark-800 rounded-2xl p-8 border border-yellow-500/30">
+        <h2 class="text-2xl font-bold text-yellow-400 mb-4">💡 O que é Engenharia de Prompts?</h2>
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-yellow-500 pl-6 mb-6">
+          "A qualidade do output é diretamente proporcional à qualidade do input."
+        </blockquote>
+        <p class="text-neutral-300 mb-4">
+          <strong>Engenharia de Prompts</strong> é a disciplina de projetar e refinar entradas (prompts) para obter os melhores resultados de modelos de linguagem. É uma mistura de <strong>arte</strong> (criatividade, intuição) e <strong>ciência</strong> (princípios estruturados, experimentação).
+        </p>
+        <p class="text-neutral-300">
+          Pense no prompt como uma <strong>conversa com um especialista muito inteligente mas literal</strong>. Quanto mais contexto, clareza e direcionamento você oferecer, melhores serão as respostas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópicos -->
+    <section class="space-y-4 mb-12">
+      <h2 class="text-2xl font-bold mb-6">📚 Tópicos do Módulo</h2>
+
+      <!-- Tópico 1 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">1</span>
+          <h3 class="font-bold text-lg">A Importância da Clareza e do Contexto</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">A base de um prompt eficaz é a <strong class="text-yellow-400">clareza</strong>. A IA não lê pensamentos – precisa de instruções explícitas e contexto rico.</p>
+        <div class="bg-dark-700 rounded-lg p-4">
+          <p class="text-sm text-neutral-400 mb-2"><strong>❌ Prompt vago:</strong></p>
+          <code class="text-red-400 block mb-3">"Escreva sobre marketing"</code>
+          <p class="text-sm text-neutral-400 mb-2"><strong>✅ Prompt claro:</strong></p>
+          <code class="text-emerald-400 block">"Você é um especialista em marketing digital. Escreva 5 estratégias de marketing para uma startup de SaaS B2B com orçamento limitado, focando em geração de leads orgânicos."</code>
+        </div>
+      </div>
+
+      <!-- Tópico 2 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">2</span>
+          <h3 class="font-bold text-lg">Engenharia de Prompts: Arte e Ciência</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">Combina experimentação criativa (arte) com princípios estruturados (ciência). É um processo iterativo de refinamento contínuo.</p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+            <h4 class="font-bold text-purple-400 mb-2">🎨 Arte</h4>
+            <ul class="text-neutral-300 text-sm space-y-1">
+              <li>• Intuição para tom e estilo</li>
+              <li>• Criatividade nas abordagens</li>
+              <li>• Sensibilidade ao contexto</li>
+            </ul>
+          </div>
+          <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+            <h4 class="font-bold text-blue-400 mb-2">🔬 Ciência</h4>
+            <ul class="text-neutral-300 text-sm space-y-1">
+              <li>• Estruturas comprovadas</li>
+              <li>• Testes A/B de prompts</li>
+              <li>• Métricas de qualidade</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tópico 3 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">3</span>
+          <h3 class="font-bold text-lg">Persona e Tom de Voz</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">Instruir a IA a adotar uma <strong class="text-yellow-400">persona específica</strong> influencia dramaticamente o tom, estilo e vocabulário da resposta.</p>
+        <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+          <p class="text-sm text-neutral-300 mb-2"><strong>Exemplo:</strong></p>
+          <code class="text-yellow-400 block">"Você é um chef francês com 30 anos de experiência em restaurantes Michelin. Explique como fazer um molho béarnaise perfeito, com o rigor e a paixão de um mestre."</code>
+        </div>
+      </div>
+
+      <!-- Tópico 4 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">4</span>
+          <h3 class="font-bold text-lg">O Poder dos Exemplos: Few-Shot Prompting</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">Fornecer exemplos dentro do prompt guia a IA no padrão e formato esperados. É uma das técnicas mais poderosas.</p>
+        <div class="bg-dark-700 rounded-lg p-4">
+          <p class="text-sm text-neutral-400 mb-2"><strong>Exemplo de Few-Shot:</strong></p>
+          <pre class="text-emerald-400 text-sm overflow-x-auto">Traduza para linguagem formal:
+Entrada: "Ei, beleza? Tá afim de almoçar?"
+Saída: "Olá, como vai? Gostaria de almoçar comigo?"
+
+Entrada: "E aí, tudo tranquilo?"
+Saída:</pre>
+        </div>
+      </div>
+
+      <!-- Tópico 5 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">5</span>
+          <h3 class="font-bold text-lg">Instruções, Restrições e Formato de Saída</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">Além de dizer O QUE fazer, diga COMO fazer e O QUE NÃO fazer. Especifique o formato desejado.</p>
+        <div class="grid md:grid-cols-3 gap-3">
+          <div class="bg-dark-700 p-3 rounded-lg text-center">
+            <span class="text-2xl">📋</span>
+            <p class="text-sm text-neutral-300 mt-2">Lista com bullets</p>
+          </div>
+          <div class="bg-dark-700 p-3 rounded-lg text-center">
+            <span class="text-2xl">📊</span>
+            <p class="text-sm text-neutral-300 mt-2">Tabela markdown</p>
+          </div>
+          <div class="bg-dark-700 p-3 rounded-lg text-center">
+            <span class="text-2xl">🔤</span>
+            <p class="text-sm text-neutral-300 mt-2">JSON estruturado</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tópico 6 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">6</span>
+          <h3 class="font-bold text-lg">Chain-of-Thought: Guiando o Raciocínio</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">Técnica que incentiva o modelo a "pensar em voz alta", detalhando passos lógicos. Melhora precisão em problemas complexos.</p>
+        <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+          <p class="text-sm text-neutral-300"><strong>Prompt:</strong> "Resolva passo a passo: Se João tem 3 maçãs e Maria dá mais 2, depois ele come 1, quantas sobram? Pense em cada etapa."</p>
+        </div>
+      </div>
+
+      <!-- Tópico 7 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">7</span>
+          <h3 class="font-bold text-lg">Prompts para Geração de Código</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">Técnicas específicas para gerar código: especifique linguagem, bibliotecas, funcionalidade e exemplos de uso.</p>
+        <div class="bg-dark-700 rounded-lg p-4">
+          <code class="text-emerald-400 text-sm block">"Escreva uma função Python que recebe uma lista de números e retorna a média. Use type hints, adicione docstring e inclua tratamento para lista vazia."</code>
+        </div>
+      </div>
+
+      <!-- Tópico 8 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">8</span>
+          <h3 class="font-bold text-lg">Prompts para Criatividade e Brainstorming</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">Para tarefas criativas, use prompts abertos com "e se..." e combinações improváveis. A IA como parceira de brainstorming.</p>
+        <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+          <p class="text-sm text-neutral-300"><strong>Exemplo:</strong> "Gere 10 ideias inusitadas para um aplicativo que combine meditação com gamificação. Pense fora da caixa."</p>
+        </div>
+      </div>
+
+      <!-- Tópico 9 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">9</span>
+          <h3 class="font-bold text-lg">Iteração e Refinamento de Prompts</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">Raramente o primeiro prompt é o melhor. A maestria está na <strong class="text-yellow-400">iteração contínua</strong>: analisar, ajustar, testar novamente.</p>
+        <div class="flex items-center justify-center space-x-2 text-neutral-400">
+          <span class="bg-dark-700 px-3 py-1 rounded">Escrever</span>
+          <span>→</span>
+          <span class="bg-dark-700 px-3 py-1 rounded">Testar</span>
+          <span>→</span>
+          <span class="bg-dark-700 px-3 py-1 rounded">Analisar</span>
+          <span>→</span>
+          <span class="bg-dark-700 px-3 py-1 rounded">Refinar</span>
+          <span>→</span>
+          <span class="text-yellow-400">🔄</span>
+        </div>
+      </div>
+
+      <!-- Tópico 10 -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <div class="flex items-center mb-4">
+          <span class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">10</span>
+          <h3 class="font-bold text-lg">Aplicações Práticas e Estudos de Caso</h3>
+        </div>
+        <p class="text-neutral-300 mb-4">Ver aplicações reais ajuda a entender o impacto e versatilidade da engenharia de prompts.</p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+            <h4 class="font-bold text-emerald-400 mb-2">📝 Marketing</h4>
+            <p class="text-neutral-300 text-sm">Geração de copies, headlines, descrições de produto</p>
+          </div>
+          <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+            <h4 class="font-bold text-blue-400 mb-2">📊 Análise</h4>
+            <p class="text-neutral-300 text-sm">Resumo de relatórios, extração de insights</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo -->
+    <section class="mb-12">
+      <div class="bg-yellow-500/10 rounded-2xl p-8 border border-yellow-500/30">
+        <h2 class="text-2xl font-bold text-yellow-400 mb-6 text-center">✅ Resumo do Módulo</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Clareza e contexto são essenciais</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Personas influenciam tom e estilo</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Exemplos (Few-Shot) guiam o modelo</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Especifique formato de saída</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Chain-of-Thought para problemas complexos</span></div>
+          <div class="flex items-start"><span class="text-emerald-400 mr-2">✓</span><span class="text-neutral-300">Itere e refine continuamente</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-0-1.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        <span>Módulo 0.1</span>
+      </a>
+      <a href="modulo-0-3.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-yellow-500 text-dark-900 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+        <span>Próximo: Módulo 0.3</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </main>
+
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">SHIA - Super Humanos Inteligência Aumentada | Módulo 0.2</p>
+    </div>
+  </footer>
+</body>
+</html>

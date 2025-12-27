@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 6: Mindset de Experimentação | SHIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { 50: '#f9fafb', 100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db', 400: '#9ca3af', 500: '#6b7280', 600: '#4b5563', 700: '#374151', 800: '#1f2937', 900: '#111827', 950: '#030712' }
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .topic-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .topic-content.open { max-height: 2000px; transition: max-height 0.5s ease-in; }
+    </style>
+</head>
+<body class="bg-dark-950 text-neutral-200 min-h-screen">
+    <!-- Header -->
+    <header class="bg-dark-900/80 backdrop-blur-md border-b border-dark-700 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../../index.html" class="text-2xl font-bold text-yellow-400">SHIA</a>
+                <nav class="flex items-center gap-6">
+                    <a href="trilha02.html" class="text-neutral-400 hover:text-yellow-400 transition-colors">Trilha 0</a>
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-dark-800 hover:bg-dark-700 transition-colors">
+                        <span class="text-xl">🌙</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Module Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium">Trilha 0 • Módulo 6</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">🔬 Mindset de Experimentação</h1>
+            <p class="text-xl text-neutral-400">Iteração e Refinamento de Prompts</p>
+        </div>
+
+        <!-- Image Section -->
+        <section class="mb-12">
+            <img src="../../doc/imagens/introducao/ciclo_iteracao_prompts.png" 
+                 alt="Ciclo de Iteração de Prompts: Testar, Avaliar, Refinar" 
+                 class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+            <p class="text-center text-neutral-500 text-sm">O ciclo contínuo de experimentação e melhoria</p>
+        </section>
+
+        <!-- Introduction -->
+        <section class="mb-12 p-6 bg-dark-800/50 rounded-2xl border border-dark-700">
+            <h2 class="text-2xl font-bold text-yellow-400 mb-4">Visão Geral</h2>
+            <p class="text-neutral-300 leading-relaxed">
+                Raramente o primeiro prompt é o melhor. Dominar IA significa adotar um mindset de experimentação constante: 
+                testar hipóteses, analisar resultados, refinar abordagens. Este módulo ensina como iterar de forma 
+                sistemática para encontrar os prompts mais eficazes para suas necessidades específicas.
+            </p>
+        </section>
+
+        <!-- Topics -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-bold text-white mb-6">📚 Tópicos do Módulo</h2>
+
+            <!-- Topic 1 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">1</span>
+                        <span class="font-semibold text-white">Por que Iterar é Essencial</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">O primeiro prompt quase nunca é o ideal. Iteração é a chave para resultados excepcionais.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Mentalidade Experimental</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Cada prompt é uma hipótese a ser testada</li>
+                                    <li>• "Falhas" são dados valiosos</li>
+                                    <li>• Pequenas mudanças podem ter grandes impactos</li>
+                                    <li>• Não existe "prompt perfeito universal"</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Benefícios da Iteração</h4>
+                                <p class="text-neutral-400 text-sm">Você desenvolve intuição, cria biblioteca pessoal de prompts, entende os modelos mais profundamente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">2</span>
+                        <span class="font-semibold text-white">O Ciclo de Iteração</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Um processo sistemático para melhorar prompts continuamente.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">As 4 Etapas</h4>
+                                <ol class="text-neutral-400 space-y-2 text-sm list-decimal list-inside">
+                                    <li><strong>Criar:</strong> Escreva o prompt inicial</li>
+                                    <li><strong>Testar:</strong> Execute e observe o resultado</li>
+                                    <li><strong>Analisar:</strong> O que funcionou? O que faltou?</li>
+                                    <li><strong>Refinar:</strong> Ajuste baseado na análise</li>
+                                </ol>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Repita</h4>
+                                <p class="text-neutral-400 text-sm">Continue o ciclo até atingir o resultado desejado. Geralmente 3-5 iterações são suficientes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">3</span>
+                        <span class="font-semibold text-white">Analisando Resultados</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Saber analisar criticamente as respostas é fundamental para melhorar.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Perguntas para Análise</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• A resposta atendeu ao objetivo?</li>
+                                    <li>• O formato está correto?</li>
+                                    <li>• O tom/estilo é apropriado?</li>
+                                    <li>• Há informações faltando?</li>
+                                    <li>• Há informações em excesso?</li>
+                                    <li>• A IA interpretou corretamente?</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Documente</h4>
+                                <p class="text-neutral-400 text-sm">Anote o que funcionou e o que não funcionou. Essa documentação acelera iterações futuras.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">4</span>
+                        <span class="font-semibold text-white">Técnicas de Refinamento</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Estratégias específicas para melhorar prompts que não estão funcionando.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Se a resposta for vaga:</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Adicione mais contexto específico</li>
+                                    <li>• Peça exemplos concretos</li>
+                                    <li>• Defina critérios claros</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Se a resposta for muito longa:</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Especifique limite de palavras</li>
+                                    <li>• Peça formato bullet points</li>
+                                    <li>• Diga "seja conciso"</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Se o tom estiver errado:</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Defina persona específica</li>
+                                    <li>• Dê exemplos do tom desejado</li>
+                                    <li>• Especifique público-alvo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">5</span>
+                        <span class="font-semibold text-white">Variáveis de Teste</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Mude uma variável por vez para entender o que afeta os resultados.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Variáveis para Testar</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>Ordem:</strong> Mude a sequência das instruções</li>
+                                    <li>• <strong>Vocabulário:</strong> Use sinônimos</li>
+                                    <li>• <strong>Nível de detalhe:</strong> Mais ou menos específico</li>
+                                    <li>• <strong>Formato:</strong> Bullet vs. prosa vs. tabela</li>
+                                    <li>• <strong>Exemplos:</strong> Adicione ou remova</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Método Científico</h4>
+                                <p class="text-neutral-400 text-sm">Altere apenas uma coisa por vez. Assim você sabe exatamente o que causou a melhora ou piora.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">6</span>
+                        <span class="font-semibold text-white">Usando a IA para Melhorar Prompts</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">A própria IA pode ajudar você a melhorar seus prompts!</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Meta-Prompting</h4>
+                                <p class="text-neutral-400 text-sm font-mono whitespace-pre-line">
+"Analise este prompt e sugira 3 melhorias:
+
+[Seu prompt aqui]
+
+O resultado atual está [descreva o problema].
+O resultado desejado é [descreva o objetivo]."</p>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Peça Variações</h4>
+                                <p class="text-neutral-400 text-sm">"Reescreva este prompt de 3 formas diferentes, cada uma otimizada para [critério específico]."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">7</span>
+                        <span class="font-semibold text-white">Biblioteca de Prompts</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Crie e mantenha uma biblioteca pessoal de prompts que funcionam.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">O que Salvar</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Prompts que funcionaram bem</li>
+                                    <li>• Contexto de uso (para que serve)</li>
+                                    <li>• Variações testadas</li>
+                                    <li>• Notas sobre resultados</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Ferramentas</h4>
+                                <p class="text-neutral-400 text-sm">Notion, Obsidian, Google Docs, ou até um arquivo .txt. O importante é organizar e conseguir encontrar depois.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">8</span>
+                        <span class="font-semibold text-white">Testes A/B com Prompts</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Compare versões lado a lado para escolher a melhor.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Processo de Teste A/B</h4>
+                                <ol class="text-neutral-400 space-y-1 text-sm list-decimal list-inside">
+                                    <li>Crie duas versões do prompt</li>
+                                    <li>Execute ambas com o mesmo input</li>
+                                    <li>Compare resultados objetivamente</li>
+                                    <li>Documente qual venceu e por quê</li>
+                                </ol>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Critérios de Comparação</h4>
+                                <p class="text-neutral-400 text-sm">Relevância, completude, formato, tom, precisão, criatividade (dependendo do objetivo).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">9</span>
+                        <span class="font-semibold text-white">Quando Parar de Iterar</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Perfeccionismo pode ser armadilha. Saiba quando o resultado é "bom o suficiente".</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Sinais de que é hora de parar</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• O resultado atende ao objetivo principal</li>
+                                    <li>• Iterações adicionais trazem ganhos mínimos</li>
+                                    <li>• O tempo investido excede o valor ganho</li>
+                                    <li>• Você está mudando coisas de volta</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Regra 80/20</h4>
+                                <p class="text-neutral-400 text-sm">80% da qualidade vem de 20% do esforço. Saiba identificar esse ponto.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">10</span>
+                        <span class="font-semibold text-white">Exercício: Iteração Guiada</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Pratique o ciclo completo de iteração com este exercício guiado.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Desafio</h4>
+                                <ol class="text-neutral-400 space-y-2 text-sm list-decimal list-inside">
+                                    <li>Escolha uma tarefa: "Criar bio para LinkedIn"</li>
+                                    <li>V1: Escreva um prompt básico</li>
+                                    <li>Analise: O que faltou?</li>
+                                    <li>V2: Adicione contexto sobre você</li>
+                                    <li>V3: Defina tom e público-alvo</li>
+                                    <li>V4: Adicione exemplos do que você quer</li>
+                                    <li>Compare as 4 versões</li>
+                                </ol>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Reflexão</h4>
+                                <p class="text-neutral-400 text-sm">Qual versão funcionou melhor? O que você aprendeu sobre o processo? Documente seus insights!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Navigation -->
+        <nav class="mt-12 flex justify-between items-center pt-8 border-t border-dark-700">
+            <a href="modulo-0-5.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>←</span>
+                <span>Módulo Anterior</span>
+            </a>
+            <a href="trilha02.html" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 rounded-lg transition-colors text-neutral-300">
+                Ver Trilha
+            </a>
+            <a href="modulo-0-7.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>Próximo Módulo</span>
+                <span>→</span>
+            </a>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-dark-800 mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-neutral-500">
+            <p>SHIA - Sistema Humano de Inteligência Aumentada</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        document.documentElement.classList.add('dark');
+        
+        // Topic toggles
+        document.querySelectorAll('.topic-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const arrow = button.querySelector('span:last-child');
+                content.classList.toggle('open');
+                arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : '';
+            });
+        });
+    </script>
+</body>
+</html>

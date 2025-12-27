@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 7: IA Multimodal | SHIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { 50: '#f9fafb', 100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db', 400: '#9ca3af', 500: '#6b7280', 600: '#4b5563', 700: '#374151', 800: '#1f2937', 900: '#111827', 950: '#030712' }
+                    },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .topic-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .topic-content.open { max-height: 2000px; transition: max-height 0.5s ease-in; }
+    </style>
+</head>
+<body class="bg-dark-950 text-neutral-200 min-h-screen">
+    <!-- Header -->
+    <header class="bg-dark-900/80 backdrop-blur-md border-b border-dark-700 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../../index.html" class="text-2xl font-bold text-yellow-400">SHIA</a>
+                <nav class="flex items-center gap-6">
+                    <a href="trilha02.html" class="text-neutral-400 hover:text-yellow-400 transition-colors">Trilha 0</a>
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-dark-800 hover:bg-dark-700 transition-colors">
+                        <span class="text-xl">🌙</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Module Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium">Trilha 0 • Módulo 7</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">🖼️ IA Multimodal</h1>
+            <p class="text-xl text-neutral-400">Além do Texto: Imagens, Áudio e Vídeo</p>
+        </div>
+
+        <!-- Introduction -->
+        <section class="mb-12 p-6 bg-dark-800/50 rounded-2xl border border-dark-700">
+            <h2 class="text-2xl font-bold text-yellow-400 mb-4">Visão Geral</h2>
+            <p class="text-neutral-300 leading-relaxed">
+                IAs modernas não trabalham apenas com texto. Modelos multimodais podem ver imagens, ouvir áudio, 
+                gerar arte, criar música e até produzir vídeos. Este módulo explora o fascinante mundo da IA 
+                multimodal e como usar essas capacidades de forma prática e criativa.
+            </p>
+        </section>
+
+        <!-- Topics -->
+        <section class="space-y-4">
+            <h2 class="text-2xl font-bold text-white mb-6">📚 Tópicos do Módulo</h2>
+
+            <!-- Topic 1 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">1</span>
+                        <span class="font-semibold text-white">O que é IA Multimodal?</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Multimodal significa trabalhar com múltiplos tipos de dados: texto, imagem, áudio, vídeo.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Modalidades</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>Texto:</strong> A base de tudo (prompts, respostas)</li>
+                                    <li>• <strong>Imagem:</strong> Fotos, ilustrações, diagramas</li>
+                                    <li>• <strong>Áudio:</strong> Fala, música, efeitos sonoros</li>
+                                    <li>• <strong>Vídeo:</strong> Sequências animadas, clipes</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Capacidades Principais</h4>
+                                <p class="text-neutral-400 text-sm">Entender imagens (visão), gerar imagens, transcrever áudio, sintetizar voz, analisar vídeos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">2</span>
+                        <span class="font-semibold text-white">Visão Computacional com IA</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">IAs podem "ver" e entender imagens, abrindo possibilidades incríveis.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">O que a IA pode fazer com imagens</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Descrever o conteúdo de uma foto</li>
+                                    <li>• Ler texto em imagens (OCR avançado)</li>
+                                    <li>• Analisar gráficos e diagramas</li>
+                                    <li>• Identificar objetos e pessoas</li>
+                                    <li>• Extrair dados de documentos</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Modelos com Visão</h4>
+                                <p class="text-neutral-400 text-sm">GPT-4V, Claude 3 (todos), Gemini Pro Vision. Envie imagens junto com suas perguntas!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">3</span>
+                        <span class="font-semibold text-white">Geração de Imagens</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">De texto para imagem: crie arte, ilustrações e visuais com prompts.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Ferramentas Populares</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>DALL-E 3:</strong> Integrado ao ChatGPT</li>
+                                    <li>• <strong>Midjourney:</strong> Qualidade artística superior</li>
+                                    <li>• <strong>Stable Diffusion:</strong> Open source, customizável</li>
+                                    <li>• <strong>Leonardo.ai:</strong> Focado em design</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Dicas para Prompts de Imagem</h4>
+                                <p class="text-neutral-400 text-sm">Seja descritivo: estilo artístico, iluminação, ângulo, cores, atmosfera. "Uma foto realista de..." vs "Uma ilustração minimalista de..."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">4</span>
+                        <span class="font-semibold text-white">Transcrição e Reconhecimento de Fala</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Converta áudio em texto com precisão impressionante.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Aplicações</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Transcrever reuniões e entrevistas</li>
+                                    <li>• Criar legendas para vídeos</li>
+                                    <li>• Transformar podcasts em artigos</li>
+                                    <li>• Acessibilidade (para surdos)</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Ferramenta Destaque: Whisper</h4>
+                                <p class="text-neutral-400 text-sm">Open source da OpenAI, suporta 99 idiomas, disponível gratuitamente. Qualidade profissional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">5</span>
+                        <span class="font-semibold text-white">Síntese de Voz (Text-to-Speech)</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Transforme texto em fala natural e expressiva.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Ferramentas de TTS</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>ElevenLabs:</strong> Vozes ultra-realistas</li>
+                                    <li>• <strong>OpenAI TTS:</strong> Integrado às APIs</li>
+                                    <li>• <strong>Amazon Polly:</strong> Escalável, muitos idiomas</li>
+                                    <li>• <strong>Microsoft Azure TTS:</strong> Empresarial</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Casos de Uso</h4>
+                                <p class="text-neutral-400 text-sm">Audiobooks, assistentes virtuais, narração de vídeos, acessibilidade, localização de conteúdo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">6</span>
+                        <span class="font-semibold text-white">Geração de Música e Áudio</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Crie músicas, efeitos sonoros e jingles com IA.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Ferramentas</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>Suno:</strong> Cria músicas completas com letra</li>
+                                    <li>• <strong>Udio:</strong> Alta qualidade musical</li>
+                                    <li>• <strong>MusicGen:</strong> Meta, open source</li>
+                                    <li>• <strong>Soundraw:</strong> Música para vídeos</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Prompts para Música</h4>
+                                <p class="text-neutral-400 text-sm">Descreva gênero, mood, instrumentos, BPM, estilo vocal. "Uma música pop animada com sintetizadores e batida dançante sobre..."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">7</span>
+                        <span class="font-semibold text-white">Geração de Vídeo</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">A fronteira mais recente: criar vídeos a partir de texto ou imagens.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Ferramentas Emergentes</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• <strong>Sora:</strong> OpenAI (próximo lançamento)</li>
+                                    <li>• <strong>Runway Gen-2:</strong> Líder atual</li>
+                                    <li>• <strong>Pika Labs:</strong> Estilizado e criativo</li>
+                                    <li>• <strong>Luma Dream Machine:</strong> Muito realista</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Limitações Atuais</h4>
+                                <p class="text-neutral-400 text-sm">Vídeos curtos (segundos), alguns artefatos visuais, alto custo computacional. Evolução rápida!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">8</span>
+                        <span class="font-semibold text-white">Workflows Multimodais</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Combine diferentes modalidades para workflows poderosos.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo: Criação de Conteúdo</h4>
+                                <ol class="text-neutral-400 space-y-1 text-sm list-decimal list-inside">
+                                    <li>ChatGPT escreve o roteiro</li>
+                                    <li>ElevenLabs narra o texto</li>
+                                    <li>Midjourney cria as imagens</li>
+                                    <li>Runway anima as cenas</li>
+                                    <li>Suno cria a trilha sonora</li>
+                                </ol>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Exemplo: Análise de Dados</h4>
+                                <p class="text-neutral-400 text-sm">Upload de gráfico → IA analisa → Gera relatório em texto → Converte para apresentação de áudio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">9</span>
+                        <span class="font-semibold text-white">Considerações Práticas</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Aspectos importantes ao trabalhar com IA multimodal.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Custos</h4>
+                                <ul class="text-neutral-400 space-y-1 text-sm">
+                                    <li>• Geração de imagem/vídeo é mais cara que texto</li>
+                                    <li>• Créditos, assinaturas, pay-per-use</li>
+                                    <li>• Planeje o orçamento para projetos</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Direitos Autorais</h4>
+                                <p class="text-neutral-400 text-sm">Verifique os termos de uso. Conteúdo gerado por IA tem questões legais não totalmente resolvidas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="bg-dark-800/50 rounded-xl border border-dark-700 overflow-hidden">
+                <button class="topic-toggle w-full p-5 text-left flex items-center justify-between hover:bg-dark-700/50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <span class="w-8 h-8 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center font-bold">10</span>
+                        <span class="font-semibold text-white">Exercício: Projeto Multimodal</span>
+                    </div>
+                    <span class="transform transition-transform duration-200">▼</span>
+                </button>
+                <div class="topic-content">
+                    <div class="p-5 pt-0 border-t border-dark-700">
+                        <p class="text-neutral-300 mb-4">Crie algo usando pelo menos 3 modalidades diferentes.</p>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Sugestão de Projeto</h4>
+                                <ol class="text-neutral-400 space-y-2 text-sm list-decimal list-inside">
+                                    <li>Escolha um tema (ex: "Um dia na vida de um astronauta")</li>
+                                    <li>Use ChatGPT para criar um mini-roteiro</li>
+                                    <li>Gere 3-5 imagens com DALL-E ou Midjourney</li>
+                                    <li>Crie uma narração com ElevenLabs ou TTS</li>
+                                    <li>Opcionalmente, adicione música de fundo</li>
+                                </ol>
+                            </div>
+                            <div class="p-4 bg-dark-900/50 rounded-lg">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Reflexão</h4>
+                                <p class="text-neutral-400 text-sm">Como foi combinar diferentes ferramentas? Que possibilidades isso abre para seu trabalho ou projetos pessoais?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Navigation -->
+        <nav class="mt-12 flex justify-between items-center pt-8 border-t border-dark-700">
+            <a href="modulo-0-6.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>←</span>
+                <span>Módulo Anterior</span>
+            </a>
+            <a href="trilha02.html" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 rounded-lg transition-colors text-neutral-300">
+                Ver Trilha
+            </a>
+            <a href="modulo-0-8.html" class="flex items-center gap-2 text-neutral-400 hover:text-yellow-400 transition-colors">
+                <span>Próximo Módulo</span>
+                <span>→</span>
+            </a>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-dark-800 mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-neutral-500">
+            <p>SHIA - Sistema Humano de Inteligência Aumentada</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        document.documentElement.classList.add('dark');
+        
+        // Topic toggles
+        document.querySelectorAll('.topic-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const arrow = button.querySelector('span:last-child');
+                content.classList.toggle('open');
+                arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : '';
+            });
+        });
+    </script>
+</body>
+</html>
