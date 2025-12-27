@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 2.3: Prototipagem Rápida e Vibe Code | SHIA</title>
+  <meta name="description" content="Transforme ideias em soluções funcionais rapidamente. Velocidade sobre perfeição: fail fast, learn faster.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="./" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 2.3 - TRILHA 2
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">⚡ Prototipagem Rápida e 'Vibe Code' para Soluções Funcionais</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Transforme ideias em soluções funcionais rapidamente. Velocidade sobre perfeição: fail fast, learn faster.
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">Intermediário</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-2xl p-8 border border-blue-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-blue-400">Conceito Central</h2>
+            <p class="text-neutral-400">A essência da prototipagem ágil</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-blue-500 pl-6 mb-6">
+          "Vibe Code = código que <strong class="text-blue-400">FUNCIONA</strong>, não código perfeito. O objetivo é <strong class="text-blue-400">VALIDAR</strong>, não impressionar."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          Na era da inovação rápida, a capacidade de transformar ideias em protótipos funcionais em questão de horas – não meses – é uma <strong>vantagem competitiva crucial</strong>. A prototipagem rápida e o conceito de "Vibe Code" representam uma mentalidade: <strong>priorizar velocidade de validação sobre perfeição técnica</strong>.
+        </p>
+
+        <p class="text-neutral-300">
+          "Vibe Code" é código que captura a <strong>essência da ideia</strong> sem se prender a padrões de arquitetura complexos ou otimizações prematuras. É o MVP do código: funcional, testável e descartável se necessário. A filosofia: <strong>fail fast, learn faster</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">⚡ O que é Prototipagem Rápida e "Vibe Code"?</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  <strong class="text-blue-400">Prototipagem rápida</strong> é a arte de criar modelos funcionais de um produto ou serviço no menor tempo possível. Não se trata de código elegante ou arquitetura perfeita – trata-se de <strong>fazer a ideia funcionar</strong> para validá-la com usuários reais.
+                </p>
+                <p class="text-neutral-300 mb-3">
+                  O termo <strong>"Vibe Code"</strong> captura essa filosofia: código que transmite a "vibe" (essência) da solução sem se prender a convenções tradicionais. É código funcional, não elegante. É rápido, não robusto. É um experimento, não um produto final.
+                </p>
+                <p class="text-neutral-300">
+                  A prioridade máxima é: <strong>fazer a ideia funcionar e colocá-la nas mãos de usuários</strong>. Refatoração, otimização e boas práticas vêm depois – se a ideia for validada.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Atue como um desenvolvedor full-stack experiente em prototipagem. Crie um código Python Flask simples para um app que sugere filmes baseado no humor do usuário. Priorize velocidade sobre elegância. Vibe code accepted."
+                </code>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  Prototipagem rápida = validar hipóteses com o mínimo de investimento. Vibe Code = código suficiente para testar, não para produção.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">🏃 Mentalidade do Prototipador</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A mentalidade do prototipador é radicalmente diferente da mentalidade do engenheiro de software tradicional. Enquanto o engenheiro busca <strong>robustez e escalabilidade</strong>, o prototipador busca <strong>velocidade e aprendizado</strong>.
+                </p>
+                <p class="text-neutral-300 mb-3">
+                  O mantra é: <strong class="text-blue-400">"Fail fast, learn faster"</strong>. Falhar rápido significa descobrir logo se uma ideia não funciona, economizando tempo e recursos. Aprender mais rápido significa iterar com base em feedback real, não em suposições.
+                </p>
+                <p class="text-neutral-300">
+                  Abraçar a imperfeição como <strong>meio para um fim</strong>. O protótipo não precisa ser bonito, apenas funcional o suficiente para responder à pergunta: "Isso resolve o problema?". Se não, descarte e tente outra coisa. Se sim, refine.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Mindset Shift</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• De "código perfeito" para "código suficiente"</li>
+                  <li>• De "planejar tudo" para "aprender fazendo"</li>
+                  <li>• De "medo do fracasso" para "celebração do aprendizado"</li>
+                  <li>• De "construir para sempre" para "construir para validar"</li>
+                </ul>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">🛠️ Ferramentas para Prototipagem</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A escolha das ferramentas certas pode acelerar drasticamente a prototipagem. A regra de ouro: <strong>use ferramentas que você já conhece</strong> ou que têm curva de aprendizado mínima.
+                </p>
+              </div>
+
+              <div class="overflow-x-auto mb-4">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="border-b border-dark-600">
+                      <th class="text-left py-3 px-4 text-blue-400">Categoria</th>
+                      <th class="text-left py-3 px-4 text-neutral-400">Ferramentas</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-neutral-300">
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">🎨 UI/UX</td>
+                      <td class="py-3 px-4">Figma, Sketch, Adobe XD, Canva</td>
+                    </tr>
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">⚙️ Backend</td>
+                      <td class="py-3 px-4">Flask (Python), Express (Node.js), FastAPI</td>
+                    </tr>
+                    <tr class="border-b border-dark-700">
+                      <td class="py-3 px-4 font-semibold">🚫 No-code</td>
+                      <td class="py-3 px-4">Bubble, Webflow, Airtable, Zapier</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-4 font-semibold">🤖 IA</td>
+                      <td class="py-3 px-4">ChatGPT, Cursor, GitHub Copilot, v0.dev</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">⚡ Pro Tip</h5>
+                <p class="text-neutral-300 text-sm">
+                  Use ferramentas de IA como Cursor ou ChatGPT para gerar "Vibe Code" instantaneamente. Descreva o que quer, obtenha código funcional em segundos.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">📦 Do "Vibe Code" ao MVP</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Nem todo protótipo vira produto. Mas quando a validação é positiva, é hora de fazer a <strong>transição do "Vibe Code" para o MVP</strong> (Produto Mínimo Viável).
+                </p>
+                <p class="text-neutral-300 mb-3">
+                  Essa transição envolve <strong>refatorar para robustez</strong>: adicionar tratamento de erros, segurança, testes, escalabilidade. O código deixa de ser experimental e passa a ser sustentável.
+                </p>
+                <p class="text-neutral-300">
+                  A chave é saber <strong>quando parar de prototipar e começar a construir</strong>. Sinais: feedback positivo consistente, demanda crescente, viabilidade técnica confirmada.
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                  <h5 class="font-bold text-yellow-400 mb-2">⚠️ Vibe Code</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• Sem tratamento de erros</li>
+                    <li>• Hardcoded values</li>
+                    <li>• Sem testes automatizados</li>
+                    <li>• Código duplicado</li>
+                  </ul>
+                </div>
+                <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                  <h5 class="font-bold text-emerald-400 mb-2">✓ MVP</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• Error handling robusto</li>
+                    <li>• Configuração via variáveis</li>
+                    <li>• Testes unitários essenciais</li>
+                    <li>• Código modular e reutilizável</li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">✅ Validando Hipóteses com Protótipos</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Todo protótipo deve ter um <strong>objetivo de validação claro</strong>. Não construa protótipos "só para ver". Defina claramente: "O que quero aprender?"
+                </p>
+                <p class="text-neutral-300">
+                  Exemplos de hipóteses validáveis:
+                </p>
+                <ul class="text-neutral-300 space-y-2 mt-2">
+                  <li>• "Usuários estão dispostos a pagar por essa funcionalidade?"</li>
+                  <li>• "A interface é intuitiva o suficiente para onboarding sem tutorial?"</li>
+                  <li>• "A tecnologia X é viável para resolver o problema Y?"</li>
+                </ul>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">📊 Métodos de Validação</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li><strong>Qualitativo:</strong> Observar usuários interagindo, fazer entrevistas</li>
+                  <li><strong>Quantitativo:</strong> Métricas (taxa de conversão, tempo na tarefa, abandono)</li>
+                  <li><strong>A/B Testing:</strong> Comparar duas versões do protótipo</li>
+                </ul>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🎯 Framework: Hipótese → Protótipo → Teste → Aprenda</h5>
+                <p class="text-neutral-300 text-sm">
+                  Ciclo contínuo: defina hipótese, construa protótipo mínimo para testá-la, exponha a usuários, colete dados, aprenda e itere.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">🚪 "Fake Doors" e Testes de Fumaça</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Uma das técnicas mais poderosas de validação é o <strong class="text-blue-400">"Fake Door Test"</strong> (Teste da Porta Falsa). Você cria uma interface para uma funcionalidade que <strong>ainda não existe</strong> e mede o interesse.
+                </p>
+                <p class="text-neutral-300 mb-3">
+                  Exemplo: adicionar um botão "Exportar para PDF" em seu app. Quando clicado, exibe "Funcionalidade em desenvolvimento. Deixe seu email para ser notificado". Se muitos clicarem, você sabe que vale a pena investir.
+                </p>
+                <p class="text-neutral-300">
+                  <strong>Landing pages de teste</strong> são outra forma: crie uma página vendendo um produto que ainda não existe. Se houver conversões (emails, pré-vendas), você validou a demanda antes de investir.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30 mb-4">
+                <h5 class="font-bold text-yellow-400 mb-2">⚠️ Ética é Essencial</h5>
+                <p class="text-neutral-300 text-sm">
+                  Sempre seja transparente com usuários. Deixe claro que é um teste ou que a funcionalidade está "em breve". Nunca engane ou frustre intencionalmente.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🔥 Smoke Test</h5>
+                <p class="text-neutral-300 text-sm">
+                  Teste de fumaça: criar uma versão ultra-simplificada do produto e ver se há "fumaça" (interesse). Exemplo: Dropbox lançou com apenas um vídeo demonstrativo antes de ter o produto pronto.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">🔌 Prototipagem de Hardware</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A prototipagem rápida não se limita a software. Com <strong>Arduino</strong> e <strong>Raspberry Pi</strong>, você pode criar protótipos de hardware funcionais em horas.
+                </p>
+                <p class="text-neutral-300">
+                  Aplicações práticas: sensores de temperatura para agricultura, wearables para monitoramento de saúde, automação residencial, robótica educacional.
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                  <h5 class="font-bold text-purple-400 mb-2">🟦 Arduino</h5>
+                  <p class="text-neutral-300 text-sm mb-2">Microcontrolador para projetos simples</p>
+                  <ul class="text-neutral-300 text-xs space-y-1">
+                    <li>• Sensores (temperatura, luz, movimento)</li>
+                    <li>• Atuadores (LEDs, motores, servos)</li>
+                    <li>• Prototipagem em minutos</li>
+                  </ul>
+                </div>
+                <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                  <h5 class="font-bold text-emerald-400 mb-2">🍓 Raspberry Pi</h5>
+                  <p class="text-neutral-300 text-sm mb-2">Computador completo do tamanho de um cartão</p>
+                  <ul class="text-neutral-300 text-xs space-y-1">
+                    <li>• Linux completo (Python, Node.js)</li>
+                    <li>• Câmeras, displays, conectividade</li>
+                    <li>• Projetos complexos (IA edge, IoT)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Projeto</h5>
+                <p class="text-neutral-300 text-sm">
+                  Estação meteorológica DIY: Raspberry Pi + sensor DHT22 (temperatura/umidade) + API para enviar dados para a nuvem. Total: ~$50 e 2 horas de trabalho.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">🤝 A Ética da Prototipagem</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Protótipos envolvem usuários reais, logo, considerações éticas são fundamentais:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li><strong>1. Transparência:</strong> Deixe claro que é um protótipo/teste</li>
+                  <li><strong>2. Expectativas:</strong> Não prometa funcionalidades que não existem (ainda)</li>
+                  <li><strong>3. Privacidade:</strong> Dados coletados em testes devem ser protegidos e anonimizados</li>
+                  <li><strong>4. Consentimento:</strong> Usuários devem saber que estão participando de um experimento</li>
+                </ul>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30 mb-4">
+                <h5 class="font-bold text-red-400 mb-2">⚠️ Evite</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Coletar dados sem consentimento</li>
+                  <li>• Criar expectativas falsas sobre prontidão do produto</li>
+                  <li>• Usar protótipos inseguros em produção</li>
+                </ul>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Boas Práticas</h5>
+                <p class="text-neutral-300 text-sm">
+                  Adicione disclaimers claros: "Versão Beta", "Protótipo em Teste". Ofereça opt-in para coleta de dados. Agradeça aos early adopters explicitamente.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">🤖 Integrando IA Generativa na Prototipagem</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  IA generativa mudou o jogo da prototipagem. <strong>LLMs podem gerar "Vibe Code" em segundos</strong>, reduzindo o tempo de protótipo de horas para minutos.
+                </p>
+                <p class="text-neutral-300 mb-3">
+                  Ferramentas como <strong>GitHub Copilot</strong>, <strong>Cursor</strong> e <strong>ChatGPT</strong> atuam como "par programador" instantâneo. Você descreve o que quer, a IA gera código funcional.
+                </p>
+                <p class="text-neutral-300">
+                  O prompt se torna a nova forma de codificar: <strong>"Código por intenção"</strong>. Em vez de escrever linha por linha, você expressa a lógica em linguagem natural.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt para Prototipagem</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded whitespace-pre-wrap">
+"Crie um servidor Flask simples com um endpoint /recommend que:
+- Recebe mood do usuário (happy/sad/chill) via POST
+- Retorna 3 sugestões de músicas do Spotify
+- Use mock data (não precisa integrar API real ainda)
+Vibe code: priorize velocidade, sem validação complexa."
+                </code>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">⚡ Resultado</h5>
+                <p class="text-neutral-300 text-sm">
+                  IA gera código funcional em 10 segundos. Você testa, itera o prompt se necessário, e tem um protótipo funcional em minutos. Game changer absoluto.
+                </p>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-dark-900 font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">⏱️ Estudo de Caso: App em 24 Horas</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-blue-900/20 to-dark-700/50 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-3">📚 Desafio: App de Recomendação de Livros</h5>
+                <p class="text-neutral-300 text-sm mb-3">
+                  <strong>Objetivo:</strong> Criar um app que recomenda livros baseado no humor e interesses do usuário. Prazo: 24 horas.
+                </p>
+
+                <div class="bg-dark-900/50 p-3 rounded-lg mb-3">
+                  <h6 class="font-bold text-blue-300 mb-2 text-sm">🕐 0-4h: Design e Wireframe</h6>
+                  <ul class="text-neutral-300 text-xs space-y-1">
+                    <li>• Figma: tela de onboarding + tela de resultados (2h)</li>
+                    <li>• Definir fluxo: pergunta mood → pergunta gênero → mostra 5 livros (1h)</li>
+                    <li>• Pesquisar API Google Books (1h)</li>
+                  </ul>
+                </div>
+
+                <div class="bg-dark-900/50 p-3 rounded-lg mb-3">
+                  <h6 class="font-bold text-purple-300 mb-2 text-sm">🕔 4-12h: Backend (Flask + API)</h6>
+                  <ul class="text-neutral-300 text-xs space-y-1">
+                    <li>• Flask app com endpoint /recommend (2h)</li>
+                    <li>• Integração com Google Books API (3h)</li>
+                    <li>• Lógica de matching mood → keywords (ex: "happy" → "adventure", "comedy") (3h)</li>
+                  </ul>
+                </div>
+
+                <div class="bg-dark-900/50 p-3 rounded-lg mb-3">
+                  <h6 class="font-bold text-emerald-300 mb-2 text-sm">🕘 12-20h: Frontend (HTML/CSS/JS)</h6>
+                  <ul class="text-neutral-300 text-xs space-y-1">
+                    <li>• HTML/Tailwind CSS para UI (4h)</li>
+                    <li>• JavaScript para fetch de dados e atualização DOM (4h)</li>
+                  </ul>
+                </div>
+
+                <div class="bg-dark-900/50 p-3 rounded-lg">
+                  <h6 class="font-bold text-yellow-300 mb-2 text-sm">🕜 20-24h: Teste e Deploy</h6>
+                  <ul class="text-neutral-300 text-xs space-y-1">
+                    <li>• Testes com 5 usuários (2h)</li>
+                    <li>• Deploy em Vercel/Heroku (1h)</li>
+                    <li>• Documentação básica (1h)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🎯 Resultado</h5>
+                <p class="text-neutral-300 text-sm">
+                  App funcional em 24h. Não é perfeito, mas valida a hipótese. Se usuários adorarem, refatore. Se não, aprenda e pivote. Isso é prototipagem rápida na prática.
+                </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Prototipagem = validar hipóteses rapidamente</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Vibe Code = funcional, não perfeito</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Fail fast, learn faster</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Ferramentas certas aceleram tudo</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">IA generativa é game changer</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Ética e transparência sempre</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha21.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 2</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-2-2.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-blue-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 2.2</span>
+      </a>
+      <a href="modulo-2-4.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-400 transition-colors">
+        <span>Próximo: Módulo 2.4</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 2 - Módulo 2.3
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

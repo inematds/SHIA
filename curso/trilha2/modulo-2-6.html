@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 2.6: Construindo Agentes de IA | SHIA</title>
+  <meta name="description" content="Crie agentes autônomos que planejam, usam ferramentas e executam tarefas complexas de forma inteligente.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 2.6 - TRILHA 2
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">🤖 Construindo Agentes de IA para Tarefas Complexas</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Crie agentes autônomos que planejam, usam ferramentas e executam tarefas complexas de forma inteligente.
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-2xl p-8 border border-blue-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-blue-400">Conceito Central</h2>
+            <p class="text-neutral-400">A ideia que define os agentes de IA</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-blue-500 pl-6 mb-6">
+          "Agentes de IA são sistemas que percebem, planejam e <strong class="text-blue-400">AGEM</strong> autonomamente para atingir objetivos."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          Ao contrário de chatbots tradicionais que apenas respondem a perguntas, <strong>agentes de IA são proativos</strong>. Eles não esperam comandos – eles observam o ambiente, formulam planos, utilizam ferramentas e executam ações para alcançar metas específicas.
+        </p>
+
+        <p class="text-neutral-300">
+          Imagine um assistente que não apenas responde "qual é o clima?" mas que monitora a previsão do tempo, percebe que vai chover, e proativamente sugere cancelar seu passeio ao ar livre e agendar uma atividade indoor. Isso é um <strong class="text-blue-400">agente autônomo</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Imagem do Conceito -->
+    <section class="mb-12">
+      <img src="../../doc/imagens/engenharia/agentes_ia_conceito.webp"
+           alt="Arquitetura de um Agente de IA: Percepção, Planejamento, Memória e Ação"
+           class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+      <p class="text-center text-neutral-500 text-sm">Agentes de IA: Sistemas que percebem, planejam e agem autonomamente</p>
+    </section>
+
+    <!-- Comparação Chatbot vs Agente -->
+    <section class="mb-12">
+      <div class="bg-dark-800 rounded-2xl p-8 border border-dark-600">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">⚖️</span>
+          <div>
+            <h2 class="text-2xl font-bold">Chatbot vs Agente de IA</h2>
+            <p class="text-neutral-400">Entenda a diferença fundamental</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Chatbot -->
+          <div class="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
+            <h4 class="font-bold text-red-400 mb-4">💬 Chatbot Tradicional (Reativo)</h4>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Objetivo:</strong> Responder perguntas</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Comportamento:</strong> Passivo, aguarda comandos</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Ação:</strong> Retorna texto</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Exemplo:</strong> "Qual é a capital do Brasil?" → "Brasília"</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Agente -->
+          <div class="bg-emerald-900/20 p-6 rounded-xl border border-emerald-500/30">
+            <h4 class="font-bold text-emerald-400 mb-4">🤖 Agente de IA (Proativo)</h4>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Objetivo:</strong> Atingir metas autonomamente</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Comportamento:</strong> Ativo, toma iniciativa</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Ação:</strong> Usa ferramentas, APIs, executa código</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Exemplo:</strong> "Organize minha agenda de amanhã" → Consulta calendário, verifica clima, ajusta horários</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">🤖 O que são Agentes de IA?</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  <strong class="text-blue-400">Agentes de IA</strong> são sistemas que tomam ações autônomas para atingir objetivos. Diferente de chatbots que apenas respondem, agentes são <strong>proativos</strong>, não reativos.
+                </p>
+                <p class="text-neutral-300">
+                  Um agente percebe o ambiente, raciocina sobre o que fazer, decide quais ferramentas usar e executa ações. Ele pode chamar APIs, consultar bancos de dados, executar código e até coordenar com outros agentes.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo Prático</h5>
+                <p class="text-neutral-300 text-sm">
+                  <strong>Chatbot:</strong> "Quantos usuários ativos temos?" → "1.253"<br>
+                  <strong>Agente:</strong> "Analise nossa base de usuários" → Consulta DB, gera gráfico, identifica padrões, envia relatório por email
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  Agentes não apenas respondem – eles <strong>agem</strong>. Eles decompõem objetivos, planejam passos e executam ações no mundo real.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">🏗️ Arquitetura de Agentes</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Um agente completo possui cinco componentes principais:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong class="text-blue-400">Percepção:</strong> Observa o ambiente (lê sensores, APIs, dados)</li>
+                  <li>• <strong class="text-blue-400">Planejador:</strong> Decide quais ações tomar para atingir o objetivo</li>
+                  <li>• <strong class="text-blue-400">Memória:</strong> Armazena contexto e aprendizados</li>
+                  <li>• <strong class="text-blue-400">Executor de Ferramentas:</strong> Interage com APIs, bancos, código</li>
+                  <li>• <strong class="text-blue-400">Ação:</strong> Executa a ação decidida no mundo real</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🔄 Ciclo de um Agente</h5>
+                <p class="text-neutral-300 text-sm">
+                  Observar → Pensar → Planejar → Agir → Observar (loop contínuo até atingir o objetivo)
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">📋 Planejamento e Decomposição</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O <strong class="text-blue-400">Framework ReAct</strong> (Reasoning + Acting) é a abordagem mais popular. O agente alterna entre raciocínio e ação:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>Thought:</strong> "Preciso verificar o clima antes de agendar"</li>
+                  <li>• <strong>Action:</strong> Chama API de clima</li>
+                  <li>• <strong>Observation:</strong> "Vai chover amanhã às 14h"</li>
+                  <li>• <strong>Thought:</strong> "Melhor agendar para as 10h"</li>
+                  <li>• <strong>Action:</strong> Atualiza calendário</li>
+                </ul>
+              </div>
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <p class="text-neutral-300 text-sm">
+                  <strong>Decomposição:</strong> Dividir objetivos complexos ("organizar evento") em sub-tarefas gerenciáveis ("reservar local", "enviar convites", "contratar catering").
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">🛠️ Uso de Ferramentas (Tool Use)</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O poder dos agentes está no <strong>Tool Use</strong> – capacidade de usar ferramentas externas:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>✓ <strong>APIs:</strong> Clima, mapas, pagamentos, redes sociais</li>
+                  <li>✓ <strong>Calculadoras:</strong> Matemática complexa, conversões</li>
+                  <li>✓ <strong>Bancos de dados:</strong> SQL, vetoriais (RAG)</li>
+                  <li>✓ <strong>Execução de código:</strong> Python, JavaScript, shell</li>
+                  <li>✓ <strong>Navegação web:</strong> Scraping, automação de browser</li>
+                </ul>
+              </div>
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🎨 Exemplo</h5>
+                <p class="text-neutral-300 text-sm">
+                  Agente de análise de dados: usa pandas para ler CSV, matplotlib para gráficos, e envia por email usando SendGrid API.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">🧠 Memória de Curto e Longo Prazo</span>
+          </div>
+          <div class="p-5">
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                  <h5 class="font-bold text-blue-400 mb-2">📝 Memória de Curto Prazo</h5>
+                  <p class="text-neutral-300 text-sm">
+                    Contexto da sessão atual. Armazenada no próprio prompt (histórico de mensagens). Limitada pela janela de contexto do modelo.
+                  </p>
+                </div>
+                <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                  <h5 class="font-bold text-purple-400 mb-2">💾 Memória de Longo Prazo</h5>
+                  <p class="text-neutral-300 text-sm">
+                    Conhecimento persistente. Armazenado em bancos vetoriais (Pinecone, Weaviate). Recuperado via RAG quando relevante.
+                  </p>
+                </div>
+              </div>
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <p class="text-neutral-300 text-sm">
+                  <strong>Exemplo:</strong> Assistente pessoal lembra suas preferências (longo prazo) e o que você disse 5 minutos atrás (curto prazo).
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">👥 Sistemas Multi-Agentes</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Em vez de um agente único, crie um <strong class="text-blue-400">time de agentes especializados</strong> que colaboram:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>Agente Pesquisador:</strong> Busca informações na web</li>
+                  <li>• <strong>Agente Analista:</strong> Processa dados e gera insights</li>
+                  <li>• <strong>Agente Escritor:</strong> Cria conteúdo final</li>
+                  <li>• <strong>Agente Revisor:</strong> Valida qualidade e coerência</li>
+                </ul>
+              </div>
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">🏢 Frameworks</h5>
+                <p class="text-neutral-300 text-sm">
+                  <strong>AutoGen (Microsoft):</strong> Cria conversas entre agentes. <strong>CrewAI:</strong> Gerencia equipes de agentes com papéis definidos.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">⚖️ Ética e Segurança</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30 mb-4">
+                <h5 class="font-bold text-red-400 mb-2">⚠️ Principais Riscos</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Viés:</strong> Agentes podem perpetuar preconceitos nos dados de treinamento</li>
+                  <li>• <strong>Privacidade:</strong> Acesso a dados sensíveis requer controles rigorosos</li>
+                  <li>• <strong>Controle:</strong> Agentes autônomos podem tomar ações não intencionadas</li>
+                  <li>• <strong>Responsabilidade:</strong> Quem é responsável por erros do agente?</li>
+                </ul>
+              </div>
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Práticas Seguras</h5>
+                <p class="text-neutral-300 text-sm">
+                  Sempre implemente "human-in-the-loop" para ações críticas. Defina limites claros de autonomia. Monitore e audite todas as ações.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">🔍 Avaliação e Depuração</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  <strong>Métricas de Desempenho:</strong>
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>Taxa de Sucesso:</strong> Quantos objetivos o agente completou?</li>
+                  <li>• <strong>Eficiência:</strong> Quantas etapas/tokens foram necessários?</li>
+                  <li>• <strong>Custo:</strong> Quanto custou em API calls?</li>
+                  <li>• <strong>Tempo:</strong> Quanto tempo levou?</li>
+                </ul>
+              </div>
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🐛 Depuração</h5>
+                <p class="text-neutral-300 text-sm">
+                  Use <strong>traces</strong> (logs estruturados) para visualizar o "pensamento" do agente. Ferramentas: LangSmith, Weights & Biases.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">💼 Casos de Uso Práticos</span>
+          </div>
+          <div class="p-5">
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                  <h5 class="font-bold text-blue-400 mb-2">📣 Marketing</h5>
+                  <p class="text-neutral-300 text-sm">Agente pesquisa tendências, cria posts, agenda publicações e responde comentários</p>
+                </div>
+                <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                  <h5 class="font-bold text-purple-400 mb-2">📊 Análise de Dados</h5>
+                  <p class="text-neutral-300 text-sm">Conecta a DBs, executa queries, gera visualizações e envia relatórios automáticos</p>
+                </div>
+                <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                  <h5 class="font-bold text-emerald-400 mb-2">💻 Desenvolvimento</h5>
+                  <p class="text-neutral-300 text-sm">Lê issues, escreve código, roda testes, abre pull requests</p>
+                </div>
+                <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                  <h5 class="font-bold text-yellow-400 mb-2">🗓️ Assistentes Pessoais</h5>
+                  <p class="text-neutral-300 text-sm">Gerencia calendário, emails, compras, lembretes baseados em contexto</p>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">🚀 O Futuro dos Agentes</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-blue-900/20 to-dark-700/50 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-3">🔮 Tendências Emergentes</h5>
+                <ul class="text-neutral-300 space-y-3">
+                  <li class="flex items-start">
+                    <span class="font-bold text-blue-400 mr-2">•</span>
+                    <span><strong>Maior Autonomia:</strong> Agentes que rodam por dias/semanas sem supervisão</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-blue-400 mr-2">•</span>
+                    <span><strong>Colaboração Humano-IA:</strong> Agentes como membros da equipe</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-blue-400 mr-2">•</span>
+                    <span><strong>Especialização:</strong> Agentes verticais (medicina, direito, finanças)</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-blue-400 mr-2">•</span>
+                    <span><strong>Aprendizado Contínuo:</strong> Agentes que melhoram com feedback</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="font-bold text-blue-400 mr-2">•</span>
+                    <span><strong>Agentes Físicos:</strong> Robôs com agentes de IA embarcados</span>
+                  </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Agentes são proativos, não reativos</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Arquitetura: Percepção → Planejamento → Ação</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Framework ReAct para raciocínio + ação</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Tool Use é a superpotência dos agentes</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Memória de curto e longo prazo</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Multi-agentes para tarefas complexas</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha22.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 2</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-2-5.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-blue-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 2.5</span>
+      </a>
+      <a href="modulo-2-7.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-400 transition-colors">
+        <span>Próximo: Módulo 2.7</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 2 - Módulo 2.6
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

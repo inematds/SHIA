@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 2.7: Prompt Engineering Avançado | SHIA</title>
+  <meta name="description" content="Domine técnicas avançadas de prompt para extrair raciocínio lógico e respostas precisas de LLMs.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="./" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 2.7 - TRILHA 2
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">✍️ Técnicas Avançadas de Prompt Engineering para Lógica</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Domine técnicas avançadas de prompt para extrair raciocínio lógico e respostas precisas de LLMs.
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">~3h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-2xl p-8 border border-blue-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-blue-400">Conceito Central</h2>
+            <p class="text-neutral-400">O princípio fundamental do Prompt Engineering avançado</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-blue-500 pl-6 mb-6">
+          "Prompt Engineering Avançado = Fazer a IA <strong class="text-blue-400">PENSAR</strong>, não apenas responder."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          A diferença entre um prompt básico e um prompt avançado está na capacidade de <strong>extrair raciocínio lógico</strong> em vez de apenas obter respostas prontas. Técnicas avançadas forçam o modelo a <strong>explicitar seu processo mental</strong>, explorar múltiplas hipóteses e gerar outputs estruturados e confiáveis.
+        </p>
+
+        <p class="text-neutral-300">
+          Não se trata apenas de obter uma resposta correta, mas de entender <strong>como</strong> a IA chegou àquela resposta, tornando o processo auditável, replicável e otimizável.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">🎯 Fundamentos Avançados</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Além do básico: entender como LLMs processam informação. Os modelos de linguagem não "pensam" como humanos, mas usam <strong class="text-blue-400">padrões estatísticos</strong> aprendidos de trilhões de tokens. Compreender esse mecanismo permite criar prompts que exploram as fortalezas do modelo.
+                </p>
+                <p class="text-neutral-300">
+                  LLMs funcionam através de <strong>atenção transformadora</strong>: cada palavra em seu prompt influencia a probabilidade das próximas palavras geradas. Prompts bem estruturados aproveitam essa dinâmica para guiar o modelo a caminhos de raciocínio mais produtivos.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  LLMs não têm "entendimento" no sentido humano, mas simulam raciocínio através de padrões. Prompt engineering avançado é a arte de alinhar esses padrões com seus objetivos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">🔗 Chain-of-Thought Prompting</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  <strong>"Pense passo a passo."</strong> A técnica Chain-of-Thought (CoT) revolucionou o desempenho de LLMs em problemas complexos. Ao solicitar que a IA <strong>explicite seu raciocínio intermediário</strong>, você obtém respostas mais precisas e auditáveis.
+                </p>
+                <p class="text-neutral-300">
+                  Estudos mostram que CoT melhora dramaticamente o desempenho em matemática, raciocínio lógico e problemas multi-etapas. A simples adição de "Vamos pensar passo a passo" pode aumentar a precisão em até <strong>30-50%</strong> em algumas tarefas.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Se João tem 3 maçãs e compra o dobro do que tem, depois dá metade para Maria, quantas maçãs ele tem?<br><br>Vamos resolver passo a passo:<br>1. Quantidade inicial:<br>2. Depois da compra:<br>3. Depois de dar metade:<br>4. Resposta final:"
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">🌳 Tree-of-Thoughts</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Explorar múltiplos caminhos de raciocínio para problemas complexos. Enquanto CoT é <strong>linear</strong>, Tree-of-Thoughts (ToT) é <strong>ramificado</strong>. A IA gera múltiplas hipóteses, avalia cada uma e escolhe a melhor.
+                </p>
+                <p class="text-neutral-300">
+                  ToT é especialmente poderoso para problemas com múltiplas soluções válidas (design criativo, estratégia de negócios, debugging complexo). Você instrui o modelo a gerar 3-5 abordagens diferentes e depois compará-las.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Para resolver [problema], gere 3 abordagens completamente diferentes:<br>Abordagem A: [descreva]<br>Abordagem B: [descreva]<br>Abordagem C: [descreva]<br><br>Agora avalie cada uma em termos de viabilidade, custo e prazo. Recomende a melhor."
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">📝 Few-Shot e Zero-Shot</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Quando usar exemplos, quando deixar a IA inferir. <strong>Zero-shot</strong>: nenhum exemplo (confie na capacidade generalizadora). <strong>Few-shot</strong>: 1-5 exemplos (ensine o padrão desejado).
+                </p>
+                <p class="text-neutral-300">
+                  <strong>Zero-shot</strong> funciona bem para tarefas comuns (resumo, tradução). <strong>Few-shot</strong> é essencial para formatos proprietários, estilos específicos ou domínios nicho.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🎨 Exemplo Few-Shot</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Converta frases em formato JSON:<br><br>Entrada: 'João tem 25 anos e mora em São Paulo'<br>Saída: {"nome": "João", "idade": 25, "cidade": "São Paulo"}<br><br>Entrada: 'Maria é desenvolvedora e trabalha remotamente'<br>Saída: {"nome": "Maria", "profissão": "desenvolvedora", "trabalho": "remoto"}<br><br>Agora converta: 'Pedro é médico de 40 anos'"
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">🎭 Role-Playing e Personas</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Personas avançadas para respostas especializadas. "Atue como [especialista]" não é apenas teatro – muda fundamentalmente o <strong>espaço latente</strong> do modelo, ativando padrões associados àquela expertise.
+                </p>
+                <p class="text-neutral-300">
+                  Personas avançadas incluem <strong>contexto detalhado</strong>: background, motivações, constraints. Exemplo: "Você é um CTO de startup de healthtech, com orçamento limitado e prazo apertado. Priorize soluções pragmáticas."
+                </p>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">🎭 Persona Avançada</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Você é um arquiteto de software sênior especializado em sistemas distribuídos de alta escala. Você valoriza simplicidade, testabilidade e observabilidade. Você é cético de hype e prefere tecnologias maduras. Analise esta arquitetura proposta..."
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">✍️ Structured Output</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Forçar JSON, XML, formatos específicos. Parsing confiável. Para integração com sistemas, você precisa de <strong>output determinístico</strong>. Structured Output garante que a IA sempre retorne no formato especificado.
+                </p>
+                <p class="text-neutral-300">
+                  Use schemas explícitos (JSON Schema, TypeScript interfaces) e instrua o modelo a validar antes de retornar. APIs modernas (OpenAI, Anthropic) oferecem <strong>modos de structured output nativos</strong>.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo JSON Schema</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Retorne APENAS JSON válido seguindo este schema:<br>{<br>  "tarefa": "string",<br>  "prioridade": "alta|média|baixa",<br>  "prazo": "YYYY-MM-DD",<br>  "responsavel": "string"<br>}<br><br>Entrada: 'Implementar autenticação OAuth urgente até sexta'"
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">🔄 Self-Consistency</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Gerar múltiplas respostas e votar na melhor. LLMs são <strong>estocásticos</strong> – cada execução pode produzir resultado diferente. Self-Consistency explora essa variabilidade: gere 5-10 respostas e escolha a mais comum (ou melhor avaliada).
+                </p>
+                <p class="text-neutral-300">
+                  Técnica especialmente poderosa para problemas com resposta única (matemática, lógica). Se 8 de 10 execuções chegam à mesma resposta, a confiança é alta.
+                </p>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">🎯 Estratégia</h5>
+                <p class="text-neutral-300 text-sm">
+                  Execute o mesmo prompt 5x com temperature=0.7. Compare respostas. Se houver consenso (3+ iguais), use essa. Se divergir muito, refine o prompt.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">🧩 Decomposição de Tarefas</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Dividir problemas complexos em prompts menores. Tarefas gigantes sobrecarregam o modelo. <strong>Decomposição</strong> significa quebrar em sub-tarefas independentes, cada uma com seu próprio prompt otimizado.
+                </p>
+                <p class="text-neutral-300">
+                  Exemplo: "Escrever artigo técnico" → 1) Gerar outline, 2) Escrever introdução, 3) Desenvolver cada seção, 4) Criar conclusão, 5) Revisar coesão. Cinco prompts especializados > um prompt genérico.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">🎨 Pipeline</h5>
+                <p class="text-neutral-300 text-sm">
+                  Prompt 1: Análise de requisitos → Prompt 2: Design de arquitetura → Prompt 3: Implementação → Prompt 4: Revisão de código. Cada etapa alimenta a próxima com contexto refinado.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">⚡ Otimização de Performance</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Reduzir tokens, latência, custos sem perder qualidade. Cada palavra custa dinheiro e tempo. <strong>Otimização de prompt</strong> significa maximizar precisão com mínimo de tokens.
+                </p>
+                <p class="text-neutral-300">
+                  Técnicas: usar siglas e abreviações consistentes, remover redundâncias, comprimir exemplos, usar bullets em vez de parágrafos longos. Um prompt de 500 tokens pode ser reduzido para 200 sem perda de qualidade.
+                </p>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30 mb-4">
+                <h5 class="font-bold text-red-400 mb-2">❌ Prompt Ineficiente</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Você poderia, por favor, se possível, analisar cuidadosamente o seguinte código e me dizer, de forma detalhada e completa, quais problemas você identifica..."
+                </code>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Prompt Otimizado</h5>
+                <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                  "Analise o código. Liste problemas: segurança, performance, legibilidade."
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">📊 Benchmarking e Avaliação</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Medir qualidade dos prompts sistematicamente. Você não pode melhorar o que não mede. <strong>Benchmarking</strong> significa criar um conjunto de testes para avaliar objetivamente a performance de diferentes prompts.
+                </p>
+                <p class="text-neutral-300">
+                  Crie 10-20 casos de teste representativos. Defina métricas (precisão, recall, F1, BLEU para texto, etc.). Compare variações de prompts. Documente o que funciona melhor para cada caso.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">📊 Métricas Essenciais</h5>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>• <strong>Precisão:</strong> % de respostas corretas</li>
+                  <li>• <strong>Consistência:</strong> Variância entre execuções</li>
+                  <li>• <strong>Tempo de resposta:</strong> Latência média</li>
+                  <li>• <strong>Custo:</strong> Tokens consumidos por tarefa</li>
+                  <li>• <strong>Parsing success:</strong> % de outputs válidos (para structured output)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">LLMs funcionam por padrões, não "pensamento"</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Chain-of-Thought extrai raciocínio explícito</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Tree-of-Thoughts explora múltiplas soluções</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Few-shot ensina por exemplos</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Personas ativam expertise específica</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Structured Output garante parsing confiável</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Self-Consistency reduz erros por votação</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Decomposição divide complexidade</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Otimização reduz custo sem perder qualidade</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Benchmarking mede e melhora performance</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha22.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 2</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-2-6.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-blue-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 2.6</span>
+      </a>
+      <a href="modulo-2-8.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-400 transition-colors">
+        <span>Próximo: Módulo 2.8</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 2 - Módulo 2.7
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

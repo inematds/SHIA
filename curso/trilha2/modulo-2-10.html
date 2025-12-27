@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 2.10: Gestão de Projetos de IA | SHIA</title>
+  <meta name="description" content="Gerencie projetos de IA com sucesso: times, stakeholders, escala e governança.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="./" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 2.10 - TRILHA 2
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">📋 Gestão de Projetos de IA e Escalabilidade de Soluções</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Gerencie projetos de IA com sucesso: times, stakeholders, escala e governança.
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">~2h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-2xl p-8 border border-blue-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-blue-400">Conceito Central</h2>
+            <p class="text-neutral-400">A verdade sobre sucesso em projetos de IA</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-blue-500 pl-6 mb-6">
+          "Projetos de IA falham mais por gestão do que por tecnologia. <strong class="text-blue-400">Gestão é 80% do sucesso.</strong>"
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          A maioria dos projetos de IA falha não por limitações técnicas, mas por <strong>má gestão de expectativas, falta de governança e ausência de processos de escalabilidade</strong>. Enquanto engenheiros de machine learning focam em acurácia de modelos, o verdadeiro desafio está em alinhar stakeholders, montar times multidisciplinares e criar infraestrutura que sustente o crescimento.
+        </p>
+
+        <p class="text-neutral-300">
+          Gestão eficaz de projetos de IA requer uma combinação única de metodologias ágeis adaptadas, comunicação clara sobre incertezas inerentes ao ML, e frameworks robustos para escalar de provas de conceito (POCs) para sistemas em produção que atendem milhões de usuários.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">📋 Metodologias Ágeis para IA</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Metodologias como <strong class="text-blue-400">Scrum e Kanban</strong> precisam ser adaptadas para projetos de IA. Diferente do desenvolvimento tradicional, projetos de ML envolvem alta <strong>incerteza</strong> e ciclos de experimentação. Sprints devem incluir tempo para exploração de dados, testes de modelos e ajustes de hiperparâmetros.
+                </p>
+                <p class="text-neutral-300">
+                  O conceito de <strong>"Sprints de Experimentação"</strong> permite que times testem múltiplas abordagens (diferentes algoritmos, features, arquiteturas) sem a pressão de entregar um modelo final a cada iteração. O objetivo é aprendizado rápido e validação de hipóteses.
+                </p>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🎯 Ponto-Chave</h5>
+                <p class="text-neutral-300 text-sm">
+                  Em IA, nem toda sprint entrega valor ao usuário final. Algumas são puramente exploratórias. Isso deve estar claro nas cerimônias de planejamento.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">👥 Montando Times de IA</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Um time de IA de sucesso é <strong>multidisciplinar</strong>. Os principais papéis incluem:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>ML Engineer:</strong> Implementa modelos, pipelines de treinamento e inferência</li>
+                  <li>• <strong>Data Scientist:</strong> Explora dados, cria features, valida hipóteses</li>
+                  <li>• <strong>MLOps Engineer:</strong> Automatiza deploy, monitoramento e retraining</li>
+                  <li>• <strong>Product Manager (PM):</strong> Traduz necessidades de negócio em problemas de ML</li>
+                  <li>• <strong>Data Engineer:</strong> Constrói pipelines de dados escaláveis</li>
+                </ul>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">⚠️ Armadilha Comum</h5>
+                <p class="text-neutral-300 text-sm">
+                  Contratar apenas Data Scientists sem MLOps ou Engenharia de Dados cria um gargalo: modelos nunca chegam à produção.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">📊 Gestão de Stakeholders</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Stakeholders frequentemente têm <strong>expectativas irrealistas</strong> sobre IA (influenciados por marketing e ficção científica). A gestão eficaz envolve:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>✓ <strong>Educar sobre limitações:</strong> IA não é mágica. Modelos erram.</li>
+                  <li>✓ <strong>Comunicar incertezas:</strong> "Acurácia de 85%" pode não ser suficiente para casos críticos</li>
+                  <li>✓ <strong>Mostrar valor incremental:</strong> Demos frequentes de progresso real</li>
+                  <li>✓ <strong>Traduzir métricas técnicas:</strong> "F1-Score" vs "Taxa de acerto nas previsões"</li>
+                </ul>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">💡 Dica</h5>
+                <p class="text-neutral-300 text-sm">
+                  Use analogias simples: "Treinar um modelo de IA é como ensinar uma criança. Ela aprende com exemplos, mas pode cometer erros em situações novas."
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">🎯 Escopo e Priorização</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  O conceito de <strong class="text-blue-400">MVP (Minimum Viable Product) em IA</strong> é diferente de software tradicional. Um MVP de IA pode ser:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• Um modelo simples (regressão linear) que valida a viabilidade do problema</li>
+                  <li>• Um sistema semi-automatizado (humano-in-the-loop) antes da automação completa</li>
+                  <li>• Um piloto limitado a um subconjunto de dados ou usuários</li>
+                </ul>
+                <p class="text-neutral-300 mt-3">
+                  <strong>Evitar scope creep</strong> é crítico: stakeholders querem adicionar "só mais uma feature". Use frameworks como MoSCoW (Must/Should/Could/Won't) para priorizar.
+                </p>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Valor Incremental</h5>
+                <p class="text-neutral-300 text-sm">
+                  Entregar valor a cada sprint. Mesmo que seja apenas um relatório de qualidade de dados ou um dashboard de métricas.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">⚠️ Gestão de Riscos</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Projetos de IA têm <strong>riscos únicos</strong> que devem ser mapeados e mitigados:
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                  <h5 class="font-bold text-red-400 mb-2">⚠️ Riscos Técnicos</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• Dados insuficientes ou de baixa qualidade</li>
+                    <li>• Mudança na distribuição de dados (data drift)</li>
+                    <li>• Custo computacional inviável</li>
+                  </ul>
+                </div>
+
+                <div class="bg-orange-900/20 p-4 rounded-lg border border-orange-500/30">
+                  <h5 class="font-bold text-orange-400 mb-2">🔒 Riscos Éticos</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• Viés algorítmico discriminatório</li>
+                    <li>• Violação de privacidade (LGPD/GDPR)</li>
+                    <li>• Transparência e explicabilidade</li>
+                  </ul>
+                </div>
+
+                <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                  <h5 class="font-bold text-purple-400 mb-2">📜 Riscos Regulatórios</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• Conformidade com leis de IA (EU AI Act)</li>
+                    <li>• Requisitos de auditoria</li>
+                    <li>• Responsabilidade legal por decisões</li>
+                  </ul>
+                </div>
+
+                <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                  <h5 class="font-bold text-yellow-400 mb-2">💼 Riscos de Negócio</h5>
+                  <ul class="text-neutral-300 text-sm space-y-1">
+                    <li>• ROI não alcançado</li>
+                    <li>• Resistência de usuários</li>
+                    <li>• Dependência de fornecedores</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">📈 Escalando de POC para Produção</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  A maioria dos projetos de IA <strong>nunca sai do estágio de POC</strong>. As armadilhas comuns incluem:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>POC não é escalável:</strong> Código em notebooks não roda em produção</li>
+                  <li>• <strong>Falta de infraestrutura:</strong> Modelo funciona localmente, mas não aguenta carga</li>
+                  <li>• <strong>Debt técnico:</strong> "Gambiarras" funcionam no POC, mas quebram depois</li>
+                </ul>
+              </div>
+
+              <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="font-bold text-blue-400 mb-2">🚀 Framework de Escalabilidade</h5>
+                <ol class="text-neutral-300 text-sm space-y-1">
+                  <li><strong>1. POC:</strong> Validar viabilidade técnica (Jupyter Notebook OK)</li>
+                  <li><strong>2. Piloto:</strong> Código modular, containerizado (Docker), CI/CD básico</li>
+                  <li><strong>3. Produção:</strong> Arquitetura distribuída, monitoramento 24/7, retraining automático</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">🏗️ Arquitetura para Alta Escala</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Para sistemas de IA que atendem milhões de requisições, a arquitetura deve incluir:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>Microserviços:</strong> Separar treinamento, inferência e pré-processamento</li>
+                  <li>• <strong>Filas de Mensagens:</strong> RabbitMQ/Kafka para desacoplar componentes</li>
+                  <li>• <strong>Load Balancing:</strong> Distribuir carga entre múltiplas réplicas do modelo</li>
+                  <li>• <strong>Caching:</strong> Redis para respostas frequentes (evitar recomputação)</li>
+                  <li>• <strong>Serving Otimizado:</strong> TensorFlow Serving, TorchServe, ONNX Runtime</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2">📊 Exemplo de Stack</h5>
+                <p class="text-neutral-300 text-sm">
+                  Kubernetes + TensorFlow Serving + Redis + Prometheus (monitoramento) + Grafana (visualização) + MLflow (tracking)
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">💼 Governança e Documentação</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  <strong>Governança de IA</strong> garante conformidade, rastreabilidade e responsabilidade. Elementos essenciais:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>Model Cards:</strong> Documentam propósito, limitações, viés e métricas do modelo</li>
+                  <li>• <strong>Data Lineage:</strong> Rastreamento de origem e transformações dos dados</li>
+                  <li>• <strong>Auditoria:</strong> Logs de decisões do modelo para investigação futura</li>
+                  <li>• <strong>Versionamento:</strong> Git para código, DVC para dados e modelos</li>
+                  <li>• <strong>Comitê de Ética:</strong> Revisão de casos de uso sensíveis</li>
+                </ul>
+              </div>
+
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2">✓ Boas Práticas</h5>
+                <p class="text-neutral-300 text-sm">
+                  Toda decisão crítica (aprovação de crédito, diagnóstico médico) deve ter explicação e ser auditável.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">🔄 Manutenção e Evolução</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+                <p class="text-neutral-300 mb-3">
+                  Diferente de software tradicional, <strong>modelos de IA degradam com o tempo</strong> (data drift). A manutenção envolve:
+                </p>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>Retraining:</strong> Retreinar modelos periodicamente com dados novos</li>
+                  <li>• <strong>Feature Updates:</strong> Adicionar novas features ou remover obsoletas</li>
+                  <li>• <strong>A/B Testing:</strong> Comparar nova versão do modelo com a atual em produção</li>
+                  <li>• <strong>Deprecation:</strong> Plano para desativar modelos antigos sem quebrar sistemas</li>
+                </ul>
+              </div>
+
+              <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-yellow-400 mb-2">⚠️ Alerta</h5>
+                <p class="text-neutral-300 text-sm">
+                  Monitorar métricas de negócio (conversão, churn) além de métricas técnicas (acurácia). Um modelo tecnicamente perfeito pode falhar no mundo real.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">🚀 Lições Aprendidas</span>
+          </div>
+          <div class="p-5">
+              <div class="bg-gradient-to-br from-blue-900/20 to-dark-700/50 p-4 rounded-lg border border-blue-500/30 mb-4">
+                <h5 class="font-bold text-blue-400 mb-3">✓ Melhores Práticas</h5>
+                <ul class="text-neutral-300 space-y-2">
+                  <li>• <strong>Comece simples:</strong> Modelo linear antes de deep learning</li>
+                  <li>• <strong>Foque em dados:</strong> 90% do trabalho é preparar dados de qualidade</li>
+                  <li>• <strong>Automatize cedo:</strong> CI/CD desde o início, não depois</li>
+                  <li>• <strong>Mensure o que importa:</strong> Métricas de negócio > métricas técnicas</li>
+                  <li>• <strong>Comunique continuamente:</strong> Updates frequentes para stakeholders</li>
+                </ul>
+              </div>
+
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-red-400 mb-2">❌ Anti-Patterns</h5>
+                <ul class="text-neutral-300 text-sm space-y-1">
+                  <li>• Usar IA onde regras simples bastariam</li>
+                  <li>• Ignorar debt técnico "só por enquanto"</li>
+                  <li>• Prometer resultados antes de explorar os dados</li>
+                  <li>• Deploy sem monitoramento</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-primary/10 rounded-2xl p-8 border border-primary/30">
+        <h2 class="text-2xl font-bold text-primary mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Adapte metodologias ágeis para experimentação</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Monte times multidisciplinares (ML, MLOps, Data Eng)</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Gerencie expectativas e comunique incertezas</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">MVP de IA é diferente de software tradicional</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Mapeie riscos técnicos, éticos e regulatórios</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Escalar POC para produção requer planejamento</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Arquitetura distribuída para alta escala</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Governança: Model cards, auditoria, versionamento</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Modelos degradam: planeje retraining contínuo</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Gestão é 80% do sucesso em projetos de IA</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha22.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-colors">
+            <span>Voltar para Trilha 2</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="modulo-2-9.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-blue-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Anterior: Módulo 2.9</span>
+      </a>
+      <a href="trilha22.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-400 transition-colors">
+        <span>Voltar para Trilha 2</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 2 - Módulo 2.10
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

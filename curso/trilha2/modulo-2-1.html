@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 2.1: O Mindset do Engenheiro Aumentado por IA | SHIA</title>
+  <meta name="description" content="Desenvolva a mentalidade de resultado do engenheiro moderno: decidir, executar e medir o retorno sobre investimento com IA.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            dark: {
+              900: '#111827',
+              800: '#1f2937',
+              700: '#374151',
+              600: '#4b5563'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+
+    /* Tópicos sempre visíveis */
+    .topic-content { display: block; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation Global -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo + INEMA.CLUB -->
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+
+        <!-- Trilhas + Theme Toggle -->
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header do Módulo -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mb-4">
+        MÓDULO 2.1 - TRILHA 2
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">🎯 O Mindset do Engenheiro Aumentado por IA: Foco em ROI</h1>
+      <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+        Desenvolva a mentalidade de resultado do engenheiro moderno: decidir, executar e medir o retorno sobre investimento com IA.
+      </p>
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">10</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">~3h</div>
+        <div class="text-xs text-neutral-400">Duração</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">Avançado</div>
+        <div class="text-xs text-neutral-400">Nível</div>
+      </div>
+    </div>
+
+    <!-- Imagem do Módulo -->
+    <section class="mb-12">
+      <img src="../../doc/imagens/engenharia/roi_vs_perfeicao.webp"
+           alt="ROI vs Perfeição: O mindset do engenheiro aumentado"
+           class="w-full rounded-2xl shadow-lg border border-dark-600 mb-4">
+      <p class="text-center text-neutral-500 text-sm">ROI vs Perfeição: O mindset do engenheiro moderno</p>
+    </section>
+
+    <!-- Conceito Central -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-2xl p-8 border border-blue-500/30">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">💡</span>
+          <div>
+            <h2 class="text-2xl font-bold text-blue-400">O Engenheiro Aumentado não busca perfeição, busca RESULTADO</h2>
+            <p class="text-neutral-400">A mudança de mindset que define o profissional moderno</p>
+          </div>
+        </div>
+
+        <blockquote class="text-xl text-neutral-200 italic border-l-4 border-blue-500 pl-6 mb-6">
+          "IA + ROI = Decisão → Ação → Resultado. O engenheiro moderno decide e executa."
+        </blockquote>
+
+        <p class="text-neutral-300 mb-4">
+          O <strong>Engenheiro Aumentado por IA</strong> não é um profissional substituído, mas <strong class="text-blue-400">amplificado</strong>. A IA atua como um copiloto inteligente que automatiza tarefas repetitivas, analisa dados em larga escala e oferece insights impossíveis de obter manualmente.
+        </p>
+
+        <p class="text-neutral-300">
+          Esta mudança de paradigma transforma o engenheiro de <strong>executor de tarefas</strong> para <strong class="text-blue-400">estrategista focado em ROI</strong>. O profissional moderno não se pergunta "como fazer isso perfeitamente?", mas sim "como entregar valor mensurável rapidamente?".
+        </p>
+      </div>
+    </section>
+
+    <!-- Comparação Engenheiro Tradicional vs Aumentado -->
+    <section class="mb-12">
+      <div class="bg-dark-800 rounded-2xl p-8 border border-dark-600">
+        <div class="flex items-center mb-6">
+          <span class="text-4xl mr-4">⚖️</span>
+          <div>
+            <h2 class="text-2xl font-bold">Engenheiro Tradicional vs Engenheiro Aumentado</h2>
+            <p class="text-neutral-400">A transformação do mindset profissional</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Engenheiro Tradicional -->
+          <div class="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
+            <h4 class="font-bold text-red-400 mb-4">🐌 Engenheiro Tradicional</h4>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Foco:</strong> Busca perfeição técnica</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Prioridade:</strong> Foco em processo</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Velocidade:</strong> Decisões lentas e cautelosas</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-400 mr-2">•</span>
+                <span><strong>Atitude:</strong> Medo de errar</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Engenheiro Aumentado -->
+          <div class="bg-emerald-900/20 p-6 rounded-xl border border-emerald-500/30">
+            <h4 class="font-bold text-emerald-400 mb-4">🚀 Engenheiro Aumentado</h4>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Foco:</strong> Busca resultado mensurável</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Prioridade:</strong> Foco em entrega</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Velocidade:</strong> Ação rápida iterativa</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 mr-2">✓</span>
+                <span><strong>Atitude:</strong> Falha rápido, aprende rápido</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tópicos do Módulo -->
+    <section class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-3xl mr-3">📚</span>
+        <h2 class="text-2xl font-bold">Tópicos do Módulo</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- Tópico 1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">1</span>
+            <span class="font-semibold">🎯 Introdução ao Engenheiro Aumentado por IA</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                O <strong class="text-blue-400">Engenheiro Aumentado</strong> usa IA como copiloto inteligente para automatizar tarefas repetitivas, analisar grandes volumes de dados e oferecer insights que seriam impossíveis de obter manualmente. Esta transformação muda o papel do engenheiro de <strong>executor</strong> para <strong>estrategista</strong>.
+              </p>
+              <p class="text-neutral-300 mb-3">
+                A IA não substitui a expertise técnica - ela a <strong class="text-blue-400">multiplica</strong>. Um engenheiro que domina Python pode, com IA, escrever código em 5 linguagens diferentes. Um arquiteto de sistemas pode, com IA, analisar dezenas de padrões de design simultaneamente.
+              </p>
+              <p class="text-neutral-300">
+                Esta abordagem transforma o engenheiro de <strong>solucionador de problemas</strong> para <strong>orquestrador de soluções</strong>, focando no "o quê" e no "por quê" enquanto a IA acelera o "como".
+              </p>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+              <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                "Gere uma função em Python que recebe uma lista de números e retorna a média, mediana e desvio padrão. Inclua tratamento de erros e docstrings completas seguindo o padrão PEP 257."
+              </code>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+              <h5 class="font-bold text-blue-400 mb-2">🎯 Ponto-Chave</h5>
+              <p class="text-neutral-300 text-sm">
+                IA é sua equipe de suporte 24/7 que nunca reclama, nunca cansa e sempre entrega. Use-a para amplificar suas habilidades, não para substituí-las.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">2</span>
+            <span class="font-semibold">💰 O Mindset de ROI em Projetos de IA</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Cada decisão técnica deve ser justificada por <strong class="text-blue-400">retorno claro e mensurável</strong>. O Engenheiro Aumentado não pergunta "posso fazer isso com IA?", mas sim "qual o ROI de fazer isso com IA?".
+              </p>
+              <p class="text-neutral-300 mb-3">
+                <strong>Benefícios</strong> podem incluir: redução de custos operacionais, aumento de receita, melhoria de produtividade, redução de tempo de market, satisfação do cliente. <strong>Custos</strong> incluem: desenvolvimento, infraestrutura, manutenção, treinamento.
+              </p>
+              <p class="text-neutral-300">
+                Um projeto de IA só faz sentido quando os <strong>benefícios superam os custos</strong> em um prazo razoável. Projetos sem ROI claro são experimentos, não investimentos.
+              </p>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+              <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                "Quais são os potenciais benefícios e custos de implementar um sistema de recomendação baseado em IA num e-commerce de roupas com 100 mil usuários ativos? Crie uma análise de custo-benefício detalhada."
+              </code>
+            </div>
+
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">📊 Fórmula do ROI</h5>
+              <div class="bg-dark-900/50 p-4 rounded-lg">
+                <p class="text-center text-xl text-neutral-200 font-mono mb-2">
+                  ROI = (Ganhos - Custos) / Custos × 100%
+                </p>
+                <p class="text-neutral-400 text-sm text-center">
+                  Exemplo: Projeto custou R$50.000, gera economia de R$2.000/mês<br>
+                  ROI anual = (R$24.000 - R$50.000) / R$50.000 = -52% (primeiro ano)<br>
+                  ROI em 3 anos = (R$72.000 - R$50.000) / R$50.000 = +44%
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">3</span>
+            <span class="font-semibold">🔍 Identificando Oportunidades de IA com Alto ROI</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Nem todo problema é adequado para IA. Os melhores candidatos são processos que são: <strong>repetitivos</strong> (fazemos muitas vezes), <strong>baseados em dados</strong> (temos histórico), <strong>com impacto significativo</strong> (vale a pena otimizar) e <strong>bem definidos</strong> (sabemos o que é sucesso).
+              </p>
+              <p class="text-neutral-300 mb-3">
+                Use a <strong class="text-blue-400">Matriz de Priorização 2x2</strong>: no eixo X, coloque o esforço (baixo a alto); no eixo Y, coloque o impacto (baixo a alto). Priorize projetos de <strong>alto impacto e baixo esforço</strong> (quick wins).
+              </p>
+              <p class="text-neutral-300">
+                Exemplos de alto ROI: automação de testes, detecção de anomalias em logs, classificação automática de tickets de suporte, previsão de demanda.
+              </p>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+              <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                "Liste 10 possíveis aplicações de IA para otimizar a logística de uma empresa de transportes com 50 caminhões. Para cada aplicação, indique o impacto potencial (alto/médio/baixo) e esforço de implementação (alto/médio/baixo)."
+              </code>
+            </div>
+
+            <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+              <h5 class="font-bold text-purple-400 mb-2">📊 Framework: Matriz de Priorização 2x2</h5>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="bg-emerald-900/30 p-3 rounded border border-emerald-500/30">
+                  <div class="font-bold text-emerald-400 mb-1">Alto Impacto + Baixo Esforço</div>
+                  <div class="text-neutral-300">FAÇA AGORA (Quick Wins)</div>
+                </div>
+                <div class="bg-blue-900/30 p-3 rounded border border-blue-500/30">
+                  <div class="font-bold text-blue-400 mb-1">Alto Impacto + Alto Esforço</div>
+                  <div class="text-neutral-300">PLANEJE (Projetos Estratégicos)</div>
+                </div>
+                <div class="bg-yellow-900/30 p-3 rounded border border-yellow-500/30">
+                  <div class="font-bold text-yellow-400 mb-1">Baixo Impacto + Baixo Esforço</div>
+                  <div class="text-neutral-300">CONSIDERE (Fill-ins)</div>
+                </div>
+                <div class="bg-red-900/30 p-3 rounded border border-red-500/30">
+                  <div class="font-bold text-red-400 mb-1">Baixo Impacto + Alto Esforço</div>
+                  <div class="text-neutral-300">EVITE (Armadilhas)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">4</span>
+            <span class="font-semibold">🛠️ A Caixa de Ferramentas do Engenheiro Aumentado</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                O Engenheiro Aumentado domina um arsenal de ferramentas de IA: <strong>GitHub Copilot/Cursor</strong> para geração de código, <strong>ChatGPT/Claude</strong> para raciocínio e análise, <strong>ferramentas de automação</strong> como n8n e Zapier, e <strong>plataformas de MLOps</strong> como MLflow e Weights & Biases.
+              </p>
+              <p class="text-neutral-300">
+                Cada ferramenta tem seu uso ideal. LLMs são ótimos para tarefas criativas e de raciocínio. Ferramentas especializadas (como Copilot) são melhores para domínios específicos. A chave é <strong class="text-blue-400">escolher a ferramenta certa para o trabalho certo</strong>.
+              </p>
+            </div>
+
+            <div class="overflow-x-auto mb-4">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-dark-600">
+                    <th class="text-left py-3 px-4 text-blue-400">Categoria</th>
+                    <th class="text-left py-3 px-4 text-blue-400">Ferramentas</th>
+                    <th class="text-left py-3 px-4 text-blue-400">Uso Ideal</th>
+                  </tr>
+                </thead>
+                <tbody class="text-neutral-300">
+                  <tr class="border-b border-dark-700">
+                    <td class="py-3 px-4 font-semibold">💻 Código</td>
+                    <td class="py-3 px-4">GitHub Copilot, Cursor, Tabnine</td>
+                    <td class="py-3 px-4">Autocompletar, geração de código</td>
+                  </tr>
+                  <tr class="border-b border-dark-700">
+                    <td class="py-3 px-4 font-semibold">🧠 LLMs</td>
+                    <td class="py-3 px-4">ChatGPT, Claude, Gemini</td>
+                    <td class="py-3 px-4">Raciocínio, análise, escrita</td>
+                  </tr>
+                  <tr class="border-b border-dark-700">
+                    <td class="py-3 px-4 font-semibold">🔄 Automação</td>
+                    <td class="py-3 px-4">n8n, Zapier, Make</td>
+                    <td class="py-3 px-4">Workflows, integrações</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold">📊 MLOps</td>
+                    <td class="py-3 px-4">MLflow, W&B, Kubeflow</td>
+                    <td class="py-3 px-4">Deploy, monitoramento de modelos</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+              <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                "Compare as vantagens e desvantagens do GitHub Copilot e do Amazon CodeWhisperer para um time de 10 desenvolvedores Python trabalhando em microserviços. Considere custo, precisão e integração com ferramentas."
+              </code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">5</span>
+            <span class="font-semibold">✍️ Engenharia de Prompts para Otimização de Tarefas</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Saber "conversar" com IA é a habilidade fundamental do século 21. Um bom prompt é <strong>claro</strong> (sem ambiguidade), <strong>conciso</strong> (sem informação desnecessária) e <strong>rico em contexto</strong> (com todas as informações relevantes).
+              </p>
+              <p class="text-neutral-300">
+                Técnicas avançadas incluem: <strong>few-shot learning</strong> (dar exemplos), <strong>chain-of-thought</strong> (pedir raciocínio passo a passo), <strong>role prompting</strong> (definir persona) e <strong>constraints</strong> (estabelecer limites claros).
+              </p>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+              <h5 class="font-bold text-blue-400 mb-2">🎯 Anatomia do Prompt Perfeito</h5>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-start">
+                  <span class="font-bold text-blue-400 mr-2 whitespace-nowrap">1. Persona:</span>
+                  <span class="text-neutral-300">"Atue como um arquiteto de software sênior especializado em microserviços"</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="font-bold text-blue-400 mr-2 whitespace-nowrap">2. Contexto:</span>
+                  <span class="text-neutral-300">"Estamos migrando um monolito Python para microserviços com 50k usuários"</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="font-bold text-blue-400 mr-2 whitespace-nowrap">3. Tarefa:</span>
+                  <span class="text-neutral-300">"Crie um plano de migração detalhado"</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="font-bold text-blue-400 mr-2 whitespace-nowrap">4. Formato:</span>
+                  <span class="text-neutral-300">"Em markdown, com diagrama Mermaid e checklist de validação"</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="font-bold text-blue-400 mr-2 whitespace-nowrap">5. Restrições:</span>
+                  <span class="text-neutral-300">"Zero downtime, budget máximo de 3 meses de dev"</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">📈 Evolução de Prompt (Básico → Avançado)</h5>
+              <div class="space-y-3">
+                <div class="bg-red-900/20 p-3 rounded border border-red-500/30">
+                  <div class="font-bold text-red-400 text-xs mb-1">❌ BÁSICO (Ruim)</div>
+                  <code class="text-xs text-neutral-300">"Crie uma API REST"</code>
+                </div>
+                <div class="bg-yellow-900/20 p-3 rounded border border-yellow-500/30">
+                  <div class="font-bold text-yellow-400 text-xs mb-1">⚠️ INTERMEDIÁRIO (OK)</div>
+                  <code class="text-xs text-neutral-300">"Crie uma API REST em Python com FastAPI para gerenciar usuários"</code>
+                </div>
+                <div class="bg-emerald-900/20 p-3 rounded border border-emerald-500/30">
+                  <div class="font-bold text-emerald-400 text-xs mb-1">✓ AVANÇADO (Excelente)</div>
+                  <code class="text-xs text-neutral-300">"Atue como engenheiro backend sênior. Crie uma API REST em Python com FastAPI para gerenciar usuários (CRUD completo). Inclua: autenticação JWT, validação com Pydantic, testes com pytest, documentação OpenAPI e tratamento de erros. Siga padrões de clean architecture."</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">6</span>
+            <span class="font-semibold">🧩 IA na Análise e Resolução de Problemas Complexos</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                IA analisa <strong class="text-blue-400">grandes volumes de dados</strong> e identifica padrões invisíveis para humanos. Modelos de Machine Learning podem processar milhões de registros em segundos, encontrando correlações que levariam meses para analistas humanos descobrirem.
+              </p>
+              <p class="text-neutral-300 mb-3">
+                <strong>Modelos preditivos</strong> antecipam falhas antes que aconteçam. Sistemas de detecção de anomalias identificam comportamentos suspeitos em tempo real. Análise de sentimento revela o que clientes realmente pensam, além do que dizem.
+              </p>
+              <p class="text-neutral-300">
+                O Engenheiro Aumentado usa IA para <strong>explorar o espaço de soluções</strong> muito mais rapidamente, testando dezenas de hipóteses em paralelo.
+              </p>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+              <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                "Analise este dataset de vendas (CSV com 100k registros) e identifique: (1) os 10 produtos mais vendidos por região, (2) tendências sazonais, (3) perfil demográfico dos clientes de alto valor, (4) correlações entre produtos frequentemente comprados juntos. Gere visualizações e insights acionáveis."
+              </code>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="font-bold text-purple-400 mb-2 text-sm">🔮 Previsão de Falhas</h5>
+                <p class="text-neutral-300 text-xs">Modelos analisam logs e métricas para prever quando um servidor vai cair</p>
+              </div>
+              <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-red-400 mb-2 text-sm">🚨 Detecção de Fraudes</h5>
+                <p class="text-neutral-300 text-xs">Algoritmos identificam padrões anômalos em transações financeiras</p>
+              </div>
+              <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+                <h5 class="font-bold text-emerald-400 mb-2 text-sm">💬 Análise de Sentimento</h5>
+                <p class="text-neutral-300 text-xs">NLP processa reviews e redes sociais para medir satisfação</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 7 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">7</span>
+            <span class="font-semibold">🔄 Automatizando o Ciclo de Vida de Desenvolvimento (SDLC)</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                IA pode estar presente em <strong class="text-blue-400">todas as fases do SDLC</strong>:
+              </p>
+              <ul class="text-neutral-300 space-y-2">
+                <li>• <strong>Concepção:</strong> Gerar user stories a partir de requisitos vagos</li>
+                <li>• <strong>Design:</strong> Sugerir arquiteturas e padrões de design</li>
+                <li>• <strong>Desenvolvimento:</strong> Autocompletar código e sugerir refactorings</li>
+                <li>• <strong>Testes:</strong> Gerar casos de teste e dados de teste sintéticos</li>
+                <li>• <strong>Deploy:</strong> Otimizar configurações de infraestrutura</li>
+                <li>• <strong>Monitoramento:</strong> Analisar logs e alertar sobre anomalias</li>
+              </ul>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+              <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                "Crie 5 user stories detalhadas para uma funcionalidade de login social (Google, Facebook, Apple) numa aplicação móvel de delivery. Para cada story, inclua: título, descrição, critérios de aceitação e estimativa de story points."
+              </code>
+            </div>
+
+            <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-4 rounded-lg border border-blue-500/30">
+              <h5 class="font-bold text-blue-400 mb-3">📊 SDLC com IA em Cada Fase</h5>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-center">
+                  <span class="text-blue-400 mr-2">1️⃣</span>
+                  <span class="text-neutral-300"><strong>Requisitos:</strong> Análise de feedback de usuários → User Stories</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-blue-400 mr-2">2️⃣</span>
+                  <span class="text-neutral-300"><strong>Design:</strong> Sugestão de arquiteturas → Diagramas</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-blue-400 mr-2">3️⃣</span>
+                  <span class="text-neutral-300"><strong>Dev:</strong> Copilot gera código → Review automático</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-blue-400 mr-2">4️⃣</span>
+                  <span class="text-neutral-300"><strong>Testes:</strong> Geração de testes → Dados sintéticos</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-blue-400 mr-2">5️⃣</span>
+                  <span class="text-neutral-300"><strong>Deploy:</strong> Otimização de configs → CI/CD inteligente</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-blue-400 mr-2">6️⃣</span>
+                  <span class="text-neutral-300"><strong>Monitor:</strong> Análise de logs → Detecção de anomalias</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 8 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">8</span>
+            <span class="font-semibold">📊 Medindo e Comunicando o ROI de Projetos de IA</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                <strong class="text-blue-400">ROI = (Ganhos - Custos) / Custos × 100%</strong>
+              </p>
+              <p class="text-neutral-300 mb-3">
+                <strong>Ganhos</strong> incluem: redução de custos operacionais (menos horas/homem), aumento de receita (mais conversões), melhoria de produtividade (mais features entregues), redução de churn (clientes mais satisfeitos).
+              </p>
+              <p class="text-neutral-300 mb-3">
+                <strong>Custos</strong> incluem: desenvolvimento (horas de engenharia), infraestrutura (servidores, APIs), manutenção (updates, bugfixes), treinamento (capacitação do time).
+              </p>
+              <p class="text-neutral-300">
+                Use <strong>dashboards visuais</strong> para comunicar ROI a stakeholders não-técnicos. Gráficos de tendência mostram o impacto ao longo do tempo. Comparações antes/depois tornam resultados tangíveis.
+              </p>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+              <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                "Calcule o ROI de um projeto de IA que custou R$50.000 em desenvolvimento e gera economia de R$2.000/mês em redução de horas de suporte. Considere custos de manutenção de R$500/mês. Apresente o ROI para 12, 24 e 36 meses."
+              </code>
+            </div>
+
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">📈 KPIs Essenciais para Projetos de IA</h5>
+              <div class="grid md:grid-cols-2 gap-3 mt-3">
+                <div class="bg-dark-900/50 p-3 rounded">
+                  <div class="font-bold text-blue-400 text-sm mb-1">⏱️ Tempo Economizado</div>
+                  <div class="text-neutral-300 text-xs">Horas/mês economizadas pela automação</div>
+                </div>
+                <div class="bg-dark-900/50 p-3 rounded">
+                  <div class="font-bold text-blue-400 text-sm mb-1">📉 Taxa de Erro</div>
+                  <div class="text-neutral-300 text-xs">Redução percentual de erros</div>
+                </div>
+                <div class="bg-dark-900/50 p-3 rounded">
+                  <div class="font-bold text-blue-400 text-sm mb-1">😊 Satisfação do Cliente</div>
+                  <div class="text-neutral-300 text-xs">NPS ou CSAT antes/depois</div>
+                </div>
+                <div class="bg-dark-900/50 p-3 rounded">
+                  <div class="font-bold text-blue-400 text-sm mb-1">💰 Custo por Transação</div>
+                  <div class="text-neutral-300 text-xs">Redução de custo operacional</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 9 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">9</span>
+            <span class="font-semibold">⚖️ Ética e Responsabilidade no Uso da IA</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                Com grande poder vem grande responsabilidade. <strong>Viés algorítmico</strong> ocorre quando modelos amplificam preconceitos presentes nos dados de treinamento. <strong>Transparência</strong> é crítica - modelos "black box" podem tomar decisões que não conseguimos explicar.
+              </p>
+              <p class="text-neutral-300 mb-3">
+                O <strong>impacto no emprego</strong> é real, mas transformador (não eliminador). Devemos seguir frameworks de IA responsável: <strong>Fairness</strong> (justiça), <strong>Accountability</strong> (responsabilidade), <strong>Transparency</strong> (transparência), <strong>Ethics</strong> (ética) - o framework <strong class="text-blue-400">FATE</strong>.
+              </p>
+              <p class="text-neutral-300">
+                Sempre audite modelos para viés. Documente decisões algorítmicas. Mantenha humanos no loop para decisões críticas. Respeite privacidade de dados (LGPD/GDPR).
+              </p>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+              <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                "Analise este modelo de ML para aprovação de crédito e identifique potenciais fontes de viés relacionadas a gênero, raça e localização geográfica. Sugira métricas de fairness e técnicas de mitigação."
+              </code>
+            </div>
+
+            <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30 mb-4">
+              <h5 class="font-bold text-red-400 mb-2">⚠️ Principais Riscos</h5>
+              <ul class="text-neutral-300 text-sm space-y-2">
+                <li>• <strong>Viés (Bias):</strong> Discriminação sistêmica amplificada por algoritmos</li>
+                <li>• <strong>Privacidade:</strong> Vazamento de dados sensíveis via modelos</li>
+                <li>• <strong>Explicabilidade:</strong> Decisões que não podemos justificar</li>
+                <li>• <strong>Dependência:</strong> Perda de skills humanas fundamentais</li>
+              </ul>
+            </div>
+
+            <div class="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/30">
+              <h5 class="font-bold text-emerald-400 mb-2">✓ Princípios FATE</h5>
+              <div class="grid md:grid-cols-2 gap-2 text-sm">
+                <div class="flex items-start">
+                  <span class="text-emerald-400 mr-2">F</span>
+                  <span class="text-neutral-300"><strong>Fairness:</strong> Justiça e equidade</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-emerald-400 mr-2">A</span>
+                  <span class="text-neutral-300"><strong>Accountability:</strong> Responsabilização</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-emerald-400 mr-2">T</span>
+                  <span class="text-neutral-300"><strong>Transparency:</strong> Transparência</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-emerald-400 mr-2">E</span>
+                  <span class="text-neutral-300"><strong>Ethics:</strong> Ética</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 10 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <div class="p-5 flex items-center border-b border-dark-700">
+            <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">10</span>
+            <span class="font-semibold">🚀 O Futuro do Engenheiro Aumentado por IA</span>
+          </div>
+          <div class="p-5">
+            <div class="bg-dark-700/50 rounded-lg p-4 mb-4">
+              <p class="text-neutral-300 mb-3">
+                <strong>Tendências emergentes:</strong> Mais automação (mas também mais complexidade), colaboração humano-IA mais sofisticada, novas especializações profissionais (Engenheiro de Prompts, Auditor de Algoritmos, Arquiteto de IA).
+              </p>
+              <p class="text-neutral-300 mb-3">
+                As <strong class="text-blue-400">habilidades valorizadas</strong> mudam: pensamento crítico para avaliar outputs de IA, criatividade para fazer perguntas que a IA não faria, inteligência emocional para colaborar em equipes híbridas, adaptabilidade para aprender continuamente.
+              </p>
+              <p class="text-neutral-300">
+                O futuro não é humano OU IA - é humano <strong class="text-blue-400">E</strong> IA trabalhando juntos. O Engenheiro Aumentado é um <strong>orquestrador de sistemas de IA</strong>, não um programador de linhas de código.
+              </p>
+            </div>
+
+            <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-4">
+              <h5 class="font-bold text-blue-400 mb-2">💡 Exemplo de Prompt</h5>
+              <code class="text-sm text-neutral-300 block bg-dark-900/50 p-3 rounded">
+                "Crie um plano de desenvolvimento profissional de 12 meses para um engenheiro de software sênior que quer especializar-se em IA. Inclua: cursos, certificações, projetos práticos, networking e metas mensuráveis."
+              </code>
+            </div>
+
+            <div class="bg-gradient-to-br from-blue-900/30 to-purple-900/30 p-6 rounded-lg border border-blue-500/30">
+              <h5 class="font-bold text-blue-400 mb-4">🔮 Visão de Futuro (2025-2030)</h5>
+              <div class="space-y-3 text-sm">
+                <div class="flex items-start">
+                  <span class="text-blue-400 mr-2">•</span>
+                  <span class="text-neutral-300"><strong>Novas profissões:</strong> Engenheiro de Prompts, Auditor de Viés, Designer de Experiência IA-Humano</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-blue-400 mr-2">•</span>
+                  <span class="text-neutral-300"><strong>Habilidades críticas:</strong> Pensamento sistêmico, design ético, colaboração humano-IA</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-blue-400 mr-2">•</span>
+                  <span class="text-neutral-300"><strong>Ferramentas:</strong> IDEs totalmente aumentados, agentes autônomos de código, debugging por IA</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-blue-400 mr-2">•</span>
+                  <span class="text-neutral-300"><strong>Workflow:</strong> Humano define "o quê", IA executa "como", humano valida resultado</span>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-blue-400 mr-2">•</span>
+                  <span class="text-neutral-300"><strong>Mentalidade:</strong> De "programador" para "orquestrador de inteligências"</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resumo / Checklist -->
+    <section class="mb-12">
+      <div class="bg-blue-500/10 rounded-2xl p-8 border border-blue-500/30">
+        <h2 class="text-2xl font-bold text-blue-400 mb-6 text-center">✅ Resumo do Módulo</h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Engenheiro Aumentado = Estrategista focado em ROI</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">IA é copiloto que amplifica capacidades</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">ROI é métrica essencial para justificar projetos</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Priorize alto impacto + baixo esforço</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Engenharia de prompts = habilidade essencial</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">IA em todas as fases do SDLC</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Meça e comunique ROI constantemente</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Ética e responsabilidade são inegociáveis</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Futuro = orquestrador de sistemas de IA</span>
+          </div>
+          <div class="flex items-start">
+            <span class="text-emerald-400 mr-2">✓</span>
+            <span class="text-neutral-300">Resultado > Perfeição</span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="trilha21.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-400 transition-colors">
+            <span>Voltar para Trilha 2</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação -->
+    <div class="flex justify-between items-center">
+      <a href="trilha21.html" class="inline-flex items-center space-x-2 text-neutral-400 hover:text-blue-400 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <span>Voltar para Trilha 2</span>
+      </a>
+      <a href="modulo-2-2.html" class="inline-flex items-center space-x-2 px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-400 transition-colors">
+        <span>Próximo: Módulo 2.2</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700 py-8 mt-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-neutral-500 text-sm">
+        SHIA - Super Humanos Inteligência Aumentada | Trilha 2 - Módulo 2.1
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 2: Engenharia - Parte 1 | SHIA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .border-dark-700 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-200 { color: #334155 !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mb-4">
+        TRILHA 2 - PARTE 1: ENGENHARIA
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+        🔧 Da Lógica ao Resultado
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto">
+        Use a IA para resolver problemas, automatizar processos e construir soluções. Engenheiro é quem decide e executa, não quem busca perfeição.
+      </p>
+    </div>
+
+    <!-- Imagem de Capa -->
+    <div class="mb-12">
+      <img
+        src="../../doc/imagens/engenharia/capa_trilha_engenharia.webp"
+        alt="Trilha Engenharia: Construindo soluções com IA"
+        class="w-full max-w-4xl mx-auto rounded-2xl shadow-xl border border-dark-600/50"
+      />
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">5</div>
+        <div class="text-xs text-neutral-400">Módulos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">50</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">Parte 1</div>
+        <div class="text-xs text-neutral-400">de 2</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">~5h</div>
+        <div class="text-xs text-neutral-400">Conteúdo</div>
+      </div>
+    </div>
+
+    <!-- Navigation Parts -->
+    <div class="flex justify-center gap-4 mb-12">
+      <a href="trilha21.html" class="px-6 py-3 bg-blue-500 text-dark-900 rounded-xl font-bold hover:bg-blue-400 transition-colors">
+        Parte 1 (1-5)
+      </a>
+      <a href="trilha22.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-xl font-bold hover:bg-dark-600 transition-colors border border-dark-600">
+        Parte 2 (6-10)
+      </a>
+    </div>
+
+    <!-- Modules -->
+    <div class="space-y-6">
+
+      <!-- Módulo 2.1 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.1
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">O Mindset do Engenheiro Aumentado por IA: Foco em ROI</h2>
+              <p class="text-sm text-neutral-400">Desenvolver mentalidade orientada a resultados e retorno</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🎯 Introdução ao Engenheiro Aumentado por IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> O engenheiro aumentado combina expertise humana com poder computacional da IA para multiplicar produtividade e impacto.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Ferramentas de IA permitem que um único engenheiro execute trabalho que antes exigiria equipes inteiras.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Augmentação humana, multiplicador de força, automação inteligente, delegação estratégica.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              💰 O Mindset de ROI em Projetos de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Avaliar cada implementação de IA pelo retorno sobre investimento: tempo economizado, valor gerado, problemas resolvidos.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Foco em ROI garante que esforços sejam direcionados para soluções que realmente importam.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Retorno sobre investimento, métricas de impacto, priorização, value delivery.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔍 Identificando Oportunidades de IA com Alto ROI
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Encontrar gargalos, tarefas repetitivas e decisões complexas onde IA pode gerar máximo impacto.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Saber identificar oportunidades é mais valioso que dominar ferramentas específicas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Análise de processos, identificação de gargalos, quick wins, impacto estratégico.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🛠️ A Caixa de Ferramentas do Engenheiro Aumentado
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> LLMs, ferramentas no-code, APIs, automação - o arsenal completo do engenheiro moderno.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Conhecer as ferramentas certas acelera implementação e reduz fricção.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Stack de IA, plataformas no-code, APIs, integração de ferramentas.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ✍️ Engenharia de Prompts para Otimização de Tarefas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Crafting de prompts específicos para análise, debug, geração de código e tomada de decisão.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Prompts bem construídos podem economizar horas de trabalho manual.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Chain-of-thought, few-shot learning, context engineering, output formatting.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🧩 IA na Análise e Resolução de Problemas Complexos
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Usar IA como parceira de pensamento para decompor problemas, gerar hipóteses e avaliar soluções.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> IA complementa raciocínio humano, ajudando a evitar blind spots e vieses.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Decomposição de problemas, análise de trade-offs, geração de alternativas.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔄 Automatizando o Ciclo de Vida de Desenvolvimento
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> IA em planejamento, coding, testing, deployment, monitoramento - automatizando todo o pipeline.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Automação libera tempo para trabalho estratégico e criativo.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> CI/CD com IA, testing automatizado, code review, deployment automation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📊 Medindo e Comunicando o ROI de Projetos
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Quantificar benefícios de soluções com IA: tempo economizado, erros evitados, receita gerada.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Demonstrar valor justifica investimentos e abre portas para novos projetos.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> KPIs, métricas de sucesso, business case, storytelling com dados.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ⚖️ Ética e Responsabilidade no Uso da IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Considerações éticas em automação, viés em sistemas de IA, transparência e accountability.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Uso responsável de IA constrói confiança e evita consequências não intencionadas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Viés algorítmico, explicabilidade, privacidade, impacto social.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🚀 O Futuro do Engenheiro Aumentado
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Tendências emergentes: agentes autônomos, IA multimodal, coding sem código, futuro do trabalho.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Antecipar tendências permite preparação e posicionamento estratégico.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Agentes de IA, automação total, democratização de desenvolvimento.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(1)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-1.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 2.2 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.2
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Diagnóstico Lógico e Quebra de Problemas com IA</h2>
+              <p class="text-sm text-neutral-400">Decompor problemas complexos sistematicamente</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔬 Introdução ao Diagnóstico Lógico com IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Usar IA como ferramenta de raciocínio estruturado para diagnosticar problemas técnicos e de negócio.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Pensamento sistemático, análise estruturada, debugging assistido por IA.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              💭 O Método Socrático: Fazendo as Perguntas Certas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Usar IA para fazer perguntas investigativas que revelam raízes de problemas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Questionamento socrático, investigação sistemática, clarificação de problemas.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🧱 Decomposição de Problemas: Dividir para Conquistar
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Quebrar problemas complexos em subproblemas gerenciáveis usando IA como parceira.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Decomposição hierárquica, divide-and-conquer, modularização.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🐟 Frameworks de Análise de Causa Raiz (RCA)
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Aplicar 5 Whys, Fishbone Diagram, Fault Tree Analysis com assistência de IA.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Root cause analysis, 5 Whys, Ishikawa diagram, análise sistemática.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔎 Pensamento Abdutivo: Gerando as Melhores Explicações
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Usar IA para gerar e avaliar hipóteses plausíveis sobre causas de problemas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Raciocínio abdutivo, inferência à melhor explicação, geração de hipóteses.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📈 Análise de Dados para Diagnóstico
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Usar IA para analisar logs, métricas e telemetria na identificação de problemas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Log analysis, pattern recognition, anomaly detection, data-driven debugging.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🎭 Simulação de Cenários e Teste de Hipóteses
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Usar IA para simular condições e testar hipóteses antes de implementar soluções.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Simulação, teste de hipóteses, modelagem de cenários, análise what-if.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🧠 Superando Vieses Cognitivos com IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> IA como segundo par de olhos para identificar blind spots e confirmation bias.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Vieses cognitivos, pensamento crítico, perspectivas alternativas.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔧 Ferramentas de IA Especializadas em Diagnóstico
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Ferramentas específicas para debugging, profiling, análise de performance com IA.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> AI-powered debuggers, profilers, monitoring tools, APM com IA.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📋 Estudo de Caso: Diagnóstico do Início ao Fim
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Walkthrough completo de diagnóstico de problema real usando framework e IA.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Processo completo, metodologia aplicada, lessons learned.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(2)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-2.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 2.3 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.3
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Prototipagem Rápida e "Vibe Code" para Soluções Funcionais</h2>
+              <p class="text-sm text-neutral-400">Criar protótipos funcionais rapidamente</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ⚡ O que é Prototipagem Rápida e "Vibe Code"?
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Prototipagem rápida, vibe coding, velocity sobre perfeição, validação rápida.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🏃 Mentalidade do Prototipador: Velocidade sobre Perfeição
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Fail fast, iterate quickly, good enough, progressive refinement.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🛠️ Ferramentas e Tecnologias para Prototipagem Rápida
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> No-code tools, AI coding assistants, boilerplates, stacks modernas.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📦 Do "Vibe Code" ao MVP (Minimum Viable Product)
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> MVP, feature prioritization, scope management, release strategy.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ✅ Validando Hipóteses com Protótipos Funcionais
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Hypothesis validation, user testing, feedback loops, data-driven decisions.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🚪 "Fake Doors" e Testes de Fumaça
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Fake door testing, smoke tests, demand validation, lean startup.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔌 Prototipagem de Hardware com Arduino e Raspberry Pi
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> IoT prototyping, Arduino, Raspberry Pi, sensores, atuadores.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🤝 A Ética da Prototipagem: Transparência e Feedback
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Transparência, managing expectations, honest communication, user respect.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🤖 Integrando IA Generativa na Prototipagem
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Code generation, UI generation, mockup generation, content creation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ⏱️ Estudo de Caso: Prototipando um App em 24 Horas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Time-boxed development, prioritization, MVP scope, launch strategy.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(3)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-3.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 2.4 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.4
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Automação de Processos e Fluxos de Trabalho com IA</h2>
+              <p class="text-sm text-neutral-400">Automatizar tarefas repetitivas e workflows</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔄 Introdução à Automação de Processos com IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Process automation, RPA, intelligent automation, workflow optimization.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🎯 Identificando Oportunidades de Automação
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Process mapping, bottleneck identification, ROI analysis, quick wins.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🛠️ Ferramentas e Plataformas de Automação
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Zapier, Make, n8n, Automation Anywhere, UiPath, custom solutions.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              💻 Automação com Scripts e APIs
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Python automation, bash scripting, API integration, webhooks.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ⚙️ Criando Fluxos de Trabalho Inteligentes
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Workflow design, conditional logic, error handling, orchestration.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📊 Processamento e Análise de Dados Automatizados
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> ETL pipelines, data cleaning, automated reporting, insights generation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              💬 Automação no Atendimento com Chatbots
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Conversational AI, chatbot design, customer service automation, FAQ bots.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ✍️ Geração de Conteúdo e Relatórios Automatizada
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Content generation, report automation, template systems, personalization.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📈 Implementação e Monitoramento de Automações
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Deployment strategy, monitoring, logging, alerting, maintenance.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔮 O Futuro da Automação e o Impacto no Trabalho
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Agentes autônomos, hyperautomation, future of work, human-AI collaboration.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(4)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-4.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 2.5 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.5
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">RAG (Retrieval-Augmented Generation) na Prática</h2>
+              <p class="text-sm text-neutral-400">Construir sistemas de IA com conhecimento customizado</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📚 Introdução ao RAG: O que é e por que importa?
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Retrieval-Augmented Generation, knowledge grounding, contextualized responses.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🏗️ Arquitetura de um Sistema RAG
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Document ingestion, embedding, vector storage, retrieval, generation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ✂️ Preparando sua Base: Chunking e Embeddings
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Text chunking, semantic embeddings, document preprocessing, optimization.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🗄️ Bancos de Dados Vetoriais
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Pinecone, Weaviate, Chroma, FAISS, similarity search, indexing.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🧠 O Papel do LLM no RAG
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Context injection, prompt engineering, response synthesis, hallucination reduction.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📏 Avaliando a Qualidade de um Sistema RAG
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Retrieval accuracy, relevance metrics, answer quality, evaluation frameworks.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ⚡ RAG Avançado: Técnicas para Melhorar Resultados
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Hybrid search, reranking, query expansion, multi-stage retrieval.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔨 Construindo seu Primeiro App RAG com LangChain
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> LangChain framework, document loaders, chains, hands-on implementation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🌍 Casos de Uso de RAG no Mundo Real
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Customer support, knowledge management, research assistants, document Q&A.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🚀 O Futuro do RAG: Tendências e Desafios
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> GraphRAG, multimodal RAG, agentic RAG, scalability challenges.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(5)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-5.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Bottom -->
+    <div class="flex justify-center gap-4 mt-12">
+      <a href="trilha21.html" class="px-6 py-3 bg-blue-500 text-dark-900 rounded-xl font-bold hover:bg-blue-400 transition-colors">
+        Parte 1 (1-5)
+      </a>
+      <a href="trilha22.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-xl font-bold hover:bg-dark-600 transition-colors border border-dark-600">
+        Parte 2 (6-10) →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Modal -->
+  <div id="module-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+      <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+      <div class="relative bg-dark-800 rounded-2xl border border-dark-600 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div class="sticky top-0 bg-dark-800 border-b border-dark-600 px-6 py-4 flex justify-between items-center z-10">
+          <h2 id="modal-title" class="text-xl font-bold text-blue-400"></h2>
+          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
+            <svg class="w-6 h-6 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="p-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Module URLs - carrega conteúdo completo das páginas dos módulos
+    const moduleUrls = {
+      1: 'modulo-2-1.html',
+      2: 'modulo-2-2.html',
+      3: 'modulo-2-3.html',
+      4: 'modulo-2-4.html',
+      5: 'modulo-2-5.html'
+    };
+
+    // Open Modal - carrega conteúdo da página do módulo
+    async function openModal(moduleNum) {
+      const modal = document.getElementById('module-modal');
+      const title = document.getElementById('modal-title');
+      const content = document.getElementById('modal-content');
+
+      // Mostra loading
+      title.textContent = 'Carregando...';
+      content.innerHTML = '<div class="text-center py-8"><div class="animate-spin w-8 h-8 border-2 border-blue-400 border-t-transparent rounded-full mx-auto"></div></div>';
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      try {
+        const response = await fetch(moduleUrls[moduleNum]);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Pega o título do módulo
+        const moduleTitle = doc.querySelector('h1');
+        title.textContent = moduleTitle ? moduleTitle.textContent : `Módulo 2.${moduleNum}`;
+
+        // Pega o conteúdo principal (seção de tópicos)
+        const mainContent = doc.querySelector('main');
+        if (mainContent) {
+          // Remove navegação e elementos desnecessários
+          const clone = mainContent.cloneNode(true);
+          clone.querySelectorAll('nav, .navigation-buttons, footer').forEach(el => el.remove());
+
+          // Remove o header duplicado (já temos no modal)
+          const header = clone.querySelector('.text-center.mb-8, .text-center.mb-12');
+          if (header) header.remove();
+
+          content.innerHTML = '';
+          content.appendChild(clone);
+        }
+      } catch (error) {
+        content.innerHTML = '<p class="text-red-400 text-center py-8">Erro ao carregar conteúdo. <a href="' + moduleUrls[moduleNum] + '" class="underline">Clique aqui para abrir a página completa.</a></p>';
+      }
+    }
+
+    // Close Modal
+    function closeModal() {
+      const modal = document.getElementById('module-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Toggle Topic
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const arrow = button.querySelector('span:first-child');
+
+      if (explanation.classList.contains('hidden')) {
+        explanation.classList.remove('hidden');
+        arrow.textContent = '▾';
+      } else {
+        explanation.classList.add('hidden');
+        arrow.textContent = '▸';
+      }
+    }
+
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

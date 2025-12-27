@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 2: Engenharia - Parte 2 | SHIA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #f8fafc !important; }
+    html:not(.dark) .bg-dark-800 { background-color: #ffffff !important; }
+    html:not(.dark) .bg-dark-700 { background-color: #f1f5f9 !important; }
+    html:not(.dark) .border-dark-600 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .border-dark-700 { border-color: #e2e8f0 !important; }
+    html:not(.dark) .text-neutral-100 { color: #1e293b !important; }
+    html:not(.dark) .text-neutral-200 { color: #334155 !important; }
+    html:not(.dark) .text-neutral-300 { color: #475569 !important; }
+    html:not(.dark) .text-neutral-400 { color: #64748b !important; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-3">
+          <a href="../../index.html" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">SHIA</span>
+          </a>
+          <span class="text-neutral-500 hidden sm:inline">|</span>
+          <a href="http://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 font-bold text-lg hidden sm:inline transition-colors">
+            INEMA.CLUB
+          </a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha0/trilha01.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>0
+          </a>
+          <a href="../trilha1/trilha11.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>1
+          </a>
+          <a href="trilha21.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span class="hidden sm:inline">Trilha </span>2
+          </a>
+          <a href="../trilha3/trilha31.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="hidden sm:inline">Trilha </span>3
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mb-4">
+        TRILHA 2 - PARTE 2: ENGENHARIA
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+        🔧 Técnicas Avançadas e Escalabilidade
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto">
+        Domine agentes de IA, prompt engineering avançado, métricas de resultado e gestão de projetos para escalar soluções de IA em produção.
+      </p>
+    </div>
+
+    <!-- Imagem de Capa -->
+    <div class="mb-12">
+      <img
+        src="../../doc/imagens/engenharia/capa_trilha_engenharia.webp"
+        alt="Trilha Engenharia: Construindo com IA"
+        class="w-full max-w-4xl mx-auto rounded-2xl shadow-xl border border-dark-600/50"
+      />
+    </div>
+
+    <!-- Stats Banner -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">5</div>
+        <div class="text-xs text-neutral-400">Módulos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">50</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">Parte 2</div>
+        <div class="text-xs text-neutral-400">de 2</div>
+      </div>
+      <div class="bg-dark-800 rounded-xl p-4 text-center border border-dark-600">
+        <div class="text-2xl font-bold text-blue-400">~5h</div>
+        <div class="text-xs text-neutral-400">Conteúdo</div>
+      </div>
+    </div>
+
+    <!-- Navigation Parts -->
+    <div class="flex justify-center gap-4 mb-12">
+      <a href="trilha21.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-xl font-bold hover:bg-dark-600 transition-colors border border-dark-600">
+        Parte 1 (1-5)
+      </a>
+      <a href="trilha22.html" class="px-6 py-3 bg-blue-500 text-dark-900 rounded-xl font-bold hover:bg-blue-400 transition-colors">
+        Parte 2 (6-10)
+      </a>
+    </div>
+
+    <!-- Modules -->
+    <div class="space-y-6">
+
+      <!-- Módulo 2.6 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.6
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Construindo Agentes de IA para Tarefas Complexas</h2>
+              <p class="text-sm text-neutral-400">Arquitetura e implementação de agentes autônomos inteligentes</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🤖 O que são Agentes de IA?
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Agentes são sistemas de IA que percebem o ambiente, tomam decisões e executam ações autonomamente para atingir objetivos.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Agentes representam o próximo nível de automação inteligente em aplicações reais.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Autonomia, percepção, tomada de decisão, execução, ciclo observe-think-act, goal-oriented behavior.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🏗️ Arquitetura de Agentes de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Componentes fundamentais: planejador, executor, memória, ferramentas e sistema de feedback.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Arquitetura bem projetada é crucial para agentes confiáveis e escaláveis.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> ReAct pattern, LangChain agents, LlamaIndex agents, AutoGPT architecture, modular design.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📋 Planejamento de Tarefas e Decomposição
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Como agentes quebram problemas complexos em sub-tarefas gerenciáveis e executáveis.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Decomposição eficaz é essencial para resolver problemas reais do mundo.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Task decomposition, hierarchical planning, goal trees, dependency management, execution graphs.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🛠️ Uso de Ferramentas (Tool Use)
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Integração de APIs, calculadoras, buscadores, bancos de dados e outras ferramentas externas.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Ferramentas expandem drasticamente capacidades dos agentes além do conhecimento do LLM.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Function calling, tool schemas, Claude Tool Use, OpenAI Function Calling, tool orchestration.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🧠 Memória de Curto e Longo Prazo
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Sistemas de memória que permitem agentes manter contexto e aprender com experiências passadas.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Memória transforma agentes de executores únicos em sistemas que melhoram continuamente.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Short-term memory (context window), long-term memory (vector stores), episodic memory, semantic memory.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              👥 Sistemas Multi-Agentes
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Múltiplos agentes especializados trabalhando em conjunto, coordenados por um orquestrador.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Problemas complexos frequentemente requerem especialização e colaboração entre agentes.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Agent orchestration, specialized roles, communication protocols, consensus mechanisms, AutoGen.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ⚖️ Considerações Éticas e de Segurança
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Guardrails, limitações de escopo, aprovação humana, auditoria de ações e prevenção de comportamentos indesejados.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Agentes autônomos podem causar danos reais se não forem adequadamente controlados.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Human-in-the-loop, safety constraints, action boundaries, audit logs, rollback mechanisms.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔍 Avaliação e Depuração de Agentes
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Técnicas para testar, debugar e melhorar performance de agentes em cenários complexos.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Agentes falham de formas não óbvias - depuração sistemática é essencial.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Trace logging, step-by-step execution, failure analysis, success metrics, A/B testing agents.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              💼 Casos de Uso Práticos
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Agentes de atendimento ao cliente, pesquisa automatizada, análise de dados, automação de workflows.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Exemplos reais mostram padrões de implementação e melhores práticas testadas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Customer service bots, research agents, data analysts, workflow automation, coding assistants.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🚀 O Futuro dos Agentes de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Tendências emergentes: agentes persistentes, aprendizado contínuo, colaboração humano-agente, AGI.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Antecipar o futuro permite posicionamento estratégico e inovação early-adopter.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Persistent agents, continuous learning, AGI trajectory, human-agent collaboration, autonomous economy.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(6)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-6.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 2.7 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.7
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Técnicas Avançadas de Prompt Engineering para Lógica</h2>
+              <p class="text-sm text-neutral-400">Dominar raciocínio complexo e resolução de problemas com LLMs</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🎯 Fundamentos Avançados de Prompt Engineering
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Além do básico: prompt crafting, delimitadores, estruturação, context management, iteração sistemática.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Prompts bem construídos são a diferença entre outputs medianos e excelentes.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Delimiters, XML tags, structured prompts, context framing, instruction clarity, output formatting.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔗 Chain-of-Thought Prompting
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Fazer LLM "pensar em voz alta" - explicitar raciocínio passo-a-passo para melhor performance.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> CoT melhora drasticamente performance em raciocínio matemático, lógico e complexo.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Step-by-step reasoning, "Let's think step by step", intermediate steps, verification, error detection.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🌳 Tree-of-Thoughts para Problemas Complexos
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Explorar múltiplos caminhos de raciocínio simultaneamente, escolher melhor rota, backtrack se necessário.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Para problemas onde uma única chain of thought não é suficiente.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Multiple reasoning paths, evaluation, pruning, backtracking, search algorithms, best-first exploration.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📝 Few-Shot e Zero-Shot Learning
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Ensinar tarefas via exemplos (few-shot) ou apenas instruções (zero-shot) - sem fine-tuning.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Agilidade para adaptar LLMs para novos casos de uso sem retreinamento.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Example selection, in-context learning, few-shot examples, zero-shot prompting, task adaptation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🎭 Role-Playing e Personas Avançadas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Atribuir roles e personas detalhadas para moldar comportamento, expertise e estilo do LLM.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Personas bem construídas melhoram relevância, tom e expertise das respostas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> System prompts, role definition, expertise simulation, perspective taking, voice consistency.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ✍️ Structured Output e Parsing
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Forçar LLMs a retornar JSON, XML, CSV ou formatos estruturados para fácil parsing programático.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Outputs estruturados são essenciais para integração com sistemas downstream.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> JSON mode, XML formatting, schema enforcement, validation, error handling, Pydantic models.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔄 Self-Consistency e Verificação
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Gerar múltiplas respostas, verificar consistência, escolher resposta mais confiável (maioria vota).</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Aumenta confiabilidade para tarefas críticas onde erros são inaceitáveis.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Multiple sampling, voting mechanisms, self-verification, confidence scoring, ensemble methods.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🧩 Decomposição de Tarefas Complexas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Quebrar tarefas grandes em subtarefas menores, resolver incrementalmente, compor resultado final.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> LLMs performam melhor em tarefas focadas do que em prompts monolíticos gigantes.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Task breakdown, sequential processing, composition, context passing, intermediate validation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ⚡ Otimização de Prompts para Performance
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Reduzir tokens, melhorar latência, manter qualidade - balancear custo, velocidade e performance.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Em produção, cada token custa dinheiro e cada milissegundo importa.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Token efficiency, caching, prompt compression, batch processing, cost optimization.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📊 Benchmarking e Avaliação de Prompts
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Criar test sets, medir qualidade objetivamente, comparar variações, iterar sistematicamente.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> "Você não pode melhorar o que não mede" - avaliação rigorosa é essencial.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Eval datasets, metrics, A/B testing, regression testing, continuous improvement, LLM-as-judge.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(7)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-7.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 2.8 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.8
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Medição, Análise de Resultados e Melhoria Contínua</h2>
+              <p class="text-sm text-neutral-400">Métricas, monitoramento e otimização de sistemas de IA</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📊 A Importância da Medição em Projetos de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Por que métricas são essenciais: provar valor, detectar problemas, guiar otimizações, justificar investimento.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Projetos sem métricas falham silenciosamente ou são cancelados por falta de ROI demonstrável.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Data-driven decisions, measurement culture, baseline establishment, success criteria, accountability.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🎯 Definindo KPIs para Sistemas de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Identificar KPIs de negócio (conversão, satisfação) e técnicos (latência, accuracy) relevantes.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> KPIs corretos alinham equipe técnica com objetivos de negócio.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Business KPIs, technical KPIs, leading vs lagging indicators, SMART goals, balanced scorecard.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📈 Métricas de Performance de Modelos
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Accuracy, precision, recall, F1, perplexity, BLEU, ROUGE - quando usar cada uma.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Métricas técnicas diferentes são apropriadas para diferentes casos de uso.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Classification metrics, generation metrics, retrieval metrics, custom metrics, human evaluation.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              💰 Calculando ROI de Soluções de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Quantificar valor gerado (economias, receitas) versus custos (desenvolvimento, APIs, infraestrutura).</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> ROI justifica continuidade de projetos e atração de mais investimento.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Cost analysis, value quantification, TCO, payback period, NPV, business case.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔬 A/B Testing com IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Comparar versões de prompts, modelos, configurações em produção com tráfego real.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> A/B testing permite otimização baseada em comportamento real de usuários.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Experiment design, statistical significance, control groups, traffic splitting, multivariate testing.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📉 Monitoramento em Produção
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Observabilidade contínua: logs, traces, métricas em tempo real, alertas para anomalias.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Detectar problemas rapidamente antes que afetem muitos usuários.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Logging, tracing, metrics, dashboards, alerts, SLOs, incident response.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔄 Feedback Loops e Melhoria Contínua
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Coletar feedback de usuários, incorporar em treinamento/prompts, iterar continuamente.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Sistemas de IA devem melhorar ao longo do tempo, não estagnar.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> User feedback, RLHF, active learning, continuous deployment, flywheel effect.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🛡️ Detecção de Drift e Degradação
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Identificar quando performance degrada: data drift, concept drift, model staleness.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Modelos não são estáticos - o mundo muda e os modelos precisam acompanhar.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Data drift detection, concept drift, distribution shift, model decay, retraining triggers.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📋 Dashboards e Relatórios Automatizados
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Visualizar métricas em tempo real, gerar relatórios automáticos para stakeholders.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Dashboards democratizam dados e mantém todos alinhados sobre performance.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Grafana, Kibana, custom dashboards, automated reporting, data visualization, storytelling.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🏆 Boas Práticas de MLOps
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Integrar ML em ciclo de vida DevOps: versionamento, CI/CD, governança, reprodutibilidade.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> MLOps profissionaliza operação de IA, reduzindo fricção entre desenvolvimento e produção.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Model versioning, experiment tracking, feature stores, model registry, automated pipelines.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(8)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-8.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 2.9 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.9
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Integração de Modelos de IA em Aplicações Reais</h2>
+              <p class="text-sm text-neutral-400">Deploy, integração e operação de IA em produção</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔌 Arquiteturas de Integração com IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Padrões arquiteturais: API-first, event-driven, serverless, microservices para sistemas com IA.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Arquitetura correta define escalabilidade, manutenibilidade e resiliência do sistema.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> API gateways, message queues, async processing, caching, rate limiting, circuit breakers.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🌐 APIs de Modelos de IA (OpenAI, Anthropic, etc.)
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Integrar com APIs de provedores comerciais: autenticação, rate limits, error handling, fallbacks.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> APIs são caminho mais rápido para produção sem gerenciar infraestrutura.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> API keys, SDK integration, streaming responses, token management, retry logic.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ☁️ Deploy em Cloud (AWS, GCP, Azure)
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Usar serviços cloud: Lambda, Cloud Functions, App Engine para deploy e scaling automático.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Cloud oferece elasticidade, disponibilidade global e serviços managed.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Serverless, managed services, auto-scaling, load balancing, multi-region deployment.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🐳 Containerização e Orquestração
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Docker para empacotamento, Kubernetes para orquestração, helm charts para deploy reproduzível.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Containers garantem consistência entre dev, staging e produção.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Docker, Kubernetes, container registries, pod management, service mesh, health checks.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ⚡ Otimização de Latência e Throughput
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Técnicas para reduzir latência: caching, batching, model quantization, parallel processing.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Performance ruins matam UX - usuários abandonam apps lentas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Response caching, request batching, async APIs, CDN, edge computing, model optimization.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              💰 Gerenciamento de Custos de Inferência
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Estratégias para controlar custos: caching, prompt compression, escolha de modelos, usage limits.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Custos de API podem explodir rapidamente sem controle adequado.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Cost monitoring, budget alerts, model selection, caching strategies, rate limiting.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔐 Segurança e Compliance
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Proteção de dados, criptografia, GDPR/LGPD, auditoria, prevenção de prompt injection.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Violações de segurança/compliance podem destruir empresas.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Data encryption, PII protection, access control, audit logging, compliance frameworks.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔄 CI/CD para Modelos de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Pipelines automatizados: testes, validação, deploy gradual, rollback automático em falhas.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> CI/CD permite deploys frequentes, seguros e confiáveis.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Automated testing, canary deployments, blue-green deployments, feature flags, rollbacks.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📱 Integração com Apps Mobile e Web
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Frontend integration: streaming responses, loading states, error handling, offline support.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> UX é crítica - mesmo backend perfeito falha com frontend ruim.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> REST APIs, WebSockets, streaming, progressive loading, graceful degradation, responsive design.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🏢 Edge Computing e IA Embarcada
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Rodar modelos em dispositivos (mobile, IoT) ou edge: TensorFlow Lite, ONNX, model compression.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Edge computing reduz latência, custos e preserva privacidade.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Model quantization, pruning, knowledge distillation, on-device inference, offline capabilities.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(9)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-9.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+      <!-- Módulo 2.10 -->
+      <div class="module-card bg-dark-800 rounded-2xl p-6 border border-dark-600">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 font-bold text-lg mr-4">
+              2.10
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-neutral-100">Gestão de Projetos de IA e Escalabilidade de Soluções</h2>
+              <p class="text-sm text-neutral-400">Metodologias, governança e scaling de POC para produção</p>
+            </div>
+          </div>
+        </div>
+        <ul class="topics-list space-y-1 mb-4">
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📋 Metodologias Ágeis para Projetos de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Adaptar Scrum/Kanban para IA: sprints experimentais, pivots rápidos, lidar com incerteza inerente.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> IA tem mais incerteza que software tradicional - agilidade é essencial.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Agile for ML, experiment tracking, fail fast, iterative development, hypothesis-driven.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              👥 Montando Times de IA Eficientes
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Papéis: ML engineers, prompt engineers, product managers, domain experts - como orquestrar.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Times bem estruturados são 10x mais produtivos que times desorganizados.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Role definition, cross-functional teams, collaboration, knowledge sharing, hiring.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📊 Gestão de Stakeholders e Expectativas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Comunicar limitações, gerenciar hype, educar stakeholders, demonstrar valor incremental.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Expectativas irrealistas matam projetos de IA - gerenciá-las é crucial.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Stakeholder mapping, communication, expectation management, demos, transparency.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🎯 Escopo e Priorização de Features
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Como priorizar: impacto vs esforço, MVPs, evitar scope creep, dizer não estrategicamente.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Recursos são finitos - priorização decide o que realmente será entregue.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Prioritization frameworks (RICE, MoSCoW), MVP definition, scope management, roadmaps.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              ⚠️ Gestão de Riscos em Projetos de IA
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Identificar riscos: técnicos, éticos, regulatórios, reputacionais - planos de mitigação.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> IA tem riscos únicos que software tradicional não tem.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Risk assessment, mitigation strategies, contingency planning, ethical risks, bias risks.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              📈 Escalando de POC para Produção
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Transição de protótipo para produção: infraestrutura, segurança, monitoramento, suporte.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Maioria dos POCs nunca chega a produção - saber escalar é diferencial competitivo.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> POC to production, production readiness, operational excellence, scalability planning.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🏗️ Arquitetura para Alta Escala
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Design para milhões de usuários: sharding, caching distribuído, multi-region, auto-scaling.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Arquitetura que funciona para 100 usuários colapsa com 1 milhão.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Distributed systems, horizontal scaling, database sharding, CDN, global infrastructure.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              💼 Governança e Documentação
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Políticas, processos, auditoria, documentação técnica e de negócio, knowledge management.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Governança previne caos quando times e complexidade crescem.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> AI governance, model cards, documentation, knowledge base, policies, compliance.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🔄 Manutenção e Evolução de Sistemas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Planejar manutenção contínua: updates de modelos, tech debt, refactoring, deprecation strategies.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Sistemas de IA requerem manutenção constante - não são "deploy and forget".</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Technical debt, refactoring, versioning, deprecation, backward compatibility, evolution.</p>
+            </div>
+          </li>
+          <li class="topic-item">
+            <button onclick="toggleTopic(this)" class="topic-button w-full text-left px-4 py-2 bg-dark-700/50 hover:bg-dark-700 rounded-lg transition-colors font-medium text-neutral-200 flex items-center">
+              <span class="text-blue-400 mr-2">▸</span>
+              🚀 Lições Aprendidas e Melhores Práticas
+            </button>
+            <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">O que é:</strong> Síntese de aprendizados da trilha: padrões que funcionam, antipadrões a evitar, próximos passos.</p>
+              <p class="text-sm mb-1.5 text-neutral-300"><strong class="text-blue-400">Por que aprender:</strong> Consolidar conhecimento e planejar aplicação prática na carreira.</p>
+              <p class="text-sm text-neutral-300"><strong class="text-blue-400">Conceitos-chave:</strong> Best practices, anti-patterns, lessons learned, continuous learning, community engagement.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="flex gap-3">
+          <button onclick="openModal(10)" class="flex-1 px-4 py-2 bg-dark-700 hover:bg-dark-600 rounded-lg text-sm font-medium text-neutral-300 transition-colors flex items-center justify-center">
+            <span class="mr-2">📖</span> Ver em Modal
+          </button>
+          <a href="modulo-2-10.html" class="flex-1 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-sm font-medium text-blue-400 transition-colors flex items-center justify-center border border-blue-500/30">
+            <span class="mr-2">🚀</span> Ver Completo
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Bottom -->
+    <div class="flex justify-center gap-4 mt-12">
+      <a href="trilha21.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-xl font-bold hover:bg-dark-600 transition-colors border border-dark-600">
+        ← Parte 1 (1-5)
+      </a>
+      <a href="trilha22.html" class="px-6 py-3 bg-blue-500 text-dark-900 rounded-xl font-bold hover:bg-blue-400 transition-colors">
+        Parte 2 (6-10)
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Modal -->
+  <div id="module-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+      <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+      <div class="relative bg-dark-800 rounded-2xl border border-dark-600 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div class="sticky top-0 bg-dark-800 border-b border-dark-600 px-6 py-4 flex justify-between items-center z-10">
+          <h2 id="modal-title" class="text-xl font-bold text-blue-400"></h2>
+          <button onclick="closeModal()" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
+            <svg class="w-6 h-6 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="modal-content" class="p-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Module URLs - carrega conteúdo completo das páginas dos módulos
+    const moduleUrls = {
+      6: 'modulo-2-6.html',
+      7: 'modulo-2-7.html',
+      8: 'modulo-2-8.html',
+      9: 'modulo-2-9.html',
+      10: 'modulo-2-10.html'
+    };
+
+    // Open Modal - carrega conteúdo da página do módulo
+    async function openModal(moduleNum) {
+      const modal = document.getElementById('module-modal');
+      const title = document.getElementById('modal-title');
+      const content = document.getElementById('modal-content');
+
+      // Mostra loading
+      title.textContent = 'Carregando...';
+      content.innerHTML = '<div class="text-center py-8"><div class="animate-spin w-8 h-8 border-2 border-blue-400 border-t-transparent rounded-full mx-auto"></div></div>';
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      try {
+        const response = await fetch(moduleUrls[moduleNum]);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Pega o título do módulo
+        const moduleTitle = doc.querySelector('h1');
+        title.textContent = moduleTitle ? moduleTitle.textContent : `Módulo 2.${moduleNum}`;
+
+        // Pega o conteúdo principal (seção de tópicos)
+        const mainContent = doc.querySelector('main');
+        if (mainContent) {
+          // Remove navegação e elementos desnecessários
+          const clone = mainContent.cloneNode(true);
+          clone.querySelectorAll('nav, .navigation-buttons, footer').forEach(el => el.remove());
+
+          // Remove o header duplicado (já temos no modal)
+          const header = clone.querySelector('.text-center.mb-8, .text-center.mb-12');
+          if (header) header.remove();
+
+          content.innerHTML = '';
+          content.appendChild(clone);
+        }
+      } catch (error) {
+        content.innerHTML = '<p class="text-red-400 text-center py-8">Erro ao carregar conteúdo. <a href="' + moduleUrls[moduleNum] + '" class="underline">Clique aqui para abrir a página completa.</a></p>';
+      }
+    }
+
+    // Close Modal
+    function closeModal() {
+      const modal = document.getElementById('module-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Toggle Topic
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const arrow = button.querySelector('span:first-child');
+
+      if (explanation.classList.contains('hidden')) {
+        explanation.classList.remove('hidden');
+        arrow.textContent = '▾';
+      } else {
+        explanation.classList.add('hidden');
+        arrow.textContent = '▸';
+      }
+    }
+
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>
